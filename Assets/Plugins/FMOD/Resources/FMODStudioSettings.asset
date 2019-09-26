@@ -16,8 +16,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  SourceBankPathUnformatted: /Users/jacobhvidamstrup/Documents/FMOD Projects/AMDUAT_SOUND
-    BANKS/Desktop
+  SourceBankPathUnformatted: Assets/FMOD BUILDS/Desktop
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0
