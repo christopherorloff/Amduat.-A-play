@@ -38,7 +38,7 @@ sysinfo.txt
 ### FMOD ###
 Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
 Assets/Plugins/FMOD/Resources/FMODStudioCache.asset.meta
-#Assets/StreamingAssets/**
+Assets/StreamingAssets/**
 fmod_editor.log
 
 ### VisualStudioCode ###
