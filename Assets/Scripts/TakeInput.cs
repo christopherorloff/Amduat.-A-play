@@ -8,6 +8,7 @@ public class TakeInput : MonoBehaviour
     
     void Update()
     {
-        print (Scroll.isScrolling());
+        //print (Scroll.isScrolling());
+        print(Scroll.scrollValueFiltered());
     }
 }
