@@ -5,10 +5,14 @@ using ScrollManager;
 
 public class TakeInput : MonoBehaviour
 {
-    
+    Event e;
+    void Start()
+    {
+        
+    }
     void Update()
     {
-        //print (Scroll.isScrolling());
-        print(Scroll.scrollValueFiltered());
+        //print ("Var: " + Scroll.scrollValueFilteredVar());
+        print("Axis: "+ Scroll.scrollValueMean(10));
     }
 }

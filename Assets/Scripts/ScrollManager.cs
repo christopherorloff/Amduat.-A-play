@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,13 @@ namespace ScrollManager
         //Remember to have a variable to invert direction depending on scroll direction
 
         static float lastValue;
+        static float lastValueVar;
+
+        static int numberOfLastValues = 5;
+        static Queue<float> lastValues = new Queue<float>();
+        
         // Detect beginning of input - Event maybe?
+            // Very hard to do
 
         // Bool - Input or not
         public static bool isScrolling()
@@ -24,27 +31,53 @@ namespace ScrollManager
         // Input with acceleration (artificial)
 
         // Input with acceleration (system based)
-        public static float scrollValueFiltered()
+
+        public static float scrollValue()
         {
-            float newValue = Input.GetAxisRaw("Mouse ScrollWheel");
+            float newValue = Input.mouseScrollDelta.y;
             float output = 0;
             if (newValue == 0)
             {
-                if (lastValue == 0)
+                if (lastValueVar == 0)
                 {
                     output = 0;
                 }
                 else
-                { 
-                    output = lastValue;
+                {
+                    output = lastValueVar;
                 }
             }
             else
             {
                 output = newValue;
             }
-            lastValue = newValue;
+
+            lastValueVar = newValue;
             return output;
+        }
+
+        public static float scrollValueMean(int n)
+        {
+            float output = 0;
+
+            lastValues.Enqueue(scrollValue());
+            if (lastValues.Count > n)
+            {
+                lastValues.Dequeue();
+            }
+            output = GetMeanOfQueue(n, lastValues);
+            return output;
+        }
+
+        private static float GetMeanOfQueue(int n, Queue<float> queue)
+        {
+            float mean = 0;
+            foreach (var item in queue)
+            {
+                mean += item;
+            }
+            mean /= n;
+            return mean;
         }
     }
 
