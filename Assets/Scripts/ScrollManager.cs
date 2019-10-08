@@ -10,10 +10,9 @@ namespace ScrollManager
         //Notes
         //Remember to have a variable to invert direction depending on scroll direction
 
+        //Variables for internal use:
         static float lastValue;
         static float lastValueVar;
-
-        static int numberOfLastValues = 5;
         static Queue<float> lastValues = new Queue<float>();
         
         // Detect beginning of input - Event maybe?
@@ -23,15 +22,16 @@ namespace ScrollManager
         public static bool isScrolling()
         {
             bool status = false;
-            status = (Input.mouseScrollDelta.y != 0) ? true : false;
+            status = (scrollValue() != 0) ? true : false;
             return status;
         }
         // Direction - Are we receiving input, and is it up or down
 
-        // Input with acceleration (artificial)
+        // Input with acceleration (artificial) //
 
-        // Input with acceleration (system based)
+        // Input with acceleration (system based) //
 
+        //The basis for all scroll values. Singular instances of zero value filtered
         public static float scrollValue()
         {
             float newValue = Input.mouseScrollDelta.y;
