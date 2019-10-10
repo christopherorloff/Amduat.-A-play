@@ -5,9 +5,11 @@ using ScrollManager;
 
 public class TakeInput : MonoBehaviour
 {
+    float highest = 0;
     void Update()
     {
-        print ("Raw: " + Scroll.scrollValue());
-        print("Mean: "+ Scroll.scrollValueMean(10));
+        highest = (Mathf.Abs(Scroll.scrollValue()) > highest) ? Mathf.Abs(Scroll.scrollValue()) : highest;
+        print ("Highest: " + highest);
+        
     }
 }
