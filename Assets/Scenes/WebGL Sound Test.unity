@@ -153,6 +153,9 @@ MonoBehaviour:
   eventPath: event:/HOUR 7/Ocean
   intensity: 0
   scale: 0.5
+  knifeThrowPath: event:/HOUR 6/KnifeThrow
+  knifeHitPath: event:/HOUR 6/KnifeHit
+  knifeClangPath: event:/HOUR 6/KnifeClang
 --- !u!4 &1818163206
 Transform:
   m_ObjectHideFlags: 0
