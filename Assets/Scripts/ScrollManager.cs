@@ -50,6 +50,8 @@ namespace ScrollManager
         // Input with acceleration (system based) //
 
         //The basis for all scroll values. Singular instances of zero value filtered out
+            //Mac pad = 25
+            //Mac mouse = 30
         public static float scrollValue()
         {
             float newValue = Input.mouseScrollDelta.y;
@@ -71,6 +73,10 @@ namespace ScrollManager
             }
 
             lastValueVar = newValue;
+
+            output = Mathf.Clamp(output,-25,25);
+            output /= 25;
+
             return output;
         }
 
