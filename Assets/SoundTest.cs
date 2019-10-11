@@ -60,7 +60,7 @@ public class SoundTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A)) knifeThrowInstance.start();
         if (Input.GetKeyDown(KeyCode.S)) {
             for(int i = 0; i < knifeHitInstance.Length; i++) {
-
+                //knifeHitInstance[i].getPlaybackState
             }
 
         }
