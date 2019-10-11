@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WebGL Sound Test.unity
     guid: cd518c5b8b71f4e048a62e46ba7079c7
+  - enabled: 1
+    path: Assets/Nikolaj/Scenes/Spear.unity
+    guid: a01715bc757027f48a543824b16e546d
   m_configObjects: {}
