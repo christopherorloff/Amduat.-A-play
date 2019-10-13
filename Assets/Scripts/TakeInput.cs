@@ -5,13 +5,19 @@ using ScrollManager;
 
 public class TakeInput : MonoBehaviour
 {
+    void Awake()
+    {
+        print("OS: " + SystemInfo.operatingSystemFamily);
+        print("Platform: " + Application.platform);
+    }
+
     float highest = 0;
     void Update()
     {
         highest = (Mathf.Abs(Scroll.scrollValue()) > highest) ? Mathf.Abs(Scroll.scrollValue()) : highest;
-        print ("Highest: " + highest);
-        print(Scroll.scrollValue());
-        
+        //print("Highest: " + highest);
+        //print(Scroll.scrollValue());
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             highest = 0;
