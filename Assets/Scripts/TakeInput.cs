@@ -8,7 +8,6 @@ public class TakeInput : MonoBehaviour
     void Awake()
     {
         print("OS: " + SystemInfo.operatingSystemFamily);
-        print("Platform: " + Application.platform);
     }
 
     float highest = 0;

@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1787760780}
   - component: {fileID: 1787760779}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: InputPrint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

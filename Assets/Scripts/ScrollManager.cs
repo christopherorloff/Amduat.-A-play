@@ -8,17 +8,20 @@ namespace ScrollManager
     public class Scroll : MonoBehaviour
     {
         //Notes
-            //Remember to have a variable to invert direction depending on scroll direction
-            //Windows scalar
-            //Try different mice
+        //Remember to have a variable to invert direction depending on scroll direction
+        //Windows scalar
+        //Try different mice
 
         //Variables for internal use:
-        static float lastValue;
-        static float lastValueVar;
-        static Queue<float> lastValues = new Queue<float>();
+        static float lastInput;
+        static float lastOutput;
+        static Queue<float> lastInputs = new Queue<float>();
 
-        // Detect beginning of input - Event maybe?
-            // Very hard to do
+        static float drag = 0.9f;
+        static float scrollVelocity = 0;
+
+        const float macMaxOutput = 15;
+        const float winMaxOutput = 3;
 
         // Bool - Input or not
         public static bool isScrolling()
@@ -27,7 +30,7 @@ namespace ScrollManager
             output = (scrollValue() != 0) ? true : false;
             return output;
         }
-        
+
         // Direction - Are we receiving input, and is it up or down
         public static string scrollDirection()
         {
@@ -37,34 +40,34 @@ namespace ScrollManager
                 if (scrollValue() > 0)
                 {
                     output = "Up";
-                }else
+                }
+                else
                 {
                     output = "Down";
                 }
             }
             return output;
         }
-        // Input with acceleration (artificial) //
-            //Time for how long the input goes on
-
-        // Input with acceleration (system based) //
+        
 
         //The basis for all scroll values. Singular instances of zero value filtered out
-            //Mac pad = 25
-            //Mac mouse = 30
+        //Mac = 25
+        //Windows = 3 or 2
         public static float scrollValue()
         {
             float newValue = Input.mouseScrollDelta.y;
             float output = 0;
+
+            // Filtering arbitrary zeros
             if (newValue == 0)
             {
-                if (lastValueVar == 0)
+                if (lastInput == 0)
                 {
                     output = 0;
                 }
                 else
                 {
-                    output = lastValueVar;
+                    output = lastInput;
                 }
             }
             else
@@ -72,11 +75,21 @@ namespace ScrollManager
                 output = newValue;
             }
 
-            lastValueVar = newValue;
+            // Mapping for Mac output values
+            if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
+            {
+                output = Mathf.Clamp(output, -macMaxOutput, macMaxOutput);
+                output /= macMaxOutput;
+            } 
+            // Mapping for Windows output values
+            else if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
+            {
+                output = Mathf.Clamp(output, -winMaxOutput, winMaxOutput);
+                output /= winMaxOutput;
+            }
 
-            output = Mathf.Clamp(output,-25,25);
-            output /= 25;
-
+            lastInput = newValue;
+            lastOutput = output;
             return output;
         }
 
@@ -84,13 +97,37 @@ namespace ScrollManager
         public static float scrollValueMean(int n)
         {
             float output = 0;
-            lastValues.Enqueue(scrollValue());
-            
-            if (lastValues.Count > n)
+            lastInputs.Enqueue(scrollValue());
+
+            if (lastInputs.Count > n)
             {
-                lastValues.Dequeue();
+                lastInputs.Dequeue();
             }
-            output = GetMeanOfQueue(n, lastValues);
+            output = GetMeanOfQueue(n, lastInputs);
+            return output;
+        }
+
+        public static float scrollValueAccelerated()
+        {
+            float output = 0;
+            float input = scrollValue();
+
+            if (Mathf.Abs(input) > Mathf.Abs(scrollVelocity))
+            {
+                scrollVelocity = input;
+            } else
+            {
+                scrollVelocity *= drag;
+            } 
+            
+            if(Mathf.Abs(scrollVelocity) < 0.0001f)
+            {
+                scrollVelocity = 0;
+            }
+            
+
+            output = scrollVelocity;
+            print("Scroll accelerated: " + output);
             return output;
         }
 

@@ -17,11 +17,11 @@ public class MoveWithScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float move = transform.position.y + Scroll.scrollValue();
+        float move = transform.position.y + Scroll.scrollValueAccelerated();
         Vector3 vel = new Vector3 (0,move, 0);
         transform.position = vel;
 
-
+        // Keep cube on screen
         if (transform.position.y > maxy)
         {
             transform.position = new Vector3(transform.position.x, miny);
