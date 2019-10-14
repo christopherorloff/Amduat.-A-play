@@ -33,7 +33,7 @@ public class CameraShake : MonoBehaviour
     public void EarlyShake(float amt, float lenght)
     {
         shakeAmount = amt;
-        InvokeRepeating("BeginShake", 0, 0.01f);
+        InvokeRepeating("BeginShake", 0, 0.001f);
         Invoke("StopShake2", lenght);
 
 
