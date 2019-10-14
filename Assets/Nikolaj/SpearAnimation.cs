@@ -39,18 +39,18 @@ public class SpearAnimation : MonoBehaviour
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
 
- 
-
         CS = FindObjectOfType<CameraShake>();
-
-
     }
 
     void Update()
     {
+        //Pitching up charge sound according to animation
+        SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearUP"].normalizedTime);
+
         //If statement to start the lift animation, if scrollwheel up input is true
         if (!readyToStap && Input.GetAxisRaw("Mouse ScrollWheel") < 0)
         {
+            SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 1);
 
             anim.clip = lift;
             anim["SpearUP"].speed = animspeed;
@@ -74,22 +74,22 @@ public class SpearAnimation : MonoBehaviour
             {
                 cameraObject.transform.position = new Vector3(0, 0, -10);
             }
-
+            print(animspeed);
         }
         
 
         //if play is not scrolling the animation will slowly play backwards to lower the spear again
        if (!readyToStap && Input.GetAxisRaw("Mouse ScrollWheel") == 0)
         {
+            SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
             anim.clip = lift;
             anim["SpearUP"].speed = -0.2f;
             anim.Play();
-            
         }
 
         //If player tries to stap when spear is not completely lifted, then the lift animation is 
         //played backswards to show wrong stap
-        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && !readyToStap)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && !readyToStap && anim["SpearUP"].normalizedTime > 0.01)
         {
             anim.clip = lift;
             anim["SpearUP"].speed = wrongStapSpeed;
@@ -112,28 +112,37 @@ public class SpearAnimation : MonoBehaviour
                 if (cameraObject.transform.position.x >= 0)
                 {
                     cameraObject.transform.position = new Vector3(0, 0, -10);
-
                 }
+
+                SoundManager.Instance.PlaySpearMiss(anim["SpearUP"].normalizedTime);
 
             }
 
-            
-          
         }
 
         //If the lift animation is done, then we stop animating, so SETH will hold his spear above his head
-        if (anim["SpearUP"].normalizedTime >= 0.99f)
+        if (anim["SpearUP"].normalizedTime >= 0.99f && !readyToStap)
         {
+            //Starting spear ready sound. Stopping other sounds.
+            SoundManager.Instance.spearReadyInstance.start();
+            SoundManager.Instance.spearChargeInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SoundManager.Instance.oceanAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SoundManager.Instance.apopisIdleInstance.setParameterByName("Stop", 1);
+
             print("readytostap");
-            readyToStap = true;
             anim.clip = lift;
             anim.enabled = false;
-            CS.Shake(0.0005f, 10f);
+            CS.Shake(0.02f, 10f);
+            readyToStap = true;
+
         }
 
         //If we are ready for the final stap, and scroll down, we start speardown animation
-        if (readyToStap && Input.GetAxisRaw("Mouse ScrollWheel") > 0f && !animationDone)
+        if (readyToStap && Input.GetAxisRaw("Mouse ScrollWheel") > 0f && !animationDone && !stapDone)
         {
+            SoundManager.Instance.spearHitInstance.start();
+            SoundManager.Instance.spearReadyInstance.setParameterByName("Stop", 1);
+
             anim.enabled = true;
             print("sidstestap");
 
@@ -142,10 +151,8 @@ public class SpearAnimation : MonoBehaviour
             CS.StopShake();
             anim.Play();
             stapDone = true;
+
             //if the speardown animation is done, we stop animating and start the growing of light and particle effect
-           
-          
-                
         }
         if (anim["SpearDOWN"].normalizedTime >= 0.8f && stapDone)
         {
@@ -157,6 +164,7 @@ public class SpearAnimation : MonoBehaviour
             animationDone = true;
             stapDone = false;
             CS.Shake(0.001f, 0.8f);
+
 
         }
 
