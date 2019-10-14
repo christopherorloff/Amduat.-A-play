@@ -37,6 +37,13 @@ public class BgMovement : MonoBehaviour
     [SerializeField]
     private bool floating;
 
+    private Vector3 initialPosition;
+
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -49,11 +56,11 @@ public class BgMovement : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, rotateSpeed));
         }
-        else if(floating)
+        if(floating)
         {
             x = Mathf.Cos(Time.time * frequenzyX) * amplitudeX;
             y = Mathf.Sin(Time.time * frequenzyY) * amplitudeY;
-            transform.position = new Vector3(x,y,z);
+            transform.position = new Vector3(x, y, z) + initialPosition;
         }
     }
 }
