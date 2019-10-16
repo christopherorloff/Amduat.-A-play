@@ -320,7 +320,6 @@ GameObject:
   m_Component:
   - component: {fileID: 202524912}
   - component: {fileID: 202524911}
-  - component: {fileID: 202524910}
   - component: {fileID: 202524913}
   m_Layer: 0
   m_Name: Main Camera
@@ -329,14 +328,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &202524910
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202524909}
-  m_Enabled: 1
 --- !u!20 &202524911
 Camera:
   m_ObjectHideFlags: 0
@@ -364,7 +355,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.987799
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -514,6 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lift: {fileID: 7400000, guid: 3a9b259aae3d0904385f63f83135e440, type: 2}
   stap: {fileID: 7400000, guid: 328392b98ec70924eae588cc07b2d3c3, type: 2}
+  bounce: 0
   animationDone: 0
   growX: 0
   growY: 0
@@ -810,6 +802,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4674360539269249517, guid: d1d5c5b962506ce4f89839af8a103199,
+        type: 3}
+      propertyPath: m_Name
+      value: spearmanCutout
+      objectReference: {fileID: 0}
     - target: {fileID: -2548343206528941859, guid: d1d5c5b962506ce4f89839af8a103199,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,11 +876,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.60767
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674360539269249517, guid: d1d5c5b962506ce4f89839af8a103199,
-        type: 3}
-      propertyPath: m_Name
-      value: spearmanCutout
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 8034595999692760086, guid: d1d5c5b962506ce4f89839af8a103199,

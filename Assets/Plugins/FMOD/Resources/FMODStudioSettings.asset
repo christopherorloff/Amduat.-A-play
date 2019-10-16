@@ -19,19 +19,19 @@ MonoBehaviour:
   SourceBankPathUnformatted: Assets/FMOD BUILDS/Desktop
   AutomaticEventLoading: 1
   BankLoadType: 0
-  AutomaticSampleLoading: 0
+  AutomaticSampleLoading: 1
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: 
-  LoggingLevel: 2
+  LoggingLevel: 4
   SpeakerModeSettings:
   - Platform: 2
     Value: 3
   - Platform: 20
     Value: 3
-  SampleRateSettings:
   - Platform: 1
-    Value: 48000
+    Value: 3
+  SampleRateSettings:
   - Platform: 2
     Value: 0
   - Platform: 20

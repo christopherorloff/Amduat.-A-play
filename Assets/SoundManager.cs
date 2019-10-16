@@ -14,32 +14,68 @@ public class SoundManager : MonoBehaviour
 
     //AMBIENCE
     private string oceanAmbPath = "event:/HOUR 7/Ocean";
-    FMOD.Studio.EventInstance oceanAmbInstance;
+    public FMOD.Studio.EventInstance oceanAmbInstance;
 
     //MUSIC
     private string showdownMuPath = "event:/MUSIC/Showdown";
-    FMOD.Studio.EventInstance showdownMuInstance;
+    public FMOD.Studio.EventInstance showdownMuInstance;
 
     //Hour 7 Sounds
     private string apopisIdlePath = "event:/HOUR 7/ApopisTiredIdle";
-    FMOD.Studio.EventInstance apopisIdleInstance;
+    public FMOD.Studio.EventInstance apopisIdleInstance;
+
+    private string spearReadyPath = "event:/HOUR 7/SpearReady";
+    public FMOD.Studio.EventInstance spearReadyInstance;
+
+    private string spearHitPath = "event:/HOUR 7/SpearHit";
+    public FMOD.Studio.EventInstance spearHitInstance;
+
+    private string spearMissPath = "event:/HOUR 7/SpearMiss";
+    public FMOD.Studio.EventInstance spearMissInstance;
+    FMOD.Studio.PLAYBACK_STATE spearMissPlaybackState;
+    bool spearIsNotPlaying;
+
+    private string spearChargePath = "event:/HOUR 7/SpearCharge";
+    public FMOD.Studio.EventInstance spearChargeInstance;
+    
 
     private void Awake()
     {
-        //CheckInstance();
+        CheckInstance();
     }
 
     private void Start()
     {
         system = FMODUnity.RuntimeManager.StudioSystem;
+
         CreateSoundInstances();
 
         SetHour(6);
 
         if(hour == 6) {
             oceanAmbInstance.start();
-            showdownMuInstance.start();
             apopisIdleInstance.start();
+            spearChargeInstance.start();
+        }
+    }
+
+    private void Update()
+    {
+        //INPUTS FOR TESTING
+        if (Input.GetKeyDown(KeyCode.A)) {
+        }
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+        }
+
+
+        //UPDATES FOR SPECIFIC HOURS
+
+        //HOUR 7
+        if(GetHour() == 6) {
+            spearMissInstance.getPlaybackState(out spearMissPlaybackState);
+            spearIsNotPlaying = spearMissPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            print(spearIsNotPlaying + " is ");
         }
     }
 
@@ -60,6 +96,10 @@ public class SoundManager : MonoBehaviour
 
         //HOUR 7 SFX INSTANCES
         apopisIdleInstance = FMODUnity.RuntimeManager.CreateInstance(apopisIdlePath);
+        spearReadyInstance = FMODUnity.RuntimeManager.CreateInstance(spearReadyPath);
+        spearHitInstance = FMODUnity.RuntimeManager.CreateInstance(spearHitPath);
+        spearMissInstance = FMODUnity.RuntimeManager.CreateInstance(spearMissPath);
+        spearChargeInstance = FMODUnity.RuntimeManager.CreateInstance(spearChargePath);
     }
 
     void CheckInstance()
@@ -67,17 +107,24 @@ public class SoundManager : MonoBehaviour
         //Checking that only one instance exists
         if (Instance == null)
         {
-            Instance = FindObjectOfType<SoundManager>();
+            //Instance = FindObjectOfType<SoundManager>();
 
             if (Instance == null)
             {
                 Instance = this;
             }
-            else
+            /*else
             {
                 Destroy(this);
-            }
+            }*/
         }
     }
 
+    public void PlaySpearMiss(float _charge) {
+        if (spearIsNotPlaying)
+        {
+            spearMissInstance.setParameterByName("Pitch", _charge);
+            spearMissInstance.start();
+        }
+    }
 }
