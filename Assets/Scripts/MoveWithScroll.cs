@@ -17,6 +17,7 @@ public class MoveWithScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(Input.mouseScrollDelta.y);
         float move = transform.position.y + Scroll.scrollValueAccelerated();
         Vector3 vel = new Vector3 (0,move, 0);
         transform.position = vel;

@@ -8,6 +8,7 @@ public class TakeInput : MonoBehaviour
     void Awake()
     {
         print("OS: " + SystemInfo.operatingSystemFamily);
+        print("Screen size: " + Screen.currentResolution);
     }
 
     float highest = 0;

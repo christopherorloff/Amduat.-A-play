@@ -20,7 +20,7 @@ namespace ScrollManager
         static float drag = 0.9f;
         static float scrollVelocity = 0;
 
-        const float macMaxOutput = 15;
+        const float macMaxOutput = 40;
         const float winMaxOutput = 3;
 
         // Bool - Input or not
@@ -55,8 +55,10 @@ namespace ScrollManager
         //Windows = 3 or 2
         public static float scrollValue()
         {
-            float newValue = Input.mouseScrollDelta.y;
+            float d = Time.deltaTime;
+            float newValue = Input.mouseScrollDelta.y * d;
             float output = 0;
+
 
             // Filtering arbitrary zeros
             if (newValue == 0)
@@ -78,16 +80,20 @@ namespace ScrollManager
             // Mapping for Mac output values
             if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
             {
-                output = Mathf.Clamp(output, -macMaxOutput, macMaxOutput);
-                output /= macMaxOutput;
+                output = Mathf.Clamp(output, -macMaxOutput * d, macMaxOutput * d);
+                //output /= macMaxOutput;
+                output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
+
             } 
             // Mapping for Windows output values
             else if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
             {
-                output = Mathf.Clamp(output, -winMaxOutput, winMaxOutput);
-                output /= winMaxOutput;
+                output = Mathf.Clamp(output, -winMaxOutput * d, winMaxOutput * d);
+                //output /= winMaxOutput * d;
+                output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
             }
 
+            
             lastInput = newValue;
             lastOutput = output;
             return output;
@@ -127,7 +133,6 @@ namespace ScrollManager
             
 
             output = scrollVelocity;
-            print("Scroll accelerated: " + output);
             return output;
         }
 
@@ -143,6 +148,11 @@ namespace ScrollManager
             }
             mean /= n;
             return mean;
+        }
+
+        public static float map(float value, float leftMin, float leftMax, float rightMin, float rightMax)
+        {
+            return rightMin + (value - leftMin) * (rightMax - rightMin) / (leftMax - leftMin);
         }
     }
 }
