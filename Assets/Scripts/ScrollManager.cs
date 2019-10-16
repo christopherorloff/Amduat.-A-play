@@ -14,14 +14,25 @@ namespace ScrollManager
 
         //Variables for internal use:
         static float lastInput;
-        static float lastOutput;
+
         static Queue<float> lastInputs = new Queue<float>();
 
         static float drag = 0.9f;
         static float scrollVelocity = 0;
 
         const float macMaxOutput = 40;
-        const float winMaxOutput = 3;
+        const float winMaxOutput = 2;
+        const float webGLScalar = 0.75f;
+
+
+        //Flags
+        static bool deltaTimeInput = true;
+
+
+        // ------------------------------------------------------------------- \\
+        // ------------------------ public functions ------------------------- \\
+        // ------------------------------------------------------------------- \\
+
 
         // Bool - Input or not
         public static bool isScrolling()
@@ -48,56 +59,24 @@ namespace ScrollManager
             }
             return output;
         }
-        
 
-        //The basis for all scroll values. Singular instances of zero value filtered out
+
+        //The basis for all scroll values
         //Mac = 25
         //Windows = 3 or 2
         public static float scrollValue()
         {
-            float d = Time.deltaTime;
-            float newValue = Input.mouseScrollDelta.y * d;
+            float newValue = Input.mouseScrollDelta.y;
             float output = 0;
 
+            output = arbitraryZeroFiltering(newValue);
+            output = platformDependentConversion(output);
+            output = webGLInputScalar(output);
 
-            // Filtering arbitrary zeros
-            if (newValue == 0)
-            {
-                if (lastInput == 0)
-                {
-                    output = 0;
-                }
-                else
-                {
-                    output = lastInput;
-                }
-            }
-            else
-            {
-                output = newValue;
-            }
-
-            // Mapping for Mac output values
-            if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
-            {
-                output = Mathf.Clamp(output, -macMaxOutput * d, macMaxOutput * d);
-                //output /= macMaxOutput;
-                output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
-
-            } 
-            // Mapping for Windows output values
-            else if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
-            {
-                output = Mathf.Clamp(output, -winMaxOutput * d, winMaxOutput * d);
-                //output /= winMaxOutput * d;
-                output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
-            }
-
-            
             lastInput = newValue;
-            lastOutput = output;
             return output;
         }
+
 
         // Scroll value that takes the previous n number of values into account
         public static float scrollValueMean(int n)
@@ -121,23 +100,26 @@ namespace ScrollManager
             if (Mathf.Abs(input) > Mathf.Abs(scrollVelocity))
             {
                 scrollVelocity = input;
-            } else
+            }
+            else
             {
                 scrollVelocity *= drag;
-            } 
-            
-            if(Mathf.Abs(scrollVelocity) < 0.0001f)
+            }
+
+            if (Mathf.Abs(scrollVelocity) < 0.0001f)
             {
                 scrollVelocity = 0;
             }
-            
+
 
             output = scrollVelocity;
             return output;
         }
 
-
+        // ---------------------------------------------------------------------------- \\
         // ----------------------------- Helper functions ----------------------------- \\
+        // ---------------------------------------------------------------------------- \\
+
         private static float GetMeanOfQueue(int n, Queue<float> queue)
         {
             float mean = 0;
@@ -150,9 +132,89 @@ namespace ScrollManager
             return mean;
         }
 
-        public static float map(float value, float leftMin, float leftMax, float rightMin, float rightMax)
+
+        internal static float map(float value, float leftMin, float leftMax, float rightMin, float rightMax)
         {
             return rightMin + (value - leftMin) * (rightMax - rightMin) / (leftMax - leftMin);
+        }
+
+
+        internal static float platformDependentConversion(float input)
+        {
+            float output = input;
+            float d = Time.deltaTime;
+
+            if (deltaTimeInput)
+            {
+                output *= d;
+                // Mapping for Mac output values
+                if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
+                {
+                    output = Mathf.Clamp(output, -macMaxOutput * d, macMaxOutput * d);
+                    output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
+                }
+                // Mapping for Windows output values
+                else if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
+                {
+                    output = Mathf.Clamp(output, -winMaxOutput * d, winMaxOutput * d);
+                    output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
+                }
+            }
+            else
+            {
+                // Mapping for Mac output values
+                if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
+                {
+                    output = Mathf.Clamp(output, -macMaxOutput, macMaxOutput);
+                    output /= macMaxOutput;
+
+                }
+                // Mapping for Windows output values
+                else if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
+                {
+                    output = Mathf.Clamp(output, -winMaxOutput, winMaxOutput);
+                    output /= winMaxOutput;
+                }
+            }
+
+            return output;
+        }
+
+
+        internal static float arbitraryZeroFiltering(float input)
+        {
+            float output = 0;
+
+            if (input == 0)
+            {
+                if (lastInput == 0)
+                {
+                    output = 0;
+                }
+                else
+                {
+                    output = lastInput;
+                }
+            }
+            else
+            {
+                output = input;
+            }
+
+            return output;
+        }
+
+
+        internal static float webGLInputScalar(float input)
+        {
+            float output = input;
+            
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                output *= webGLScalar;
+            }
+
+            return output;
         }
     }
 }
