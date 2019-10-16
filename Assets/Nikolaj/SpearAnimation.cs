@@ -45,7 +45,7 @@ public class SpearAnimation : MonoBehaviour
     void Update()
     {
         //Pitching up charge sound according to animation
-        SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearUP"].normalizedTime);
+        SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
 
         //If statement to start the lift animation, if scrollwheel up input is true
         if (!readyToStap && Input.GetAxisRaw("Mouse ScrollWheel") < 0)
@@ -53,7 +53,7 @@ public class SpearAnimation : MonoBehaviour
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 1);
 
             anim.clip = lift;
-            anim["SpearUP"].speed = animspeed;
+            anim["SpearAnimationUp"].speed = animspeed;
             anim.Play();
 
             //camera zooms in and moves
@@ -83,23 +83,23 @@ public class SpearAnimation : MonoBehaviour
         {
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
             anim.clip = lift;
-            anim["SpearUP"].speed = -0.2f;
+            anim["SpearAnimationUp"].speed = -0.2f;
             anim.Play();
         }
 
         //If player tries to stap when spear is not completely lifted, then the lift animation is 
         //played backswards to show wrong stap
-        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && !readyToStap && anim["SpearUP"].normalizedTime > 0.01)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0 && !readyToStap && anim["SpearAnimationUp"].normalizedTime > 0.01)
         {
             anim.clip = lift;
-            anim["SpearUP"].speed = wrongStapSpeed;
+            anim["SpearAnimationUp"].speed = wrongStapSpeed;
             anim.Play();
             tryToStap = true;
             if (tryToStap)
             {
                 cam.orthographicSize += 0.05f * drag;
                 cameraObject.transform.Translate(new Vector3(2f * Time.fixedDeltaTime, 0, 0));
-                if (anim["SpearUP"].normalizedTime <= 0.1f)
+                if (anim["SpearAnimationUp"].normalizedTime <= 0.1f)
                 {
                     CS.EarlyShake(0.005f, 0.4f);
                 }
@@ -114,14 +114,14 @@ public class SpearAnimation : MonoBehaviour
                     cameraObject.transform.position = new Vector3(0, 0, -10);
                 }
 
-                SoundManager.Instance.PlaySpearMiss(anim["SpearUP"].normalizedTime);
+                SoundManager.Instance.PlaySpearMiss(anim["SpearAnimationUp"].normalizedTime);
 
             }
 
         }
 
         //If the lift animation is done, then we stop animating, so SETH will hold his spear above his head
-        if (anim["SpearUP"].normalizedTime >= 0.99f && !readyToStap)
+        if (anim["SpearAnimationUp"].normalizedTime >= 0.99f && !readyToStap)
         {
             //Starting spear ready sound. Stopping other sounds.
             SoundManager.Instance.spearReadyInstance.start();
@@ -147,14 +147,14 @@ public class SpearAnimation : MonoBehaviour
             print("sidstestap");
 
             anim.clip = stap;
-            anim["SpearDOWN"].speed = 3f;
+            anim["SpearAnimationDown"].speed = 3f;
             CS.StopShake();
             anim.Play();
             stapDone = true;
 
             //if the speardown animation is done, we stop animating and start the growing of light and particle effect
         }
-        if (anim["SpearDOWN"].normalizedTime >= 0.8f && stapDone)
+        if (anim["SpearAnimationDown"].normalizedTime >= 0.8f && stapDone)
         {
             growX = true;
             growY = true;
