@@ -9,6 +9,8 @@ public class TakeInput : MonoBehaviour
     {
         print("OS: " + SystemInfo.operatingSystemFamily);
         print("Screen size: " + Screen.currentResolution);
+        print("ProductName: " + Application.productName);
+        print("Application: " + Application.platform);
     }
 
     float highest = 0;

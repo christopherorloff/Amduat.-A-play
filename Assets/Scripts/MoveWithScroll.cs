@@ -6,6 +6,7 @@ using ScrollManager;
 public class MoveWithScroll : MonoBehaviour
 {
     float minx, maxx, miny, maxy;
+    float webScalar = 0;
     void Start()
     {
         minx = Camera.main.ViewportToWorldPoint(Vector3.zero).x;
@@ -17,8 +18,7 @@ public class MoveWithScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Input.mouseScrollDelta.y);
-        float move = transform.position.y + Scroll.scrollValueAccelerated();
+        float move = transform.position.y + (Scroll.scrollValueAccelerated() * webScalar);
         Vector3 vel = new Vector3 (0,move, 0);
         transform.position = vel;
 
@@ -31,5 +31,10 @@ public class MoveWithScroll : MonoBehaviour
             transform.position = new Vector3(transform.position.x, maxy);
         }
 
+    }
+
+    public void UpdateScalar(float input)
+    {
+        webScalar = input;
     }
 }
