@@ -44,12 +44,12 @@ public class SpearAnimation : MonoBehaviour
     }
 
     void Update() { 
-   
+        float input = Scroll.scrollValueAccelerated();
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
 
         //If statement to start the lift animation, if scrollwheel up input is true
-        if (!readyToStap && Scroll.scrollValueAccelerated() < 0)
+        if (!readyToStap && input < 0)
         {
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 1);
 
@@ -80,7 +80,7 @@ public class SpearAnimation : MonoBehaviour
         
 
         //if play is not scrolling the animation will slowly play backwards to lower the spear again
-       if (!readyToStap && Scroll.scrollValueAccelerated() == 0)
+       if (!readyToStap && input == 0)
         {
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
             anim.clip = lift;
@@ -90,7 +90,7 @@ public class SpearAnimation : MonoBehaviour
 
         //If player tries to stap when spear is not completely lifted, then the lift animation is 
         //played backswards to show wrong stap
-        if (Scroll.scrollValueAccelerated() > 0 && !readyToStap && anim["SpearAnimationUp"].normalizedTime > 0.01)
+        if (input > 0 && !readyToStap && anim["SpearAnimationUp"].normalizedTime > 0.01)
         {
             anim.clip = lift;
             anim["SpearAnimationUp"].speed = wrongStapSpeed;
@@ -139,7 +139,7 @@ public class SpearAnimation : MonoBehaviour
         }
 
         //If we are ready for the final stap, and scroll down, we start speardown animation
-        if (readyToStap && Scroll.scrollValueAccelerated() > 0f && !animationDone && !stapDone)
+        if (readyToStap && input > 0f && !animationDone && !stapDone)
         {
             SoundManager.Instance.spearHitInstance.start();
             SoundManager.Instance.spearReadyInstance.setParameterByName("Stop", 1);
