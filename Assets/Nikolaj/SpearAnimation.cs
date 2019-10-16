@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SpearAnimation : MonoBehaviour
 {
 
-    float animspeed = 0.6f;
-    float wrongStapSpeed = -4f;
+    float animspeed = 0.06f;
+    float wrongStapSpeed = -0.4f;
     float cameraDrag = 0.25f;
     float drag = 0.29f;
 
@@ -42,8 +42,8 @@ public class SpearAnimation : MonoBehaviour
         CS = FindObjectOfType<CameraShake>();
     }
 
-    void Update()
-    {
+    void Update() { 
+   
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
 
@@ -83,7 +83,7 @@ public class SpearAnimation : MonoBehaviour
         {
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
             anim.clip = lift;
-            anim["SpearAnimationUp"].speed = -0.2f;
+            anim["SpearAnimationUp"].speed = -0.02f;
             anim.Play();
         }
 
@@ -147,7 +147,7 @@ public class SpearAnimation : MonoBehaviour
             print("sidstestap");
 
             anim.clip = stap;
-            anim["SpearAnimationDown"].speed = 3f;
+            anim["SpearAnimationDown"].speed = 0.5f;
             CS.StopShake();
             anim.Play();
             stapDone = true;
