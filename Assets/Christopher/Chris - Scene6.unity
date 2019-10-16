@@ -231,14 +231,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 1.6
-  amplitudeX: 0
-  frequenzyX: 0
-  amplitudeY: 0
-  frequenzyY: 0
-  wheel: {fileID: 0}
-  wheelControlled: 0
+  amplitudeX: 1.41
+  frequenzyX: 0.65
+  amplitudeY: 1.83
+  frequenzyY: 0.47
+  wheelControlled: 1
   rotating: 1
-  floating: 0
+  floating: 1
+  scrollFactor: 0.212
 --- !u!1 &1012078289
 GameObject:
   m_ObjectHideFlags: 0

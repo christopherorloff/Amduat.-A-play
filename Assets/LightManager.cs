@@ -9,11 +9,13 @@ public class LightManager : MonoBehaviour
     public GameObject light1;
     public GameObject light2;
     public GameObject Effect;
+    public GameObject BloodSpot;
 
     public SpriteRenderer Snake;
     public SpriteRenderer Panel;
 
     public SpearAnimation SA;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,7 @@ public class LightManager : MonoBehaviour
         //instatiating the particle effect
         if (SA.startEffect)
         {
-            Instantiate(Effect, light1.transform.position, Quaternion.identity);
+            Instantiate(Effect, BloodSpot.transform.position, Quaternion.Euler(270,0,0));
             SA.startEffect = false;
         }
         //Starting the growing of light1
@@ -66,6 +68,7 @@ public class LightManager : MonoBehaviour
         if (!SA.growY && !SA.growX && SA.animationDone == true)
         {
             Snake.color = new Color(Snake.color.r + 0.005f, Snake.color.g, Snake.color.b - 0.005f);
+            Panel.color = new Color(Panel.color.r, Panel.color.g, Panel.color.b, Panel.color.a + 0.002f);
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScrollManager;
 
 public class BgMovement : MonoBehaviour
 {
@@ -26,9 +27,6 @@ public class BgMovement : MonoBehaviour
     private float frequenzyY;
 
     [SerializeField]
-    private GameObject wheel;
-
-    [SerializeField]
     private bool wheelControlled;
 
     [SerializeField]
@@ -37,29 +35,55 @@ public class BgMovement : MonoBehaviour
     [SerializeField]
     private bool floating;
 
+    [SerializeField]
+    [Range(0, 1)]
+    private float scrollFactor;
+
     private Vector3 initialPosition;
+    private float _time = 0;
 
     private void Start()
     {
         initialPosition = transform.position;
+       
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        _time += Scroll.scrollValueAccelerated()* scrollFactor;
         float x = transform.position.x;
         float y = transform.position.y;
         float z = transform.position.z;
-        if (rotating)
+        if (rotating && wheelControlled)
         {
-            transform.Rotate(new Vector3(0, 0, rotateSpeed));
+            transform.Rotate(new Vector3(0, 0, ((Scroll.scrollValueAccelerated()* scrollFactor) *rotateSpeed) + rotateSpeed));
         }
-        if(floating)
+        else if (rotating && !wheelControlled)
+            {
+                transform.Rotate(new Vector3(0, 0, rotateSpeed));
+            }
+        else if (!rotating && wheelControlled)
+        {
+            transform.Rotate(new Vector3(0, 0, (Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed));
+        }
+        if (floating && wheelControlled)
+        {
+            x = Mathf.Cos((_time * frequenzyX)+Time.time) * amplitudeX;
+            y = Mathf.Sin((_time * frequenzyX) + Time.time) * amplitudeY;
+            transform.position = new Vector3(x, y, z) + initialPosition;
+        }
+        else if(floating && !wheelControlled)
         {
             x = Mathf.Cos(Time.time * frequenzyX) * amplitudeX;
             y = Mathf.Sin(Time.time * frequenzyY) * amplitudeY;
+            transform.position = new Vector3(x, y, z) + initialPosition;
+        }
+        else if (!floating && wheelControlled)
+        {
+            x = Mathf.Cos(_time * frequenzyX) * amplitudeX;
+            y = Mathf.Sin(_time * frequenzyY) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition;
         }
     }
