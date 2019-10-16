@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
 
     private string spearChargePath = "event:/HOUR 7/SpearCharge";
     public FMOD.Studio.EventInstance spearChargeInstance;
-
+    
 
     private void Awake()
     {
