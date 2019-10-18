@@ -30,18 +30,13 @@ public class SoundTest : MonoBehaviour
         //eventInstance = FMODUnity.RuntimeManager.CreateInstance(eventPath);
         //eventInstance.start();
 
-        if (FMODUnity.RuntimeManager.HasBankLoaded("Master"))
-        {
-            Debug.Log("Master Bank Loaded");
-            //Knife event instances
-            knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
-            knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
-
-            for (int i = 0; i < knifeHitInstance.Length; i++)
-            {
-                knifeHitInstance[i] = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
-            }
+        //Knife event instances
+        knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
+        knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
+        for (int i = 0; i < knifeHitInstance.Length; i++) {
+            knifeHitInstance[i] = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
         }
+        
     }
 
     void Update()

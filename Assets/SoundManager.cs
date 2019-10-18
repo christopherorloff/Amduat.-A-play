@@ -20,24 +20,30 @@ public class SoundManager : MonoBehaviour
     private string showdownMuPath = "event:/MUSIC/Showdown";
     public FMOD.Studio.EventInstance showdownMuInstance;
 
+    //Hour 6 Sounds
+    private string knifeSpawnPath = "event:/HOUR 6/KnifeSpawn";
+    public FMOD.Studio.EventInstance knifeSpawnInstance;
+    private string knifeThrowPath = "event:/HOUR 6/KnifeThrow";
+    public FMOD.Studio.EventInstance knifeThrowInstance;
+    private string knifeHitPath = "event:/HOUR 6/KnifeHit";
+    public FMOD.Studio.EventInstance knifeHitInstance;
+    private string knifeClangPath = "event:/HOUR 6/KnifeClang";
+    public FMOD.Studio.EventInstance knifeClangInstance;
+
     //Hour 7 Sounds
     private string apopisIdlePath = "event:/HOUR 7/ApopisTiredIdle";
     public FMOD.Studio.EventInstance apopisIdleInstance;
-
+   
     private string spearReadyPath = "event:/HOUR 7/SpearReady";
     public FMOD.Studio.EventInstance spearReadyInstance;
-
     private string spearHitPath = "event:/HOUR 7/SpearHit";
     public FMOD.Studio.EventInstance spearHitInstance;
-
     private string spearMissPath = "event:/HOUR 7/SpearMiss";
     public FMOD.Studio.EventInstance spearMissInstance;
     FMOD.Studio.PLAYBACK_STATE spearMissPlaybackState;
     bool spearIsNotPlaying;
-
     private string spearChargePath = "event:/HOUR 7/SpearCharge";
     public FMOD.Studio.EventInstance spearChargeInstance;
-    
 
     private void Awake()
     {
@@ -54,6 +60,7 @@ public class SoundManager : MonoBehaviour
 
         if(hour == 6) {
             oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 0.5f);
             apopisIdleInstance.start();
             spearChargeInstance.start();
         }
@@ -75,7 +82,6 @@ public class SoundManager : MonoBehaviour
         if(GetHour() == 6) {
             spearMissInstance.getPlaybackState(out spearMissPlaybackState);
             spearIsNotPlaying = spearMissPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            print(spearIsNotPlaying + " is ");
         }
     }
 
@@ -93,6 +99,12 @@ public class SoundManager : MonoBehaviour
 
         //MUSIC INSTANCES
         showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
+
+        //HOUR 6 SFX INSTANCES
+        knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);
+        knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
+        knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
+        knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
 
         //HOUR 7 SFX INSTANCES
         apopisIdleInstance = FMODUnity.RuntimeManager.CreateInstance(apopisIdlePath);

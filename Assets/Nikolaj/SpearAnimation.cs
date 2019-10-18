@@ -61,8 +61,7 @@ public class SpearAnimation : MonoBehaviour
             cam.orthographicSize -= 0.003f;
             cameraObject.transform.Translate(new Vector3(-cameraDrag * Time.fixedDeltaTime, 0, 0));
 
-        }else if (!readyToStap)
-        {
+        } else if (!readyToStap) {
             cam.orthographicSize += 0.003f * drag;
             cameraObject.transform.Translate(new Vector3(cameraDrag * drag * Time.fixedDeltaTime, 0, 0));
 
