@@ -142,6 +142,7 @@ public class SpearAnimation : MonoBehaviour
         {
             SoundManager.Instance.spearHitInstance.start();
             SoundManager.Instance.spearReadyInstance.setParameterByName("Stop", 1);
+            SoundManager.Instance.apopisIdleInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             anim.enabled = true;
             print("sidstestap");
