@@ -133,7 +133,7 @@ namespace ScrollManager
         }
 
 
-        internal static float map(float value, float leftMin, float leftMax, float rightMin, float rightMax)
+        public static float map(float value, float leftMin, float leftMax, float rightMin, float rightMax)
         {
             return rightMin + (value - leftMin) * (rightMax - rightMin) / (leftMax - leftMin);
         }
