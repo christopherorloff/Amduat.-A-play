@@ -9,6 +9,9 @@ public class ArmControl : MonoBehaviour
     //private
     float input;
     Transform root;
+    GameObject snake;
+    ThrowScript throwScript;
+
     
     float maxAngle = 10;
     float minAngle = -6;
@@ -20,7 +23,9 @@ public class ArmControl : MonoBehaviour
     
     void Start()
     {
-        root = FindComponentInChildWithTag(this.gameObject,"Root");    
+        root = FindComponentInChildWithTag(this.gameObject,"Root");  
+        throwScript = GetComponentInChildren<ThrowScript>();  
+        snake = GameObject.FindGameObjectWithTag("Snake");
     }
 
     void Update()
@@ -46,7 +51,7 @@ public class ArmControl : MonoBehaviour
             print("max: " + (z * Time.deltaTime) );
             if (z * Time.deltaTime > deltaThreshold)
             {
-                print("throw");
+                throwScript.ThrowKnife(snake.transform.position);
             }
             root.rotation = Quaternion.Euler(0,0,maxAngle);
         } else if (z < minAngle)

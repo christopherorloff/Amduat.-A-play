@@ -4,25 +4,61 @@ using UnityEngine;
 
 public class ThrowScript : MonoBehaviour
 {
-    BoxCollider2D collider2D;
-    void Start()
+
+    private IEnumerator throwKnifeMovement;
+    private IEnumerator bounceKnife;
+
+    private Vector3 target;
+
+    [SerializeField]
+    private float speedScalar;
+
+
+    //flags
+    bool isThrown = false;
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        collider2D = GetComponentInChildren<BoxCollider2D>();
+        if (other.CompareTag("Snake"))
+        {
+            StopCoroutine(throwKnifeMovement);
+            this.transform.parent = other.transform;
+            Destroy(GetComponent<Rigidbody2D>());
+            KnifeHit();
+        }
+        else if (other.CompareTag("Knife"))
+        {
+            print("Bounce knife");
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ThrowKnife(Vector3 target)
     {
-        
+        if (!isThrown)
+        {
+            print("throw!");
+            target -= this.transform.position;
+
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, target);
+
+            throwKnifeMovement = ThrowKnifeMovement(target.normalized);
+            StartCoroutine(throwKnifeMovement);
+            isThrown = true;
+        }
     }
 
-    public void ThrowKnife()
+    IEnumerator ThrowKnifeMovement(Vector3 target)
     {
-
+        while (true)
+        {
+            this.transform.position += target * speedScalar * Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void KnifeHit()
     {
-        
+
     }
 }
