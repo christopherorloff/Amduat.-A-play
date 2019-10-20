@@ -9,8 +9,9 @@ public class LightManager : MonoBehaviour
     public GameObject light1;
     public GameObject light2;
     public GameObject Effect;
+    public GameObject Effect2;
+    public GameObject EffectSpot;
     public GameObject BloodSpot;
-
     public SpriteRenderer Snake;
     public SpriteRenderer Panel;
 
@@ -71,7 +72,11 @@ public class LightManager : MonoBehaviour
             Panel.color = new Color(Panel.color.r, Panel.color.g, Panel.color.b, Panel.color.a + 0.002f);
         }
 
-
+        if (SA.startEffect2)
+        {
+            Instantiate(Effect2, EffectSpot.transform.position, Quaternion.Euler(-146, 110, -120));
+            SA.startEffect2 = false;
+        }
 
     }
 }

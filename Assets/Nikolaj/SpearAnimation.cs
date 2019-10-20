@@ -28,6 +28,7 @@ public class SpearAnimation : MonoBehaviour
     public bool growX = false;
     public bool growY = false;
     public bool startEffect = false;
+    public bool startEffect2 = false;
 
 
     public Camera cam;
@@ -134,6 +135,7 @@ public class SpearAnimation : MonoBehaviour
             anim.enabled = false;
             CS.Shake(0.02f, 10f);
             readyToStap = true;
+            startEffect2 = true;
 
         }
 
