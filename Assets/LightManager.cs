@@ -15,6 +15,8 @@ public class LightManager : MonoBehaviour
     public SpriteRenderer Snake;
     public SpriteRenderer Panel;
 
+    public ParticleSystem PS;
+
     public SpearAnimation SA;
 
 
@@ -76,6 +78,7 @@ public class LightManager : MonoBehaviour
         {
             Instantiate(Effect2, EffectSpot.transform.position, Quaternion.Euler(-146, 110, -120));
             SA.startEffect2 = false;
+            
         }
 
     }

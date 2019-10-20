@@ -7,6 +7,7 @@ TagManager:
   - Root
   - Snake
   - Knife
+  - ReadyEffect
   layers:
   - Default
   - TransparentFX

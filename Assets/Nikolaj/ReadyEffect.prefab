@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 466038753746340037}
   - component: {fileID: 466038753746340038}
   - component: {fileID: 466038753746340039}
+  - component: {fileID: 445471613450384156}
   m_Layer: 0
   m_Name: ReadyEffect
-  m_TagString: Untagged
+  m_TagString: ReadyEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4753,3 +4754,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &445471613450384156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466038753746339896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c7ac802668c7245860e0807ed9bc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -29,7 +29,7 @@ public class SpearAnimation : MonoBehaviour
     public bool growY = false;
     public bool startEffect = false;
     public bool startEffect2 = false;
-
+    public bool stopEffect2 = false;
 
     public Camera cam;
     public GameObject cameraObject;
@@ -142,6 +142,7 @@ public class SpearAnimation : MonoBehaviour
         //If we are ready for the final stap, and scroll down, we start speardown animation
         if (readyToStap && input > 0f && !animationDone && !stapDone)
         {
+            stopEffect2 = true;
             SoundManager.Instance.spearHitInstance.start();
             SoundManager.Instance.spearReadyInstance.setParameterByName("Stop", 1);
             SoundManager.Instance.apopisIdleInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
