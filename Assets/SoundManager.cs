@@ -56,7 +56,7 @@ public class SoundManager : MonoBehaviour
 
         CreateSoundInstances();
 
-        SetHour(6);
+        //SetHour(6);
 
         if(hour == 6) {
             oceanAmbInstance.start();
