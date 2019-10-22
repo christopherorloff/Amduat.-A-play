@@ -691,7 +691,7 @@ PrefabInstance:
     - target: {fileID: 3905022330681843069, guid: 199491df97a871e47b74c96f478cd752,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8781389502408318892, guid: 199491df97a871e47b74c96f478cd752,
         type: 3}
@@ -1433,6 +1433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Black Bars
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417180641123130734, guid: 53e18dec30302477cab5c5783552368a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3417180641123130738, guid: 53e18dec30302477cab5c5783552368a,
         type: 3}
