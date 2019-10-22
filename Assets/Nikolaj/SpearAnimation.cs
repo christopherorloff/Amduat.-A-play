@@ -45,26 +45,31 @@ public class SpearAnimation : MonoBehaviour
     }
 
     void Update() { 
-        float input = Scroll.scrollValueAccelerated();
+        float input = Scroll.scrollValueAccelerated() * 2;
+        input = Mathf.Clamp(input,-1,1);
+
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
 
         //If statement to start the lift animation, if scrollwheel up input is true
         if (!readyToStap && input < 0)
         {
+            float spearInput = Mathf.Abs(input);
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 1);
 
             anim.clip = lift;
-            anim["SpearAnimationUp"].speed = animspeed;
+            anim["SpearAnimationUp"].speed = animspeed * spearInput;
             anim.Play();
 
+            print("Anim: " + animspeed + " Scroll: " + (animspeed * spearInput));
+
             //camera zooms in and moves
-            cam.orthographicSize -= 0.003f;
-            cameraObject.transform.Translate(new Vector3(-cameraDrag * Time.fixedDeltaTime, 0, 0));
+            cam.orthographicSize -= 0.003f;                          
+            cameraObject.transform.Translate(new Vector3(-cameraDrag * Time.deltaTime, 0, 0));
 
         } else if (!readyToStap) {
             cam.orthographicSize += 0.003f * drag;
-            cameraObject.transform.Translate(new Vector3(cameraDrag * drag * Time.fixedDeltaTime, 0, 0));
+            cameraObject.transform.Translate(new Vector3(cameraDrag * drag * Time.deltaTime, 0, 0));
 
             if (cam.orthographicSize >= 5)
             {
@@ -75,7 +80,6 @@ public class SpearAnimation : MonoBehaviour
             {
                 cameraObject.transform.position = new Vector3(0, 0, -10);
             }
-            print(animspeed);
         }
         
 
@@ -99,7 +103,7 @@ public class SpearAnimation : MonoBehaviour
             if (tryToStap)
             {
                 cam.orthographicSize += 0.05f * drag;
-                cameraObject.transform.Translate(new Vector3(2f * Time.fixedDeltaTime, 0, 0));
+                cameraObject.transform.Translate(new Vector3(2f * Time.deltaTime, 0, 0));
                 if (anim["SpearAnimationUp"].normalizedTime <= 0.1f)
                 {
                     CS.EarlyShake(0.005f, 0.4f);
