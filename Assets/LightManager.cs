@@ -9,13 +9,12 @@ public class LightManager : MonoBehaviour
     public GameObject light1;
     public GameObject light2;
     public GameObject Effect;
-    public GameObject Effect2;
+    public GameObject ReadyEffect1;
     public GameObject EffectSpot;
     public GameObject BloodSpot;
     public SpriteRenderer Snake;
     public SpriteRenderer Panel;
 
-    public ParticleSystem PS;
 
     public SpearAnimation SA;
 
@@ -76,7 +75,8 @@ public class LightManager : MonoBehaviour
 
         if (SA.startEffect2)
         {
-            Instantiate(Effect2, EffectSpot.transform.position, Quaternion.Euler(-146, 110, -120));
+            Instantiate(ReadyEffect1, EffectSpot.transform.position, Quaternion.Euler(-146, 110, -120));
+
             SA.startEffect2 = false;
             
         }
