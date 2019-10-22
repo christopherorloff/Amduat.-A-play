@@ -144,7 +144,7 @@ public class SoundManager : MonoBehaviour
         if (_hour == 6) {
             showdownMuInstance.start();
 
-            /oceanAmbInstance.start();
+            oceanAmbInstance.start();
             oceanAmbInstance.setParameterByName("Intensity", 1f);
         }
 
