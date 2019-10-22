@@ -116,6 +116,7 @@ public class SpearAnimation : MonoBehaviour
                 }
 
                 SoundManager.Instance.PlaySpearMiss(anim["SpearAnimationUp"].normalizedTime);
+                SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
 
             }
 
