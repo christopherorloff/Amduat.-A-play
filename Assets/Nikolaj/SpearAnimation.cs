@@ -159,6 +159,7 @@ public class SpearAnimation : MonoBehaviour
             anim["SpearAnimationDown"].speed = 0.5f;
             CS.StopShake();
             anim.Play();
+            print("RUNNING");
             stapDone = true;
 
             //if the speardown animation is done, we stop animating and start the growing of light and particle effect

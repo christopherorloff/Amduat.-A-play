@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using FMODUnity;
 using ScrollManager;
 
@@ -11,6 +12,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private int hour;
+    private string activeScene;
 
     //AMBIENCE
     private string oceanAmbPath = "event:/HOUR 7/Ocean";
@@ -48,22 +50,16 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         CheckInstance();
+        activeScene = SceneManager.GetActiveScene().name;
     }
 
     private void Start()
     {
+        //Initialize system. Create sound instances.
         system = FMODUnity.RuntimeManager.StudioSystem;
-
         CreateSoundInstances();
-
-        //SetHour(6);
-
-        if(hour == 6) {
-            oceanAmbInstance.start();
-            oceanAmbInstance.setParameterByName("Intensity", 0.5f);
-            apopisIdleInstance.start();
-            spearChargeInstance.start();
-        }
+        
+        HourInitialSounds(hour);
     }
 
     private void Update()
@@ -79,10 +75,13 @@ public class SoundManager : MonoBehaviour
         //UPDATES FOR SPECIFIC HOURS
 
         //HOUR 7
-        if(GetHour() == 6) {
+        if(GetHour() == 7) {
             spearMissInstance.getPlaybackState(out spearMissPlaybackState);
             spearIsNotPlaying = spearMissPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
         }
+
+        //SKAL VIRKE MED GAME MANAGER
+        if(activeScene != SceneManager.GetActiveScene().name) { }
     }
 
     public int GetHour() {
@@ -90,7 +89,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void SetHour(int currentHour) {
-        hour = currentHour;
+        hour = currentHour - 1;
     }
 
     void CreateSoundInstances() { 
@@ -119,24 +118,45 @@ public class SoundManager : MonoBehaviour
         //Checking that only one instance exists
         if (Instance == null)
         {
-            //Instance = FindObjectOfType<SoundManager>();
-
             if (Instance == null)
             {
                 Instance = this;
             }
-            /*else
-            {
-                Destroy(this);
-            }*/
         }
     }
 
     public void PlaySpearMiss(float _charge) {
+        //Only one spear miss sound at a time
         if (spearIsNotPlaying)
         {
             spearMissInstance.setParameterByName("Pitch", _charge);
             spearMissInstance.start();
         }
+    }
+
+    public void HourInitialSounds(int _hour) { 
+        if (_hour == 1) { }
+        if (_hour == 2) { }
+        if (_hour == 3) { }
+        if (_hour == 4) { }
+        if (_hour == 5) { }
+
+        if (_hour == 6) {
+            oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 0f);
+        }
+
+        if (_hour == 7) {
+            oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 0.5f);
+            apopisIdleInstance.start();
+            spearChargeInstance.start();
+        }
+
+        if (_hour == 8) { }
+        if (_hour == 9) { }
+        if (_hour == 10) { }
+        if (_hour == 11) { }
+        if (_hour == 12) { }
     }
 }
