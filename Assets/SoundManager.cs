@@ -100,6 +100,7 @@ public class SoundManager : MonoBehaviour
         oceanAmbInstance = FMODUnity.RuntimeManager.CreateInstance(oceanAmbPath);
 
         //MUSIC INSTANCES
+<<<<<<< HEAD
         showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
 
         //HOUR 6 SFX INSTANCES
@@ -111,6 +112,17 @@ public class SoundManager : MonoBehaviour
         apopisAppearInstance = FMODUnity.RuntimeManager.CreateInstance(apopisAppearPath);
 
         //HOUR 7 SFX INSTANCES
+=======
+        showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
+
+        //HOUR 6 SFX INSTANCES
+        knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);
+        knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
+        knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
+        knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
+
+        //HOUR 7 SFX INSTANCES
+>>>>>>> 656b74247082f06bb0b1e76d30f07c7a42052a61
         apopisIdleInstance = FMODUnity.RuntimeManager.CreateInstance(apopisIdlePath);
         spearReadyInstance = FMODUnity.RuntimeManager.CreateInstance(spearReadyPath);
         spearHitInstance = FMODUnity.RuntimeManager.CreateInstance(spearHitPath);
@@ -149,19 +161,32 @@ public class SoundManager : MonoBehaviour
         if (_hour == 6) {
             showdownMuInstance.start();
 
+<<<<<<< HEAD
             apopisAppearInstance.start();
 
             oceanAmbInstance.start();
             oceanAmbInstance.setParameterByName("Intensity", 0.8f);
+=======
+            oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 1f);
+>>>>>>> 656b74247082f06bb0b1e76d30f07c7a42052a61
         }
 
         if (_hour == 7) {
             showdownMuInstance.setParameterByName("End", 1f);
+<<<<<<< HEAD
 
             oceanAmbInstance.start();
             oceanAmbInstance.setParameterByName("Intensity", 0f);
             apopisIdleInstance.start();
             spearChargeInstance.start();
+=======
+
+            //oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 0f);
+            apopisIdleInstance.start();
+            spearChargeInstance.start();
+>>>>>>> 656b74247082f06bb0b1e76d30f07c7a42052a61
         }
 
         if (_hour == 8) { }
