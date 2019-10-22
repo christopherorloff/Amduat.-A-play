@@ -144,15 +144,15 @@ public class SoundManager : MonoBehaviour
         if (_hour == 6) {
             showdownMuInstance.start();
 
-            oceanAmbInstance.start();
-            oceanAmbInstance.setParameterByName("Intensity", 0f);
+            /oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 1f);
         }
 
         if (_hour == 7) {
             showdownMuInstance.setParameterByName("End", 1f);
 
-            oceanAmbInstance.start();
-            oceanAmbInstance.setParameterByName("Intensity", 0.5f);
+            //oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 0f);
             apopisIdleInstance.start();
             spearChargeInstance.start();
         }
