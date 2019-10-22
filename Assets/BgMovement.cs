@@ -42,39 +42,39 @@ public class BgMovement : MonoBehaviour
     private Vector3 initialPosition;
     private float _time = 0;
 
-    private void Start()
+    private void OnEnable()
     {
         initialPosition = transform.position;
-       
-    }
+        print("BG on enable");
 
+    }
 
     // Update is called once per frame
     void Update()
     {
-        _time += Scroll.scrollValueAccelerated()* scrollFactor;
+        _time += Scroll.scrollValueAccelerated() * scrollFactor;
         float x = transform.position.x;
         float y = transform.position.y;
         float z = transform.position.z;
         if (rotating && wheelControlled)
         {
-            transform.Rotate(new Vector3(0, 0, ((Scroll.scrollValueAccelerated()* scrollFactor) *rotateSpeed) + rotateSpeed));
+            transform.Rotate(new Vector3(0, 0, ((Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed) + rotateSpeed));
         }
         else if (rotating && !wheelControlled)
-            {
-                transform.Rotate(new Vector3(0, 0, rotateSpeed));
-            }
+        {
+            transform.Rotate(new Vector3(0, 0, rotateSpeed));
+        }
         else if (!rotating && wheelControlled)
         {
             transform.Rotate(new Vector3(0, 0, (Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed));
         }
         if (floating && wheelControlled)
         {
-            x = Mathf.Cos((_time * frequenzyX)+Time.time) * amplitudeX;
+            x = Mathf.Cos((_time * frequenzyX) + Time.time) * amplitudeX;
             y = Mathf.Sin((_time * frequenzyX) + Time.time) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition;
         }
-        else if(floating && !wheelControlled)
+        else if (floating && !wheelControlled)
         {
             x = Mathf.Cos(Time.time * frequenzyX) * amplitudeX;
             y = Mathf.Sin(Time.time * frequenzyY) * amplitudeY;
@@ -86,5 +86,9 @@ public class BgMovement : MonoBehaviour
             y = Mathf.Sin(_time * frequenzyY) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition;
         }
+    }
+
+    public void StopAllMovement()
+    {
     }
 }
