@@ -39,6 +39,8 @@ public class SpearAnimation : MonoBehaviour
 
     public CameraShake CS;
 
+
+    public float threshold = 0.03f;
     void Start()
     {
         anim = GetComponent<Animation>();
@@ -48,8 +50,8 @@ public class SpearAnimation : MonoBehaviour
     }
 
     void Update() { 
-        float input = Scroll.scrollValueAccelerated();
-
+        float input = Scroll.scrollValue();
+        input = (Mathf.Abs(input) < threshold ? 0 : input);
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
 
@@ -60,17 +62,16 @@ public class SpearAnimation : MonoBehaviour
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 1);
 
             anim.clip = lift;
-            anim["SpearAnimationUp"].speed = animspeed * spearUpInput;
+            anim["SpearAnimationUp"].speed = animspeed;
             anim.Play();
 
-            print("Anim: " + animspeed + " Scroll: " + (animspeed * spearUpInput));
 
             //camera zooms in and moves
-            cam.orthographicSize -= 0.003f * spearUpInput;                          
+            cam.orthographicSize -= 0.003f;                          
             cameraObject.transform.Translate(new Vector3(-cameraDrag * Time.deltaTime, 0, 0));
 
         } else {
-            cam.orthographicSize += 0.003f * drag * spearUpInput;
+            cam.orthographicSize += 0.003f * drag;
             cameraObject.transform.Translate(new Vector3(cameraDrag * drag * Time.deltaTime, 0, 0));
 
             if (cam.orthographicSize >= 5)
