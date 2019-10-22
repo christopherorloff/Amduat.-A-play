@@ -18,9 +18,10 @@ public class snakeAnimator : MonoBehaviour
         SA = FindObjectOfType<SpearAnimation>();
 
         anim = GetComponent<Animation>();
-
+        
+        
         anim.clip = SnakeIdle;
-        anim["SnakeAniIdle"].speed = animSpeed;
+        anim["SnakeIdle"].speed = animSpeed;
         anim.Play();
 
     }
@@ -29,9 +30,8 @@ public class snakeAnimator : MonoBehaviour
     {
         if (SA.stapDone)
         {
-            anim.clip = SnakeDie;
-            anim["SnakeAniDead"].speed = animSpeed;
-            anim.Play();
+            anim["SnakeDead"].speed = animSpeed;
+            anim.CrossFade("SnakeDead", 5F, PlayMode.StopSameLayer);
         }
     }
 
