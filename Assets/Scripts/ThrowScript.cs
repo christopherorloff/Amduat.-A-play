@@ -22,9 +22,9 @@ public class ThrowScript : MonoBehaviour
         if (other.CompareTag("Snake"))
         {
             StopCoroutine(throwKnifeMovement);
+            KnifeHit();
             this.transform.parent = other.transform;
             Destroy(GetComponent<Rigidbody2D>());
-            KnifeHit();
             Destroy(this,2);
         }
         else if (other.CompareTag("Knife"))

@@ -535,6 +535,21 @@ PrefabInstance:
       propertyPath: frequenzyY
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4267601492210322051, guid: e1d7b3d3b6617a14fab703c40714e9d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927177720199688468, guid: e1d7b3d3b6617a14fab703c40714e9d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663669717767617470, guid: e1d7b3d3b6617a14fab703c40714e9d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1d7b3d3b6617a14fab703c40714e9d3, type: 3}
 --- !u!1 &1540244098
@@ -580,6 +595,7 @@ GameObject:
   - component: {fileID: 1589719121}
   - component: {fileID: 1589719123}
   - component: {fileID: 1589719122}
+  - component: {fileID: 1589719124}
   m_Layer: 0
   m_Name: slangeHour6
   m_TagString: Snake
@@ -708,6 +724,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1589719124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589719118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af95432c818e4741a39817c1f012784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 3
+  knifeHitLimit: 6
 --- !u!212 &571904688805251285
 SpriteRenderer:
   m_ObjectHideFlags: 0
