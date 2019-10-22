@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5728487087680992703}
   - component: {fileID: 3724519964530868710}
   m_Layer: 0
-  m_Name: Sound Manager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394109c10647d40bd85eb55067d01d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hour: 0
+  hour: 6
 --- !u!114 &3724519964530868710
 MonoBehaviour:
   m_ObjectHideFlags: 0

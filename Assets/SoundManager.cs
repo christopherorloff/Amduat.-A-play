@@ -86,7 +86,8 @@ public class SoundManager : MonoBehaviour
         //SKAL VIRKE MED GAME MANAGER
         if(activeScene != SceneManager.GetActiveScene().name) { }
     }
-
+    
+    // Flot kodestil Jacob!
     public int GetHour() {
         return hour;
     }

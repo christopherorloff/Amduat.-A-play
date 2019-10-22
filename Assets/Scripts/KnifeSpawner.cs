@@ -10,6 +10,16 @@ public class KnifeSpawner : MonoBehaviour
 
     float delay = 2;
 
+    void OnEnable()
+    {
+        EventManager.KnifeHitEvent += SpawnKnife;
+    }
+
+    void OnDisable()
+    {
+        EventManager.KnifeHitEvent -= SpawnKnife;
+    }
+
     public void SpawnKnife()
     {
         StartCoroutine(spawnDelay());

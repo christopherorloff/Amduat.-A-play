@@ -323,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
       propertyPath: m_Name
-      value: Sound Manager
+      value: Managers
       objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
@@ -379,11 +379,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728487087680992703, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
-        type: 3}
-      propertyPath: hour
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b96e45ee10f4ba48836a0ecf1e1b12, type: 3}

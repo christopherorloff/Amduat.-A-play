@@ -66,6 +66,7 @@ public class ThrowScript : MonoBehaviour
     public void KnifeHit()
     {
         SoundManager.Instance.knifeHitInstance.start();
-        transform.root.GetComponent<KnifeSpawner>().SpawnKnife();
+        EventManager.KnifeHitEvent();
+        // transform.root.GetComponent<KnifeSpawner>().SpawnKnife();
     }
 }

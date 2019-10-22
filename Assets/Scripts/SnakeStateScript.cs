@@ -45,6 +45,7 @@ public class SnakeStateScript : MonoBehaviour
         }
         print("Fade in snake done.");
         bgMovement.enabled = true;
+        EventManager.turnOnInputEvent();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -55,6 +56,7 @@ public class SnakeStateScript : MonoBehaviour
             if(knifeHits >= knifeHitLimit)
             {
                 print("den ær døj");
+                EventManager.turnOffInputEvent();
             }
         }
     }

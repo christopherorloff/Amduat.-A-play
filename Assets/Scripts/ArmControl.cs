@@ -6,14 +6,15 @@ using ScrollManager;
 
 public class ArmControl : MonoBehaviour
 {
+
     //private
     float input;
     Transform root;
-    
+
     ThrowScript throwScript;
     float snapBack;
 
-
+    bool inputIsActive = false;
 
     float maxAngle = 10;
     float minAngle = -6;
@@ -23,21 +24,47 @@ public class ArmControl : MonoBehaviour
     public float deltaThreshold = 0.3f;
     public float drag = 0.9f;
     public float snapBackSpeed = 0;
-    
+
     public GameObject snake;
     SnakeStateScript snakeState;
 
+    void OnEnable()
+    {
+        EventManager.turnOffInputEvent += TurnOffInput;
+        EventManager.turnOnInputEvent += TurnOnInput;
+    }
+
+    void OnDisable()
+    {
+        EventManager.turnOffInputEvent -= TurnOffInput;
+        EventManager.turnOnInputEvent -= TurnOnInput;
+    }
+
+    void TurnOffInput()
+    {
+        inputIsActive = false;
+    }
+
+    void TurnOnInput()
+    {
+        inputIsActive = true;
+    }
+
     void Start()
     {
-        root = FindComponentInChildWithTag(this.gameObject,"Root");  
-        throwScript = GetComponentInChildren<ThrowScript>();  
+        root = FindComponentInChildWithTag(this.gameObject, "Root");
+        throwScript = GetComponentInChildren<ThrowScript>();
         snakeState = snake.GetComponent<SnakeStateScript>();
     }
 
     void Update()
     {
-        TakeInput();   
-        ProcessInput();
+        if (inputIsActive)
+        {
+            TakeInput();
+            ProcessInput();
+        }
+              
     }
 
 
@@ -54,19 +81,19 @@ public class ArmControl : MonoBehaviour
             throwScript = GetComponentInChildren<ThrowScript>();
         }
 
-        root.Rotate(0,0,input);
+        root.Rotate(0, 0, input);
         float z = root.rotation.eulerAngles.z;
         z = (z > 180) ? (z - 360) : z;
-        
+
         if (z > maxAngle)
         {
-            //print("max: " + (z * Time.deltaTime) );
             if (z * Time.deltaTime > deltaThreshold)
             {
                 throwScript.ThrowKnife(snake.transform.position);
             }
-            root.rotation = Quaternion.Euler(0,0,maxAngle);
-        } else if (z < minAngle)
+            root.rotation = Quaternion.Euler(0, 0, maxAngle);
+        }
+        else if (z < minAngle)
         {
             root.rotation = Quaternion.Euler(0, 0, minAngle + 360);
         }
