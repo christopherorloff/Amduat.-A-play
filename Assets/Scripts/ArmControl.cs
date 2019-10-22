@@ -9,7 +9,7 @@ public class ArmControl : MonoBehaviour
     //private
     float input;
     Transform root;
-    GameObject snake;
+    public GameObject snake;
     ThrowScript throwScript;
 
     
@@ -20,12 +20,13 @@ public class ArmControl : MonoBehaviour
     public float scalar = 1;
     public float deltaThreshold = 0.3f;
     public float drag = 0.9f;
+    private float velocity = 0;
     
     void Start()
     {
         root = FindComponentInChildWithTag(this.gameObject,"Root");  
         throwScript = GetComponentInChildren<ThrowScript>();  
-        snake = GameObject.FindGameObjectWithTag("Snake");
+        
     }
 
     void Update()
@@ -58,7 +59,17 @@ public class ArmControl : MonoBehaviour
         {
             root.rotation = Quaternion.Euler(0, 0, minAngle + 360);
         }
+
+        if(input == 0)
+        {
+
+            root.rotation = Quaternion.Euler(0, 0, Mathf.SmoothDamp(transform.position.z, 0f, ref velocity ,2.0f));
+        }
     }
+
+
+
+    
 
     public Transform FindComponentInChildWithTag(GameObject parent, string tag)
     {
