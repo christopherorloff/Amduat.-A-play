@@ -50,7 +50,7 @@ public class SpearAnimation : MonoBehaviour
     }
 
     void Update() { 
-        float input = Scroll.scrollValue();
+        float input = Scroll.scrollValueAccelerated();
         input = (Mathf.Abs(input) < threshold ? 0 : input);
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
