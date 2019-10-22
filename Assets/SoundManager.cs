@@ -32,6 +32,9 @@ public class SoundManager : MonoBehaviour
     private string knifeClangPath = "event:/HOUR 6/KnifeClang";
     public FMOD.Studio.EventInstance knifeClangInstance;
 
+    private string apopisAppearPath = "event:/HOUR 6/ApopisAppear";
+    public FMOD.Studio.EventInstance apopisAppearInstance;
+
     //Hour 7 Sounds
     private string apopisIdlePath = "event:/HOUR 7/ApopisTiredIdle";
     public FMOD.Studio.EventInstance apopisIdleInstance;
@@ -105,6 +108,8 @@ public class SoundManager : MonoBehaviour
         knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
         knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
 
+        apopisAppearInstance = FMODUnity.RuntimeManager.CreateInstance(apopisAppearPath);
+
         //HOUR 7 SFX INSTANCES
         apopisIdleInstance = FMODUnity.RuntimeManager.CreateInstance(apopisIdlePath);
         spearReadyInstance = FMODUnity.RuntimeManager.CreateInstance(spearReadyPath);
@@ -144,14 +149,16 @@ public class SoundManager : MonoBehaviour
         if (_hour == 6) {
             showdownMuInstance.start();
 
-            /oceanAmbInstance.start();
-            oceanAmbInstance.setParameterByName("Intensity", 1f);
+            apopisAppearInstance.start();
+
+            oceanAmbInstance.start();
+            oceanAmbInstance.setParameterByName("Intensity", 0.8f);
         }
 
         if (_hour == 7) {
             showdownMuInstance.setParameterByName("End", 1f);
 
-            //oceanAmbInstance.start();
+            oceanAmbInstance.start();
             oceanAmbInstance.setParameterByName("Intensity", 0f);
             apopisIdleInstance.start();
             spearChargeInstance.start();
