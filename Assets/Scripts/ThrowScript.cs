@@ -25,6 +25,7 @@ public class ThrowScript : MonoBehaviour
             this.transform.parent = other.transform;
             Destroy(GetComponent<Rigidbody2D>());
             KnifeHit();
+            Destroy(this,2);
         }
         else if (other.CompareTag("Knife"))
         {
@@ -43,7 +44,8 @@ public class ThrowScript : MonoBehaviour
 
             print("throw!");
             target -= this.transform.position;
-
+            // target override. Change later
+            target = Vector3.down;
             transform.rotation = Quaternion.FromToRotation(Vector3.up, target);
 
             throwKnifeMovement = ThrowKnifeMovement(target.normalized);
@@ -64,5 +66,6 @@ public class ThrowScript : MonoBehaviour
     public void KnifeHit()
     {
         SoundManager.Instance.knifeHitInstance.start();
+        transform.root.GetComponent<KnifeSpawner>().SpawnKnife();
     }
 }

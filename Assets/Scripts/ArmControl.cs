@@ -14,6 +14,7 @@ public class ArmControl : MonoBehaviour
     float snapBack;
 
 
+
     float maxAngle = 10;
     float minAngle = -6;
 
@@ -22,13 +23,15 @@ public class ArmControl : MonoBehaviour
     public float deltaThreshold = 0.3f;
     public float drag = 0.9f;
     public float snapBackSpeed = 0;
+    
     public GameObject snake;
+    SnakeStateScript snakeState;
 
     void Start()
     {
         root = FindComponentInChildWithTag(this.gameObject,"Root");  
         throwScript = GetComponentInChildren<ThrowScript>();  
-        
+        snakeState = snake.GetComponent<SnakeStateScript>();
     }
 
     void Update()
@@ -46,13 +49,18 @@ public class ArmControl : MonoBehaviour
 
     private void ProcessInput()
     {
+        if (throwScript == null)
+        {
+            throwScript = GetComponentInChildren<ThrowScript>();
+        }
+
         root.Rotate(0,0,input);
         float z = root.rotation.eulerAngles.z;
         z = (z > 180) ? (z - 360) : z;
         
         if (z > maxAngle)
         {
-            print("max: " + (z * Time.deltaTime) );
+            //print("max: " + (z * Time.deltaTime) );
             if (z * Time.deltaTime > deltaThreshold)
             {
                 throwScript.ThrowKnife(snake.transform.position);
@@ -68,10 +76,6 @@ public class ArmControl : MonoBehaviour
             root.rotation = Quaternion.Euler(0, 0, snapBack + 360);
         }
     }
-
-
-
-    
 
     public Transform FindComponentInChildWithTag(GameObject parent, string tag)
     {
