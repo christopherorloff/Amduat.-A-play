@@ -12,6 +12,9 @@ public class SpearAnimation : MonoBehaviour
     float cameraDrag = 0.25f;
     float drag = 0.29f;
 
+    // Input for spear up animation
+    float spearUpInput = 0;
+
 
     public AnimationClip lift;
     public AnimationClip stap;
@@ -20,7 +23,7 @@ public class SpearAnimation : MonoBehaviour
 
 
     bool readyToStap = false;
-    bool stapDone = false;
+    public bool stapDone = false;
     bool tryToStap = false;
     public bool bounce = false;
     bool idle = true;
@@ -45,8 +48,7 @@ public class SpearAnimation : MonoBehaviour
     }
 
     void Update() { 
-        float input = Scroll.scrollValueAccelerated() * 2;
-        input = Mathf.Clamp(input,-1,1);
+        float input = Scroll.scrollValueAccelerated();
 
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
@@ -54,21 +56,21 @@ public class SpearAnimation : MonoBehaviour
         //If statement to start the lift animation, if scrollwheel up input is true
         if (!readyToStap && input < 0)
         {
-            float spearInput = Mathf.Abs(input);
+            spearUpInput = Mathf.Abs(input) * 2;
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 1);
 
             anim.clip = lift;
-            anim["SpearAnimationUp"].speed = animspeed * spearInput;
+            anim["SpearAnimationUp"].speed = animspeed * spearUpInput;
             anim.Play();
 
-            print("Anim: " + animspeed + " Scroll: " + (animspeed * spearInput));
+            print("Anim: " + animspeed + " Scroll: " + (animspeed * spearUpInput));
 
             //camera zooms in and moves
-            cam.orthographicSize -= 0.003f;                          
+            cam.orthographicSize -= 0.003f * spearUpInput;                          
             cameraObject.transform.Translate(new Vector3(-cameraDrag * Time.deltaTime, 0, 0));
 
-        } else if (!readyToStap) {
-            cam.orthographicSize += 0.003f * drag;
+        } else {
+            cam.orthographicSize += 0.003f * drag * spearUpInput;
             cameraObject.transform.Translate(new Vector3(cameraDrag * drag * Time.deltaTime, 0, 0));
 
             if (cam.orthographicSize >= 5)
