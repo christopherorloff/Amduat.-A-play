@@ -1463,15 +1463,15 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 7185306346907709567, guid: eda0ab530ee6445ad90f446953489c1a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7290661624900068483, guid: eda0ab530ee6445ad90f446953489c1a,
         type: 3}
       propertyPath: speedScalar
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185306346907709567, guid: eda0ab530ee6445ad90f446953489c1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eda0ab530ee6445ad90f446953489c1a, type: 3}
@@ -1595,3 +1595,5 @@ MonoBehaviour:
   scalar: 40
   deltaThreshold: 0.28
   drag: 0.7
+  snapBackSpeed: 10
+  snake: {fileID: 1589719118}
