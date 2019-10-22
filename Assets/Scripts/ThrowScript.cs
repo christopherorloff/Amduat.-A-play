@@ -29,7 +29,7 @@ public class ThrowScript : MonoBehaviour
         else if (other.CompareTag("Knife"))
         {
             print("Bounce knife");
-            //SoundManager.Instance.knifeClangInstance.start();
+            SoundManager.Instance.knifeClangInstance.start();
         }
 
     }
@@ -38,7 +38,8 @@ public class ThrowScript : MonoBehaviour
     {
         if (!isThrown)
         {
-            //SoundManager.Instance.knifeThrowInstance.start();
+            SoundManager.Instance.knifeThrowInstance.start();
+            SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
             print("throw!");
             target -= this.transform.position;
@@ -62,6 +63,6 @@ public class ThrowScript : MonoBehaviour
 
     public void KnifeHit()
     {
-        //SoundManager.Instance.knifeHitInstance.start();
+        SoundManager.Instance.knifeHitInstance.start();
     }
 }
