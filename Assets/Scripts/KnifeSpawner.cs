@@ -12,12 +12,12 @@ public class KnifeSpawner : MonoBehaviour
 
     void OnEnable()
     {
-        EventManager.KnifeHitEvent += SpawnKnife;
+        EventManager.knifeHitEvent += SpawnKnife;
     }
 
     void OnDisable()
     {
-        EventManager.KnifeHitEvent -= SpawnKnife;
+        EventManager.knifeHitEvent -= SpawnKnife;
     }
 
     public void SpawnKnife()

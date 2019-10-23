@@ -57,6 +57,7 @@ public class SnakeStateScript : MonoBehaviour
             {
                 print("den ær døj");
                 EventManager.turnOffInputEvent();
+                EventManager.snakeDeadEvent();
             }
         }
     }

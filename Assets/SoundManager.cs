@@ -65,6 +65,16 @@ public class SoundManager : MonoBehaviour
         HourInitialSounds(hour);
     }
 
+    void OnEnable()
+    {
+        EventManager.sceneChange += SceneChanged;
+    }
+
+    void OnDisable()
+    {
+        EventManager.sceneChange -= SceneChanged;
+    }
+
     private void Update()
     {
         //INPUTS FOR TESTING
@@ -85,6 +95,12 @@ public class SoundManager : MonoBehaviour
 
         //SKAL VIRKE MED GAME MANAGER
         if(activeScene != SceneManager.GetActiveScene().name) { }
+    }
+
+    private void SceneChanged()
+    {
+        // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
+        print("Scene changed [Sound Manager]");
     }
     
     // Flot kodestil Jacob!
@@ -129,6 +145,8 @@ public class SoundManager : MonoBehaviour
                 Instance = this;
             }
         }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void PlaySpearMiss(float _charge) {
