@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private float delayBeforeSceneChange = 2;
+    private float delayBeforeSceneChange = 5;
 
     void Awake()
     {

@@ -50,6 +50,8 @@ public class SoundManager : MonoBehaviour
     private string spearChargePath = "event:/HOUR 7/SpearCharge";
     public FMOD.Studio.EventInstance spearChargeInstance;
 
+    //private bool nextScene;
+
     private void Awake()
     {
         CheckInstance();
@@ -83,24 +85,13 @@ public class SoundManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S)) {
         }
-
-
-        //UPDATES FOR SPECIFIC HOURS
-
-        //HOUR 7
-        if(GetHour() == 7) {
-            spearMissInstance.getPlaybackState(out spearMissPlaybackState);
-            spearIsNotPlaying = spearMissPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-        }
-
-        //SKAL VIRKE MED GAME MANAGER
-        if(activeScene != SceneManager.GetActiveScene().name) { }
     }
 
     private void SceneChanged()
     {
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
-        print("Scene changed [Sound Manager]");
+        //print("Scene changed [Sound Manager]");
+        HourInitialSounds(7);
     }
     
     // Flot kodestil Jacob!
@@ -109,7 +100,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void SetHour(int currentHour) {
-        hour = currentHour - 1;
+        hour = currentHour;
     }
 
     void CreateSoundInstances() { 
@@ -151,6 +142,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySpearMiss(float _charge) {
         //Only one spear miss sound at a time
+        spearMissInstance.getPlaybackState(out spearMissPlaybackState);
+        spearIsNotPlaying = spearMissPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+
         if (spearIsNotPlaying)
         {
             spearMissInstance.setParameterByName("Pitch", _charge);
@@ -177,7 +171,7 @@ public class SoundManager : MonoBehaviour
         if (_hour == 7) {
             showdownMuInstance.setParameterByName("End", 1f);
 
-            oceanAmbInstance.start();
+            //oceanAmbInstance.start();
             oceanAmbInstance.setParameterByName("Intensity", 0f);
             apopisIdleInstance.start();
             spearChargeInstance.start();
