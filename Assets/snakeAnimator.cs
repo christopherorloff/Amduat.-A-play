@@ -8,7 +8,8 @@ public class snakeAnimator : MonoBehaviour
     public SpearAnimation SA;
     public AnimationClip SnakeIdle;
     public AnimationClip SnakeDie;
-    float animSpeed = 0.2f;
+    float animSpeed = 0.5f;
+    float animSpeedDead = 0.7f;
 
     Animation anim;
 
@@ -30,7 +31,7 @@ public class snakeAnimator : MonoBehaviour
     {
         if (SA.stapDone)
         {
-            anim["SnakeDead"].speed = animSpeed;
+            anim["SnakeDead"].speed = animSpeedDead;
             anim.CrossFade("SnakeDead", 5F, PlayMode.StopSameLayer);
         }
     }
