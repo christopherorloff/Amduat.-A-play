@@ -76,7 +76,7 @@ public class ThrowScript : MonoBehaviour
         Instantiate(BloodEffect, this.transform.position, Quaternion.identity);
         SoundManager.Instance.knifeHitInstance.start();
         EventManager.knifeHitEvent();
-        Destroy(GameObject.Find("KnifeBloodHit(clone)"), 2);
+        Destroy(GameObject.Find("KnifehitBlood(clone)"), 2);
 
     }
 }

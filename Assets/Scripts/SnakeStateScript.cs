@@ -56,6 +56,7 @@ public class SnakeStateScript : MonoBehaviour
             if(knifeHits >= knifeHitLimit)
             {
                 print("den ær døj");
+                SoundManager.Instance.showdownMuInstance.setParameterByName("End", 1);
                 EventManager.turnOffInputEvent();
                 EventManager.snakeDeadEvent();
             }

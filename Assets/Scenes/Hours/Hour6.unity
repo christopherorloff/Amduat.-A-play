@@ -614,6 +614,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 684538301050113717, guid: e1d7b3d3b6617a14fab703c40714e9d3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1d7b3d3b6617a14fab703c40714e9d3, type: 3}
 --- !u!1001 &1537099190
@@ -907,7 +912,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 6a76b0eb551b75248865f582a6f3d36a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1003,7 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af95432c818e4741a39817c1f012784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 5
   knifeHitLimit: 6
 --- !u!1 &1950206984
 GameObject:
