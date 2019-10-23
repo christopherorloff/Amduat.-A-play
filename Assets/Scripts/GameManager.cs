@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private float delayBeforeSceneChange = 2;
 
     void Awake()
     {
@@ -47,19 +48,16 @@ public class GameManager : MonoBehaviour
     //Must be made generic when more scenes!
     internal IEnumerator ChangeSceneCoroutine()
     {
-        yield return new WaitForSeconds(2);
-        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync("Hour7");
-        print("after async load");
         //Delay for fade or whatever
+        yield return new WaitForSeconds(delayBeforeSceneChange);
+
+        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync("Hour7");
 
         while (!nextSceneLoad.isDone)
         {
-            print("Inside while");
             yield return null;
         }
         Scene next = SceneManager.GetSceneByName("Hour7");
-        print("Outside while");
         SceneManager.SetActiveScene(next);
-        print("After set active scene");
     }
 }

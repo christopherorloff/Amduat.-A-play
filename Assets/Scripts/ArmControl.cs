@@ -63,8 +63,7 @@ public class ArmControl : MonoBehaviour
         {
             TakeInput();
             ProcessInput();
-        }
-              
+        }      
     }
 
 
@@ -76,18 +75,18 @@ public class ArmControl : MonoBehaviour
 
     private void ProcessInput()
     {
-        if (throwScript == null)
-        {
-            throwScript = GetComponentInChildren<ThrowScript>();
-        }
-
         root.Rotate(0, 0, input);
         float z = root.rotation.eulerAngles.z;
         z = (z > 180) ? (z - 360) : z;
 
         if (z > maxAngle)
         {
-            if (z * Time.deltaTime > deltaThreshold)
+            if (throwScript == null)
+            {
+                throwScript = GetComponentInChildren<ThrowScript>();
+            }
+
+            if (z * Time.deltaTime > deltaThreshold && throwScript != null)
             {
                 throwScript.ThrowKnife(snake.transform.position);
             }
