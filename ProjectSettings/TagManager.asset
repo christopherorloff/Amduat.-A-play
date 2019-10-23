@@ -8,6 +8,7 @@ TagManager:
   - Snake
   - Knife
   - ReadyEffect
+  - Bloodeffect
   layers:
   - Default
   - TransparentFX

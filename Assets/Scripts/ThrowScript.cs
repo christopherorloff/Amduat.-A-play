@@ -12,10 +12,18 @@ public class ThrowScript : MonoBehaviour
 
     [SerializeField]
     private float speedScalar;
+    public GameObject BloodEffect;
 
 
     //flags
     bool isThrown = false;
+
+
+    private void Start()
+    {
+        BloodEffect = GameObject.FindGameObjectWithTag("Bloodeffect");
+    }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -65,7 +73,10 @@ public class ThrowScript : MonoBehaviour
 
     public void KnifeHit()
     {
+        Instantiate(BloodEffect, this.transform.position, Quaternion.identity);
         SoundManager.Instance.knifeHitInstance.start();
         EventManager.knifeHitEvent();
+        Destroy(GameObject.Find("KnifeBloodHit(clone)"), 2);
+
     }
 }
