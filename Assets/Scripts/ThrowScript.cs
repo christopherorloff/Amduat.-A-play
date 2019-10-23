@@ -38,7 +38,7 @@ public class ThrowScript : MonoBehaviour
         else if (other.CompareTag("Knife"))
         {
             print("Bounce knife");
-            SoundManager.Instance.knifeClangInstance.start();
+            //SoundManager.Instance.knifeClangInstance.start();
         }
 
     }

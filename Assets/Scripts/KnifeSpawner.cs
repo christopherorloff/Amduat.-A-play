@@ -30,6 +30,8 @@ public class KnifeSpawner : MonoBehaviour
     public void SpawnKnife()
     {
         StartCoroutine(spawnDelay());
+        SoundManager.Instance.knifeSpawnInstance.start();
+
     }
 
     IEnumerator spawnDelay()
@@ -43,7 +45,6 @@ public class KnifeSpawner : MonoBehaviour
         go.transform.position = spawnPos.transform.position;
         go.transform.rotation = spawnPos.transform.rotation;
         go.transform.localScale = spawnPos.transform.localScale;
-
     }
 
 }
