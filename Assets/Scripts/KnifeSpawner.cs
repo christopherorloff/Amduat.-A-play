@@ -7,8 +7,15 @@ public class KnifeSpawner : MonoBehaviour
 {
     public GameObject knife;
     public Transform spawnPos;
+    public SparkSpawn SS;
 
     float delay = 2;
+
+
+    private void Start()
+    {
+        SS = FindObjectOfType<SparkSpawn>();
+    }
 
     void OnEnable()
     {
@@ -27,6 +34,9 @@ public class KnifeSpawner : MonoBehaviour
 
     IEnumerator spawnDelay()
     {
+        //sparkeffect bool
+        SS.NewKnife = true;
+
         yield return new WaitForSeconds(delay);
         GameObject go = Instantiate(knife);
         go.transform.parent = spawnPos.parent;
