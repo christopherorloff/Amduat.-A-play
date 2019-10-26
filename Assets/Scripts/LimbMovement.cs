@@ -15,6 +15,7 @@ public class LimbMovement : MonoBehaviour
     //ROTATION VARIABLES
     public Vector3[] rotationTargets;
     public float speed = 0.3F;
+    public float threshold = 0.8f;
     private Vector3 velocity = Vector3.zero;
 
     private void Start()
@@ -49,7 +50,7 @@ public class LimbMovement : MonoBehaviour
     //Checking if last direction is opposite of the previous one - if it is, then a limb will move
     void CheckIfMoving() {
         if (lastDirectionUp) {
-            if (Scroll.scrollValue() < -0.05f) {
+            if (Scroll.scrollValue() < -threshold) {
                 //Setting current limb from limbs array to be not active limb
                 limbs[counter].GetComponent<Limb>().isActive = false;
 
@@ -58,7 +59,7 @@ public class LimbMovement : MonoBehaviour
             }
         }
         else if (!lastDirectionUp) {
-            if (Scroll.scrollValue() > 0.05f) {
+            if (Scroll.scrollValue() > threshold) {
                 //Setting current limb from limbs array to be not active limb
                 limbs[counter].GetComponent<Limb>().isActive = false;
 

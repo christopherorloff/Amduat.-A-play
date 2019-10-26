@@ -12,14 +12,41 @@ public class Limb : MonoBehaviour
     public bool isMoving;
     public bool isActive;
 
+    private Shake shake;
+    private float shakeValue;
+    private float increaseSpeed = 0.02f;
+
+    private Wiggle wiggle;
+
+    private void Start()
+    {
+        shake = GetComponentInParent<Shake>();
+        wiggle = GetComponentInParent<Wiggle>();
+    }
+
     private void Update()
     {
         if (isMoving) {
             transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
+
+            //If shake script is on parent, then shake if moving
+            if (shake != null)
+            {
+                shakeValue += Time.deltaTime * increaseSpeed;
+                if (shakeValue > 0.025f) shakeValue = 0.025f;
+                shake.magnitude = shakeValue;
+            }
         }
 
-        if (isActive) { 
-            
+        if (isActive) {
+            if(wiggle != null) {
+                wiggle.enabled = true;
+            }
+        } else {
+            if (wiggle != null)
+            {
+                wiggle.enabled = false;
+            }
         }
     }
 }

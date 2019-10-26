@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LimbShake : MonoBehaviour
+public class Shake : MonoBehaviour
 {
     public float magnitude;
 
