@@ -28,11 +28,11 @@ public class LimbMovement : MonoBehaviour
     {
         CheckIfMoving();
 
-        //Rotate camera
+        //Rotate entire object
         float step = speed * Time.deltaTime;
 
-        if(counter >= 1) {
-            Quaternion rotation = Quaternion.Euler(rotationTargets[counter - 1]);
+        if(counter > 0 && counter < rotationTargets.Length) {
+            Quaternion rotation = Quaternion.Euler(rotationTargets[counter]);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, step);
         }
     }
@@ -40,10 +40,14 @@ public class LimbMovement : MonoBehaviour
     void Move()
     {
         counter++;
-        if(counter-1 < limbs.Length) {
+        if(counter - 1 < limbs.Length) {
             //Setting the correct limb to move
             limbs[counter - 1].GetComponent<Limb>().isMoving = true;
-            limbs[counter].GetComponent<Limb>().isActive = true;
+
+            //If there is another limb, it is set to become active here
+            if(counter < limbs.Length) {
+                limbs[counter].GetComponent<Limb>().isActive = true;
+            }
         }
     }
 
@@ -52,7 +56,7 @@ public class LimbMovement : MonoBehaviour
         if (lastDirectionUp) {
             if (Scroll.scrollValue() < -threshold) {
                 //Setting current limb from limbs array to be not active limb
-                limbs[counter].GetComponent<Limb>().isActive = false;
+                SetLimbNotActive();
 
                 Move();
                 lastDirectionUp = false;
@@ -61,11 +65,15 @@ public class LimbMovement : MonoBehaviour
         else if (!lastDirectionUp) {
             if (Scroll.scrollValue() > threshold) {
                 //Setting current limb from limbs array to be not active limb
-                limbs[counter].GetComponent<Limb>().isActive = false;
+                SetLimbNotActive();
 
                 Move();
                 lastDirectionUp = true;
             }
         }
+    }
+
+    void SetLimbNotActive() {
+        if(counter < limbs.Length) limbs[counter].GetComponent<Limb>().isActive = false;
     }
 }

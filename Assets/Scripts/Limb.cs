@@ -39,14 +39,11 @@ public class Limb : MonoBehaviour
         }
 
         if (isActive) {
-            if(wiggle != null) {
-                wiggle.enabled = true;
-            }
+            if(wiggle != null) wiggle.enabled = true;
+            if (shake != null) shake.enabled = false;
         } else {
-            if (wiggle != null)
-            {
-                wiggle.enabled = false;
-            }
+            if (wiggle != null) wiggle.enabled = false;
+            if (shake != null) shake.enabled = true;
         }
     }
 }
