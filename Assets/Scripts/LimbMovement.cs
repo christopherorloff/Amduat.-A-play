@@ -12,16 +12,22 @@ public class LimbMovement : MonoBehaviour
     public GameObject[] limbs;
     public int counter;
 
+    public float limbSpeed = 1;
+
     //ROTATION VARIABLES
     public Vector3[] rotationTargets;
-    public float speed = 0.3F;
-    public float threshold = 0.8f;
+    public float rotationSpeed = 0.3F;
+    public float scrollThreshold = 0.8f;
     private Vector3 velocity = Vector3.zero;
+
 
     private void Start()
     {
         //Setting first limb from limbs array to be the active limb
         limbs[counter].GetComponent<Limb>().isActive = true;
+        for(int i = 0; i < limbs.Length; i++) {
+            limbs[i].GetComponent<Limb>().smoothTime = limbSpeed;
+        }
     }
 
     void Update()
@@ -29,7 +35,7 @@ public class LimbMovement : MonoBehaviour
         CheckIfMoving();
 
         //Rotate entire object
-        float step = speed * Time.deltaTime;
+        float step = rotationSpeed * Time.deltaTime;
 
         if(counter > 0 && counter < rotationTargets.Length) {
             Quaternion rotation = Quaternion.Euler(rotationTargets[counter]);
@@ -54,7 +60,7 @@ public class LimbMovement : MonoBehaviour
     //Checking if last direction is opposite of the previous one - if it is, then a limb will move
     void CheckIfMoving() {
         if (lastDirectionUp) {
-            if (Scroll.scrollValue() < -threshold) {
+            if (Scroll.scrollValue() < -scrollThreshold) {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
 
@@ -63,7 +69,7 @@ public class LimbMovement : MonoBehaviour
             }
         }
         else if (!lastDirectionUp) {
-            if (Scroll.scrollValue() > threshold) {
+            if (Scroll.scrollValue() > scrollThreshold) {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
 

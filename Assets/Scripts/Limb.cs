@@ -18,6 +18,9 @@ public class Limb : MonoBehaviour
 
     private Wiggle wiggle;
 
+    public GameObject snapParticle;
+    private bool particleRunning;
+
     private void Start()
     {
         shake = GetComponentInParent<Shake>();
@@ -26,16 +29,28 @@ public class Limb : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving) {
+        if (isMoving && transform.position != target.position) {
+            //Move limb to correct position of target
             transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
 
-            //If shake script is on parent, then shake if moving
+            //If shake script is on parent, then increase shake
             if (shake != null)
             {
                 shakeValue += Time.deltaTime * increaseSpeed;
                 if (shakeValue > 0.025f) shakeValue = 0.025f;
                 shake.magnitude = shakeValue;
             }
+
+            //Snap (i.e. make smooth time 0) when close to target
+            float dist = Vector3.Distance(transform.position, target.position);
+            if(dist <= 0.05f) {
+                smoothTime = 0;
+                if (!particleRunning) {
+                    Instantiate(snapParticle, transform.position, Quaternion.identity);
+                    particleRunning = true;
+                }
+            }
+            //print("DISTANCE TO TARGET IS : " + dist);
         }
 
         if (isActive) {

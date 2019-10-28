@@ -169,6 +169,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &28167794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -252,6 +254,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &37136565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -366,6 +370,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &100984806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -427,7 +433,7 @@ GameObject:
   - component: {fileID: 140880483}
   - component: {fileID: 140880482}
   m_Layer: 0
-  m_Name: LeftFoot
+  m_Name: Osiris_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,7 +493,7 @@ GameObject:
   - component: {fileID: 156279802}
   - component: {fileID: 156279801}
   m_Layer: 0
-  m_Name: RightCalf
+  m_Name: Osiris_RightCalf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +673,7 @@ GameObject:
   - component: {fileID: 548703726}
   - component: {fileID: 548703727}
   m_Layer: 0
-  m_Name: RightThigh
+  m_Name: Osiris_RightThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,7 +763,7 @@ GameObject:
   - component: {fileID: 671878225}
   - component: {fileID: 671878224}
   m_Layer: 0
-  m_Name: LeftThigh
+  m_Name: Osiris_LeftThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +823,7 @@ GameObject:
   - component: {fileID: 687184780}
   - component: {fileID: 687184779}
   m_Layer: 0
-  m_Name: LeftHand
+  m_Name: Osiris_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -877,7 +883,7 @@ GameObject:
   - component: {fileID: 725433368}
   - component: {fileID: 725433367}
   m_Layer: 0
-  m_Name: RightHand
+  m_Name: Osiris_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,7 +1009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839503940
 GameObject:
@@ -1099,6 +1105,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &874491176
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1196,6 +1204,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &982570314
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1308,6 +1318,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &1001233306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1369,7 +1381,7 @@ GameObject:
   - component: {fileID: 1038839459}
   - component: {fileID: 1038839458}
   m_Layer: 0
-  m_Name: RightArm
+  m_Name: Osiris_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1429,7 +1441,7 @@ GameObject:
   - component: {fileID: 1061609979}
   - component: {fileID: 1061609978}
   m_Layer: 0
-  m_Name: LeftArm
+  m_Name: Osiris_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1507,65 +1519,6 @@ Transform:
   m_Father: {fileID: 37136566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1136129661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1136129662}
-  - component: {fileID: 1136129664}
-  - component: {fileID: 1136129663}
-  m_Layer: 0
-  m_Name: OJBECT (9)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1136129662
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136129661}
-  m_LocalRotation: {x: -0, y: -0, z: -0.043619405, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2500001, y: 1.2500001, z: 1.25}
-  m_Children: []
-  m_Father: {fileID: 1374843989}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136129663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136129661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92c89f02308a477081bc071fd78e110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnitude: 0
---- !u!114 &1136129664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136129661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c81d90ef9d7346afaf1e9b8700a775c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wiggleMagnitude: 2.5
-  speed: 0.1
 --- !u!1 &1158293707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,6 +1553,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &1158293709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1712,6 +1667,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &1178248947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1916,7 +1873,7 @@ GameObject:
   - component: {fileID: 1346303567}
   - component: {fileID: 1346303566}
   m_Layer: 0
-  m_Name: RightFoot
+  m_Name: Osiris_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2006,6 +1963,7 @@ MonoBehaviour:
   - {fileID: 2069157303}
   - {fileID: 37136563}
   counter: 0
+  limbSpeed: 0.5
   rotationTargets:
   - {x: 0, y: 0, z: 10}
   - {x: 0, y: 0, z: 0}
@@ -2018,8 +1976,8 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 10}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 10}
-  speed: 0.1
-  threshold: 0.02
+  rotationSpeed: 1
+  scrollThreshold: 0.02
 --- !u!4 &1374843989
 Transform:
   m_ObjectHideFlags: 0
@@ -2027,9 +1985,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374843987}
-  m_LocalRotation: {x: 0, y: 0, z: 0.043619405, w: 0.9990483}
+  m_LocalRotation: {x: -0, y: -0, z: 0.043619405, w: 0.9990483}
   m_LocalPosition: {x: 0.32, y: -0.12, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.80000013, y: 0.80000013, z: 0.8}
   m_Children:
   - {fileID: 1618871138}
   - {fileID: 548703725}
@@ -2043,9 +2001,8 @@ Transform:
   - {fileID: 1038839457}
   - {fileID: 1061609977}
   - {fileID: 1417030571}
-  - {fileID: 1136129662}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1660785836}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5}
 --- !u!1 &1413227942
 GameObject:
@@ -2059,7 +2016,7 @@ GameObject:
   - component: {fileID: 1413227945}
   - component: {fileID: 1413227944}
   m_Layer: 0
-  m_Name: LeftCalf
+  m_Name: Osiris_LeftCalf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2119,7 +2076,7 @@ GameObject:
   - component: {fileID: 1417030573}
   - component: {fileID: 1417030572}
   m_Layer: 0
-  m_Name: Head
+  m_Name: Osiris_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2178,7 +2135,7 @@ GameObject:
   - component: {fileID: 1618871138}
   - component: {fileID: 1618871139}
   m_Layer: 0
-  m_Name: Torso
+  m_Name: Osiris_Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2250,6 +2207,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1660785835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660785836}
+  m_Layer: 0
+  m_Name: INTERACTION
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1660785836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660785835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1374843989}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1674034213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,7 +2266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774181712
 GameObject:
@@ -2329,6 +2317,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &1774181715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2457,6 +2447,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &2006271901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2540,6 +2532,8 @@ MonoBehaviour:
   smoothTime: 1
   isMoving: 0
   isActive: 0
+  snapParticle: {fileID: 5445961060056741018, guid: 84c5b7e6f9a2244e69b8edc49770f48d,
+    type: 3}
 --- !u!212 &2069157305
 SpriteRenderer:
   m_ObjectHideFlags: 0
