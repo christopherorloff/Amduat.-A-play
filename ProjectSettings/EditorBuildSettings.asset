@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Other/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/Hours/Hour6.unity
+    path: Assets/Scenes/Hour6/Hour6.unity
     guid: 39836456cb0685a46bc204b9977af187
   - enabled: 0
-    path: Assets/Scenes/Hours/Hour7.unity
+    path: Assets/Scenes/Hour7/Hour7.unity
     guid: a01715bc757027f48a543824b16e546d
   - enabled: 0
     path: Assets/Scenes/Other/InputTestScene.unity

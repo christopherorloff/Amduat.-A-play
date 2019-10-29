@@ -16,7 +16,7 @@ public class SnakeStateScript : MonoBehaviour
     int knifeHits = 0;
     public int knifeHitLimit = 6;
 
-    BgMovement bgMovement;
+    BackGround_Object_Movement_Script bgMovement;
 
     void Awake()
     {
@@ -24,7 +24,7 @@ public class SnakeStateScript : MonoBehaviour
         secondaryPosition = new Vector3(initialPosition.x, -8, 0);
         yMax = initialPosition.y;
         yMin = secondaryPosition.y;
-        bgMovement = GetComponent<BgMovement>();
+        bgMovement = GetComponent<BackGround_Object_Movement_Script>();
         bgMovement.enabled = false;
         StartCoroutine(SnakeIntro());
     }
