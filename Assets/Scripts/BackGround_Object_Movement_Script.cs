@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
 
-public class BgMovement : MonoBehaviour
+public class BackGround_Object_Movement_Script : MonoBehaviour
 {
 
     [SerializeField]

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
 
-public class ArmControl : MonoBehaviour
+public class ArmControl_Script : MonoBehaviour
 {
 
     //private
