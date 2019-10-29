@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a34463be5d94068bffcc8959ebade8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingSceneName: Spear
+  openingSceneName: Hour6
   startButton: {fileID: 210539144}
 --- !u!4 &1037036470
 Transform:
