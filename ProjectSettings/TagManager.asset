@@ -9,6 +9,7 @@ TagManager:
   - Knife
   - ReadyEffect
   - Bloodeffect
+  - Boat
   layers:
   - Default
   - TransparentFX
