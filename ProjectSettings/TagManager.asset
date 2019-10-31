@@ -9,6 +9,7 @@ TagManager:
   - Knife
   - ReadyEffect
   - Bloodeffect
+  - BlessedDead
   layers:
   - Default
   - TransparentFX
