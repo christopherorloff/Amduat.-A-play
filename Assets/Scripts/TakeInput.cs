@@ -18,7 +18,7 @@ public class TakeInput : MonoBehaviour
     {
         highest = (Mathf.Abs(Scroll.scrollValue()) > highest) ? Mathf.Abs(Scroll.scrollValue()) : highest;
         //print("Highest: " + highest);
-        print(Scroll.scrollValue());
+        print(Scroll.scrollDirection());
 
         if (Input.GetKeyDown(KeyCode.R))
         {

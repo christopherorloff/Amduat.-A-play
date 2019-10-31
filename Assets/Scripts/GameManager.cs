@@ -11,15 +11,17 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-            // if the singleton hasn't been initialized yet
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this.gameObject);
-                return;//Avoid doing anything else
-            }
+        //Disable mouse
+        Cursor.visible = false;
 
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+        // if the singleton hasn't been initialized yet
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;//Avoid doing anything else
+        }
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void OnEnable()
