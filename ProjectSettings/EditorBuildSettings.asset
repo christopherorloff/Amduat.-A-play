@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Hour7/Legacy/Hour7.unity
     guid: a01715bc757027f48a543824b16e546d
   - enabled: 0
-    path: Assets/Scenes/Other/InputTestScene.unity
+    path: Assets/Sandboxes/Rasmus/InputTestScene.unity
     guid: c93647a4c3a54400d8bc0343896a76ed
   - enabled: 0
     path: Assets/Scenes/Other/WebGL Sound Test Start.unity

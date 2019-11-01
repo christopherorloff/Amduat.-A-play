@@ -4,12 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Root
   - Snake
-  - Knife
   - ReadyEffect
   - Bloodeffect
-  - Boat
+  - Knife
+  - Root
+  - BlessedDead
+  - ConeZone
   layers:
   - Default
   - TransparentFX

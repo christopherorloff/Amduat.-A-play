@@ -46,9 +46,9 @@ namespace ScrollManager
         public static string scrollDirection()
         {
             string output = "None";
-            if (scrollValue() != 0)
+            if (scrollValueMean(5) != 0)
             {
-                if (scrollValue() > 0)
+                if (scrollValueMean(5) > 0)
                 {
                     output = "Up";
                 }
