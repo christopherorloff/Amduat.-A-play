@@ -13,6 +13,7 @@ public class ThrowScript : MonoBehaviour
     [SerializeField]
     private float speedScalar;
     public GameObject BloodEffect;
+    public KnifeSpawner knifeSpawner;
 
 
     //flags
@@ -46,8 +47,9 @@ public class ThrowScript : MonoBehaviour
         else if (other.CompareTag("Snake"))
         {
             print("Bounce knife");
-            FindObjectOfType<KnifeSpawner>().SpawnKnife();
-            Destroy(this, 2f);
+            knifeSpawner.SpawnKnife();
+            Destroy(GetComponent<Rigidbody2D>());
+            Destroy(this, 2);
             //SoundManager.Instance.knifeClangInstance.start();
         }
 
