@@ -70,14 +70,14 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
         }
         if (floating && wheelControlled)
         {
-            x = Mathf.Cos((_time * frequenzyX) + Time.time) * amplitudeX;
-            y = Mathf.Sin((_time * frequenzyX) + Time.time) * amplitudeY;
+            x = Mathf.Cos((_time * frequenzyX) + Time.deltaTime) * amplitudeX;
+            y = Mathf.Sin((_time * frequenzyX) + Time.deltaTime) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition;
         }
         else if (floating && !wheelControlled)
         {
-            x = Mathf.Cos(Time.time * frequenzyX) * amplitudeX;
-            y = Mathf.Sin(Time.time * frequenzyY) * amplitudeY;
+            x = Mathf.Cos(Time.deltaTime * frequenzyX) * amplitudeX;
+            y = Mathf.Sin(Time.deltaTime * frequenzyY) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition;
         }
         else if (!floating && wheelControlled)
