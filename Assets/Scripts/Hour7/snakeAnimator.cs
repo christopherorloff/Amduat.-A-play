@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class snakeAnimator : MonoBehaviour
 {
@@ -19,9 +20,8 @@ public class snakeAnimator : MonoBehaviour
         SA = FindObjectOfType<SpearAnimation>();
 
         anim = GetComponent<Animation>();
-        
-        
-        anim.clip = SnakeIdle;
+        anim.AddClip(SnakeIdle, "SnakeIdle");
+        anim.AddClip(SnakeDie, "SnakeDie");
         anim["SnakeIdle"].speed = animSpeed;
         anim.Play();
 
@@ -31,8 +31,8 @@ public class snakeAnimator : MonoBehaviour
     {
         if (SA.stapDone)
         {
-            anim["SnakeDead"].speed = animSpeedDead;
-            anim.CrossFade("SnakeDead", 5F, PlayMode.StopSameLayer);
+            anim["SnakeDie"].speed = animSpeedDead;
+            anim.CrossFade("SnakeDie", 5F, PlayMode.StopSameLayer);
         }
     }
 

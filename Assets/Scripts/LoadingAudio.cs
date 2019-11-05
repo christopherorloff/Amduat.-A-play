@@ -31,7 +31,7 @@ public class LoadingAudio : MonoBehaviour
                 Debug.Log("AUDIO: Master.strings has loaded");
                 //SÆTTER DEN NÆSTE SCENE I INSPECTOREN SÅ DET ER LET AT TESTE I WEB BUILD
                 //FINAL VERSION SKAL VÆRE INTRO SCENEN TIL SPILLET
-                SceneManager.LoadScene(openingSceneName);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
             }
         }
     }

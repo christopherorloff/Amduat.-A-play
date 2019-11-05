@@ -6,7 +6,6 @@ public class EventManager : MonoBehaviour
 {
     // Game Manager events
     public delegate void GM();
-    
     public static GM sceneChange;
 
     // HOUR 6 events
