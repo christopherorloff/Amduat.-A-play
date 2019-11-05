@@ -11,6 +11,7 @@ TagManager:
   - Root
   - BlessedDead
   - ConeZone
+  - HitZone
   layers:
   - Default
   - TransparentFX

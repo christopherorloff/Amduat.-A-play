@@ -27,17 +27,27 @@ public class ThrowScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Snake"))
+        if (other.CompareTag("HitZone"))
         {
             StopCoroutine(throwKnifeMovement);
             KnifeHit();
             this.transform.parent = other.transform;
             Destroy(GetComponent<Rigidbody2D>());
-            Destroy(this,2);
+            Destroy(this, 2);
+
         }
         else if (other.CompareTag("Knife"))
         {
             print("Bounce knife");
+            //FindObjectOfType<KnifeSpawner>().SpawnKnife();
+            //Destroy(this, 0);
+            //SoundManager.Instance.knifeClangInstance.start();
+        }
+        else if (other.CompareTag("Snake"))
+        {
+            print("Bounce knife");
+            FindObjectOfType<KnifeSpawner>().SpawnKnife();
+            Destroy(this, 2f);
             //SoundManager.Instance.knifeClangInstance.start();
         }
 
