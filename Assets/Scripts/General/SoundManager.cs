@@ -22,6 +22,10 @@ public class SoundManager : MonoBehaviour
     private string showdownMuPath = "event:/MUSIC/Showdown";
     public FMOD.Studio.EventInstance showdownMuInstance;
 
+    //Hour 3 Sounds
+    private string osirisLimbPath = "event:/HOUR 3/OsirisLimbCollected";
+    public FMOD.Studio.EventInstance osirisLimbInstance;
+
     //Hour 6 Sounds
     private string knifeSpawnPath = "event:/HOUR 6/KnifeSpawn";
     public FMOD.Studio.EventInstance knifeSpawnInstance;
@@ -81,6 +85,7 @@ public class SoundManager : MonoBehaviour
     {
         //INPUTS FOR TESTING
         if (Input.GetKeyDown(KeyCode.A)) {
+            knifeHitInstance.start();
         }
 
         if (Input.GetKeyDown(KeyCode.S)) {
@@ -109,6 +114,9 @@ public class SoundManager : MonoBehaviour
 
         //MUSIC INSTANCES
         showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
+
+        //HOUR 3 SFX INSTANCES
+        osirisLimbInstance = FMODUnity.RuntimeManager.CreateInstance(osirisLimbPath);
 
         //HOUR 6 SFX INSTANCES
         knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);

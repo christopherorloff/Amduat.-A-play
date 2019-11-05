@@ -141,12 +141,12 @@ PrefabInstance:
     - target: {fileID: 323506999543048656, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.056588
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 323506999543048656, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.81
+      value: -5.55
       objectReference: {fileID: 0}
     - target: {fileID: 323506999543048656, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
@@ -231,7 +231,12 @@ PrefabInstance:
     - target: {fileID: 323506999543048658, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: m_Radius
-      value: 2.07
+      value: 1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 323506999543048658, guid: 80707184917fe27478a3ac97e17624df,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80707184917fe27478a3ac97e17624df, type: 3}
@@ -317,39 +322,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.08474936
       objectReference: {fileID: 0}
+    - target: {fileID: 3349452720162004255, guid: d80cdb3f4ccbf6349ae2f390a7cdb27d,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d80cdb3f4ccbf6349ae2f390a7cdb27d, type: 3}
---- !u!1 &421937920
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 421937921}
-  m_Layer: 0
-  m_Name: Snake_HitZones_Hour6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &421937921
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421937920}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2041633370}
-  m_Father: {fileID: 829420628}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &552896260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,6 +340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlackBar_Top_Hour6_Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779380395787976741, guid: 07aa0204fa348574bb08c5ebe386c9d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4567253887340666622, guid: 07aa0204fa348574bb08c5ebe386c9d0,
         type: 3}
@@ -563,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
       propertyPath: deltaThreshold
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
@@ -573,7 +557,17 @@ PrefabInstance:
     - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
       propertyPath: snapBackSpeed
-      value: 0
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759204914796912814, guid: d86010997eab3c141a358136cbc02917,
+        type: 3}
+      propertyPath: knifeSpawner
+      value: 
+      objectReference: {fileID: 1873340780}
+    - target: {fileID: 3759204914796912814, guid: d86010997eab3c141a358136cbc02917,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 1250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86010997eab3c141a358136cbc02917, type: 3}
@@ -1126,6 +1120,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackBar_Low_Hour6_Sprite
       objectReference: {fileID: 0}
+    - target: {fileID: 1312855120659711043, guid: 0dae67806d9f2d24c88b4dddb511bfbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4168443753600921986, guid: 0dae67806d9f2d24c88b4dddb511bfbe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1301,6 +1300,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85a366d2d42d9d64488d6abdad3c8a53, type: 3}
+--- !u!114 &1873340780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5252765413997357823, guid: d86010997eab3c141a358136cbc02917,
+    type: 3}
+  m_PrefabInstance: {fileID: 696214140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22308aebe9e144c15bc49a2a25cfa61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1972615165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,63 +1342,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2041633369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2041633370}
-  - component: {fileID: 2041633372}
-  - component: {fileID: 2041633371}
-  m_Layer: 0
-  m_Name: Snake_HitZone_1_Hour6
-  m_TagString: HitZone
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2041633370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041633369}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -0.11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 421937921}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &2041633371
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041633369}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
---- !u!114 &2041633372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041633369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f942ec2cbdc595a48b4b5bf65cecf231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
