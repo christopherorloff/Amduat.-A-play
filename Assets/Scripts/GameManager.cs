@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private float delayBeforeSceneChange = 5;
 
-    void Awake()
+    private void Awake()
     {
         //Disable mouse
         Cursor.visible = false;
@@ -24,16 +24,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
+        EventManager.snakeDeadEvent += StartChangeToNextScene;
         SceneManager.activeSceneChanged += ChangedActiveScene;
-        EventManager.snakeDeadEvent += StartToChangeScene;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
+        EventManager.snakeDeadEvent -= StartChangeToNextScene;
         SceneManager.activeSceneChanged -= ChangedActiveScene;
-        EventManager.snakeDeadEvent -= StartToChangeScene;
 
     }
 
@@ -42,24 +42,30 @@ public class GameManager : MonoBehaviour
         EventManager.sceneChange();
     }
 
-    public void StartToChangeScene()
+    public void StartChangeToNextScene()
     {
         StartCoroutine(ChangeSceneCoroutine());
+    }
+
+    public int GetActiveSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
     }
 
     //Must be made generic when more scenes!
     internal IEnumerator ChangeSceneCoroutine()
     {
+        int currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
         //Delay for fade or whatever
         yield return new WaitForSeconds(delayBeforeSceneChange);
 
-        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync("Hour7");
+        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync(currentSceneBuildIndex + 1);
 
         while (!nextSceneLoad.isDone)
         {
             yield return null;
         }
-        Scene next = SceneManager.GetSceneByName("Hour7");
+        Scene next = SceneManager.GetSceneByBuildIndex(currentSceneBuildIndex + 1);
         SceneManager.SetActiveScene(next);
     }
 }
