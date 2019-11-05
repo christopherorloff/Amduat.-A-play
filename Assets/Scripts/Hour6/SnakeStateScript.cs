@@ -10,6 +10,8 @@ public class SnakeStateScript : MonoBehaviour
     float yMax;
     float yMin;
 
+    public bool snakeAlive = true;
+
     float startTime;
     public float duration = 3.0f;
 
@@ -21,7 +23,7 @@ public class SnakeStateScript : MonoBehaviour
     void Awake()
     {
         initialPosition = this.transform.position;
-        secondaryPosition = new Vector3(initialPosition.x, -8, 0);
+        secondaryPosition = new Vector3(initialPosition.x, -10, 0);
         yMax = initialPosition.y;
         yMin = secondaryPosition.y;
         bgMovement = GetComponent<BackGround_Object_Movement_Script>();
@@ -48,18 +50,22 @@ public class SnakeStateScript : MonoBehaviour
         EventManager.turnOnInputEvent();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void hitPlus()
     {
-        if (other.CompareTag("Knife"))
+        knifeHits++;
+    }
+
+    private void Update()
+    {
+        if (knifeHits >= knifeHitLimit && snakeAlive == true)
         {
-            knifeHits++;
-            if(knifeHits >= knifeHitLimit)
-            {
-                print("den ær døj");
-                SoundManager.Instance.showdownMuInstance.setParameterByName("End", 1);
-                EventManager.turnOffInputEvent();
-                EventManager.snakeDeadEvent();
-            }
+            snakeAlive = false;
+            print("den ær døj");
+            SoundManager.Instance.showdownMuInstance.setParameterByName("End", 1);
+            EventManager.turnOffInputEvent();
+            EventManager.snakeDeadEvent();
+            
         }
     }
+    
 }

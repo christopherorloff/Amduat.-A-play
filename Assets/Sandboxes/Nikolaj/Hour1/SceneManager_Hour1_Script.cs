@@ -19,6 +19,8 @@ public class SceneManager_Hour1_Script : MonoBehaviour
 
     float boatMoveSpeedX = 0.5f;
 
+    float time = 0;
+
     void Update()
     {
 
