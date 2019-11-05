@@ -564,6 +564,11 @@ PrefabInstance:
       propertyPath: knifeSpawner
       value: 
       objectReference: {fileID: 1873340780}
+    - target: {fileID: 3759204914796912814, guid: d86010997eab3c141a358136cbc02917,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 1250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86010997eab3c141a358136cbc02917, type: 3}
 --- !u!4 &795137508 stripped
