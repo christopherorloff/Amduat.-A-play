@@ -21,7 +21,7 @@ public class SnakeStateScript : MonoBehaviour
     void Awake()
     {
         initialPosition = this.transform.position;
-        secondaryPosition = new Vector3(initialPosition.x, -8, 0);
+        secondaryPosition = new Vector3(initialPosition.x, -10, 0);
         yMax = initialPosition.y;
         yMin = secondaryPosition.y;
         bgMovement = GetComponent<BackGround_Object_Movement_Script>();

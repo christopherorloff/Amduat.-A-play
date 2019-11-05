@@ -42,9 +42,14 @@ public class GameManager : MonoBehaviour
         EventManager.sceneChange();
     }
 
-    private void StartChangeToNextScene()
+    public void StartChangeToNextScene()
     {
         StartCoroutine(ChangeSceneCoroutine());
+    }
+
+    public int GetActiveSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
     }
 
     //Must be made generic when more scenes!
