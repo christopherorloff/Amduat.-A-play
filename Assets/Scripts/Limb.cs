@@ -22,6 +22,7 @@ public class Limb : MonoBehaviour
 
     public GameObject snapParticle;
     private bool particleRunning;
+    private LimbMovement limbMovement;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class Limb : MonoBehaviour
         wiggle = GetComponentInParent<Wiggle>();
 
         origitalSmoothTime = smoothTime - Random.Range(smoothTime, smoothTime/2);
+
+        limbMovement = FindObjectOfType<LimbMovement>();
     }
 
     private void Update()
@@ -57,10 +60,16 @@ public class Limb : MonoBehaviour
                     {
                         Instantiate(snapParticle, transform.position, Quaternion.identity);
 
-                        FindObjectOfType<LimbMovement>().LimbDone();
-
-                        FMOD.Studio.EventInstance collectedSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 3/OsirisLimbCollected");
-                        collectedSoundInstance.start();
+                        limbMovement.LimbDone();
+                        
+                        if(limbMovement.scrolledCounter >= limbMovement.limbs.Length) {
+                            FMOD.Studio.EventInstance collectedSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 3/OsirisLimbCollectedFinal");
+                            collectedSoundInstance.start();
+                        }
+                        else {
+                            FMOD.Studio.EventInstance collectedSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 3/OsirisLimbCollected");
+                            collectedSoundInstance.start();
+                        }
 
                         particleRunning = true;
                     }

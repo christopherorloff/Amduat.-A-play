@@ -7,7 +7,7 @@ public class LimbMovement : MonoBehaviour
 {
     //SCROLL VARIABLES
     bool lastDirectionUp = true;
-    private int scrolledCounter;
+    public int scrolledCounter;
 
     //LIMB VARIABLES
     public GameObject[] limbs;
@@ -26,6 +26,12 @@ public class LimbMovement : MonoBehaviour
     private float endSpeed = 0.1f;
     public GameObject torso;
     private Vector3 torsoVelocity;
+    private float torsoEndSpeed = 3f;
+
+    public GameObject osirisCollected;
+    private Vector3 collectedOsirisVelocity;
+    private float collectedOsirisSpeed = 6f;
+    private float countdownToDestroy;
 
     private void Start()
     {
@@ -57,7 +63,15 @@ public class LimbMovement : MonoBehaviour
                 targetTransforms[i].position = Vector3.MoveTowards(targetTransforms[i].position, new Vector3(0,0,0), moveStep);
             }
 
-            torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, 4f);
+            torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, torsoEndSpeed);
+            osirisCollected.transform.position = Vector3.SmoothDamp(osirisCollected.transform.position, new Vector3(0, 0, 0), ref collectedOsirisVelocity, collectedOsirisSpeed);
+            countdownToDestroy += Time.deltaTime;
+
+            if(countdownToDestroy >= collectedOsirisSpeed) {
+                for(int i = 0; i < limbs.Length; i++) {
+                    limbs[i].SetActive(false);
+                }
+            }
         }
     }
 
