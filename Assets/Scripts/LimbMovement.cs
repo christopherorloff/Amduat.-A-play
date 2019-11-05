@@ -7,10 +7,11 @@ public class LimbMovement : MonoBehaviour
 {
     //SCROLL VARIABLES
     bool lastDirectionUp = true;
+    private int scrolledCounter;
 
     //LIMB VARIABLES
     public GameObject[] limbs;
-    public int counter;
+    private int limbsDone;
 
     public float limbSpeed = 1;
 
@@ -20,11 +21,16 @@ public class LimbMovement : MonoBehaviour
     public float scrollThreshold = 0.8f;
     private Vector3 velocity = Vector3.zero;
 
+    //END VARIABLES
+    private bool isDone;
+    private float endSpeed = 0.1f;
+    public GameObject torso;
+    private Vector3 torsoVelocity;
 
     private void Start()
     {
         //Setting first limb from limbs array to be the active limb
-        limbs[counter].GetComponent<Limb>().isActive = true;
+        limbs[scrolledCounter].GetComponent<Limb>().isActive = true;
         for(int i = 0; i < limbs.Length; i++) {
             limbs[i].GetComponent<Limb>().smoothTime = limbSpeed;
         }
@@ -37,22 +43,37 @@ public class LimbMovement : MonoBehaviour
         //Rotate entire object
         float step = rotationSpeed * Time.deltaTime;
 
-        if(counter > 0 && counter < rotationTargets.Length) {
-            Quaternion rotation = Quaternion.Euler(rotationTargets[counter]);
+        if(scrolledCounter > 0 && scrolledCounter < rotationTargets.Length) {
+            Quaternion rotation = Quaternion.Euler(rotationTargets[scrolledCounter]);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, step);
+        }
+
+        if (isDone) {
+            Transform[] targetTransforms = new Transform[limbs.Length];
+            float moveStep = endSpeed * Time.deltaTime;
+
+            for(int i = 0; i < limbs.Length; i++) {
+                targetTransforms[i] = limbs[i].GetComponent<Limb>().target.transform;
+                targetTransforms[i].position = Vector3.MoveTowards(targetTransforms[i].position, new Vector3(0,0,0), moveStep);
+            }
+
+            torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, 4f);
         }
     }
 
     void Move()
     {
-        counter++;
-        if(counter - 1 < limbs.Length) {
+        scrolledCounter++;
+        if(scrolledCounter - 1 < limbs.Length) {
             //Setting the correct limb to move
-            limbs[counter - 1].GetComponent<Limb>().isMoving = true;
+            limbs[scrolledCounter - 1].GetComponent<Limb>().isMoving = true;
+
+            FMOD.Studio.EventInstance sweepSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 3/OsirisLimbSweep");
+            sweepSoundInstance.start();
 
             //If there is another limb, it is set to become active here
-            if(counter < limbs.Length) {
-                limbs[counter].GetComponent<Limb>().isActive = true;
+            if (scrolledCounter < limbs.Length) {
+                limbs[scrolledCounter].GetComponent<Limb>().isActive = true;
             }
         }
     }
@@ -80,6 +101,14 @@ public class LimbMovement : MonoBehaviour
     }
 
     void SetLimbNotActive() {
-        if(counter < limbs.Length) limbs[counter].GetComponent<Limb>().isActive = false;
+        if(scrolledCounter < limbs.Length) limbs[scrolledCounter].GetComponent<Limb>().isActive = false;
+    }
+
+    public void LimbDone() {
+        limbsDone++;
+        if(limbsDone == limbs.Length) {
+            print("READY FOR FINAL ANIMATION");
+            isDone = true;
+        }
     }
 }

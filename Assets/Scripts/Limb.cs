@@ -6,15 +6,17 @@ public class Limb : MonoBehaviour
 {
     //TARGET VARIABLES
     public Transform target;
-    public float smoothTime = 1f;
+    public float smoothTime = 0.8f;
+    private float origitalSmoothTime;
     private Vector3 velocity = Vector3.zero;
 
     public bool isMoving;
     public bool isActive;
+    public bool isDone;
 
     private Shake shake;
     private float shakeValue;
-    private float increaseSpeed = 0.02f;
+    private float increaseSpeed = 0.01f;
 
     private Wiggle wiggle;
 
@@ -25,6 +27,8 @@ public class Limb : MonoBehaviour
     {
         shake = GetComponentInParent<Shake>();
         wiggle = GetComponentInParent<Wiggle>();
+
+        origitalSmoothTime = smoothTime - Random.Range(smoothTime, smoothTime/2);
     }
 
     private void Update()
@@ -42,14 +46,29 @@ public class Limb : MonoBehaviour
             }
 
             //Snap (i.e. make smooth time 0) when close to target
-            float dist = Vector3.Distance(transform.position, target.position);
-            if(dist <= 0.05f) {
-                smoothTime = 0;
-                if (!particleRunning) {
-                    Instantiate(snapParticle, transform.position, Quaternion.identity);
-                    particleRunning = true;
+            if (!isDone) {
+                float dist = Vector3.Distance(transform.position, target.position);
+                if (dist <= 0.05f)
+                {
+                    smoothTime = 0;
+                    isDone = true;
+
+                    if (!particleRunning)
+                    {
+                        Instantiate(snapParticle, transform.position, Quaternion.identity);
+
+                        FindObjectOfType<LimbMovement>().LimbDone();
+
+                        FMOD.Studio.EventInstance collectedSoundInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 3/OsirisLimbCollected");
+                        collectedSoundInstance.start();
+
+                        particleRunning = true;
+                    }
                 }
+            } else if (isDone && isMoving) {
+                smoothTime = origitalSmoothTime;
             }
+
             //print("DISTANCE TO TARGET IS : " + dist);
         }
 
