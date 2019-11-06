@@ -232,9 +232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e119b70c113874aba8ee4cb14dc5e071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  branch: {fileID: 4803556392036677360, guid: ec2edfc05b2354bc38ff7a36bac7ae2c, type: 3}
-  branchRotation: 15
+  branch: {fileID: 4803556392036677360, guid: 1b048ef39b6144c7ba1c768e1857bd48, type: 3}
+  leaf: {fileID: 4803556392036677360, guid: ec2edfc05b2354bc38ff7a36bac7ae2c, type: 3}
+  branchAngle: 20
   numberOfGenerations: 7
+  speedMultiplier: 1.452
+  minimizationPerGeneration: 0.9659
+  AddRandomization: 1
+  BranchColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &548817326
 Transform:
   m_ObjectHideFlags: 0
