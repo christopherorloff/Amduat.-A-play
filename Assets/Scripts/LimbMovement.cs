@@ -28,10 +28,13 @@ public class LimbMovement : MonoBehaviour
     private Vector3 torsoVelocity;
     private float torsoEndSpeed = 3f;
 
-    public GameObject osirisCollected;
-    private Vector3 collectedOsirisVelocity;
-    private float collectedOsirisSpeed = 6f;
+    public GameObject osirisCollectedGameObject;
+    private Vector3 collectedOsirisGameObjectVelocity;
+    private float collectedOsirisGameObjectSpeed = 15f;
     private float countdownToDestroy;
+
+    public GameObject osirisCollectedParticleSystem;
+    private bool osirisCollectedParticleSystemRunning;
 
     private void Start()
     {
@@ -54,20 +57,31 @@ public class LimbMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, step);
         }
 
+        //Initiate final animation of Osiris rising, when all limbs collected
+        //Instantiating particle system
         if (isDone) {
             Transform[] targetTransforms = new Transform[limbs.Length];
             float moveStep = endSpeed * Time.deltaTime;
 
+            //Moving individual limbs
             for(int i = 0; i < limbs.Length; i++) {
                 targetTransforms[i] = limbs[i].GetComponent<Limb>().target.transform;
                 targetTransforms[i].position = Vector3.MoveTowards(targetTransforms[i].position, new Vector3(0,0,0), moveStep);
             }
 
+            //Moving entire prefab
             torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, torsoEndSpeed);
-            osirisCollected.transform.position = Vector3.SmoothDamp(osirisCollected.transform.position, new Vector3(0, 0, 0), ref collectedOsirisVelocity, collectedOsirisSpeed);
+            osirisCollectedGameObject.transform.position = Vector3.SmoothDamp(osirisCollectedGameObject.transform.position, new Vector3(0, 0, 0), ref collectedOsirisGameObjectVelocity, collectedOsirisGameObjectSpeed);
             countdownToDestroy += Time.deltaTime;
 
-            if(countdownToDestroy >= collectedOsirisSpeed) {
+            //Instantiating particle system
+            if (!osirisCollectedParticleSystemRunning) {
+                Instantiate(osirisCollectedParticleSystem, new Vector3(0, 0, 0), Quaternion.identity);
+                osirisCollectedParticleSystemRunning = true;
+            }
+
+            //Hiding limbs when out of screen
+            if (countdownToDestroy >= collectedOsirisGameObjectSpeed) {
                 for(int i = 0; i < limbs.Length; i++) {
                     limbs[i].SetActive(false);
                 }

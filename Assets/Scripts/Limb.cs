@@ -55,6 +55,7 @@ public class Limb : MonoBehaviour
                 {
                     smoothTime = 0;
                     isDone = true;
+                    isMoving = false;
 
                     if (!particleRunning)
                     {
