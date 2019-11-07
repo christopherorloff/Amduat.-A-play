@@ -9,45 +9,46 @@ public class PlantGrowthController_Script : MonoBehaviour
     public GameObject leaf;
     public float branchAngle = 15;
     public int numberOfGenerations = 3;
-    [Range(1.0f,3.0f)]
+    [Range(1.0f, 3.0f)]
     public float speedMultiplier = 1;
-    [Range(0.9f,1.0f)]
+    [Range(0.9f, 1.0f)]
     public float minimizationPerGeneration = 1;
     public bool AddRandomization = false;
 
+    public Color BranchColor;
+
     void Start()
     {
-        // StartCoroutine(InstantiateAndGrow(this.transform, transform.position,0));
         StartCoroutine(StartGrowth());
- 
     }
 
     IEnumerator StartGrowth()
     {
-        GameObject clone = Instantiate(branch, transform.position, Quaternion.identity);
-        StartCoroutine(GrowNewBranch(clone.transform, branchAngle,0));
-        StartCoroutine(GrowNewBranch(clone.transform, -branchAngle,0));
-
+        GameObject clone = Instantiate(branch, transform.position, transform.rotation);
+        StartCoroutine(GrowNewBranch(clone.transform, branchAngle, 0));
+        StartCoroutine(GrowNewBranch(clone.transform, -branchAngle, 0));
         yield return null;
     }
 
     IEnumerator GrowNewBranch(Transform parent, float angle, int generation)
     {
+        //Position of the top of the gameobject, aka where we spawn the next set
         Vector3 branchSpawnPosition = parent.Find("Top").transform.position;
-        
-        if (AddRandomization)
-        {
-            float random = Random.Range(0.2f,1.5f);
-            angle *= random;
-        }
 
+        //Add randomaization to angle if so chosen
+        angle = (AddRandomization) ? angle * Random.Range(0.2f, 1.5f) : angle;
+
+        //Instantiation and practical matters related to it
         GameObject clone = Instantiate(branch, branchSpawnPosition, parent.rotation);
         clone.transform.parent = parent;
-        clone.transform.Rotate(0,0,angle);
+        clone.transform.Rotate(0, 0, angle);
         clone.transform.localScale = minimizationPerGeneration * parent.localScale;
 
+        //Save original size for later
         Vector3 originalScale = clone.transform.localScale;
-        clone.transform.localScale = new Vector3 (originalScale.x,0,0);
+
+        //Make clone invisible to prepare for "growing"
+        clone.transform.localScale = new Vector3(originalScale.x, 0, 0);
         float t = 0;
 
         while (clone.transform.localScale.y < originalScale.y)
@@ -60,14 +61,17 @@ public class PlantGrowthController_Script : MonoBehaviour
             yield return null;
         }
 
+        //Make sure the scale is back to exactly the original size
         clone.transform.localScale = originalScale;
 
+        //To avoid infinite loop
         if (generation < numberOfGenerations)
         {
             int thisGeneration = generation + 1;
             StartCoroutine(GrowNewBranch(clone.transform, branchAngle, thisGeneration));
             StartCoroutine(GrowNewBranch(clone.transform, -branchAngle, thisGeneration));
-        } else
+        }
+        else // only put leaf on last branch and only if a leaf prefab is chosen
         {
             if (leaf != null)
             {
@@ -75,8 +79,8 @@ public class PlantGrowthController_Script : MonoBehaviour
                 GameObject leafClone = Instantiate(leaf, leafSpawnPosition, clone.transform.rotation) as GameObject;
                 leafClone.transform.parent = clone.transform;
                 leafClone.transform.localScale *= minimizationPerGeneration * 0.5f;
+                leafClone.transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Random.ColorHSV(0.2f,0.3f,0.8f,0.9f,0.8f,0.9f);
             }
         }
-        yield return null;
     }
 }
