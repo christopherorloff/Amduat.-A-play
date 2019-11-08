@@ -9,7 +9,7 @@ public class PlantGrowthController_Script : MonoBehaviour
     public GameObject leaf;
     public float branchAngle = 15;
     public int numberOfGenerations = 3;
-    [Range(1.0f, 3.0f)]
+    [Range(1.0f, 7.0f)]
     public float speedMultiplier = 1;
     [Range(0.7f, 1.0f)]
     public float minimizationPerGeneration = 1;
