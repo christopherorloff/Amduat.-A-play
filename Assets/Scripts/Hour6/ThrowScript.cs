@@ -9,6 +9,7 @@ public class ThrowScript : MonoBehaviour
     private IEnumerator bounceKnife;
 
     private Vector3 target;
+    bool hit = false;
 
     [SerializeField]
     private float speedScalar;
@@ -34,6 +35,7 @@ public class ThrowScript : MonoBehaviour
     {
         if (other.CompareTag("HitZone"))
         {
+            hit = true;
             StopCoroutine(throwKnifeMovement);
             KnifeHit();
             
@@ -43,21 +45,14 @@ public class ThrowScript : MonoBehaviour
             Destroy(this, 2);
 
         }
-        else if (other.CompareTag("Knife"))
-        {
-            print("Bounce knife");
-            //FindObjectOfType<KnifeSpawner>().SpawnKnife();
-            //Destroy(this, 0);
-            //SoundManager.Instance.knifeClangInstance.start();
-        }
-        else if (other.CompareTag("Snake"))
+        else if (other.CompareTag("Snake") && hit==false)
         {
             StopCoroutine(throwKnifeMovement);
             print("Bounce knife");
             knifeSpawner.SpawnKnife();
+            StartCoroutine(bounceKnife);
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
-            StartCoroutine(bounceKnife);
             Destroy(this,2);
             //SoundManager.Instance.knifeClangInstance.start();
         }

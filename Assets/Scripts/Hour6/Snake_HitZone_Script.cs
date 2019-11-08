@@ -7,7 +7,7 @@ public class Snake_HitZone_Script : MonoBehaviour
     bool hit = false;
     bool hitVFX = false;
     public GameObject hitZoneRed;
-    public GameObject SnakeState;
+    public GameObject Snake;
     public ParticleSystem SnakeHitParticles;
 
     private SpriteRenderer hitZoneRedSprite;
@@ -16,6 +16,12 @@ public class Snake_HitZone_Script : MonoBehaviour
     public Color Color1;
     public Color Color2;
     public Color Color3;
+
+    public float magnitude;
+
+    float duration = 1.0f;
+
+    float startTime;
 
     private Color startColor;
     private Color endColor;
@@ -28,7 +34,7 @@ public class Snake_HitZone_Script : MonoBehaviour
         endColor = Color2;
         hitColor = Color3;
         hitZoneRedSprite = hitZoneRed.GetComponent<SpriteRenderer>();
-
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -38,13 +44,14 @@ public class Snake_HitZone_Script : MonoBehaviour
         {
             if (hitVFX == true)
             {
-                var ratio = (Time.time - lastColorChangeTime) / FadeDuration;
-                hitZoneRedSprite.color = Color.Lerp(endColor, hitColor, ratio);
+                
                 SnakeHitParticles.Play();
+                hitZoneRedSprite.color = Color.Lerp(endColor, hitColor, FadeDuration * 0.5f);
+                //SnakeHitParticles.Play();
             }
             hitVFX = false;
             Destroy(GetComponent<Collider2D>(), 1.5f);
-            Destroy(hitZoneRed, 1);
+            Destroy(hitZoneRed, FadeDuration);
         }
         else
         {
@@ -71,7 +78,7 @@ public class Snake_HitZone_Script : MonoBehaviour
     {
         hit = true;
         hitVFX = true;
-        SnakeState.GetComponent<SnakeStateScript>().hitPlus();
+        Snake.GetComponent<SnakeStateScript>().hitPlus();
     }
 
 }
