@@ -24,6 +24,11 @@ public class Limb : MonoBehaviour
     private bool particleRunning;
     private LimbMovement limbMovement;
 
+    public GameObject directionParticle;
+    private Transform directionParticlePosition;
+    private bool directionParticleRunning;
+    private GameObject particle;
+
     private void Start()
     {
         shake = GetComponentInParent<Shake>();
@@ -55,7 +60,7 @@ public class Limb : MonoBehaviour
                 {
                     smoothTime = 0;
                     isDone = true;
-                    isMoving = false;
+                    //isMoving = false;
 
                     if (!particleRunning)
                     {
@@ -82,10 +87,25 @@ public class Limb : MonoBehaviour
             //print("DISTANCE TO TARGET IS : " + dist);
         }
 
+
         if (isActive) {
             if(wiggle != null) wiggle.enabled = true;
             if (shake != null) shake.enabled = false;
+            if (!directionParticleRunning) {
+                directionParticlePosition = transform.Find("ParticleTarget");
+                particle = Instantiate(directionParticle, directionParticlePosition.position, Quaternion.identity);
+                if(limbMovement.scrolledCounter % 2 == 0) {
+                    particle.GetComponent<Particle_Change_Direction_Script>().DirectionDown = true;
+                } else if (limbMovement.scrolledCounter % 2 == 1) {
+                    particle.GetComponent<Particle_Change_Direction_Script>().DirectionDown = false;
+                }
+                particle.transform.parent = transform;
+                directionParticleRunning = true;
+            }
         } else {
+            if (directionParticleRunning) {
+                particle.GetComponent<ParticleSystem>().Stop();
+            }
             if (wiggle != null) wiggle.enabled = false;
             if (shake != null) shake.enabled = true;
         }
