@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ReadyEffect
-  - Boat
-  - Snake
-  - HitZone
+  - BranchTop
   layers:
   - Default
   - TransparentFX
