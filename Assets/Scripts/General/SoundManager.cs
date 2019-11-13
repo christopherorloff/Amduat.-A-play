@@ -179,7 +179,7 @@ public class SoundManager : MonoBehaviour
         if (_hour == 7) {
             showdownMuInstance.setParameterByName("End", 1f);
 
-            //oceanAmbInstance.start();
+            oceanAmbInstance.start();
             oceanAmbInstance.setParameterByName("Intensity", 0f);
             apopisIdleInstance.start();
             spearChargeInstance.start();

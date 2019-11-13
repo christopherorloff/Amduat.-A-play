@@ -6,6 +6,17 @@ using ScrollManager;
 public class BackGround_Object_Movement_Script : MonoBehaviour
 {
 
+    private float startAmplitudeX = 0f;
+    private float startAmplitudeY = 0f;
+
+    private float targetAmplitudeX;
+    private float targetAmplitudeY;
+
+
+    private float fadeInSpeed = 1.1f;
+
+    public bool EaseIn = false;
+
     [SerializeField]
     [Range(-10, 10)]
     private float rotateSpeed;
@@ -47,15 +58,45 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
         initialPosition = transform.position;
         print("BG on enable");
 
+        targetAmplitudeX = amplitudeX;
+        targetAmplitudeY = amplitudeY;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         _time += Scroll.scrollValueAccelerated() * scrollFactor;
         float x = transform.position.x;
         float y = transform.position.y;
         float z = transform.position.z;
+        if (EaseIn)
+        {
+            if (startAmplitudeX >= targetAmplitudeX)
+            {
+                startAmplitudeX *= fadeInSpeed;
+                amplitudeX = startAmplitudeX;
+
+            }
+            else if (startAmplitudeX < targetAmplitudeX)
+            {
+                amplitudeX = targetAmplitudeX;
+            }
+
+            if (startAmplitudeY >= targetAmplitudeY)
+            {
+                startAmplitudeY *= fadeInSpeed;
+                amplitudeY = startAmplitudeY;
+
+            }
+            else if (startAmplitudeY < targetAmplitudeY)
+            {
+                amplitudeY = targetAmplitudeY;
+            }
+        }
+
         if (rotating && wheelControlled)
         {
             transform.Rotate(new Vector3(0, 0, ((Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed) + rotateSpeed));
@@ -68,23 +109,25 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, (Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed));
         }
+
         if (floating && wheelControlled)
         {
-            x = Mathf.Cos((_time * frequenzyX) + Time.deltaTime) * amplitudeX;
-            y = Mathf.Sin((_time * frequenzyX) + Time.deltaTime) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition;
+            x = Mathf.Cos((_time * frequenzyX) ) * amplitudeX;
+            y = Mathf.Sin((_time * frequenzyX)) * amplitudeY;
+            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x,y,0);
         }
         else if (floating && !wheelControlled)
         {
-            x = Mathf.Cos(Time.deltaTime * frequenzyX) * amplitudeX;
-            y = Mathf.Sin(Time.deltaTime * frequenzyY) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition;
+            x = Mathf.Cos(frequenzyX) * amplitudeX;
+            y = Mathf.Sin(frequenzyY) * amplitudeY;
+            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x, y, 0);
         }
         else if (!floating && wheelControlled)
-        {
+        {  
+
             x = Mathf.Cos(_time * frequenzyX) * amplitudeX;
             y = Mathf.Sin(_time * frequenzyY) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition;
+            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x, y, 0);
         }
     }
 

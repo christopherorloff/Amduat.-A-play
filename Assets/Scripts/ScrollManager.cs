@@ -20,8 +20,8 @@ namespace ScrollManager
         static float drag = 0.9f;
         static float scrollVelocity = 0;
 
-        const float macMaxOutput = 40;
-        const float winMaxOutput = 2;
+        const float macMaxOutput = 25;
+        const float winMaxOutput = 1;
         const float webGLScalar = 0.75f;
 
 
@@ -104,6 +104,30 @@ namespace ScrollManager
             else
             {
                 scrollVelocity *= drag;
+            }
+
+            if (Mathf.Abs(scrollVelocity) < 0.0001f)
+            {
+                scrollVelocity = 0;
+            }
+
+
+            output = scrollVelocity;
+            return output;
+        }
+
+        public static float scrollValueAccelerated(float customDrag)
+        {
+            float output = 0;
+            float input = scrollValue();
+
+            if (Mathf.Abs(input) > Mathf.Abs(scrollVelocity))
+            {
+                scrollVelocity = input;
+            }
+            else
+            {
+                scrollVelocity *= customDrag;
             }
 
             if (Mathf.Abs(scrollVelocity) < 0.0001f)
