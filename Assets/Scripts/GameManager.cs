@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ScrollManager;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private float delayBeforeSceneChange = 5;
 
+
     private void Awake()
     {
         //Disable mouse
         Cursor.visible = false;
+
 
         // if the singleton hasn't been initialized yet
         if (Instance != null && Instance != this)
@@ -34,12 +37,16 @@ public class GameManager : MonoBehaviour
     {
         EventManager.snakeDeadEvent -= StartChangeToNextScene;
         SceneManager.activeSceneChanged -= ChangedActiveScene;
-
     }
 
     private void ChangedActiveScene(Scene fromScene, Scene toScene)
     {
-        EventManager.sceneChange();
+        print("ChangedActiveScene");
+
+        if (SceneManager.GetActiveScene().name != "LoadingScene")
+        {
+            EventManager.sceneChange();
+        }
     }
 
     public void StartChangeToNextScene()
@@ -59,7 +66,7 @@ public class GameManager : MonoBehaviour
         //Delay for fade or whatever
         yield return new WaitForSeconds(delayBeforeSceneChange);
 
-        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync(currentSceneBuildIndex + 1);
+        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync(currentSceneBuildIndex + 1, LoadSceneMode.Additive);
 
         while (!nextSceneLoad.isDone)
         {

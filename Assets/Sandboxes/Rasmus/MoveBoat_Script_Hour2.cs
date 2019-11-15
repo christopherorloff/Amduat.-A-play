@@ -16,20 +16,26 @@ public class MoveBoat_Script_Hour2 : MonoBehaviour
 
     void Update()
     {
-        float input = Mathf.Abs(Scroll.scrollValueMean(10));
-        float velocityX = Mathf.Clamp(input,0,maxVelocity);
+        // float input = Mathf.Abs(Scroll.scrollValueMean(10));
+        // float velocityX = Mathf.Clamp(input,0,maxVelocity);
 
-        if (velocityX >= maxVelocity && !maxVelocityReached)
-        {
-            OnNewScrollEnter();
-            maxVelocityReached = true;
-        }
-        else if(velocityX < maxVelocity && maxVelocityReached)
-        {
-            OnNewScrollExit();
-            maxVelocityReached = false;
-        }
+        // if (velocityX >= maxVelocity && !maxVelocityReached)
+        // {
+        //     OnNewScrollEnter();
+        //     maxVelocityReached = true;
+        // }
+        // else if(velocityX < maxVelocity && maxVelocityReached)
+        // {
+        //     OnNewScrollExit();
+        //     maxVelocityReached = false;
+        // }
 
+    }
+
+    void OnEnable()
+    {
+        Scroll.OnScrollEnter += OnNewScrollEnter;
+        Scroll.OnScrollExit += OnNewScrollExit;
     }
 
     private void OnNewScrollEnter()

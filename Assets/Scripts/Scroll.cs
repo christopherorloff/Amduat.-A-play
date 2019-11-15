@@ -36,7 +36,27 @@ namespace ScrollManager
         public static event OnNewScrollEvent OnScrollEnter;
         public static event OnNewScrollEvent OnScrollExit;
 
+        //Event related
+        void Update()
+        {
+            //Ony process if any subscribers to either events
+            if (OnScrollEnter != null || OnScrollExit != null)
+            {
+                float input = Mathf.Abs(Scroll.scrollValueMean(10));
+                float scrollVelocity = Mathf.Clamp(input, 0, maxVelocityCap);
 
+                if (scrollVelocity >= maxVelocityCap && !maxVelocityCapReached)
+                {
+                    OnScrollEnter?.Invoke();
+                    maxVelocityCapReached = true;
+                }
+                else if (scrollVelocity < maxVelocityCap && maxVelocityCapReached)
+                {
+                    OnScrollExit?.Invoke();
+                    maxVelocityCapReached = false;
+                }
+            }
+        }
 
         // ------------------------------------------------------------------- \\
         // ------------------------ public functions ------------------------- \\
@@ -262,7 +282,7 @@ namespace ScrollManager
         internal static float webGLInputScalar(float input)
         {
             float output = input;
-            
+
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 output *= webGLScalar;
