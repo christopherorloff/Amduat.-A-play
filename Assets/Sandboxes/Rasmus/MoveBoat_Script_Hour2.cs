@@ -2,23 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
+using System;
 
 public class MoveBoat_Script_Hour2 : MonoBehaviour
 {
     public float speedMultiplier = 400;
-    public float maxSpeed = 3;
+    public float maxVelocity = 0.3f;
     public float drag = 0.99f;
 
     public float timeBeforeRampDown = 0.5f;
 
+    bool maxVelocityReached = false;
+
     void Update()
     {
-        float x = Mathf.Clamp(Scroll.scrollValueAccelerated(drag) * Time.deltaTime * speedMultiplier, 0, maxSpeed);
-        
-        if (x > 0)
+        float input = Mathf.Abs(Scroll.scrollValueMean(10));
+        float velocityX = Mathf.Clamp(input,0,maxVelocity);
+
+        if (velocityX >= maxVelocity && !maxVelocityReached)
         {
-            print("Input: " + x);
-            transform.position += new Vector3(x, 0, 0);
+            OnNewScrollEnter();
+            maxVelocityReached = true;
         }
+        else if(velocityX < maxVelocity && maxVelocityReached)
+        {
+            OnNewScrollExit();
+            maxVelocityReached = false;
+        }
+
+    }
+
+    private void OnNewScrollEnter()
+    {
+        print("New scroll enter");
+    }
+
+    private void OnNewScrollExit()
+    {
+        print("New scroll exit");
     }
 }
