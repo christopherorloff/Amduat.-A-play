@@ -6,7 +6,7 @@ using UnityEngine;
 public class BoidController_Script : MonoBehaviour
 {
     //Individual Boid Specs
-    Transform[] flock;
+    Transform[] flockTransforms;
     int[] instanceIDs;
     List<Collider2D>[] localFlock;
     Vector3[] velocities;
@@ -15,6 +15,9 @@ public class BoidController_Script : MonoBehaviour
     //Interface
     public float overlapRadius;
     public float speed = 1;
+    public float seperationDistance = 0.1f;
+    private float seperationDistanceSquared;
+
 
     private ContactFilter2D contactFilter2D;
     private int flocksize;
@@ -23,62 +26,98 @@ public class BoidController_Script : MonoBehaviour
     {
         // References to boid specs
         flocksize = this.transform.childCount;
-        flock = new Transform[flocksize];
+        flockTransforms = new Transform[flocksize];
         instanceIDs = new int[flocksize];
         localFlock = new List<Collider2D>[flocksize];
         velocities = new Vector3[flocksize];
 
+        seperationDistanceSquared = seperationDistance * seperationDistance;
+
+        // Setting up references and initial values for boids
         for (int i = 0; i < flocksize; i++)
         {
-            flock[i] = transform.GetChild(i);
-            instanceIDs[i] = flock[i].GetInstanceID();
+            flockTransforms[i] = transform.GetChild(i);
+            // flockTransforms[i].position = new Vector3(
+            //     flockTransforms[i].position.x,
+            //     flockTransforms[i].position.y, 0);
+            localFlock[i] = new List<Collider2D>();
+            instanceIDs[i] = flockTransforms[i].GetInstanceID();
             velocities[i] = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f), 0.0f).normalized;
-            print("V: " + Vector3.Magnitude(velocities[i]));
         }
     }
 
+    // All vectors must be collected from flock before any movement happens
     void Update()
     {
-        for (int i = 0; i < flock.Length; i++)
+        GetDataFromFlock();
+        MoveFlock();
+    }
+
+    private void GetDataFromFlock()
+    {
+        for (int i = 0; i < flockTransforms.Length; i++)
         {
             //Cleanup
+            localFlock[i].Clear();
 
             //Get local boids
-            // Physics2D.OverlapCircle(this.transform.position, overlapRadius, contactFilter2D, localFlock[i]);
-
+            Physics2D.OverlapCircle((Vector2)flockTransforms[i].position, overlapRadius, contactFilter2D, localFlock[i]);
+            print("flocksize: " + localFlock[i].Count);
             // //Get seperation
-            // Vector3 seperation = GetSeperation();
+            Vector3 seperation = GetSeperation(i);
             // //Get alignment
             // Vector3 alignment = GetAlignment();
             // //Get cohesion
             // Vector3 cohesion = GetCohesion();
             //Get softBounds
             //Goal
-
             //Add it all together
-            //Move the boids
-            flock[i].position += velocities[i] * speed * Time.deltaTime;
-            flock[i].rotation = Quaternion.FromToRotation(Vector3.up, velocities[i]);
+            velocities[i] += seperation;
+
         }
     }
 
-    private Vector3 GetSeperation()
+    private void MoveFlock()
     {
-        Vector3 output = new Vector3();
+        for (int i = 0; i < flockTransforms.Length; i++)
+        {
+            //Move the boids
+            flockTransforms[i].position += velocities[i] * speed * Time.deltaTime;
+            flockTransforms[i].rotation = Quaternion.FromToRotation(Vector3.up, velocities[i]);
+        }
+    }
+
+    private Vector3 GetSeperation(int id)
+    {
+        Vector3 output = Vector3.zero;
+
+        foreach (var item in localFlock[id])
+        {
+            print("Getting seperation");
+            if (item.GetInstanceID() == instanceIDs[id]) { continue; }
+            Vector3 vectorBetween = item.transform.position - flockTransforms[id].position;
+            float squaredMagnitude = vectorBetween.sqrMagnitude;
+            if (squaredMagnitude <= seperationDistanceSquared)
+            {
+                print("Inside: " + flockTransforms[id].name);
+                output -= vectorBetween;
+            }
+        }
+
 
         return output;
     }
 
-    private Vector3 GetAlignment()
+    private Vector3 GetAlignment(int id)
     {
-        Vector3 output = new Vector3();
+        Vector3 output = Vector3.zero;
 
         return output;
     }
 
-    private Vector3 GetCohesion()
+    private Vector3 GetCohesion(int id)
     {
-        Vector3 output = new Vector3();
+        Vector3 output = Vector3.zero;
 
         return output;
     }
