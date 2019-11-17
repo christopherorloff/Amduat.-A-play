@@ -12,21 +12,62 @@ public class TimelineManager_Script_Hour1 : MonoBehaviour
     SortedDictionary<float, List<Action>> timelineEvents = new SortedDictionary<float, List<Action>>();
     Queue<float> keys = new Queue<float>();
     private bool timelineEventsEmpty = false;
+    public float timelineScalar = 0.8f;
 
     // Gameobjects for interacting with
+
+
+    //Sun
     public GameObject Sun;
+    private Vector3 sunPosStart = new Vector3(-7.75f, 1.75f, 0);
+    private Vector3 sunPosEnd = new Vector3(7.75f, -2.0f, 0);
+    private Color sunColorStart = Color.white;
+    public Color sunColorEnd;
+    private SpriteRenderer SunColor;
 
-
+    //Boat
     public GameObject Boat;
-    public SpriteRenderer SunColor;
+
+    Vector3 boatPosStart = new Vector3(-8.9f, -2.25f, 0);
+    Vector3 boatPosEnd = new Vector3(7.4f, -2.25f, 0);
+    private float boatTravelDistance;
+    public int numberOfBoatSegments = 5;
+    public float durationOfBoatSegments = 2;
+
+    //Background
     public SpriteRenderer Background;
+    private Color BGColorStart;
+    private Color BGColorEnd;
+
+    //LightCone
     public SpriteRenderer LightCone;
+    private Color lightConeColorStart;
+    public Color lightConeColorEnd;
+
+    void Awake()
+    {
+        lightConeColorStart = LightCone.color;
+        BGColorStart = Background.color;
+
+        ColorUtility.TryParseHtmlString("#EC1E1E", out sunColorEnd);
+        // ColorUtility.TryParseHtmlString("#64371B", out BGColorEnd);
+        // ColorUtility.TryParseHtmlString("#FFE8C5", out lightConeColorEnd);
+        lightConeColorEnd = lightConeColorStart;
+        lightConeColorEnd.a = 0.7f;
+
+        SunColor = Sun.GetComponent<SpriteRenderer>();
+
+        boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
+
+    }
 
     void Start()
     {
-        AddTimelineEvent(0.3f, (Action)TimelineEventInvokedToo);
-        AddTimelineEvent(0.1f, (Action)TimelineEventInvoked);
-        AddTimelineEvent(0.6f, (Action)TimelineEventInvoked);
+        AddTimelineEvent(0.2f, BoatActions);
+        AddTimelineEvent(0.4f, BoatActions);
+        AddTimelineEvent(0.6f, BoatActions);
+        AddTimelineEvent(0.8f, BoatActions);
+        AddTimelineEvent(0.99f, BoatActions);
 
         HandleKeys();
     }
@@ -39,19 +80,52 @@ public class TimelineManager_Script_Hour1 : MonoBehaviour
         if (!timelineEventsEmpty)
             CheckForTimelineEvents();
 
+        SunActions();
+        BGActions();
 
-        if (Input.anyKeyDown)
-        {
-            foreach (KeyValuePair<float, List<Action>> dict in timelineEvents)
-            {
-                foreach (var item in dict.Value)
-                {
-                    print(dict.Key);
-                    item();
-                }
-            }
-        }
+
+
     }
+
+    // Functions directly connected to the timeline variable below
+
+    private void SunActions()
+    {
+        Sun.transform.position = Vector3.Lerp(sunPosStart, sunPosEnd, timeline);
+        SunColor.color = Color.Lerp(sunColorStart, sunColorEnd, timeline);
+    }
+
+    private void BGActions()
+    {
+        Background.color = Color.Lerp(BGColorStart,BGColorEnd, timeline);
+        LightCone.color = Color.Lerp(lightConeColorStart, lightConeColorEnd, timeline);
+    }
+
+    // Timeline Event functions below
+    private void BoatActions()
+    {
+        StartCoroutine(MoveBoat());
+    }
+
+    private IEnumerator MoveBoat()
+    {
+        print("MoveBoat");
+        float xStart = Boat.transform.position.x;
+        float xEnd = xStart + boatTravelDistance;
+        float startTime = Time.time;
+
+        while (Boat.transform.position.x < xEnd)
+        {
+            float t = (Time.time - startTime) / durationOfBoatSegments;
+            float step = Mathf.SmoothStep(xStart, xEnd, t);
+            Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
+            yield return null;
+        }
+        Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
+    }
+
+    // "Abstract" part of class below
+    // Handles the timeline and the actions connected to it
 
     private void CheckForTimelineEvents()
     {
@@ -74,7 +148,8 @@ public class TimelineManager_Script_Hour1 : MonoBehaviour
     {
         if (input > 0)
         {
-            timeline += Scroll.scrollValueAccelerated() * Time.deltaTime;
+            timeline += Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
+            timeline = Mathf.Clamp(timeline, 0, 1);
             print("Timeline: " + timeline);
 
         }
