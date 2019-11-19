@@ -24,10 +24,39 @@ namespace ScrollManager
         const float winMaxOutput = 1;
         const float webGLScalar = 0.75f;
 
+        //OnNewScroll
+        static float maxVelocityCap = 0.1f;
+        static bool maxVelocityCapReached = false;
 
         //Flags
         static bool deltaTimeInput = true;
 
+        //Events
+        public delegate void OnNewScrollEvent();
+        public static event OnNewScrollEvent OnScrollEnter;
+        public static event OnNewScrollEvent OnScrollExit;
+
+        //Event related
+        void Update()
+        {
+            //Ony process if any subscribers to either events
+            if (OnScrollEnter != null || OnScrollExit != null)
+            {
+                float input = Mathf.Abs(Scroll.scrollValueMean(10));
+                float scrollVelocity = Mathf.Clamp(input, 0, maxVelocityCap);
+
+                if (scrollVelocity >= maxVelocityCap && !maxVelocityCapReached)
+                {
+                    OnScrollEnter?.Invoke();
+                    maxVelocityCapReached = true;
+                }
+                else if (scrollVelocity < maxVelocityCap && maxVelocityCapReached)
+                {
+                    OnScrollExit?.Invoke();
+                    maxVelocityCapReached = false;
+                }
+            }
+        }
 
         // ------------------------------------------------------------------- \\
         // ------------------------ public functions ------------------------- \\
@@ -59,6 +88,27 @@ namespace ScrollManager
             }
             return output;
         }
+
+        private static bool onScrollEnter()
+        {
+            bool output = false;
+            float input = Mathf.Abs(Scroll.scrollValueMean(10));
+            float velocityX = Mathf.Clamp(input, 0, maxVelocityCap);
+
+            if (velocityX >= maxVelocityCap && !maxVelocityCapReached)
+            {
+                output = true;
+                maxVelocityCapReached = true;
+            }
+            else if (velocityX < maxVelocityCap && maxVelocityCapReached)
+            {
+                maxVelocityCapReached = false;
+            }
+
+            return output;
+        }
+
+
 
 
         //The basis for all scroll values
@@ -232,7 +282,7 @@ namespace ScrollManager
         internal static float webGLInputScalar(float input)
         {
             float output = input;
-            
+
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 output *= webGLScalar;

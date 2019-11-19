@@ -56,8 +56,6 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
     private void OnEnable()
     {
         initialPosition = transform.position;
-        print("BG on enable");
-
         targetAmplitudeX = amplitudeX;
         targetAmplitudeY = amplitudeY;
 
