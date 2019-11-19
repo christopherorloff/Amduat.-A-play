@@ -25,6 +25,12 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     public int numberOfBoatSegments = 5;
     public float durationOfBoatSegments = 2;
 
+    //Blessed dead
+    public BlessedDeadFollow_Script_Hour1 blessedDeadController;
+    private SpriteRenderer[] blessedDeadSprites;
+    private int blessedDeadCounter = 0;
+    private float blessedDeadFadeDuration = 2.5f;
+
     //Baboons
     public RaiseStatue_Script_Hour1 SolarBaboons;
 
@@ -52,6 +58,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         SunColor = Sun.GetComponent<SpriteRenderer>();
 
         boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
+        blessedDeadSprites = blessedDeadController.GetBlessedDeadSprites();
 
     }
 
@@ -63,9 +70,16 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         AddTimelineEvent(0.2f, BoatActions);
         AddTimelineEvent(0.4f, BoatActions);
         AddTimelineEvent(0.6f, BoatActions);
-        AddTimelineEvent(0.7f, SolarBaboons.StartRaisingStatues);
         AddTimelineEvent(0.8f, BoatActions);
         AddTimelineEvent(0.99f, BoatActions);
+
+        AddTimelineEvent(0.7f, SolarBaboons.StartRaisingStatues);
+
+        //Blessed dead sprites
+        for (int i = 0; i < blessedDeadSprites.Length; i++)
+        {
+            AddTimelineEvent(UnityEngine.Random.Range(0.4f, 0.8f), StartBlessedDeadFadeIn);
+        }
 
         //After all timeline events are added
         HandleKeys();
@@ -84,15 +98,39 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     }
 
     // Functions directly connected to the timeline variable below
-   
+
     private void ConvertInputToProgress(float input)
     {
         if (input > 0)
         {
-            Timeline += Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
+            float speed = Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
+            speed = Mathf.Clamp(speed, 0,0.001f);
+            Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
-            print("Timeline: " + Timeline);
+            print("Speed: " + speed);
 
+        }
+    }
+
+    private void StartBlessedDeadFadeIn()
+    {
+        StartCoroutine(BlessedDeadFadeIn(blessedDeadCounter));
+        blessedDeadCounter++;
+    }
+
+    IEnumerator BlessedDeadFadeIn(int counter)
+    {
+        float startTime = Time.time;
+        print("BlessedDead " + blessedDeadCounter + " event, at " + Timeline);
+        while (blessedDeadSprites[counter].color.a < 1)
+        {
+            Color col = blessedDeadSprites[counter].color;
+            float t = (Time.time - startTime) / blessedDeadFadeDuration;
+            float step = Mathf.SmoothStep(0,1,t);
+            step = Mathf.Clamp(step, 0,1);
+            Color temp = new Color (col.r,col.g,col.b, step);
+            blessedDeadSprites[counter].color = temp;
+            yield return null;
         }
     }
 
@@ -104,7 +142,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
     private void BGActions()
     {
-        Background.color = Color.Lerp(BGColorStart,BGColorEnd, Timeline);
+        Background.color = Color.Lerp(BGColorStart, BGColorEnd, Timeline);
         LightCone.color = Color.Lerp(lightConeColorStart, lightConeColorEnd, Timeline);
     }
 
