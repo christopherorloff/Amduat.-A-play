@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
 
-    public static EventManager Instance;
+    // public static EventManager Instance;
 
     // Game Manager events
     public delegate void GM();
@@ -19,15 +19,15 @@ public class EventManager : MonoBehaviour
     public static Hour6 knifeHitEvent;
     public static Hour6 snakeDeadEvent;
 
-    private void Awake()
-    {
-        // if the singleton hasn't been initialized yet
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-            return;//Avoid doing anything else
-        }
-        Instance = this;
-        DontDestroyOnLoad(this.gameObject);
-    }
+    // private void Awake()
+    // {
+    //     // if the singleton hasn't been initialized yet
+    //     if (Instance != null && Instance != this)
+    //     {
+    //         Destroy(this.gameObject);
+    //         return;//Avoid doing anything else
+    //     }
+    //     Instance = this;
+    //     DontDestroyOnLoad(this.gameObject);
+    // }
 }
