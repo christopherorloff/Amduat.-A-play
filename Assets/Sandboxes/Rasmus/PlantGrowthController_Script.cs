@@ -37,7 +37,7 @@ public class PlantGrowthController_Script : MonoBehaviour
 
         while (clone.transform.localScale.y < originalScale.y)
         {
-            if (Scroll.isScrolling())
+            if (Scroll.scrollValue() < 0)
             {
                 t += (Time.deltaTime * speedMultiplier);
             }
