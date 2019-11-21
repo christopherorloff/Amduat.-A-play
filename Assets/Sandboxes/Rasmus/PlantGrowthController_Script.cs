@@ -14,6 +14,7 @@ public class PlantGrowthController_Script : MonoBehaviour
     [Range(0.7f, 1.0f)]
     public float minimizationPerGeneration = 1;
     public bool AddRandomization = false;
+    public bool spawnLeafs = false;
 
 
     void OnEnable()
@@ -93,13 +94,13 @@ public class PlantGrowthController_Script : MonoBehaviour
         }
         else // only put leaf on last branch and only if a leaf prefab is chosen
         {
-            if (leaf != null)
+            if (leaf != null && spawnLeafs)
             {
                 Vector3 leafSpawnPosition = clone.transform.Find("Top").transform.position;
                 GameObject leafClone = Instantiate(leaf, leafSpawnPosition, clone.transform.rotation) as GameObject;
                 leafClone.transform.parent = clone.transform;
                 leafClone.transform.localScale = Vector3.one * minimizationPerGeneration;
-                leafClone.transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Random.ColorHSV(0.2f,0.3f,0.8f,0.9f,0.6f,0.7f);
+                leafClone.transform.Find("Sprite").GetComponent<SpriteRenderer>().color = Random.ColorHSV(0.2f, 0.3f, 0.8f, 0.9f, 0.6f, 0.7f);
             }
         }
     }

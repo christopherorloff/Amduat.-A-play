@@ -9,12 +9,14 @@ public class TowBoatLogic : MonoBehaviour
     float scroll;
     float drag = 1.5f;
     float rotSpeed = 100f;
-    float pullRotSpeed = 40;
+    float pullRotSpeed = 20;
     float maxEnergy = -20f;
     float startPos = 10f;
     float moveSpeed = 1f;
 
-    bool readyToPull = false;
+
+    public bool startEffect = false;
+    public bool readyToPull = false;
     public bool pulling = false;
 
 
@@ -34,7 +36,6 @@ public class TowBoatLogic : MonoBehaviour
 
         if (scroll < 0 && !readyToPull)
         {
-            print("Virker");
             energy -= (Mathf.Abs(scroll) * rotSpeed * Time.deltaTime);
         }
 
@@ -48,6 +49,9 @@ public class TowBoatLogic : MonoBehaviour
         {
             print("Pulling");
             pulling = true;
+            startEffect = true;
+            
+            
         }
         if (pulling)
         {
@@ -73,8 +77,7 @@ public class TowBoatLogic : MonoBehaviour
                 energy = startPos;
             }
         }
-            
+  
     }
 
-    
 }

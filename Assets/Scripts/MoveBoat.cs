@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MoveBoat : MonoBehaviour
 {
+    public ParticleSystem BoatParticles;
 
+    
     public TowBoatLogic TowScript;
     float moveSpeed = 1f;
 
@@ -21,5 +23,25 @@ public class MoveBoat : MonoBehaviour
             transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
 
         }
+
+
+        if (TowScript.startEffect)
+        {
+            StartCoroutine(BoatEffect());
+        }
+    }
+
+
+
+
+
+    IEnumerator BoatEffect()
+    {
+        TowScript.startEffect = false;
+        print("startparticle");
+        BoatParticles.Play();
+        yield return new WaitForSeconds(1.5f);
+        BoatParticles.Stop();
+
     }
 }

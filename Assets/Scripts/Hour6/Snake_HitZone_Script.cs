@@ -45,7 +45,7 @@ public class Snake_HitZone_Script : MonoBehaviour
             if (hitVFX == true)
             {
                 
-                SnakeHitParticles.Play();
+                //SnakeHitParticles.Play();
                 hitZoneRedSprite.color = Color.Lerp(endColor, hitColor, FadeDuration * 0.5f);
                 //SnakeHitParticles.Play();
             }
