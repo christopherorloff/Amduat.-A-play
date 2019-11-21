@@ -4,18 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
 
-public class TimelineManager_Script_Hour1 : MonoBehaviour
+public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 {
-    private float timeline = 0;
-
-    // Handles all timings and what Actions/functions to be called
-    SortedDictionary<float, List<Action>> timelineEvents = new SortedDictionary<float, List<Action>>();
-    Queue<float> keys = new Queue<float>();
-    private bool timelineEventsEmpty = false;
     public float timelineScalar = 0.8f;
-
-    // Gameobjects for interacting with
-
 
     //Sun
     public GameObject Sun;
@@ -33,6 +24,15 @@ public class TimelineManager_Script_Hour1 : MonoBehaviour
     private float boatTravelDistance;
     public int numberOfBoatSegments = 5;
     public float durationOfBoatSegments = 2;
+
+    //Blessed dead
+    public BlessedDeadFollow_Script_Hour1 blessedDeadController;
+    private SpriteRenderer[] blessedDeadSprites;
+    private int blessedDeadCounter = 0;
+    private float blessedDeadFadeDuration = 2.5f;
+
+    //Baboons
+    public RaiseStatue_Script_Hour1 SolarBaboons;
 
     //Background
     public SpriteRenderer Background;
@@ -58,47 +58,92 @@ public class TimelineManager_Script_Hour1 : MonoBehaviour
         SunColor = Sun.GetComponent<SpriteRenderer>();
 
         boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
+        blessedDeadSprites = blessedDeadController.GetBlessedDeadSprites();
 
     }
 
+    //This is where all timeline events should be added
+    //HandleKeys call must be the last thing AFTER all events are added
     void Start()
     {
+        //Add all timeline events
         AddTimelineEvent(0.2f, BoatActions);
         AddTimelineEvent(0.4f, BoatActions);
         AddTimelineEvent(0.6f, BoatActions);
         AddTimelineEvent(0.8f, BoatActions);
         AddTimelineEvent(0.99f, BoatActions);
 
+        AddTimelineEvent(0.7f, SolarBaboons.StartRaisingStatues);
+
+        //Blessed dead sprites
+        for (int i = 0; i < blessedDeadSprites.Length; i++)
+        {
+            AddTimelineEvent(UnityEngine.Random.Range(0.4f, 0.8f), StartBlessedDeadFadeIn);
+        }
+
+        //After all timeline events are added
         HandleKeys();
     }
 
+    //Order: Take input --> convert input --> CheckForTimelineEvents --> Apply linear functions
     void Update()
     {
         float input = Scroll.scrollValueAccelerated();
-        ConvertInputToProgress(input);
 
-        if (!timelineEventsEmpty)
-            CheckForTimelineEvents();
+        //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
+        ConvertInputToProgress(input);
 
         SunActions();
         BGActions();
-
-
-
     }
 
     // Functions directly connected to the timeline variable below
 
+    private void ConvertInputToProgress(float input)
+    {
+        if (input > 0)
+        {
+            float speed = Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
+            speed = Mathf.Clamp(speed, 0,0.001f);
+            Timeline += speed;
+            Timeline = Mathf.Clamp(Timeline, 0, 1);
+            print("Speed: " + speed);
+
+        }
+    }
+
+    private void StartBlessedDeadFadeIn()
+    {
+        StartCoroutine(BlessedDeadFadeIn(blessedDeadCounter));
+        blessedDeadCounter++;
+    }
+
+    IEnumerator BlessedDeadFadeIn(int counter)
+    {
+        float startTime = Time.time;
+        print("BlessedDead " + blessedDeadCounter + " event, at " + Timeline);
+        while (blessedDeadSprites[counter].color.a < 1)
+        {
+            Color col = blessedDeadSprites[counter].color;
+            float t = (Time.time - startTime) / blessedDeadFadeDuration;
+            float step = Mathf.SmoothStep(0,1,t);
+            step = Mathf.Clamp(step, 0,1);
+            Color temp = new Color (col.r,col.g,col.b, step);
+            blessedDeadSprites[counter].color = temp;
+            yield return null;
+        }
+    }
+
     private void SunActions()
     {
-        Sun.transform.position = Vector3.Lerp(sunPosStart, sunPosEnd, timeline);
-        SunColor.color = Color.Lerp(sunColorStart, sunColorEnd, timeline);
+        Sun.transform.position = Vector3.Lerp(sunPosStart, sunPosEnd, Timeline);
+        SunColor.color = Color.Lerp(sunColorStart, sunColorEnd, Timeline);
     }
 
     private void BGActions()
     {
-        Background.color = Color.Lerp(BGColorStart,BGColorEnd, timeline);
-        LightCone.color = Color.Lerp(lightConeColorStart, lightConeColorEnd, timeline);
+        Background.color = Color.Lerp(BGColorStart, BGColorEnd, Timeline);
+        LightCone.color = Color.Lerp(lightConeColorStart, lightConeColorEnd, Timeline);
     }
 
     // Timeline Event functions below
@@ -123,63 +168,5 @@ public class TimelineManager_Script_Hour1 : MonoBehaviour
         }
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
     }
-
-    // "Abstract" part of class below
-    // Handles the timeline and the actions connected to it
-
-    private void CheckForTimelineEvents()
-    {
-        if (timeline >= keys.Peek())
-        {
-            foreach (var action in timelineEvents[keys.Peek()])
-            {
-                action();
-            }
-            keys.Dequeue();
-            if (keys.Count <= 0)
-            {
-                timelineEventsEmpty = true;
-            }
-
-        }
-    }
-
-    private void ConvertInputToProgress(float input)
-    {
-        if (input > 0)
-        {
-            timeline += Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
-            timeline = Mathf.Clamp(timeline, 0, 1);
-            print("Timeline: " + timeline);
-
-        }
-    }
-
-    private void AddTimelineEvent(float percentageInvoke, Action action)
-    {
-        if (timelineEvents.ContainsKey(percentageInvoke))
-        {
-            timelineEvents[percentageInvoke].Add(action);
-        }
-        else
-        {
-            timelineEvents[percentageInvoke] = new List<Action> { action };
-        }
-    }
-
-    private void HandleKeys()
-    {
-        float[] tempKeys = new float[timelineEvents.Keys.Count];
-        timelineEvents.Keys.CopyTo(tempKeys, 0);
-        for (int i = 0; i < tempKeys.Length; i++)
-        {
-            keys.Enqueue(tempKeys[i]);
-        }
-    }
-
-    private void TimelineEventInvoked() { print("Like this"); }
-    private void TimelineEventInvokedToo() { print("Like this also"); }
-
-
 }
 

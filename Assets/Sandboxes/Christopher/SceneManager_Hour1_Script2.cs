@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
 
-public class SceneManager_Hour1_Script : MonoBehaviour
+public class SceneManager_Hour1_Script2 : MonoBehaviour
 {
     public GameObject cam;
     public GameObject Sun;
@@ -12,13 +12,13 @@ public class SceneManager_Hour1_Script : MonoBehaviour
     public SpriteRenderer Background;
     public SpriteRenderer LightCone;
 
-    float colorChange = 0.001f;
-    float smallColorChange = 0.0006f;
-    float sunMoveSpeedX = 0.7f;
-    float sunMoveSpeedY = 0.15f;
-    float camMoveSpeedX = 0.4f;
+    float colorChange = 0.0025f;
+    float smallColorChange = 0.0012f;
+    float sunMoveSpeedX = 1.2f;
+    float sunMoveSpeedY = 0.25f;
+    float camMoveSpeedX = 0.6f;
 
-    float boatMoveSpeedX = 0.5f;
+    float boatMoveSpeedX = 1.1f;
 
     float time = 0;
 
@@ -30,6 +30,7 @@ public class SceneManager_Hour1_Script : MonoBehaviour
             SunColor.color = new Color(SunColor.color.r, SunColor.color.g - colorChange, SunColor.color.g);
             Background.color = new Color(Background.color.r - smallColorChange, Background.color.g - smallColorChange, Background.color.b - smallColorChange);
             
+            cam.transform.position += new Vector3(camMoveSpeedX * Time.deltaTime, 0, 0);
             Sun.transform.position += new Vector3(sunMoveSpeedX * Time.deltaTime, -sunMoveSpeedY * Time.deltaTime, 0);
             Boat.transform.position += new Vector3(boatMoveSpeedX * Time.deltaTime, 0, 0);
 
