@@ -45,18 +45,18 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     public Color lightConeColorEnd;
 
     //Cam movement
-    public GameObject Cam;
+    private GameObject Cam;
+    private Vector3 camPosStart = new Vector3(0, 0, -10);
+    private Vector3 camPosEnd = new Vector3(0, 0, -10);
     public float sceneLength;
-    private Vector3 camPosStart = new Vector3(0,0,-10);
-    private Vector3 camPosEnd = new Vector3(0,0,-10);
-    
+
 
 
     void Awake()
     {
 
-        sunPosEnd += new Vector3(sceneLength,0,0);
-        boatPosEnd += new Vector3(sceneLength,0,0);
+        sunPosEnd += new Vector3(sceneLength, 0, 0);
+        boatPosEnd += new Vector3(sceneLength, 0, 0);
 
         lightConeColorStart = LightCone.color;
         BGColorStart = Background.color;
@@ -72,7 +72,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
         blessedDeadSprites = blessedDeadController.GetBlessedDeadSprites();
 
-        camPosEnd = new Vector3(sceneLength,0,-10);
+        camPosEnd = new Vector3(sceneLength, 0, -10);
+        Cam = Camera.main.gameObject;
     }
 
     //This is where all timeline events should be added
@@ -120,7 +121,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         if (input > 0)
         {
             float speed = Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
-            speed = Mathf.Clamp(speed, 0,0.001f);
+            speed = Mathf.Clamp(speed, 0, 0.001f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
             print("Speed: " + speed);
@@ -142,9 +143,9 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         {
             Color col = blessedDeadSprites[counter].color;
             float t = (Time.time - startTime) / blessedDeadFadeDuration;
-            float step = Mathf.SmoothStep(0,1,t);
-            step = Mathf.Clamp(step, 0,1);
-            Color temp = new Color (col.r,col.g,col.b, step);
+            float step = Mathf.SmoothStep(0, 1, t);
+            step = Mathf.Clamp(step, 0, 1);
+            Color temp = new Color(col.r, col.g, col.b, step);
             blessedDeadSprites[counter].color = temp;
             yield return null;
         }

@@ -9,9 +9,10 @@ public class ActivateTreeGrowth_Script_Hour2 : MonoBehaviour
     {
         tree = GetComponent<PlantGrowthController_Script>();
     }
-
-    void OnTriggerEnter2D(Collider2D other)
+    public void EnableTree()
     {
         tree.enabled = true;
     }
+
+
 }
