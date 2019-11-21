@@ -429,6 +429,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 545442373}
     m_Modifications:
+    - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
+        type: 3}
+      propertyPath: m_Name
+      value: Sound_Manager
+      objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -483,11 +488,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
-        type: 3}
-      propertyPath: m_Name
-      value: Sound_Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9b96e45ee10f4ba48836a0ecf1e1b12, type: 3}
@@ -750,6 +750,16 @@ PrefabInstance:
       propertyPath: snake
       value: 
       objectReference: {fileID: 844118021}
+    - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
+        type: 3}
+      propertyPath: snapBackSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
+        type: 3}
+      propertyPath: deltaThreshold
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86010997eab3c141a358136cbc02917, type: 3}
 --- !u!4 &1387044227 stripped
