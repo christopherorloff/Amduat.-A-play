@@ -361,12 +361,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b821768af52e48eabbf8d09a777251b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  riseStart: 1
+  rising: 0
   riseObject: {fileID: 244159343}
-  duration: 4
-  distance: 3
-  magnitude: 0.015
-  start: 1
+  riseDuration: 4
+  riseDistance: 3
+  riseDelay: 1
   shake: 1
+  shakeMagnitude: 0.05
 --- !u!1 &266275321
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,12 +875,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b821768af52e48eabbf8d09a777251b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  riseStart: 1
+  rising: 0
   riseObject: {fileID: 419163918}
-  duration: 4
-  distance: 3.2
-  magnitude: 0.02
-  start: 1
+  riseDuration: 4
+  riseDistance: 3.5
+  riseDelay: 2
   shake: 1
+  shakeMagnitude: 0.05
 --- !u!1001 &650568968
 PrefabInstance:
   m_ObjectHideFlags: 0

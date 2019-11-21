@@ -10,6 +10,8 @@ public class RaiseStatue_Script_Hour1 : MonoBehaviour
     public float durationOfAnimation = 5;
     public float delayBeforeSecondStatue = 4;
     public float yMax = 1;
+        
+    public float shakeMagnitude;
 
     public void StartRaisingStatues()
     {
@@ -27,8 +29,9 @@ public class RaiseStatue_Script_Hour1 : MonoBehaviour
         float startTime = Time.time;
         while (statueGO.localPosition.y < yMax)
         {
+            float x = (Random.Range(-1, 1) * shakeMagnitude);
             float t = (Time.time - startTime) / durationOfAnimation;
-            statueGO.localPosition = new Vector3(0, Mathf.SmoothStep(0, yMax, t), 0);
+            statueGO.localPosition = new Vector3(x, Mathf.SmoothStep(0, yMax, t), 0);
             yield return null;
         }
 

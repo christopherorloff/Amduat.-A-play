@@ -215,12 +215,12 @@ PrefabInstance:
     - target: {fileID: 2202619763100318435, guid: 6d5cee22ac618514688ed2d2b71da123,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5299988
+      value: 4.15
       objectReference: {fileID: 0}
     - target: {fileID: 2202619763100318435, guid: 6d5cee22ac618514688ed2d2b71da123,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7699966
+      value: -1.83
       objectReference: {fileID: 0}
     - target: {fileID: 2202619763100318435, guid: 6d5cee22ac618514688ed2d2b71da123,
         type: 3}
@@ -334,6 +334,7 @@ MonoBehaviour:
   durationOfAnimation: 5
   delayBeforeSecondStatue: 4
   yMax: 4
+  shakeMagnitude: 0.025
 --- !u!1001 &365021188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -349,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 7361623387135665986, guid: e245a4a268d700d4aafcd1a0601d295a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5999985
+      value: 12.23
       objectReference: {fileID: 0}
     - target: {fileID: 7361623387135665986, guid: e245a4a268d700d4aafcd1a0601d295a,
         type: 3}
@@ -504,6 +505,8 @@ MonoBehaviour:
   Background: {fileID: 1320382720}
   LightCone: {fileID: 1813363430}
   lightConeColorEnd: {r: 0, g: 0, b: 0, a: 0}
+  Cam: {fileID: 954888631}
+  sceneLength: 5
 --- !u!4 &560076849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3911650805466100635, guid: 378dd3be3aa104d34b1d8876b1347551,

@@ -44,8 +44,20 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     private Color lightConeColorStart;
     public Color lightConeColorEnd;
 
+    //Cam movement
+    public GameObject Cam;
+    public float sceneLength;
+    private Vector3 camPosStart = new Vector3(0,0,-10);
+    private Vector3 camPosEnd = new Vector3(0,0,-10);
+    
+
+
     void Awake()
     {
+
+        sunPosEnd += new Vector3(sceneLength,0,0);
+        boatPosEnd += new Vector3(sceneLength,0,0);
+
         lightConeColorStart = LightCone.color;
         BGColorStart = Background.color;
 
@@ -60,6 +72,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
         blessedDeadSprites = blessedDeadController.GetBlessedDeadSprites();
 
+        camPosEnd = new Vector3(sceneLength,0,-10);
     }
 
     //This is where all timeline events should be added
@@ -95,7 +108,10 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
         SunActions();
         BGActions();
+        CamAction();
     }
+
+
 
     // Functions directly connected to the timeline variable below
 
@@ -167,6 +183,11 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
             yield return null;
         }
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
+    }
+
+    private void CamAction()
+    {
+        Cam.transform.position = Vector3.Lerp(camPosStart, camPosEnd, Timeline);
     }
 }
 
