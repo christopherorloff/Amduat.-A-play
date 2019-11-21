@@ -101,6 +101,7 @@ public class LimbMovement : MonoBehaviour
 
             //If there is another limb, it is set to become active here
             if (scrolledCounter < limbs.Length) {
+                print("SETTING LIMB ACTIVE");
                 limbs[scrolledCounter].GetComponent<Limb>().isActive = true;
             }
         }
@@ -108,22 +109,26 @@ public class LimbMovement : MonoBehaviour
 
     //Checking if last direction is opposite of the previous one - if it is, then a limb will move
     void CheckIfMoving() {
+
+        float input = Scroll.scrollValue();
         if (lastDirectionUp) {
-            if (Scroll.scrollValue() < -scrollThreshold) {
+            if (input < -scrollThreshold) {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
 
                 Move();
                 lastDirectionUp = false;
+                print("DOWN");
             }
         }
         else if (!lastDirectionUp) {
-            if (Scroll.scrollValue() > scrollThreshold) {
+            if (input > scrollThreshold) {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
 
                 Move();
                 lastDirectionUp = true;
+                print("UP");
             }
         }
     }

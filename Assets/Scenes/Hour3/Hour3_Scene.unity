@@ -742,7 +742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1692190040
 Transform:
   m_ObjectHideFlags: 0
@@ -1135,7 +1135,7 @@ PrefabInstance:
         type: 3}
       propertyPath: osirisCollectedParticleSystem
       value: 
-      objectReference: {fileID: 4514205571675724669, guid: dbf780e10ffa71b4c9e9e170e38552ba,
+      objectReference: {fileID: 1550818823247192776, guid: 91869191f2b0842d0936d8caa20fe812,
         type: 3}
     - target: {fileID: 3452870665529755959, guid: ef7b40de8011246c4a230483f48cfa0b,
         type: 3}
