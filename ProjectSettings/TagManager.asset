@@ -42,3 +42,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 4070679203
+    locked: 0
+  - name: Sun
+    uniqueID: 3172760339
+    locked: 0
+  - name: PL1
+    uniqueID: 304428519
+    locked: 0
+  - name: PL2
+    uniqueID: 1370174149
+    locked: 0
+  - name: Gate
+    uniqueID: 2445838811
+    locked: 0
+  - name: boat
+    uniqueID: 1686826093
+    locked: 0
+  - name: Ligth
+    uniqueID: 371134465
+    locked: 0
+  - name: pl3
+    uniqueID: 4159720783
+    locked: 0
