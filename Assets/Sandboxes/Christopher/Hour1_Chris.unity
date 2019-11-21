@@ -245,7 +245,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 203465297}
-  - component: {fileID: 203465296}
   m_Layer: 0
   m_Name: SolarBaboon
   m_TagString: Untagged
@@ -253,18 +252,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &203465296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203465295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aade5b9a77c040ae8add7a60e89abbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &203465297
 Transform:
   m_ObjectHideFlags: 0
@@ -273,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203465295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.02981, y: -6.673329, z: -78976.914}
+  m_LocalPosition: {x: -23.5, y: -6.673329, z: -78976.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 244159344}
@@ -291,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244159344}
   - component: {fileID: 244159345}
+  - component: {fileID: 244159346}
   m_Layer: 0
   m_Name: SolarBanoon_Pilar_Hour1
   m_TagString: Untagged
@@ -306,7 +294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244159343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.87981, y: 1.073329, z: 78976.914}
+  m_LocalPosition: {x: 17.87981, y: -1.3, z: 78976.914}
   m_LocalScale: {x: 0.0336, y: 0.5187, z: 1}
   m_Children: []
   m_Father: {fileID: 203465297}
@@ -361,6 +349,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &244159346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244159343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b821768af52e48eabbf8d09a777251b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  riseObject: {fileID: 244159343}
+  duration: 4
+  distance: 3
+  magnitude: 0.015
+  start: 1
+  shake: 1
 --- !u!1 &266275321
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 419163919}
   - component: {fileID: 419163920}
+  - component: {fileID: 419163921}
   m_Layer: 0
   m_Name: SolarBanoon_Pilar_Hour1 (1)
   m_TagString: Untagged
@@ -799,7 +806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419163918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.82981, y: 1.4733291, z: 78976.914}
+  m_LocalPosition: {x: 16.82981, y: -1.1, z: 78976.914}
   m_LocalScale: {x: 0.03, y: 0.51, z: 1}
   m_Children: []
   m_Father: {fileID: 203465297}
@@ -854,6 +861,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &419163921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419163918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b821768af52e48eabbf8d09a777251b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  riseObject: {fileID: 419163918}
+  duration: 4
+  distance: 3.2
+  magnitude: 0.02
+  start: 1
+  shake: 1
 --- !u!1001 &650568968
 PrefabInstance:
   m_ObjectHideFlags: 0
