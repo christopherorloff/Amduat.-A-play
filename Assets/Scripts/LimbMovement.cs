@@ -36,6 +36,10 @@ public class LimbMovement : MonoBehaviour
     public GameObject osirisCollectedParticleSystem;
     private bool osirisCollectedParticleSystemRunning;
 
+    public PulseLight_Script PulseRed;
+    public PulseGreenLight_script pulseGreen;
+
+
     private void Start()
     {
         //Setting first limb from limbs array to be the active limb
@@ -48,6 +52,7 @@ public class LimbMovement : MonoBehaviour
     void Update()
     {
         CheckIfMoving();
+        WrongDirection();
 
         //Rotate entire object
         float step = rotationSpeed * Time.deltaTime;
@@ -107,6 +112,29 @@ public class LimbMovement : MonoBehaviour
         }
     }
 
+
+    void WrongDirection()
+    {
+
+        float input = Scroll.scrollValue();
+        if (lastDirectionUp) 
+        {
+            if (input > scrollThreshold && !PulseRed.running)
+            {
+                PulseRed.StartPulse = true;
+            }
+        }
+        else if (!lastDirectionUp)
+        {
+            if (input < -scrollThreshold && !PulseRed.running)
+            {
+                PulseRed.StartPulse = true;
+            }
+        }
+
+
+    }
+
     //Checking if last direction is opposite of the previous one - if it is, then a limb will move
     void CheckIfMoving() {
 
@@ -115,10 +143,15 @@ public class LimbMovement : MonoBehaviour
             if (input < -scrollThreshold) {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
-
                 Move();
                 lastDirectionUp = false;
                 print("DOWN");
+
+                if (!pulseGreen.running)
+                {
+                    pulseGreen.StartPulse = true;
+
+                }
             }
         }
         else if (!lastDirectionUp) {
@@ -129,6 +162,12 @@ public class LimbMovement : MonoBehaviour
                 Move();
                 lastDirectionUp = true;
                 print("UP");
+
+                if (!pulseGreen.running)
+                {
+                    pulseGreen.StartPulse = true;
+
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8393518692601054668}
   - component: {fileID: 8393518692601054669}
-  - component: {fileID: 8393518692601054670}
+  - component: {fileID: 4642059152193660935}
   m_Layer: 0
   m_Name: GreenPulseLight_Sprite
   m_TagString: Untagged
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8393518692601054670
+--- !u!114 &4642059152193660935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +90,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8393518692601054671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed1527138df5f84ba778a5a67f6fe6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b97baee38436f248b5c73806981bb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
