@@ -15,8 +15,8 @@ public class SceneManager_Hour1_Script : MonoBehaviour
 
     public PulseLight_Script Pulse;
 
-    float colorChange = 0.001f;
-    float smallColorChange = 0.0006f;
+    float colorChange = 0.05f;
+    float smallColorChange = 0.02f;
     float sunMoveSpeedX = 0.7f;
     float sunMoveSpeedY = 0.15f;
     float camMoveSpeedX = 0.4f;
@@ -30,9 +30,9 @@ public class SceneManager_Hour1_Script : MonoBehaviour
 
         if (Scroll.scrollValueAccelerated() > 0)
         {
-            SunColor.color = new Color(SunColor.color.r, SunColor.color.g - colorChange, SunColor.color.g);
-            Background.color = new Color(Background.color.r - smallColorChange, Background.color.g - smallColorChange, Background.color.b - smallColorChange);
-            SunBackLight.color = new Color(SunBackLight.color.r + smallColorChange, SunBackLight.color.g, SunBackLight.color.b, SunBackLight.color.a - colorChange);
+            SunColor.color = new Color(SunColor.color.r, SunColor.color.g - colorChange * Time.deltaTime, SunColor.color.g);
+            Background.color = new Color(Background.color.r - smallColorChange * Time.deltaTime, Background.color.g - smallColorChange * Time.deltaTime, Background.color.b - smallColorChange * Time.deltaTime);
+            SunBackLight.color = new Color(SunBackLight.color.r + smallColorChange * Time.deltaTime, SunBackLight.color.g, SunBackLight.color.b, SunBackLight.color.a - colorChange * Time.deltaTime);
 
             Sun.transform.position += new Vector3(sunMoveSpeedX * Time.deltaTime, -sunMoveSpeedY * Time.deltaTime, 0);
             
@@ -44,7 +44,7 @@ public class SceneManager_Hour1_Script : MonoBehaviour
             }
             else
             {
-                LightCone.color = new Color(LightCone.color.r, LightCone.color.g, LightCone.color.b, LightCone.color.a + colorChange);
+                LightCone.color = new Color(LightCone.color.r, LightCone.color.g, LightCone.color.b, LightCone.color.a + colorChange * Time.deltaTime);
             }
         }
 
