@@ -1426,7 +1426,7 @@ PrefabInstance:
     - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
       propertyPath: deltaThreshold
-      value: 0.05
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
@@ -1436,7 +1436,7 @@ PrefabInstance:
     - target: {fileID: 5252765413997357822, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
       propertyPath: snapBackSpeed
-      value: 0.002
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3759204914796912814, guid: d86010997eab3c141a358136cbc02917,
         type: 3}
