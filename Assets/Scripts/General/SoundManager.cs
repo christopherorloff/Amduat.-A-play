@@ -15,24 +15,64 @@ public class SoundManager : MonoBehaviour
     private string activeScene;
 
     //AMBIENCE
-    private string oceanAmbPath = "event:/HOUR 7/Ocean";
-    public FMOD.Studio.EventInstance oceanAmbInstance;
+    private string waterAmbPath = "event:/AMBIENCE/Water";
+    public FMOD.Studio.EventInstance waterAmbInstance;
 
-    //MUSIC
-    private string showdownMuPath = "event:/MUSIC/Showdown";
-    public FMOD.Studio.EventInstance showdownMuInstance;
+    private string jungleAmbPath = "event:/AMBIENCE/Hour2_Jungle";
+    public FMOD.Studio.EventInstance jungleAmbInstance;
+
+    private string seaCaveAmbPath = "event:/AMBIENCE/Hour4_SeaCave";
+    public FMOD.Studio.EventInstance seaCaveAmbInstance;
+
+    //General Sounds
+    private string blessedDeadAppearPath = "event:/GENERAL SOUNDS/BlessedDeadAppear";
+
+    private string boatPaddlePath = "event:/GENERAL SOUNDS/BoatPaddle";
+    public FMOD.Studio.EventInstance boatPaddleInstance;
+
+    //Hour 1 Sounds
+    private string solarBaboonsAppearPath = "event:/HOUR 1/SolarBaboonsAppear";
+    public FMOD.Studio.EventInstance solarBaboonsAppearInstance;
+
+    private string sunMovePath = "event:/HOUR 1/SunMove";
+    public FMOD.Studio.EventInstance sunMoveInstance;
+
+    //Hour 2 Sounds
+    private string grainGodSpewPath = "event:/HOUR 2/GrainGodSpew";
+    public FMOD.Studio.EventInstance grainGodSpewInstance;
+
+    private string growAttackPath = "event:/HOUR 2/GrowAttack";
+    public FMOD.Studio.EventInstance growAttackInstance;
+
+    private string growLoopPath = "event:/HOUR 2/GrowLoop";
+    public FMOD.Studio.EventInstance growLoopInstance;
 
     //Hour 3 Sounds
     private string osirisLimbPath = "event:/HOUR 3/OsirisLimbCollected";
     public FMOD.Studio.EventInstance osirisLimbInstance;
 
+    //Hour 4 Sounds
+    private string collectEnergyPath = "event:/HOUR 4/CollectEnergy";
+
+    private string towBoatPath = "event:/HOUR 4/TowBoat";
+
+    private string goddessesAppearingPath = "event:/HOUR 4/GoddessesAppearing";
+    public FMOD.Studio.EventInstance goddessesAppearingInstance;
+
+
+    //Hour 5 Sounds
+
+
     //Hour 6 Sounds
     private string knifeSpawnPath = "event:/HOUR 6/KnifeSpawn";
     public FMOD.Studio.EventInstance knifeSpawnInstance;
+
     private string knifeThrowPath = "event:/HOUR 6/KnifeThrow";
     public FMOD.Studio.EventInstance knifeThrowInstance;
+
     private string knifeHitPath = "event:/HOUR 6/KnifeHit";
     public FMOD.Studio.EventInstance knifeHitInstance;
+
     private string knifeClangPath = "event:/HOUR 6/KnifeClang";
     public FMOD.Studio.EventInstance knifeClangInstance;
 
@@ -45,14 +85,21 @@ public class SoundManager : MonoBehaviour
    
     private string spearReadyPath = "event:/HOUR 7/SpearReady";
     public FMOD.Studio.EventInstance spearReadyInstance;
+
     private string spearHitPath = "event:/HOUR 7/SpearHit";
     public FMOD.Studio.EventInstance spearHitInstance;
+
     private string spearMissPath = "event:/HOUR 7/SpearMiss";
     public FMOD.Studio.EventInstance spearMissInstance;
     FMOD.Studio.PLAYBACK_STATE spearMissPlaybackState;
     bool spearIsNotPlaying;
+
     private string spearChargePath = "event:/HOUR 7/SpearCharge";
     public FMOD.Studio.EventInstance spearChargeInstance;
+
+    //MUSIC
+    private string showdownMuPath = "event:/MUSIC/Showdown";
+    public FMOD.Studio.EventInstance showdownMuInstance;
 
     //private bool nextScene;
 
@@ -67,7 +114,6 @@ public class SoundManager : MonoBehaviour
         //Initialize system. Create sound instances.
         system = FMODUnity.RuntimeManager.StudioSystem;
         CreateSoundInstances();
-        
         HourInitialSounds(hour);
     }
 
@@ -110,13 +156,22 @@ public class SoundManager : MonoBehaviour
 
     void CreateSoundInstances() { 
         //AMBIENCE INSTANCES
-        oceanAmbInstance = FMODUnity.RuntimeManager.CreateInstance(oceanAmbPath);
+        waterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(waterAmbPath);
 
         //MUSIC INSTANCES
         showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
 
+        //HOUR 1 SFX INSTANCES
+        solarBaboonsAppearInstance = FMODUnity.RuntimeManager.CreateInstance(solarBaboonsAppearPath);
+
+        //HOUR 2 SFX INSTANCES
+        grainGodSpewInstance = FMODUnity.RuntimeManager.CreateInstance(grainGodSpewPath);
+
         //HOUR 3 SFX INSTANCES
         osirisLimbInstance = FMODUnity.RuntimeManager.CreateInstance(osirisLimbPath);
+
+        //HOUR 4 SFX INSTANCES
+
 
         //HOUR 6 SFX INSTANCES
         knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);
@@ -168,20 +223,9 @@ public class SoundManager : MonoBehaviour
         if (_hour == 5) { }
 
         if (_hour == 6) {
-            showdownMuInstance.start();
-
-            apopisAppearInstance.start();
-
-            oceanAmbInstance.start();
-            oceanAmbInstance.setParameterByName("Intensity", 0.8f);
         }
 
         if (_hour == 7) {
-            showdownMuInstance.setParameterByName("End", 1f);
-
-            oceanAmbInstance.start();
-            oceanAmbInstance.setParameterByName("Intensity", 0f);
-            apopisIdleInstance.start();
             spearChargeInstance.start();
         }
 
