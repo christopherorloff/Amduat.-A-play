@@ -69,4 +69,9 @@ public class Timeline_BaseClass : MonoBehaviour
             keys.Enqueue(tempKeys[i]);
         }
     }
+
+    public float GetTimeline()
+    {
+        return Timeline;
+    }
 }
