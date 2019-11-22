@@ -33,7 +33,7 @@ public class fadeScript : MonoBehaviour
         if (t < 1f)
         { 
             t += Time.deltaTime/colorChangeDuration;
-            Debug.Log(t);
+            //Debug.Log(t);
         }
 
         if (t >= 1.0f)

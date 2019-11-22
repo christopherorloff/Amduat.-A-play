@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
+using System;
 
 public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 {
@@ -20,6 +21,10 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 
     //Trees
     public ActivateTreeGrowth_Script_Hour2[] treeActivators;
+    private int treeCounter = 0;
+
+    //Spraying statues
+    public WheatRain_Script_Hour2 wheatSpray;
 
     //Cam movement
     private GameObject Cam;
@@ -44,19 +49,26 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     //Add timeline events and HandleKeys(). Remember HandleKeys() at the end, or nothing works
     void Start()
     {
+        //Boat movement
         AddTimelineEvent(0.2f, BoatActions);
         AddTimelineEvent(0.4f, BoatActions);
         AddTimelineEvent(0.6f, BoatActions);
         AddTimelineEvent(0.8f, BoatActions);
         AddTimelineEvent(0.99f, BoatActions);
 
+        AddTimelineEvent(0.8f, wheatSpray.StartSpraying);
+        //Trees
+        for (int i = 0; i < treeActivators.Length; i++)
+        {
+            AddTimelineEvent(treeActivators[i].GetTimelinePosition(), TreeActivationAction);
+        }
         HandleKeys();
     }
 
 
     void Update()
     {
-        float input = Scroll.scrollValueAccelerated(0.99f);
+        float input = Scroll.scrollValue();
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         ConvertInputToProgress(input);
         CamAction();
@@ -83,6 +95,9 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 
     private IEnumerator MoveBoat()
     {
+        FMOD.Studio.EventInstance boatPaddleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
+        boatPaddleInstance.start();
+
         print("MoveBoat");
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance;
@@ -96,6 +111,17 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
             yield return null;
         }
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
+    }
+
+    private void TreeActivationAction()
+    {
+        treeActivators[treeCounter].EnableTree();
+        treeCounter++;
+    }
+
+    private float GetTreeRelativePosition(float xPos)
+    {
+        return Mathf.InverseLerp(boatPosStart.x, boatPosEnd.x, xPos);
     }
 
     private void CamAction()

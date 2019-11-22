@@ -50,7 +50,6 @@ public class Timeline_BaseClass : MonoBehaviour
 
     protected void AddTimelineEvent(float percentageInvoke, Action action)
     {
-        print("Adding timeline event");
         if (timelineEvents.ContainsKey(percentageInvoke))
         {
             timelineEvents[percentageInvoke].Add(action);
@@ -59,7 +58,6 @@ public class Timeline_BaseClass : MonoBehaviour
         {
             timelineEvents[percentageInvoke] = new List<Action> { action };
         }
-        print("Number of TLE: " + timelineEvents.Count);
     }
 
     protected void HandleKeys()
@@ -70,5 +68,10 @@ public class Timeline_BaseClass : MonoBehaviour
         {
             keys.Enqueue(tempKeys[i]);
         }
+    }
+
+    public float GetTimeline()
+    {
+        return Timeline;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8629667638077075033}
   - component: {fileID: 8629667638077075034}
+  - component: {fileID: 3113092357810032439}
   m_Layer: 0
   m_Name: PlantGrowth_Controller
   m_TagString: Untagged
@@ -50,4 +51,18 @@ MonoBehaviour:
   speedMultiplier: 1
   minimizationPerGeneration: 0.9
   AddRandomization: 1
-  BranchColor: {r: 0, g: 0, b: 0, a: 0}
+  spawnLeafs: 0
+--- !u!114 &3113092357810032439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629667638077075035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3fc8fcf4c60a4ae5b4d11a1eccacf0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  growEffect: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
+    type: 3}

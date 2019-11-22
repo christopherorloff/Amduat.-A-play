@@ -850,11 +850,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hour2_PlanetGrow_Particle
       objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274989, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2411456244045274990, guid: 62de673f28b5bc54891804ee507d5da1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,86 +905,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -123.14
       objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: NoiseModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: NoiseModule.strength.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: VelocityModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: VelocityModule.orbitalX.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: VelocityModule.orbitalY.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: VelocityModule.orbitalZ.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: TrailModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: TrailModule.ratio
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: TrailModule.lifetime.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: ForceModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: ForceModule.y.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: ForceModule.z.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274991, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: ForceModule.x.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2411456244045274988, guid: 62de673f28b5bc54891804ee507d5da1,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 13a73a9cd91a4e74495d52d634dd9af3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62de673f28b5bc54891804ee507d5da1, type: 3}
 --- !u!1001 &2819185897966754213
