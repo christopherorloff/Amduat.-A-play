@@ -143,8 +143,12 @@ public class SoundManager : MonoBehaviour
         }
 
         if(GetHour() == 1) {
-            sunMoveInstance.setParameterByName("Scroll", Scroll.scrollValueAccelerated() * 10);
-            sunMoveInstance.setParameterByName("Progrss", timelineHour1.GetTimeline());
+            if(timelineHour1.GetTimeline() < 1) {
+                float input = Scroll.scrollValueAccelerated();
+
+                sunMoveInstance.setParameterByName("Scroll", input * 10);
+                sunMoveInstance.setParameterByName("Progrss", timelineHour1.GetTimeline());
+            }
         }
 
         if(GetHour() == 2) {
