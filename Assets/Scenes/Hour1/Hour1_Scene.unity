@@ -501,25 +501,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &851761338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8819955681542387185, guid: efc724917eca24715ac1c6c0bbabea7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da032c62ea1ea42c387c958e2747451e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statue1: {fileID: 0}
-  statue2: {fileID: 0}
-  durationOfAnimation: 5
-  delayBeforeSecondStatue: 4
-  yMax: 1
-  shakeMagnitude: 0
 --- !u!1 &988401860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1112,18 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 3767573296124886282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1404188267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8819955681542387185, guid: efc724917eca24715ac1c6c0bbabea7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 665933380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da032c62ea1ea42c387c958e2747451e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1598448898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1260,7 @@ MonoBehaviour:
   numberOfBoatSegments: 5
   durationOfBoatSegments: 3
   blessedDeadController: {fileID: 733701303}
-  SolarBaboons: {fileID: 851761338}
+  SolarBaboons: {fileID: 1404188267}
   Background: {fileID: 1397832032}
   LightCone: {fileID: 2131241520}
   lightConeColorEnd: {r: 0, g: 0, b: 0, a: 0}
