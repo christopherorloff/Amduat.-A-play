@@ -22,6 +22,8 @@ public class WheatRain_Script_Hour2 : MonoBehaviour
 
     IEnumerator startSprayWithDelay()
     {
+        SoundManager.Instance.grainGodSpewInstance.start();
+
         yield return new WaitForSeconds(delayBeforeSpray);
         foreach (var item in particleSystems)
         {

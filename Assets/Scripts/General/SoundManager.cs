@@ -146,6 +146,21 @@ public class SoundManager : MonoBehaviour
             sunMoveInstance.setParameterByName("Scroll", Scroll.scrollValueAccelerated() * 10);
             sunMoveInstance.setParameterByName("Progrss", timelineHour1.GetTimeline());
         }
+
+        if(GetHour() == 2) {
+
+            float input = -Scroll.scrollValueAccelerated();
+            print(input);
+
+            if (input > 0.05) {
+                growLoopInstance.setParameterByName("Scroll", 1);
+            } else if (input < 0.05f) {
+                growLoopInstance.setParameterByName("Scroll", 0);
+                print("NOW");
+            }
+
+
+        }
     }
 
     private void SceneChanged()
@@ -179,6 +194,7 @@ public class SoundManager : MonoBehaviour
 
         //HOUR 2 SFX INSTANCES
         grainGodSpewInstance = FMODUnity.RuntimeManager.CreateInstance(grainGodSpewPath);
+        growLoopInstance = FMODUnity.RuntimeManager.CreateInstance(growLoopPath);
 
         //HOUR 3 SFX INSTANCES
         osirisLimbInstance = FMODUnity.RuntimeManager.CreateInstance(osirisLimbPath);
@@ -240,6 +256,8 @@ public class SoundManager : MonoBehaviour
                 waterAmbInstance.start();
             }
             jungleAmbInstance.start();
+
+            growLoopInstance.start();
         }
         if (_hour == 3) { }
         if (_hour == 4) { }
