@@ -135,7 +135,6 @@ public class SpearAnimation : MonoBehaviour
             //Starting spear ready sound. Stopping other sounds.
             SoundManager.Instance.spearReadyInstance.start();
             SoundManager.Instance.spearChargeInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            SoundManager.Instance.oceanAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             SoundManager.Instance.apopisIdleInstance.setParameterByName("Stop", 1);
 
             print("readytostap");

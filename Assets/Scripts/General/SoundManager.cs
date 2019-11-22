@@ -14,6 +14,8 @@ public class SoundManager : MonoBehaviour
     private int hour;
     private string activeScene;
 
+    public TimelineManager_Script_Hour1 timelineHour1;
+
     //AMBIENCE
     private string waterAmbPath = "event:/AMBIENCE/Water";
     public FMOD.Studio.EventInstance waterAmbInstance;
@@ -28,7 +30,6 @@ public class SoundManager : MonoBehaviour
     private string blessedDeadAppearPath = "event:/GENERAL SOUNDS/BlessedDeadAppear";
 
     private string boatPaddlePath = "event:/GENERAL SOUNDS/BoatPaddle";
-    public FMOD.Studio.EventInstance boatPaddleInstance;
 
     //Hour 1 Sounds
     private string solarBaboonsAppearPath = "event:/HOUR 1/SolarBaboonsAppear";
@@ -136,13 +137,18 @@ public class SoundManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S)) {
         }
+
+        if(GetHour() == 1) {
+            sunMoveInstance.setParameterByName("Scroll", Scroll.scrollValueAccelerated() * 10);
+            sunMoveInstance.setParameterByName("Progrss", timelineHour1.GetTimeline());
+        }
     }
 
     private void SceneChanged()
     {
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
         //print("Scene changed [Sound Manager]");
-        HourInitialSounds(7);
+        //HourInitialSounds(7);
     }
     
     // Flot kodestil Jacob!
@@ -157,12 +163,15 @@ public class SoundManager : MonoBehaviour
     void CreateSoundInstances() { 
         //AMBIENCE INSTANCES
         waterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(waterAmbPath);
+        jungleAmbInstance = FMODUnity.RuntimeManager.CreateInstance(jungleAmbPath);
+        seaCaveAmbInstance = FMODUnity.RuntimeManager.CreateInstance(seaCaveAmbPath);
 
         //MUSIC INSTANCES
         showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
 
         //HOUR 1 SFX INSTANCES
         solarBaboonsAppearInstance = FMODUnity.RuntimeManager.CreateInstance(solarBaboonsAppearPath);
+        sunMoveInstance = FMODUnity.RuntimeManager.CreateInstance(sunMovePath);
 
         //HOUR 2 SFX INSTANCES
         grainGodSpewInstance = FMODUnity.RuntimeManager.CreateInstance(grainGodSpewPath);
@@ -216,7 +225,10 @@ public class SoundManager : MonoBehaviour
     }
 
     public void HourInitialSounds(int _hour) { 
-        if (_hour == 1) { }
+        if (_hour == 1) {
+            waterAmbInstance.start();
+            sunMoveInstance.start();
+        }
         if (_hour == 2) { }
         if (_hour == 3) { }
         if (_hour == 4) { }

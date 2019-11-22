@@ -137,6 +137,9 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
     IEnumerator BlessedDeadFadeIn(int counter)
     {
+        FMOD.Studio.EventInstance blessedDeadAppearInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadAppear");
+        blessedDeadAppearInstance.start();
+
         float startTime = Time.time;
         print("BlessedDead " + blessedDeadCounter + " event, at " + Timeline);
         while (blessedDeadSprites[counter].color.a < 1)
@@ -171,6 +174,9 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
     private IEnumerator MoveBoat()
     {
+        FMOD.Studio.EventInstance boatPaddleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
+        boatPaddleInstance.start();
+
         print("MoveBoat");
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance;

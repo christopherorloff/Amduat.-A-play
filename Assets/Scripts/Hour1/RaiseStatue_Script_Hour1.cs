@@ -21,6 +21,8 @@ public class RaiseStatue_Script_Hour1 : MonoBehaviour
 
     private IEnumerator RaisingStatue(Transform statueGO, float delay)
     {
+        SoundManager.Instance.solarBaboonsAppearInstance.start();
+
         if (delay > 0)
         {
             yield return new WaitForSeconds(delay);
