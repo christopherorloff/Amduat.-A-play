@@ -212,6 +212,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightCone_sprite
       objectReference: {fileID: 0}
+    - target: {fileID: 2202619763100318460, guid: 6d5cee22ac618514688ed2d2b71da123,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2202619763100318435, guid: 6d5cee22ac618514688ed2d2b71da123,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -276,11 +281,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.37734336
-      objectReference: {fileID: 0}
-    - target: {fileID: 2202619763100318460, guid: 6d5cee22ac618514688ed2d2b71da123,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d5cee22ac618514688ed2d2b71da123, type: 3}
@@ -404,53 +404,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e245a4a268d700d4aafcd1a0601d295a, type: 3}
---- !u!1 &416067865
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 416067867}
-  - component: {fileID: 416067866}
-  m_Layer: 0
-  m_Name: BlessedDead_Parent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &416067866
+--- !u!114 &416067866 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8569336085774025372, guid: 73ce52716c46843ef9521859bc909a4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8569336085911696262}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416067865}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8c0889bbcf6348f8b683132e5939e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boatTarget: {fileID: 2007019711}
-  blessedDeadPrefab: {fileID: 6500564169307860162, guid: 0ecd6be79123f4f78b625c16753fbee8,
-    type: 3}
-  numberOfBlessedDead: 15
---- !u!4 &416067867
+--- !u!4 &416067867 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8569336085911696262}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416067865}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 876806119}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525766056
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +476,6 @@ MonoBehaviour:
   Background: {fileID: 1320382720}
   LightCone: {fileID: 1813363430}
   lightConeColorEnd: {r: 0, g: 0, b: 0, a: 0}
-  Cam: {fileID: 954888631}
   sceneLength: 5
 --- !u!4 &560076849 stripped
 Transform:
@@ -1353,3 +1323,77 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8075829704808502749}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8569336085911696262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 876806119}
+    m_Modifications:
+    - target: {fileID: 8569336085774025375, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_Name
+      value: BlessedDead_Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025373, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569336085774025372, guid: 73ce52716c46843ef9521859bc909a4f,
+        type: 3}
+      propertyPath: boatTarget
+      value: 
+      objectReference: {fileID: 2007019711}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73ce52716c46843ef9521859bc909a4f, type: 3}
