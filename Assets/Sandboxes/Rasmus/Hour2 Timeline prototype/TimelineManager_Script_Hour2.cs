@@ -95,6 +95,9 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 
     private IEnumerator MoveBoat()
     {
+        FMOD.Studio.EventInstance boatPaddleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
+        boatPaddleInstance.start();
+
         print("MoveBoat");
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance;

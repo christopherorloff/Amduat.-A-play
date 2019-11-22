@@ -15,10 +15,14 @@ public class SoundManager : MonoBehaviour
     private string activeScene;
 
     public TimelineManager_Script_Hour1 timelineHour1;
+    public TimelineManager_Script_Hour2 timelineHour2;
+
 
     //AMBIENCE
     private string waterAmbPath = "event:/AMBIENCE/Water";
     public FMOD.Studio.EventInstance waterAmbInstance;
+    FMOD.Studio.PLAYBACK_STATE waterAmbPlaybackState;
+    bool waterAmbIsNotPlaying;
 
     private string jungleAmbPath = "event:/AMBIENCE/Hour2_Jungle";
     public FMOD.Studio.EventInstance jungleAmbInstance;
@@ -229,7 +233,14 @@ public class SoundManager : MonoBehaviour
             waterAmbInstance.start();
             sunMoveInstance.start();
         }
-        if (_hour == 2) { }
+        if (_hour == 2) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying) {
+                waterAmbInstance.start();
+            }
+            jungleAmbInstance.start();
+        }
         if (_hour == 3) { }
         if (_hour == 4) { }
         if (_hour == 5) { }
