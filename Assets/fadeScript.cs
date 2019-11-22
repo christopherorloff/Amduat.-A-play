@@ -36,7 +36,7 @@ public class fadeScript : MonoBehaviour
             Debug.Log(t);
         }
 
-        if (t > 1.0f)
+        if (t >= 1.0f)
         {
             float temp1 = max1;
             max1 = min1;
