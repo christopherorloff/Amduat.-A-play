@@ -148,6 +148,8 @@ public class SoundManager : MonoBehaviour
 
                 sunMoveInstance.setParameterByName("Scroll", input * 10);
                 sunMoveInstance.setParameterByName("Progrss", timelineHour1.GetTimeline());
+            } else {
+                sunMoveInstance.setParameterByName("Scroll", 0);
             }
         }
 
@@ -156,7 +158,7 @@ public class SoundManager : MonoBehaviour
             float input = -Scroll.scrollValueAccelerated();
             print(input);
 
-            if(timelineHour2.GetTimeline() < 1) {
+            if(timelineHour2.GetTimeline() < 0.9f) {
                 if (input > 0.01)
                 {
                     if (growAttackReady)
