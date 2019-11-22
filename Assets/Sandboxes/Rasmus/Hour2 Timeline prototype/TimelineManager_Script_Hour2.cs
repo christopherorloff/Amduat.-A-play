@@ -50,13 +50,13 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     void Start()
     {
         //Boat movement
+        AddTimelineEvent(0.0f, BoatActions);
         AddTimelineEvent(0.2f, BoatActions);
         AddTimelineEvent(0.4f, BoatActions);
         AddTimelineEvent(0.6f, BoatActions);
-        AddTimelineEvent(0.8f, BoatActions);
-        AddTimelineEvent(0.99f, BoatActions);
+        AddTimelineEvent(0.9f, BoatActions);
 
-        AddTimelineEvent(0.8f, wheatSpray.StartSpraying);
+        AddTimelineEvent(0.7f, wheatSpray.StartSpraying);
         //Trees
         for (int i = 0; i < treeActivators.Length; i++)
         {

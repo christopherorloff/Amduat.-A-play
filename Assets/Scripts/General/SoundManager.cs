@@ -47,7 +47,7 @@ public class SoundManager : MonoBehaviour
     public FMOD.Studio.EventInstance grainGodSpewInstance;
 
     private string growAttackPath = "event:/HOUR 2/GrowAttack";
-    public FMOD.Studio.EventInstance growAttackInstance;
+    public bool growAttackReady = true;
 
     private string growLoopPath = "event:/HOUR 2/GrowLoop";
     public FMOD.Studio.EventInstance growLoopInstance;
@@ -152,14 +152,25 @@ public class SoundManager : MonoBehaviour
             float input = -Scroll.scrollValueAccelerated();
             print(input);
 
-            if (input > 0.05) {
-                growLoopInstance.setParameterByName("Scroll", 1);
-            } else if (input < 0.05f) {
+            if(timelineHour2.GetTimeline() < 1) {
+                if (input > 0.01)
+                {
+                    if (growAttackReady)
+                    {
+                        FMOD.Studio.EventInstance growAttackInstance = FMODUnity.RuntimeManager.CreateInstance(growAttackPath);
+                        growAttackInstance.start();
+                        growAttackReady = false;
+                    }
+                    growLoopInstance.setParameterByName("Scroll", 1);
+                }
+                else if (input < 0.01f)
+                {
+                    growLoopInstance.setParameterByName("Scroll", 0);
+                    growAttackReady = true;
+                }
+            } else {
                 growLoopInstance.setParameterByName("Scroll", 0);
-                print("NOW");
             }
-
-
         }
     }
 
@@ -259,8 +270,24 @@ public class SoundManager : MonoBehaviour
 
             growLoopInstance.start();
         }
-        if (_hour == 3) { }
-        if (_hour == 4) { }
+        if (_hour == 3) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+            jungleAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+        if (_hour == 4) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+            seaCaveAmbInstance.start();
+        }
         if (_hour == 5) { }
 
         if (_hour == 6) {
