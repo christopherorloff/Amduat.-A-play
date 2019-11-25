@@ -67,6 +67,9 @@ public class SoundManager : MonoBehaviour
     private string goddessesAppearingPath = "event:/HOUR 4/GoddessesAppearing";
     public FMOD.Studio.EventInstance goddessesAppearingInstance;
 
+    private string boatAgroundPath = "event:/HOUR 4/BoatAground";
+    public FMOD.Studio.EventInstance boatAgroundInstance;
+
 
     //Hour 5 Sounds
 
@@ -227,6 +230,7 @@ public class SoundManager : MonoBehaviour
 
         //HOUR 4 SFX INSTANCES
         goddessesAppearingInstance = FMODUnity.RuntimeManager.CreateInstance(goddessesAppearingPath);
+        boatAgroundInstance = FMODUnity.RuntimeManager.CreateInstance(boatAgroundPath);
 
         //HOUR 6 SFX INSTANCES
         knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);
@@ -302,6 +306,7 @@ public class SoundManager : MonoBehaviour
                 waterAmbInstance.start();
             }
             seaCaveAmbInstance.start();
+            boatAgroundInstance.start();
         }
         if (_hour == 5) { }
 
