@@ -29,6 +29,8 @@ public class Limb : MonoBehaviour
     private bool directionParticleRunning;
     private GameObject particle;
 
+    public Sprite greenLimb;
+
     private void Start()
     {
         shake = GetComponentInParent<Shake>();
@@ -60,6 +62,8 @@ public class Limb : MonoBehaviour
                 {
                     smoothTime = 0;
                     isDone = true;
+                    GetComponent<SpriteRenderer>().sprite = greenLimb;
+
                     //isMoving = false;
 
                     if (!particleRunning)

@@ -226,7 +226,7 @@ public class SoundManager : MonoBehaviour
         osirisLimbInstance = FMODUnity.RuntimeManager.CreateInstance(osirisLimbPath);
 
         //HOUR 4 SFX INSTANCES
-
+        goddessesAppearingInstance = FMODUnity.RuntimeManager.CreateInstance(goddessesAppearingPath);
 
         //HOUR 6 SFX INSTANCES
         knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);

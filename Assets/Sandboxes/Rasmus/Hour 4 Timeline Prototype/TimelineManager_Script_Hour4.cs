@@ -108,6 +108,9 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
 
     private IEnumerator Draw()
     {
+        FMOD.Studio.EventInstance collectEnergyInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/CollectEnergy");
+        collectEnergyInstance.start();
+
         coroutineRunning = true;
         print("Pull coroutine");
         float startTime = Time.time;
@@ -131,6 +134,9 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
 
     private IEnumerator Pull()
     {
+        FMOD.Studio.EventInstance towBoatInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/TowBoat");
+        towBoatInstance.start();
+
         coroutineRunning = true;
         print("Draw coroutine");
         float startTime = Time.time;

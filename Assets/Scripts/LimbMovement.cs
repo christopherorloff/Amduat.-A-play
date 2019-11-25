@@ -39,6 +39,8 @@ public class LimbMovement : MonoBehaviour
     public PulseLight_Script PulseRed;
     public PulseGreenLight_script pulseGreen;
 
+    public Sprite greenTorso;
+
 
     private void Start()
     {
@@ -65,6 +67,8 @@ public class LimbMovement : MonoBehaviour
         //Initiate final animation of Osiris rising, when all limbs collected
         //Instantiating particle system
         if (isDone) {
+            torso.GetComponent<SpriteRenderer>().sprite = greenTorso;
+
             Transform[] targetTransforms = new Transform[limbs.Length];
             float moveStep = endSpeed * Time.deltaTime;
 
