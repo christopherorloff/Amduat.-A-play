@@ -25,7 +25,7 @@ namespace ScrollManager
         const float webGLScalar = 0.75f;
 
         //OnNewScroll
-        static float maxVelocityCap = 0.1f;
+        static float maxVelocityCap = 0.05f;
         static bool maxVelocityCapReached = false;
 
         //Flags
@@ -39,7 +39,7 @@ namespace ScrollManager
         //Event related
         void Update()
         {
-            //Ony process if any subscribers to either events
+            //Only process if any subscribers to either events
             if (OnScrollEnter != null || OnScrollExit != null)
             {
                 float input = Mathf.Abs(Scroll.scrollValueMean(10));
