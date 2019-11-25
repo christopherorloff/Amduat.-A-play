@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6c10ac700d94462928de042e861b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPulls: 10
+  numberOfPulls: 5
   boat: {fileID: 1630008398}
   startPosBoat: {fileID: 261543751}
   endPosBoat: {fileID: 913370865}
@@ -999,7 +999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913370864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.17, y: -2, z: 0}
+  m_LocalPosition: {x: 3.3, y: -2, z: 0}
   m_LocalScale: {x: 1.6594, y: 1.6594, z: 1.6594}
   m_Children: []
   m_Father: {fileID: 767317810}

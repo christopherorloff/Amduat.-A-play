@@ -75,6 +75,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             //TRIGGER FADE OUT
             //CHANGE TO NEXT LEVEL
             //ALL THAT JAZZ...
+            print("Timeline 100%, might still have to wait for the last animations/movement");
             return;
         }
 
@@ -85,7 +86,8 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             if (!coroutineRunning)
             {
                 //Add percentage to timeline
-                Timeline += (1 / numberOfPulls / 2);
+                Timeline += (1.0f / (float)numberOfPulls / 2.0f);
+                print("Timeline: " + Timeline);
                 if (nextIsDraw)
                 {
                     StartCoroutine(Draw());
@@ -110,10 +112,10 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     {
         FMOD.Studio.EventInstance collectEnergyInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/CollectEnergy");
         collectEnergyInstance.start();
+        float startTime = Time.time;
 
         coroutineRunning = true;
-        print("Pull coroutine");
-        float startTime = Time.time;
+        print("Draw coroutine");
         Quaternion startRotation = goddesses[0].rotation;
         Quaternion endRotation = Quaternion.Euler(0, 0, rotationAfterDraw);
         float t = 0;
@@ -121,13 +123,12 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         {
             t = (Time.time - startTime) / drawDuration;
             t = (t * t * t);
-            print(t);
+            t = Mathf.Clamp(t, 0, 1);
             for (int i = 0; i < goddesses.Length; i++)
             {
                 goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
-                yield return null;
             }
-
+            yield return null;
         }
         coroutineRunning = false;
     }
@@ -138,7 +139,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         towBoatInstance.start();
 
         coroutineRunning = true;
-        print("Draw coroutine");
+        print("Pull coroutine");
         float startTime = Time.time;
         Quaternion startRotation = goddesses[0].rotation;
         Quaternion endRotation = Quaternion.Euler(0, 0, rotationAfterPull);
@@ -149,18 +150,16 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         {
             t = (Time.time - startTime) / drawDuration;
             t = (t * t * t * t * t);
-            print(t);
+            t = Mathf.Clamp(t, 0, 1);
             for (int i = 0; i < goddesses.Length; i++)
             {
                 goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
                 goddessesParent.position = Vector3.Lerp(startPositionGoddesses, endPositionGoddesses, t);
                 boat.transform.position = Vector3.Lerp(startPositionGoddesses - boatDistanceToGoddesses, endPositionGoddesses - boatDistanceToGoddesses, t);
-                yield return null;
             }
-
+            yield return null;
         }
         coroutineRunning = false;
-        yield return null;
     }
 
     bool GetSignBool(float input)
