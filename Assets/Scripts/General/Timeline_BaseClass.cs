@@ -62,6 +62,12 @@ public class Timeline_BaseClass : MonoBehaviour
 
     protected void HandleKeys()
     {
+        if (timelineEvents.Count == 0)
+        {
+            print("No timeline events");
+            timelineEventsEmpty = true;
+            return;
+        }
         float[] tempKeys = new float[timelineEvents.Keys.Count];
         timelineEvents.Keys.CopyTo(tempKeys, 0);
         for (int i = 0; i < tempKeys.Length; i++)
