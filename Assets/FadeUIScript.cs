@@ -7,7 +7,7 @@ public class FadeUIScript : MonoBehaviour
 {
 
     public Text textObject;
-    public SpriteRenderer FadeSprite;
+    public CanvasGroup FadeSprite;
     public GameObject canvas;
 
     public bool sceneEnd = false;
@@ -16,6 +16,7 @@ public class FadeUIScript : MonoBehaviour
     void Start()
     {
         canvas.SetActive(true);
+        FadeSprite = canvas.GetComponent<CanvasGroup>();
         StartCoroutine(FadeSpriteCoroutineDown(0, 4f));
     }
 
@@ -37,11 +38,10 @@ public class FadeUIScript : MonoBehaviour
         float startTime = Time.time;
 
 
-        while (FadeSprite.color.a > value)
+        while (FadeSprite.alpha > value)
         {
             float t = (Time.time - startTime) / time;
-            Color newColor = new Color(FadeSprite.color.r, FadeSprite.color.g, FadeSprite.color.b, Mathf.Lerp(startValue, value, t));
-            FadeSprite.color = newColor;
+            FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
             yield return null;
 
 
@@ -51,7 +51,7 @@ public class FadeUIScript : MonoBehaviour
 
     }
 
-
+    
     public IEnumerator FadeSpriteCoroutineUp(float value, float time)
     {
         sceneEnd = false;
@@ -60,15 +60,14 @@ public class FadeUIScript : MonoBehaviour
         float startTime = Time.time;
 
 
-        while (FadeSprite.color.a < value)
+        while (FadeSprite.alpha < value)
         {
             float t = (Time.time - startTime) / time;
-            Color newColor = new Color(FadeSprite.color.r, FadeSprite.color.g, FadeSprite.color.b, Mathf.Lerp(startValue, value, t));
-            FadeSprite.color = newColor;
+            FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
             yield return null;
         }
     }
-
+    
 
 
 
