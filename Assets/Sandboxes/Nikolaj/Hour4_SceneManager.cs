@@ -38,7 +38,7 @@ public class Hour4_SceneManager : MonoBehaviour
     {
 
         print("vent");
-        yield return new WaitForSeconds (2);
+        yield return new WaitForSeconds (8);
         StartParticles.Play();
         while (GoddessIcon.color.a > 0)
         {
