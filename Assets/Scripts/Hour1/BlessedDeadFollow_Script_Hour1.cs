@@ -49,7 +49,7 @@ public class BlessedDeadFollow_Script_Hour1 : MonoBehaviour
     {
         for (int i = 0; i < numberOfBlessedDead; i++)
         {
-            BDTransforms[i].position = Vector3.SmoothDamp(BDTransforms[i].position, new Vector3(boatTarget.position.x - BDXOffset[i], Mathf.Lerp(BDTransforms[i].position.y, boatTarget.transform.position.y-0.3f, timeline.GetTimeline() - 0.5f), 0), ref BDVelocities[i], BDSmoothTimes[i]);
+            BDTransforms[i].position = Vector3.SmoothDamp(BDTransforms[i].position, new Vector3(boatTarget.position.x - BDXOffset[i], Mathf.Lerp(BDTransforms[i].position.y, boatTarget.transform.position.y-0.4f, timeline.GetTimeline() - 0.5f), 0), ref BDVelocities[i], BDSmoothTimes[i]);
         }
     }
 

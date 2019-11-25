@@ -20,8 +20,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     public GameObject Boat;
 
     float startYPosition;
-    Vector3 boatPosStart = new Vector3(-8.9f, -2.5f, 0);
-    Vector3 boatPosEnd = new Vector3(7.4f, -2.5f, 0);
+    Vector3 boatPosStart = new Vector3(-9.9f, -2.5f, 0);
+    Vector3 boatPosEnd = new Vector3(10.4f, -2.5f, 0);
     private float boatTravelDistance;
     public int numberOfBoatSegments = 5;
     public float durationOfBoatSegments = 2;

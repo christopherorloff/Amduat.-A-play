@@ -6,17 +6,41 @@ public class Boat_Animator_Script : MonoBehaviour
 {
     public Sprite[] boatSprites;
     public SpriteRenderer boatSpriteRenderer;
+    public SpriteRenderer boatReflectionSpriteRenderer;
     public float animationTime;
 
     private IEnumerator coroutine;
 
+    private float t = 0f;
     private int numberOfAnim;
+    private float min1 = -2f;
+    private float max1 = 2f;
     // Start is called before the first frame update
     void Start()
     {
-        numberOfAnim = boatSprites.Length-1;
-        coroutine = WaitAndPrint(animationTime);
-        StartCoroutine(coroutine);
+        /*coroutine = WaitAndPrint(animationTime);
+        StartCoroutine(coroutine);*/
+    }
+
+    void Update()
+    {
+        boatSpriteRenderer.transform.localRotation = Quaternion.Euler(0,0,Mathf.Lerp(min1,max1,t));
+        boatReflectionSpriteRenderer.transform.localRotation = Quaternion.Euler(180,0,Mathf.Lerp(min1,max1,t));
+
+        if (t < 1f)
+        { 
+            t += Time.deltaTime/animationTime;
+            //Debug.Log(t);
+        }
+
+        if (t >= 1.0f)
+        {
+            float temp1 = max1;
+            max1 = min1;
+            min1 = temp1;
+
+            t = 0.0f;
+        }
     }
 
     private IEnumerator WaitAndPrint(float waitTime)
@@ -24,13 +48,14 @@ public class Boat_Animator_Script : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            boatSpriteRenderer.sprite = boatSprites[numberOfAnim];
+            
+            /*boatSpriteRenderer.sprite = boatSprites[numberOfAnim];
             if(numberOfAnim >= boatSprites.Length-1)
             {
                 numberOfAnim = -1;
                 
             }
-            numberOfAnim++;
+            numberOfAnim++;*/
         }
     }
     // Update is called once per frame
