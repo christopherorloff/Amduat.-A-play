@@ -19,11 +19,13 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     //Boat
     public GameObject Boat;
 
+    float startYPosition;
     Vector3 boatPosStart = new Vector3(-8.9f, -2.5f, 0);
     Vector3 boatPosEnd = new Vector3(7.4f, -2.5f, 0);
     private float boatTravelDistance;
     public int numberOfBoatSegments = 5;
     public float durationOfBoatSegments = 2;
+
 
     //Blessed dead
     public BlessedDeadFollow_Script_Hour1 blessedDeadController;
@@ -37,7 +39,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     //Background
     public SpriteRenderer Background;
     private Color BGColorStart;
-    private Color BGColorEnd;
+    public Color BGColorEnd;
 
     //LightCone
     public SpriteRenderer LightCone;
@@ -87,7 +89,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         AddTimelineEvent(0.8f, BoatActions);
         AddTimelineEvent(0.99f, BoatActions);
 
-        AddTimelineEvent(0.7f, SolarBaboons.StartRaisingStatues);
+        AddTimelineEvent(0.6f, SolarBaboons.StartRaisingStatues);
 
         //Blessed dead sprites
         for (int i = 0; i < blessedDeadSprites.Length; i++)
@@ -97,6 +99,11 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
         //After all timeline events are added
         HandleKeys();
+
+        //Setting starting y position for boat
+        startYPosition = Boat.gameObject.transform.position.y;
+        boatPosStart = new Vector3(boatPosStart.x, startYPosition, boatPosStart.z);
+        boatPosEnd = new Vector3(boatPosEnd.x, startYPosition, boatPosEnd.z);
     }
 
     //Order: Take input --> convert input --> CheckForTimelineEvents --> Apply linear functions

@@ -111,6 +111,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         CheckInstance();
+        CreateSoundInstances();
         activeScene = SceneManager.GetActiveScene().name;
     }
 
@@ -118,8 +119,7 @@ public class SoundManager : MonoBehaviour
     {
         //Initialize system. Create sound instances.
         system = FMODUnity.RuntimeManager.StudioSystem;
-        CreateSoundInstances();
-        HourInitialSounds(hour);
+        //HourInitialSounds(hour);
     }
 
     void OnEnable()
@@ -185,8 +185,11 @@ public class SoundManager : MonoBehaviour
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
         //print("Scene changed [Sound Manager]");
         //HourInitialSounds(7);
+
+        HourInitialSounds(hour);
+        print("SCENE CHANGED");
     }
-    
+
     // Flot kodestil Jacob!
     public int GetHour() {
         return hour;
