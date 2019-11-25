@@ -2951,6 +2951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1071854730}
+  - component: {fileID: 1071854731}
   m_Layer: 0
   m_Name: INTERACTIONS
   m_TagString: Untagged
@@ -2977,6 +2978,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1071854731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071854729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79eca7c130980411b8f6f47e0320c42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  spriteRenderer: {fileID: 0}
+  reflectionSpriteRenderer: {fileID: 0}
+  animationTime: 0
 --- !u!1 &1095998617
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,6 +3583,36 @@ PrefabInstance:
       propertyPath: animationTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_BackSortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_FrontSortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345987352487054857, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366345160160, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_BackSortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_FrontSortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6856a2c17c9b84d2786d923b842221e7, type: 3}
 --- !u!1 &1259429631
@@ -3592,7 +3639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259429631}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.2, y: -0.67169416, z: 0}
+  m_LocalPosition: {x: -7, y: -0.67169416, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 2110810103}
@@ -5035,7 +5082,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -7
   m_Sprite: {fileID: 21300000, guid: 067bec09bace8034495e62fd8b8bb150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7210,7 +7257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9260419d2d0f94099b7622e7fa176e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 945616632}
   parallaxEffect: 0
 --- !u!212 &8896224773096528570
 SpriteRenderer:
@@ -7249,7 +7296,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 60d668b2d58757a48904bdd2afe28622, type: 3}
   m_Color: {r: 0.8352941, g: 0.972549, b: 1, a: 1}
   m_FlipX: 0
@@ -7305,7 +7352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9260419d2d0f94099b7622e7fa176e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 945616632}
   parallaxEffect: 0
 --- !u!212 &8896224773273949578
 SpriteRenderer:
@@ -7344,7 +7391,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -6
   m_Sprite: {fileID: 21300000, guid: 36fe5b6c181970245ab9e3633305e7a9, type: 3}
   m_Color: {r: 0.8352941, g: 0.972549, b: 1, a: 1}
   m_FlipX: 0
@@ -7400,7 +7447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9260419d2d0f94099b7622e7fa176e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 945616632}
   parallaxEffect: 0
 --- !u!4 &8896224773317715268
 Transform:
@@ -7453,7 +7500,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: 211f392aec71210439f95e7142389261, type: 3}
   m_Color: {r: 0.8352941, g: 0.972549, b: 1, a: 1}
   m_FlipX: 0
@@ -7520,7 +7567,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d559c5299c3a44b49afbe58abc991a36, type: 3}
   m_Color: {r: 0.8066038, g: 0.9677673, b: 1, a: 1}
   m_FlipX: 0
@@ -7600,7 +7647,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 44a6625732df773468c5ec66f54bfe65, type: 3}
   m_Color: {r: 0.8066038, g: 0.9677673, b: 1, a: 1}
   m_FlipX: 0
@@ -7735,8 +7782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b613cdc92250f45658819fc9a891b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image1: {fileID: 8896224773609141667}
-  image2: {fileID: 8896224774207766626}
+  image1: {fileID: 8896224774207766626}
+  image2: {fileID: 8896224773609141667}
   image3: {fileID: 8896224773918528529}
   colorChangeDuration: 1.75
 --- !u!4 &8896224774427274706
@@ -7802,9 +7849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b613cdc92250f45658819fc9a891b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image1: {fileID: 8896224773273949578}
-  image2: {fileID: 8896224773317715269}
-  image3: {fileID: 8896224773096528570}
+  image1: {fileID: 8896224773317715269}
+  image2: {fileID: 8896224773096528570}
+  image3: {fileID: 8896224773273949578}
   colorChangeDuration: 2.5
 --- !u!1 &8896224774759583717
 GameObject:
