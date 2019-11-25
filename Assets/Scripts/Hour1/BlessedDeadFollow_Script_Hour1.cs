@@ -15,6 +15,8 @@ public class BlessedDeadFollow_Script_Hour1 : MonoBehaviour
     private float[] BDSmoothTimes;
     private SpriteRenderer[] blessedDeadSprites;
 
+    public TimelineManager_Script_Hour1 timeline;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,7 +29,7 @@ public class BlessedDeadFollow_Script_Hour1 : MonoBehaviour
         //Initiate blessed dead
         for (int i = 0; i < numberOfBlessedDead; i++)
         {
-            Vector3 spawnOffset = new Vector3(UnityEngine.Random.Range(0.5f, 3.5f), UnityEngine.Random.Range(-0.4f, 0.4f), 0);
+            Vector3 spawnOffset = new Vector3(UnityEngine.Random.Range(0.5f, 2.5f), UnityEngine.Random.Range(-1f, 3f), 0);
             BDXOffset[i] = spawnOffset.x;
             GameObject clone = Instantiate(blessedDeadPrefab, boatTarget.position - spawnOffset, Quaternion.identity);
             BDTransforms[i] = clone.transform;
@@ -47,7 +49,7 @@ public class BlessedDeadFollow_Script_Hour1 : MonoBehaviour
     {
         for (int i = 0; i < numberOfBlessedDead; i++)
         {
-            BDTransforms[i].position = Vector3.SmoothDamp(BDTransforms[i].position, new Vector3(boatTarget.position.x - BDXOffset[i], BDTransforms[i].position.y,0), ref BDVelocities[i], BDSmoothTimes[i]);
+            BDTransforms[i].position = Vector3.SmoothDamp(BDTransforms[i].position, new Vector3(boatTarget.position.x - BDXOffset[i], Mathf.Lerp(BDTransforms[i].position.y, boatTarget.transform.position.y, timeline.GetTimeline() - 0.5f), 0), ref BDVelocities[i], BDSmoothTimes[i]);
         }
     }
 
