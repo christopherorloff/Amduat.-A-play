@@ -95,9 +95,9 @@ public class Limb : MonoBehaviour
                 directionParticlePosition = transform.Find("ParticleTarget");
                 particle = Instantiate(directionParticle, directionParticlePosition.position, Quaternion.identity);
                 if(limbMovement.scrolledCounter % 2 == 0) {
-                    particle.GetComponent<Particle_Change_Direction_Script>().DirectionDown = true;
-                } else if (limbMovement.scrolledCounter % 2 == 1) {
                     particle.GetComponent<Particle_Change_Direction_Script>().DirectionDown = false;
+                } else if (limbMovement.scrolledCounter % 2 == 1) {
+                    particle.GetComponent<Particle_Change_Direction_Script>().DirectionDown = true;
                 }
                 particle.transform.parent = transform;
                 directionParticleRunning = true;
