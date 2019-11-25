@@ -35,6 +35,9 @@ public class SoundManager : MonoBehaviour
 
     private string boatPaddlePath = "event:/GENERAL SOUNDS/BoatPaddle";
 
+    private string titleSoundPath = "event:/GENERAL SOUNDS/Title";
+    public FMOD.Studio.EventInstance titleSoundInstance;
+
     //Hour 1 Sounds
     private string solarBaboonsAppearPath = "event:/HOUR 1/SolarBaboonsAppear";
     public FMOD.Studio.EventInstance solarBaboonsAppearInstance;
@@ -199,7 +202,10 @@ public class SoundManager : MonoBehaviour
         hour = currentHour;
     }
 
-    void CreateSoundInstances() { 
+    void CreateSoundInstances() {
+        //GENERAL SOUNDS
+        titleSoundInstance = FMODUnity.RuntimeManager.CreateInstance(titleSoundPath);
+
         //AMBIENCE INSTANCES
         waterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(waterAmbPath);
         jungleAmbInstance = FMODUnity.RuntimeManager.CreateInstance(jungleAmbPath);
