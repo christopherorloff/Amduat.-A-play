@@ -75,6 +75,7 @@ public class FadeUIScript : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.5f);
+        SoundManager.Instance.titleSoundInstance.start();
         float startValue = 0;
         float startTime = Time.time;
 

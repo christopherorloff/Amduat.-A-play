@@ -54,6 +54,7 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         AddTimelineEvent(0.2f, BoatActions);
         AddTimelineEvent(0.4f, BoatActions);
         AddTimelineEvent(0.6f, BoatActions);
+        AddTimelineEvent(0.7f, BoatActions);
         AddTimelineEvent(0.9f, BoatActions);
 
         AddTimelineEvent(0.7f, wheatSpray.StartSpraying);
