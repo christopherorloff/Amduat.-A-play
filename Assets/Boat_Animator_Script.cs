@@ -9,6 +9,10 @@ public class Boat_Animator_Script : MonoBehaviour
     public SpriteRenderer boatReflectionSpriteRenderer;
     public float animationTime;
 
+    public GameObject masks;
+
+    public float bounceMod;
+
     private IEnumerator coroutine;
 
     private float t = 0f;
@@ -26,6 +30,9 @@ public class Boat_Animator_Script : MonoBehaviour
     {
         boatSpriteRenderer.transform.localRotation = Quaternion.Euler(0,0,Mathf.Lerp(min1,max1,t));
         boatReflectionSpriteRenderer.transform.localRotation = Quaternion.Euler(180,0,Mathf.Lerp(min1,max1,t));
+        boatSpriteRenderer.transform.localPosition = new Vector3(0,Mathf.Lerp((min1/bounceMod),(max1/bounceMod),t),0);
+        boatReflectionSpriteRenderer.transform.localPosition = new Vector3(0,(Mathf.Lerp((min1/bounceMod),(max1/bounceMod),t)-1.1f),0);
+        masks.transform.localPosition = new Vector3(0,(Mathf.Lerp((min1/bounceMod),(max1/bounceMod),t)-0.55f),0);
 
         if (t < 1f)
         { 
