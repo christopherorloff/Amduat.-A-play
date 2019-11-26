@@ -30,7 +30,7 @@ public class LimbMovement : MonoBehaviour
 
     public GameObject osirisCollectedGameObject;
     private Vector3 collectedOsirisGameObjectVelocity;
-    private float collectedOsirisGameObjectSpeed = 15f;
+    private float collectedOsirisGameObjectSpeed = 300f;
     private float countdownToDestroy;
 
     public GameObject osirisCollectedParticleSystem;
@@ -80,7 +80,7 @@ public class LimbMovement : MonoBehaviour
 
             //Moving entire prefab
             torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, torsoEndSpeed);
-            osirisCollectedGameObject.transform.position = Vector3.SmoothDamp(osirisCollectedGameObject.transform.position, new Vector3(0, 0, 0), ref collectedOsirisGameObjectVelocity, collectedOsirisGameObjectSpeed);
+            osirisCollectedGameObject.transform.position = Vector3.SmoothDamp(osirisCollectedGameObject.transform.position, new Vector3(0, -2, 0), ref collectedOsirisGameObjectVelocity, collectedOsirisGameObjectSpeed * Time.deltaTime);
             countdownToDestroy += Time.deltaTime;
 
             //Instantiating particle system
