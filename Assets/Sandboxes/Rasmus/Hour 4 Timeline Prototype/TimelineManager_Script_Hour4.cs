@@ -11,6 +11,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     bool coroutineRunning = false;
     public int numberOfPulls = 5;
     private Vector3 boatMoveVector;
+    public FadeUIScript fadeUIScript;
 
     //Boat
     public GameObject boat;
@@ -21,18 +22,26 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     //Goddesses
     public Transform goddessesParent;
     private Transform[] goddesses;
+    private SpriteRenderer[] goddessesSprite;
     public float drawDuration = 2;
     public float pullDuration = 3;
     public float rotationAfterDraw = 25;
     public float rotationAfterPull = -25;
 
+    //From old scenemanager --> make more sustainable solution
+    public SpriteRenderer GoddessIcon;
+    float fade = 0.15f;
+    public ParticleSystem StartParticles;
+    private bool sceneHasEnded = false;
 
     void Awake()
     {
         goddesses = new Transform[goddessesParent.childCount];
+        goddessesSprite = new SpriteRenderer[goddessesParent.childCount];
         for (int i = 0; i < goddessesParent.childCount; i++)
         {
             goddesses[i] = goddessesParent.GetChild(i);
+            goddessesSprite[i] = goddesses[i].GetComponentInChildren<SpriteRenderer>();
         }
 
         //Boat can only move on x-axis. If y-axis is needed, create similar float to travelDistanceX and input in boatMoveVector
@@ -57,6 +66,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         //Add timeline events here 
 
         HandleKeys();
+        StartCoroutine(WaitAndStart());
     }
 
     void ConvertInputToProgress()
@@ -70,17 +80,14 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             print("Input is zero!");
         }
 
-        if (Mathf.Approximately(Timeline, 1) && !coroutineRunning)
+        if (Mathf.Approximately(Timeline, 1) && !sceneHasEnded)
         {
-            //TRIGGER FADE OUT
-            //CHANGE TO NEXT LEVEL
-            //ALL THAT JAZZ...
-            print("Timeline 100%, might still have to wait for the last animations/movement");
-            return;
+            fadeUIScript.StartFadeOut();
+            sceneHasEnded = true;
         }
 
         //Check if correct order of up/down scroll
-        if (nextIsDraw == sign)
+        if (nextIsDraw == sign && !sceneHasEnded)
         {
             //Only continue if the coroutine is not already running
             if (!coroutineRunning)
@@ -172,5 +179,41 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         {
             return false;
         }
+    }
+
+    IEnumerator WaitAndStart()
+    {
+
+        yield return new WaitForSeconds(8);
+        StartParticles.Play();
+        SoundManager.Instance.goddessesAppearingInstance.start();
+        while (GoddessIcon.color.a > 0)
+        {
+            GoddessIcon.color = new Color(GoddessIcon.color.r, GoddessIcon.color.g, GoddessIcon.color.b, GoddessIcon.color.a - fade * Time.deltaTime);
+            yield return null;
+        }
+        StartCoroutine(FadeInGoddesses());
+
+
+        StartParticles.Stop();
+
+    }
+
+    IEnumerator FadeInGoddesses()
+    {
+
+        while (goddessesSprite[0].color.a < 1)
+        {
+            for (int i = 0; i < goddessesSprite.Length; i++)
+            {
+                goddessesSprite[i].color = new Color(goddessesSprite[i].color.r, goddessesSprite[i].color.g, goddessesSprite[i].color.b, goddessesSprite[i].color.a + fade * Time.deltaTime);
+
+            }
+            yield return null;
+
+        }
+
+
+
     }
 }
