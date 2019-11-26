@@ -2991,8 +2991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites: []
-  spriteRenderer: {fileID: 0}
-  reflectionSpriteRenderer: {fileID: 0}
+  spriteRenderer1: {fileID: 0}
+  spriteRenderer2: {fileID: 0}
   animationTime: 0
 --- !u!1 &1095998617
 GameObject:
@@ -3583,16 +3583,6 @@ PrefabInstance:
       propertyPath: animationTime
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_BackSortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5345987352487054857, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_SortingOrder
@@ -3601,6 +3591,16 @@ PrefabInstance:
     - target: {fileID: 4690533366345160160, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_BackSortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_FrontSortingOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,

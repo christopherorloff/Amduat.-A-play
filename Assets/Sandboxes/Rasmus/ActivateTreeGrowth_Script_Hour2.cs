@@ -14,7 +14,7 @@ public class ActivateTreeGrowth_Script_Hour2 : MonoBehaviour
     public void EnableTree()
     {
         tree.enabled = true;
-        ParticleSystem clone = Instantiate(growEffect, this.transform.position, Quaternion.identity);
+        ParticleSystem clone = Instantiate(growEffect, this.transform.position, growEffect.transform.rotation);
         //Potentielt destroy
         clone.Play();
         print(this.gameObject.name + " enabled");
