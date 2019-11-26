@@ -164,6 +164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenPulseLight_Sprite
       objectReference: {fileID: 0}
+    - target: {fileID: 8393518692601054671, guid: 56e6fd281f697014a98ee4615cdacbee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8393518692601054668, guid: 56e6fd281f697014a98ee4615cdacbee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -641,6 +646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RedPulseLight_Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896518563931115498, guid: 6f68d3ea75c92d64e8d8ed5d5e36ce14,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2896518563931115503, guid: 6f68d3ea75c92d64e8d8ed5d5e36ce14,
         type: 3}

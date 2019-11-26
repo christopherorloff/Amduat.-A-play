@@ -21,13 +21,9 @@ public class FadeUIScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void StartFadeOut()
     {
-        if (sceneEnd)
-        {
-            StartCoroutine(FadeSpriteCoroutineUp(1, 4f));
-        }
-
+        StartCoroutine(FadeSpriteCoroutineUp(1, 4));
     }
 
     public IEnumerator FadeSpriteCoroutineDown(float value, float time)
@@ -51,27 +47,27 @@ public class FadeUIScript : MonoBehaviour
 
     }
 
-    
+
     public IEnumerator FadeSpriteCoroutineUp(float value, float time)
     {
-        sceneEnd = false;
-        yield return new WaitForSeconds(1.5f);
         float startValue = 0;
         float startTime = Time.time;
-
 
         while (FadeSprite.alpha < value)
         {
             float t = (Time.time - startTime) / time;
+            print("Coroutine while, t: " + t);
+            t = Mathf.Clamp(t, 0, 1);
             FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
             yield return null;
         }
     }
-    
 
 
 
-    public IEnumerator FadeTextCoroutine(float value, float time) {
+
+    public IEnumerator FadeTextCoroutine(float value, float time)
+    {
 
 
         yield return new WaitForSeconds(0.5f);
@@ -80,7 +76,7 @@ public class FadeUIScript : MonoBehaviour
         float startTime = Time.time;
 
 
-        while(textObject.color.a < value)
+        while (textObject.color.a < value)
         {
 
             float t = (Time.time - startTime) / time;
