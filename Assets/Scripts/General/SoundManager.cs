@@ -321,6 +321,7 @@ public class SoundManager : MonoBehaviour
             }
             seaCaveAmbInstance.start();
             boatAgroundInstance.start();
+            themeMuInstance.setParameterByName("End", 1);
         }
         if (_hour == 5) { }
 
