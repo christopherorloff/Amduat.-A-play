@@ -26,6 +26,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     private float boatTravelDistance;
     public int numberOfBoatSegments = 5;
     public float durationOfBoatSegments = 2;
+    public float maxBlessedAlpha = 0.65f;
 
 
     //Blessed dead
@@ -165,12 +166,12 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
         float startTime = Time.time;
         print("BlessedDead " + blessedDeadCounter + " event, at " + Timeline);
-        while (blessedDeadSprites[counter].color.a < 1)
+        while (blessedDeadSprites[counter].color.a < maxBlessedAlpha)
         {
             Color col = blessedDeadSprites[counter].color;
             float t = (Time.time - startTime) / blessedDeadFadeDuration;
             float step = Mathf.SmoothStep(0, 1, t);
-            step = Mathf.Clamp(step, 0, 1);
+            step = Mathf.Clamp(step, 0, maxBlessedAlpha);
             Color temp = new Color(col.r, col.g, col.b, step);
             blessedDeadSprites[counter].color = temp;
             yield return null;
