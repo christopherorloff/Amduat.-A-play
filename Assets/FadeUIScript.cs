@@ -23,7 +23,7 @@ public class FadeUIScript : MonoBehaviour
     // Update is called once per frame
     public void StartFadeOut()
     {
-        StartCoroutine(FadeSpriteCoroutineUp(1, 4));
+        StartCoroutine(FadeSpriteCoroutineUp(1, 2));
     }
 
     public IEnumerator FadeSpriteCoroutineDown(float value, float time)

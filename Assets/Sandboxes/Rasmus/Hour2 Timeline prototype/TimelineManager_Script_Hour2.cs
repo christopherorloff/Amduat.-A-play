@@ -7,6 +7,8 @@ using System;
 public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 {
     public float timelineScalar = 0.8f;
+    bool timeLineMaxReached = false;
+    public FadeUIScript fadeUIScript;
 
     //Boat
     public GameObject Boat;
@@ -73,6 +75,18 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         ConvertInputToProgress(input);
         CamAction();
+
+        if (Mathf.Approximately(Timeline, 1) && !timeLineMaxReached)
+        {
+            StartCoroutine(startFadeOut());
+            timeLineMaxReached = true;
+        }
+    }
+
+    IEnumerator startFadeOut()
+    {
+        yield return new WaitForSeconds(durationOfBoatSegments);
+        fadeUIScript.StartFadeOut();
     }
 
     private void ConvertInputToProgress(float input)
@@ -83,7 +97,6 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
             speed = Mathf.Clamp(speed, 0, 0.001f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
-            print("Timeline: " + Timeline);
         }
     }
 
