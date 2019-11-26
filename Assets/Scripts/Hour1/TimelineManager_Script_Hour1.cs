@@ -93,7 +93,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
         AddTimelineEvent(0.6f, SolarBaboons.StartRaisingStatues);
 
-        //Blessed dead sprites
+        // Blessed dead sprites
         for (int i = 0; i < blessedDeadSprites.Length; i++)
         {
             AddTimelineEvent(UnityEngine.Random.Range(0.4f, 0.8f), StartBlessedDeadFadeIn);

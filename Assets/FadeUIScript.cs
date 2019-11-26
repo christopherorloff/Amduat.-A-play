@@ -15,6 +15,7 @@ public class FadeUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        print("Start called");
         canvas.SetActive(true);
         FadeSprite = canvas.GetComponent<CanvasGroup>();
         StartCoroutine(FadeSpriteCoroutineDown(0, 4f));
@@ -23,6 +24,7 @@ public class FadeUIScript : MonoBehaviour
     // Update is called once per frame
     public void StartFadeOut()
     {
+        print("Start fade out func");
         StartCoroutine(FadeSpriteCoroutineUp(1, 2));
     }
 
@@ -33,7 +35,6 @@ public class FadeUIScript : MonoBehaviour
         float startValue = 1;
         float startTime = Time.time;
 
-
         while (FadeSprite.alpha > value)
         {
             float t = (Time.time - startTime) / time;
@@ -43,8 +44,6 @@ public class FadeUIScript : MonoBehaviour
 
         }
         StartCoroutine(FadeTextCoroutine(1, 1));
-
-
     }
 
 
@@ -61,6 +60,8 @@ public class FadeUIScript : MonoBehaviour
             FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
             yield return null;
         }
+
+        GameManager.Instance.StartChangeToNextScene();
     }
 
 

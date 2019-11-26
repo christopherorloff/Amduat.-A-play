@@ -33,7 +33,8 @@ public class BlessedDeadFollow_Script_Hour1 : MonoBehaviour
             BDXOffset[i] = spawnOffset.x;
             GameObject clone = Instantiate(blessedDeadPrefab, boatTarget.position - spawnOffset, Quaternion.identity);
             BDTransforms[i] = clone.transform;
-            BDSmoothTimes[i] = UnityEngine.Random.Range(1.0f,1.5f);
+            clone.transform.parent = this.transform;
+            BDSmoothTimes[i] = UnityEngine.Random.Range(1.0f, 1.5f);
             BDVelocities[i] = Vector3.zero;
             blessedDeadSprites[i] = clone.GetComponent<SpriteRenderer>();
             blessedDeadSprites[i].color = new Color(blessedDeadSprites[i].color.r, blessedDeadSprites[i].color.g, blessedDeadSprites[i].color.b, 0);
@@ -49,7 +50,7 @@ public class BlessedDeadFollow_Script_Hour1 : MonoBehaviour
     {
         for (int i = 0; i < numberOfBlessedDead; i++)
         {
-            BDTransforms[i].position = Vector3.SmoothDamp(BDTransforms[i].position, new Vector3(boatTarget.position.x - BDXOffset[i], Mathf.Lerp(BDTransforms[i].position.y, boatTarget.transform.position.y-0.4f, timeline.GetTimeline() - 0.5f), 0), ref BDVelocities[i], BDSmoothTimes[i]);
+            BDTransforms[i].position = Vector3.SmoothDamp(BDTransforms[i].position, new Vector3(boatTarget.position.x - BDXOffset[i], Mathf.Lerp(BDTransforms[i].position.y, boatTarget.transform.position.y - 0.4f, timeline.GetTimeline() - 0.5f), 0), ref BDVelocities[i], BDSmoothTimes[i]);
         }
     }
 
