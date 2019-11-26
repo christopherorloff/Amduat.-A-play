@@ -7,6 +7,7 @@ using ScrollManager;
 public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 {
     public float timelineScalar = 0.8f;
+    public FadeUIScript fadeUIScript;
 
     //Sun
     public GameObject Sun;
@@ -51,8 +52,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     private Vector3 camPosStart = new Vector3(0, 0, -10);
     private Vector3 camPosEnd = new Vector3(0, 0, -10);
     public float sceneLength;
-
-
+    private bool fadeHasStarted = false;
 
     void Awake()
     {
@@ -76,6 +76,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
         camPosEnd = new Vector3(sceneLength, 0, -10);
         Cam = Camera.main.gameObject;
+
     }
 
     //This is where all timeline events should be added
@@ -117,6 +118,23 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         SunActions();
         BGActions();
         CamAction();
+
+        CheckTimelineProgress();
+    }
+
+    private void CheckTimelineProgress()
+    {
+        if (Timeline == 1 && !fadeHasStarted)
+        {
+            StartCoroutine(StartFadeOut());
+            fadeHasStarted = true;
+        }
+    }
+
+    private IEnumerator StartFadeOut()
+    {
+        yield return new WaitForSeconds(durationOfBoatSegments);
+        fadeUIScript.StartFadeOut();
     }
 
 
@@ -131,8 +149,6 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
             speed = Mathf.Clamp(speed, 0, 0.001f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
-            print("Speed: " + speed);
-
         }
     }
 
