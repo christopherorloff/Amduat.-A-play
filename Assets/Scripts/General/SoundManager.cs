@@ -112,6 +112,9 @@ public class SoundManager : MonoBehaviour
     private string showdownMuPath = "event:/MUSIC/Showdown";
     public FMOD.Studio.EventInstance showdownMuInstance;
 
+    private string themeMuPath = "event:/MUSIC/Theme";
+    public FMOD.Studio.EventInstance themeMuInstance;
+
     //private bool nextScene;
 
     private void Awake()
@@ -206,7 +209,7 @@ public class SoundManager : MonoBehaviour
     }
 
     void CreateSoundInstances() {
-        //GENERAL SOUNDS
+        //GENERAL SOUND INSTANCES
         titleSoundInstance = FMODUnity.RuntimeManager.CreateInstance(titleSoundPath);
 
         //AMBIENCE INSTANCES
@@ -246,6 +249,9 @@ public class SoundManager : MonoBehaviour
         spearHitInstance = FMODUnity.RuntimeManager.CreateInstance(spearHitPath);
         spearMissInstance = FMODUnity.RuntimeManager.CreateInstance(spearMissPath);
         spearChargeInstance = FMODUnity.RuntimeManager.CreateInstance(spearChargePath);
+
+        //MUSIC INSTANCES
+        themeMuInstance = FMODUnity.RuntimeManager.CreateInstance(themeMuPath);
     }
 
     void CheckInstance()
@@ -276,27 +282,35 @@ public class SoundManager : MonoBehaviour
 
     public void HourInitialSounds(int _hour) { 
         if (_hour == 1) {
+            //STARTING SOUNDS
             waterAmbInstance.start();
             sunMoveInstance.start();
         }
         if (_hour == 2) {
+            //STOPPING SOUNDS
+            sunMoveInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            //STARTING SOUNDS
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying) {
                 waterAmbInstance.start();
             }
             jungleAmbInstance.start();
-
             growLoopInstance.start();
         }
         if (_hour == 3) {
+            //STOPPING SOUNDS
+            jungleAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            growLoopInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            //STARTING SOUNDS
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)
             {
                 waterAmbInstance.start();
             }
-            jungleAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
         if (_hour == 4) {
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
