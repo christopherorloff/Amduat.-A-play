@@ -41,6 +41,9 @@ public class LimbMovement : MonoBehaviour
 
     public Sprite greenTorso;
 
+    public FadeUIScript fadeScript;
+    public bool startFadeBool = false;
+
 
     private void Start()
     {
@@ -82,7 +85,6 @@ public class LimbMovement : MonoBehaviour
             torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, torsoEndSpeed);
             osirisCollectedGameObject.transform.position = Vector3.SmoothDamp(osirisCollectedGameObject.transform.position, new Vector3(0, -2, 0), ref collectedOsirisGameObjectVelocity, collectedOsirisGameObjectSpeed * Time.deltaTime);
             countdownToDestroy += Time.deltaTime;
-
             //Instantiating particle system
             if (!osirisCollectedParticleSystemRunning) {
                 Instantiate(osirisCollectedParticleSystem, new Vector3(0, 0, 0), Quaternion.identity);
@@ -96,6 +98,24 @@ public class LimbMovement : MonoBehaviour
                 }
             }
         }
+    }
+    private void startFade()
+    {
+        startFadeBool = true;
+        if (startFadeBool == true)
+        {
+            startFadeBool = false;
+            StartCoroutine(WaitForSceneEnd());
+
+        }
+
+    }
+
+    public IEnumerator WaitForSceneEnd()
+    {
+        yield return new WaitForSeconds(13.5f);
+        fadeScript.StartFadeOut();
+
     }
 
     void Move()
@@ -184,6 +204,7 @@ public class LimbMovement : MonoBehaviour
         limbsDone++;
         if(limbsDone == limbs.Length) {
             print("READY FOR FINAL ANIMATION");
+            startFade();
             isDone = true;
         }
     }
