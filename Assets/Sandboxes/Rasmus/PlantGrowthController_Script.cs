@@ -15,12 +15,15 @@ public class PlantGrowthController_Script : MonoBehaviour
     public float minimizationPerGeneration = 1;
     public bool AddRandomization = false;
     public bool spawnLeafs = false;
+    public Color branchColor;
 
 
     void OnEnable()
     {
+        branch.GetComponentInChildren<SpriteRenderer>().color = branchColor;
         StartCoroutine(StartGrowth());
     }
+
 
     IEnumerator StartGrowth()
     {
