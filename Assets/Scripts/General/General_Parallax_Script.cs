@@ -6,13 +6,17 @@ public class General_Parallax_Script : MonoBehaviour
 {
 
     private float length, startpos;
+    private SpriteRenderer spriteRenderer;
     public GameObject cam;
     public float parallaxEffect;
     // Start is called before the first frame update
     void Start()
     {
         startpos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        if(GetComponent<SpriteRenderer>() != null)
+        {
+            length = GetComponent<SpriteRenderer>().bounds.size.x;
+        }
     }
 
     // Update is called once per frame
