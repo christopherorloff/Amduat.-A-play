@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,11 @@ public class BlessedDeadRepeller_Script_Hour8 : MonoBehaviour
     {
         colliders.Clear();
         Physics2D.OverlapCircle((Vector2)transform.position, overlapRadius, contactFilter2D, colliders);
-        Check
+        CheckResults();
+    }
+
+    private void CheckResults()
+    {
+        throw new NotImplementedException();
     }
 }
