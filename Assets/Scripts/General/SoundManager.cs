@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     FMOD.Studio.System system;
 
     [SerializeField]
-    private int hour;
+    private int hour = 0;
     private string activeScene;
 
     public TimelineManager_Script_Hour1 timelineHour1;
@@ -93,7 +93,7 @@ public class SoundManager : MonoBehaviour
     //Hour 7 Sounds
     private string apopisIdlePath = "event:/HOUR 7/ApopisTiredIdle";
     public FMOD.Studio.EventInstance apopisIdleInstance;
-   
+
     private string spearReadyPath = "event:/HOUR 7/SpearReady";
     public FMOD.Studio.EventInstance spearReadyInstance;
 
@@ -144,30 +144,38 @@ public class SoundManager : MonoBehaviour
     private void Update()
     {
         //INPUTS FOR TESTING
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
             knifeHitInstance.start();
         }
 
-        if (Input.GetKeyDown(KeyCode.S)) {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
         }
 
-        if(GetHour() == 1) {
-            if(timelineHour1.GetTimeline() < 1) {
+        if (GetHour() == 1)
+        {
+            if (timelineHour1.GetTimeline() < 1)
+            {
                 float input = Scroll.scrollValueAccelerated();
 
                 sunMoveInstance.setParameterByName("Scroll", input * 10);
                 sunMoveInstance.setParameterByName("Progrss", timelineHour1.GetTimeline());
-            } else {
+            }
+            else
+            {
                 sunMoveInstance.setParameterByName("Scroll", 0);
             }
         }
 
-        if(GetHour() == 2) {
+        if (GetHour() == 2)
+        {
 
             float input = -Scroll.scrollValueAccelerated();
             print(input);
 
-            if(timelineHour2.GetTimeline() < 0.9f) {
+            if (timelineHour2.GetTimeline() < 0.9f)
+            {
                 if (input > 0.01)
                 {
                     if (growAttackReady)
@@ -183,7 +191,9 @@ public class SoundManager : MonoBehaviour
                     growLoopInstance.setParameterByName("Scroll", 0);
                     growAttackReady = true;
                 }
-            } else {
+            }
+            else
+            {
                 growLoopInstance.setParameterByName("Scroll", 0);
             }
         }
@@ -194,21 +204,24 @@ public class SoundManager : MonoBehaviour
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
         //print("Scene changed [Sound Manager]");
         //HourInitialSounds(7);
-
+        hour = GameManager.Instance.GetActiveSceneIndex() + 1;
         HourInitialSounds(hour);
         print("SCENE CHANGED");
     }
 
     // Flot kodestil Jacob!
-    public int GetHour() {
+    public int GetHour()
+    {
         return hour;
     }
 
-    public void SetHour(int currentHour) {
+    public void SetHour(int currentHour)
+    {
         hour = currentHour;
     }
 
-    void CreateSoundInstances() {
+    void CreateSoundInstances()
+    {
         //GENERAL SOUND INSTANCES
         titleSoundInstance = FMODUnity.RuntimeManager.CreateInstance(titleSoundPath);
 
@@ -268,7 +281,8 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void PlaySpearMiss(float _charge) {
+    public void PlaySpearMiss(float _charge)
+    {
         //Only one spear miss sound at a time
         spearMissInstance.getPlaybackState(out spearMissPlaybackState);
         spearIsNotPlaying = spearMissPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
@@ -280,26 +294,35 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void HourInitialSounds(int _hour) { 
-        if (_hour == 1) {
+    public void HourInitialSounds(int _hour)
+    {
+        if (_hour == 1)
+        {
+
+
             //STARTING SOUNDS
+            timelineHour1 = FindObjectOfType<TimelineManager_Script_Hour1>();
             waterAmbInstance.start();
             sunMoveInstance.start();
         }
-        if (_hour == 2) {
+        if (_hour == 2)
+        {
+            timelineHour2 = FindObjectOfType<TimelineManager_Script_Hour2>();
             //STOPPING SOUNDS
             sunMoveInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             //STARTING SOUNDS
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            if (waterAmbIsNotPlaying) {
+            if (waterAmbIsNotPlaying)
+            {
                 waterAmbInstance.start();
             }
             jungleAmbInstance.start();
             growLoopInstance.start();
         }
-        if (_hour == 3) {
+        if (_hour == 3)
+        {
             //STOPPING SOUNDS
             jungleAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             growLoopInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -312,7 +335,8 @@ public class SoundManager : MonoBehaviour
                 waterAmbInstance.start();
             }
         }
-        if (_hour == 4) {
+        if (_hour == 4)
+        {
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)
@@ -325,10 +349,12 @@ public class SoundManager : MonoBehaviour
         }
         if (_hour == 5) { }
 
-        if (_hour == 6) {
+        if (_hour == 6)
+        {
         }
 
-        if (_hour == 7) {
+        if (_hour == 7)
+        {
             spearChargeInstance.start();
         }
 

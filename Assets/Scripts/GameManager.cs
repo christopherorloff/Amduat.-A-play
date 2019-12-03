@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     {
         //Disable mouse
         Cursor.visible = false;
-
+        print("Buildindex: " + SceneManager.sceneCountInBuildSettings);
 
         // if the singleton hasn't been initialized yet
         if (Instance != null && Instance != this)
@@ -43,15 +43,20 @@ public class GameManager : MonoBehaviour
     {
         print("ChangedActiveScene");
 
-        if (SceneManager.GetActiveScene().name != "LoadingScene")
-        {
-            EventManager.sceneChange();
-        }
+        EventManager.sceneChange();
+
     }
 
     public void StartChangeToNextScene()
     {
-        StartCoroutine(ChangeSceneCoroutine());
+        if (GetActiveSceneIndex() < SceneManager.sceneCountInBuildSettings - 1)
+        {
+            StartCoroutine(ChangeSceneCoroutine());
+        }
+        else
+        {
+            print("You are at the last scene");
+        }
     }
 
     public int GetActiveSceneIndex()
@@ -62,11 +67,12 @@ public class GameManager : MonoBehaviour
     //Must be made generic when more scenes!
     internal IEnumerator ChangeSceneCoroutine()
     {
+        print("Changing scene now biatch");
         int currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
         //Delay for fade or whatever
         yield return new WaitForSeconds(delayBeforeSceneChange);
 
-        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync(currentSceneBuildIndex + 1, LoadSceneMode.Additive);
+        AsyncOperation nextSceneLoad = SceneManager.LoadSceneAsync(currentSceneBuildIndex + 1);
 
         while (!nextSceneLoad.isDone)
         {
