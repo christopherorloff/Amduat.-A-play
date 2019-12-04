@@ -50,8 +50,8 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     private void Init()
     {
-        velocity = Vector3.left;
-        transform.position = new Vector3(screenBoundariesMax.x + UnityEngine.Random.Range(0.0f, 2.0f), GetRandomYPosition(), 0);
+        velocity = Vector3.left * UnityEngine.Random.Range(0.8f, 1.2f);
+        transform.position = new Vector3(screenBoundariesMax.x + UnityEngine.Random.Range(0.0f, 20.0f), GetRandomYPosition(), 0);
     }
 
     private void CheckForBoundaries()
