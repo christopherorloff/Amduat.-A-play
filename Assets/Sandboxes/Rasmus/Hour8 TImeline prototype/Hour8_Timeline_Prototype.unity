@@ -3780,7 +3780,7 @@ MonoBehaviour:
   coneBottom: {fileID: 1458116009}
   sunOrb: {fileID: 1374223204}
   followStart: {fileID: 857676989}
-  queueOffsetDimensions: {x: 3, y: 0.2}
+  queueOffsetDimensions: {x: 3, y: 0}
   smoothTime: 0.5
 --- !u!1 &1618722296
 GameObject:
@@ -4751,7 +4751,7 @@ GameObject:
   - component: {fileID: 1911428347}
   m_Layer: 0
   m_Name: BlessedDead (30)
-  m_TagString: BlessedDead
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
