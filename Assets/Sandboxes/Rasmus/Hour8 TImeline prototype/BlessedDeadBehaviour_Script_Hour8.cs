@@ -20,6 +20,14 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
     //Interface --> move to parent object
     public float clampedYPosition = 1 / 3;
     public float speed = 1;
+    private float smoothTime;
+    [SerializeField]
+    private bool followState = false;
+    private Transform target;
+    private Vector3 currentVelocity;
+    private Vector3 queueOffset;
+
+    public Vector2 offset;
 
     void Start()
     {
@@ -34,8 +42,31 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     void Update()
     {
-        Move();
-        CheckForBoundaries();
+        if (!followState)
+        {
+            Move();
+            CheckForBoundaries();
+        }
+        else
+        {
+            Follow();
+        }
+    }
+
+    private void Follow()
+    {
+        transform.position = Vector3.SmoothDamp(transform.position, target.position - queueOffset, ref currentVelocity, smoothTime);
+    }
+
+    public void StartFollowing(Transform _target, Vector2 _offsetValues, float _smoothTime)
+    {
+        target = _target;
+        float offSetX = UnityEngine.Random.Range(0.0f, _offsetValues.x);
+        float offSetY = UnityEngine.Random.Range(-_offsetValues.y - (offSetX), _offsetValues.y + (offSetX));
+        queueOffset = new Vector3(offSetX, offSetY, 0);
+        gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        smoothTime = _smoothTime;
+        followState = true;
     }
 
     private void Move()
