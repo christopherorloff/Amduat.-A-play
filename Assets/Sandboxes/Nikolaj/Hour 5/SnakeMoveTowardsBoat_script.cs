@@ -21,7 +21,7 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, Boat.transform.position, speed * Time.deltaTime);
-
+        transform.right = Boat.transform.position - transform.position;
         if (SceneManager.pushSnakesAway)
         {
             transform.position = Vector2.MoveTowards(transform.position, Boat.transform.position, -1 * awaySpeed * Time.deltaTime);

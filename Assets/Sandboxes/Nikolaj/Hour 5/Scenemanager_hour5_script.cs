@@ -7,32 +7,32 @@ public class Scenemanager_hour5_script : MonoBehaviour
 {
 
     public GameObject Boat;
-    public GameObject wing1;
+    public GameObject wing;
 
-    Animation anim;
-    public AnimationClip wingUp;
-    public AnimationClip wingDown;
+    public Animation anim;
+    public AnimationClip WingUp;
+   // public AnimationClip WingDown;
 
     public CheckCollisonBoat_Script TriggerScript;
 
     int numberOfSnakes;
     float boatMoveSpeedX;
-    float animSpeed = 0.5f;
+   // float animSpeed = 0.5f;
 
     bool readyToFlap = false;
     public bool pushSnakesAway = false;
 
+
     void Start()
     {
-        anim = wing1.GetComponent<Animation>();
         boatMoveSpeedX = 0.7f;
+        
     }
 
     void Update()
     {
 
         Boat.transform.position += new Vector3(boatMoveSpeedX * Time.deltaTime, 0, 0);
-        print(boatMoveSpeedX);
 
         if (TriggerScript.numberOfSnakes >= 2)
         {
@@ -59,8 +59,17 @@ public class Scenemanager_hour5_script : MonoBehaviour
             boatMoveSpeedX = 0.7f;
 
         }
-        
 
+
+       
+        /*
+        if (Scroll.scrollValue() > 0 && !running)
+        {
+            anim["wingDown"].speed = 0;
+            anim.Play();
+            StartCoroutine(AnimStart(endAnim, startAnim, 1f, "wingDown"));
+        }*/
+        /*
 
         if (Scroll.scrollValueAccelerated() < 0 && !readyToFlap)
         {
@@ -94,21 +103,22 @@ public class Scenemanager_hour5_script : MonoBehaviour
             StartCoroutine(TurnBoolOff());
         }
 
-        
-
+        */
+       // print(anim["WingUp"].normalizedTime);
 
     }
 
 
     public IEnumerator TurnBoolOff()
     {
-        pushSnakesAway = true;
+       // pushSnakesAway = true;
         yield return new WaitForSeconds(1f);
         pushSnakesAway = false;
         readyToFlap = false;
 
 
     }
+
 
 
 

@@ -243,7 +243,7 @@ MonoBehaviour:
   startPosBoat: {fileID: 261543751}
   endPosBoat: {fileID: 913370865}
   goddessesParent: {fileID: 80271375}
-  drawDuration: 1
+  drawDuration: 0.2
   pullDuration: 3
   rotationAfterDraw: 25
   rotationAfterPull: -20
