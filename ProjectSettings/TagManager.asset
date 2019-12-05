@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - BranchTop
+  - Snake
+  - Boat
+  - HitZone
+  - Root
+  - Knife
+  - Bloodeffect
+  - ReadyEffect
+  - LightEffect
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class Particles_moveTowards_object : MonoBehaviour
         {
             float ForceToAdd = (particles[i].startLifetime - particles[i].remainingLifetime) * (20 * Vector3.Distance(Target.position, particles[i].position));
             particles[i].position = Vector3.Lerp(particles[i].position, Target.position, Time.deltaTime / 2.0f);
-
+          //  particles[i].position = Vector3.MoveTowards(transform.position, Target.position, Time.deltaTime / 2f);
 
         }
         p.SetParticles(particles, particles.Length);
