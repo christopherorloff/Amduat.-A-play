@@ -2,121 +2,151 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
+using System;
 
 public class Scenemanager_hour5_script : MonoBehaviour
 {
 
-    public GameObject Boat;
-    public GameObject wing;
-
-    public Animation anim;
-    public AnimationClip WingUp;
-   // public AnimationClip WingDown;
-
-    public CheckCollisonBoat_Script TriggerScript;
-
-    int numberOfSnakes;
-    float boatMoveSpeedX;
-   // float animSpeed = 0.5f;
-
-    bool readyToFlap = false;
+    public GameObject boat;
+    public CheckCollisonBoat_Script triggerScript;
+    public GameObject wings;
+    [Range(0.0f, 1.0f)]
+    public float normalizedTime;
     public bool pushSnakesAway = false;
 
+    private int numberOfSnakes;
+    private float boatMoveSpeedX;
+    private Animator animator;
+    private WingState wingState = WingState.down;
+
+    private float animationFrame = 1.0f / 41.0f;
+    private float[] frameStates;
+    private bool running = false;
+
+    enum WingState
+    {
+        down, mid, up
+    };
+
+    void OnEnable()
+    {
+        Scroll.OnScrollEnter += TakeInput;
+    }
+
+    void OnDisable()
+    {
+        Scroll.OnScrollEnter -= TakeInput;
+    }
 
     void Start()
     {
+        frameStates = new float[] { 1 * animationFrame, 15 * animationFrame, 27 * animationFrame };
         boatMoveSpeedX = 0.7f;
-        
+        animator = wings.GetComponent<Animator>();
+        animator.speed = 0;
     }
 
     void Update()
     {
+        // Consider doing a multiplication approach
+        boat.transform.position += new Vector3(boatMoveSpeedX * Time.deltaTime, 0, 0);
 
-        Boat.transform.position += new Vector3(boatMoveSpeedX * Time.deltaTime, 0, 0);
-
-        if (TriggerScript.numberOfSnakes >= 2)
+        if (triggerScript.numberOfSnakes >= 2)
         {
             boatMoveSpeedX = 0.5f;
         }
-        if (TriggerScript.numberOfSnakes > 5)
+        if (triggerScript.numberOfSnakes > 5)
         {
             boatMoveSpeedX = 0.4f;
         }
-        if (TriggerScript.numberOfSnakes > 7)
+        if (triggerScript.numberOfSnakes > 7)
         {
             boatMoveSpeedX = 0.2f;
         }
-        if (TriggerScript.numberOfSnakes > 10)
+        if (triggerScript.numberOfSnakes > 10)
         {
             boatMoveSpeedX = 0.1f;
         }
-        if (TriggerScript.numberOfSnakes > 15)
+        if (triggerScript.numberOfSnakes > 15)
         {
             boatMoveSpeedX = 0.0f;
         }
-        else if (TriggerScript.numberOfSnakes < 2)
+        else if (triggerScript.numberOfSnakes < 2)
         {
             boatMoveSpeedX = 0.7f;
 
         }
 
+    }
 
-       
-        /*
-        if (Scroll.scrollValue() > 0 && !running)
+    private void TakeInput()
+    {
+        if (!running)
         {
-            anim["wingDown"].speed = 0;
-            anim.Play();
-            StartCoroutine(AnimStart(endAnim, startAnim, 1f, "wingDown"));
-        }*/
-        /*
+            float input = -Scroll.scrollValue();
+            print(input);
+            switch (wingState)
+            {
+                case WingState.down:
+                    if (input > 0)
+                    {
+                        StartCoroutine(WingMovement(wingState, WingState.up, 0.5f));
+                    }
+                    break;
 
-        if (Scroll.scrollValueAccelerated() < 0 && !readyToFlap)
-        {
-            anim.clip = wingUp;
-            anim["wingUp"].speed = animSpeed;
-            anim.Play();
+                case WingState.mid:
+                    if (input > 0)
+                    {
+                        StartCoroutine(WingMovement(wingState, WingState.up, 0.5f));
+                    }
+                    break;
+
+                case WingState.up:
+                    if (input < 0)
+                    {
+                        StartCoroutine(WingMovement(wingState, WingState.down, 0.5f));
+                    }
+                    break;
+            }
         }
+    }
 
-        if (Scroll.scrollValueAccelerated() == 0 && !readyToFlap)
+    private IEnumerator WingMovement(WingState fromState, WingState toState, float duration)
+    {
+        running = true;
+        float t = 0;
+        float startTime = Time.time;
+        float from = frameStates[(int)fromState];
+        float to = (frameStates[(int)toState] < from) ? 1 : frameStates[(int)toState];
+
+        while (t < 1)
         {
-            anim.clip = wingUp;
-            anim["wingUp"].speed = 0;
-            anim.Play();
+            t = (Time.time - startTime) / duration;
+            t = Mathf.SmoothStep(0, 1, t);
+            t = Mathf.Clamp(t, 0, 1);
+            float timeStep = Mathf.Lerp(from, to, t);
+            animator.Play(0, 0, timeStep);
+
+            yield return null;
         }
+        running = false;
+        ChangeState(toState);
+    }
 
-        if (anim["wingUp"].normalizedTime >= 0.99f && !readyToFlap)
-        {
-            readyToFlap = true;
-        }
-
-
-        if (Scroll.scrollValueAccelerated() > 0 && readyToFlap)
-        {
-            anim.clip = wingDown;
-            anim["wingDown"].speed = animSpeed;
-            anim.Play();
-        }
-
-        if (anim["wingDown"].normalizedTime >= 0.99f)
+    private void ChangeState(WingState newState)
+    {
+        wingState = newState;
+        if (newState == WingState.down)
         {
             StartCoroutine(TurnBoolOff());
         }
-
-        */
-       // print(anim["WingUp"].normalizedTime);
-
     }
-
 
     public IEnumerator TurnBoolOff()
     {
-       // pushSnakesAway = true;
+        pushSnakesAway = true;
         yield return new WaitForSeconds(1f);
         pushSnakesAway = false;
-        readyToFlap = false;
-
-
     }
 
 

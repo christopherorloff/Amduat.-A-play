@@ -29,8 +29,13 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     public Vector2 offset;
 
+    [Range(0, 1)]
+    public float normalizedAnimationTime;
+
+    Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
 
         //Setup for constant variables
         screenBoundariesMax = (Vector2)Camera.main.ScreenToWorldPoint((Vector3)screenSizeMax);
@@ -42,6 +47,7 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     void Update()
     {
+        // animator.Play(0, 0, normalizedAnimationTime);
         if (!followState)
         {
             Move();

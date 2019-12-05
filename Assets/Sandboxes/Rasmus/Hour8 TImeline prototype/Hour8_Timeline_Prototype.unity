@@ -254,6 +254,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &140928289
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +389,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1001 &196439609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,6 +643,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &218377614
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +809,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &430267219
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +974,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &448117769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1109,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &557168511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1244,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &641917064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1379,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &672316476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1514,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &703189275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +1649,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &716666726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,6 +1784,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &803464196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,6 +1949,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &857676988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,12 +1973,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857676988}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: -5.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.24405275, w: 0.96976197}
+  m_LocalPosition: {x: -2.0811963, y: -0.60784084, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 1602973044}
-  m_RootOrder: 3
+  m_Father: {fileID: 1013751913}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &867283206
 GameObject:
@@ -2102,6 +2114,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &968213297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2249,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1013751912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,6 +2280,7 @@ Transform:
   m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 857676989}
   - {fileID: 1602973044}
   m_Father: {fileID: 1020892679}
   m_RootOrder: 1
@@ -2516,6 +2531,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1144871556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2666,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1174001425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,6 +2801,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1196480043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,6 +2936,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1219947149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,6 +3071,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1231975914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3206,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1235534193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,6 +3432,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1001 &1360734202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3679,6 +3701,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1602973042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,9 +3783,8 @@ Transform:
   - {fileID: 430267220}
   - {fileID: 1458116009}
   - {fileID: 1374223204}
-  - {fileID: 857676989}
   m_Father: {fileID: 1013751913}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.252}
 --- !u!114 &1602973045
 MonoBehaviour:
@@ -3781,7 +3803,7 @@ MonoBehaviour:
   sunOrb: {fileID: 1374223204}
   followStart: {fileID: 857676989}
   queueOffsetDimensions: {x: 3, y: 0}
-  smoothTime: 0.5
+  smoothTime: 1
 --- !u!1 &1618722296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3947,6 +3969,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1646670588
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,6 +4223,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1766216133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,6 +4358,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1768307975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,6 +4493,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1784461005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4602,6 +4628,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1907065436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,6 +4763,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &1911428342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4851,6 +4879,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!95 &1911428347
 Animator:
   serializedVersion: 3
@@ -5004,6 +5033,7 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0
 --- !u!1 &2009897033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,3 +5168,4 @@ MonoBehaviour:
   speed: 3
   followState: 0
   offset: {x: 0, y: 0}
+  normalizedAnimationTime: 0

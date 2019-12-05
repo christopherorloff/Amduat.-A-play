@@ -6,7 +6,7 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 {
     public Scenemanager_hour5_script SceneManager;
 
-    public GameObject Boat;
+    public GameObject boat;
     float speed;
     float awaySpeed = 2f;
     float distance = 1f;
@@ -14,21 +14,19 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
     void Start()
     {
         speed = Random.Range(0.3f, 0.8f);
-        Boat = GameObject.FindGameObjectWithTag("Boat");
-        SceneManager = FindObjectOfType<Scenemanager_hour5_script>();
     }
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Boat.transform.position, speed * Time.deltaTime);
-        transform.right = Boat.transform.position - transform.position;
+        transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
+        transform.right = boat.transform.position - transform.position;
         if (SceneManager.pushSnakesAway)
         {
-            transform.position = Vector2.MoveTowards(transform.position, Boat.transform.position, -1 * awaySpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, -1 * awaySpeed * Time.deltaTime);
         }
-        if (Vector3.Distance(Boat.transform.position, transform.position) <=1)
+        if (Vector3.Distance(boat.transform.position, transform.position) <= 1)
         {
-            transform.position = (transform.position - Boat.transform.position).normalized * distance + Boat.transform.position;
+            transform.position = (transform.position - boat.transform.position).normalized * distance + boat.transform.position;
 
         }
     }

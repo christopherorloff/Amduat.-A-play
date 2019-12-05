@@ -42,7 +42,6 @@ public class ParticleMove_script : MonoBehaviour
         }
         if (Scroll.scrollValueAccelerated() > 0)
         {
-            print("scroller anden vej");
             particles = new ParticleSystem.Particle[p.particleCount];
             p.GetParticles(particles);
             for (int i = 0; i < particles.GetUpperBound(0); i++)
@@ -62,5 +61,5 @@ public class ParticleMove_script : MonoBehaviour
 
 
     }
-    }
+}
 
