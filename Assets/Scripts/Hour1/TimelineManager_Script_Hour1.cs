@@ -20,6 +20,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     //Boat
     public GameObject Boat;
 
+    public AnimationCurve boatFloatStep;
+    private float _animationTimePosition;
     float startYPosition;
     Vector3 boatPosStart = new Vector3(-9.9f, -2.5f, 0);
     Vector3 boatPosEnd = new Vector3(10.4f, -2.5f, 0);
@@ -55,6 +57,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     public float sceneLength;
     private bool fadeHasStarted = false;
 
+    //Wrong input
     public General_WrongInput_Movement_Script wrongInput;
     public GameObject rubberMarkerEnd;
     public GameObject rubberMarkerStart;
@@ -213,14 +216,19 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         print("MoveBoat");
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance;
-        float startTime = Time.time;
+        //float startTime = Time.time;
 
         while (Boat.transform.position.x < xEnd)
         {
-            float t = (Time.time - startTime) / durationOfBoatSegments;
-            float step = Mathf.SmoothStep(xStart, xEnd, t);
+            _animationTimePosition += Time.deltaTime;
+            //float t = (Time.time - startTime) / durationOfBoatSegments;
+            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition/durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
             yield return null;
+        }
+        if(Boat.transform.position.x >= xEnd)
+        {
+            _animationTimePosition = 0;
         }
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
     }
