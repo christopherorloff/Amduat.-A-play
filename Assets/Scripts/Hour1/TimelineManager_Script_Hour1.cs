@@ -55,6 +55,12 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     public float sceneLength;
     private bool fadeHasStarted = false;
 
+    public General_WrongInput_Movement_Script wrongInput;
+    public GameObject rubberMarkerEnd;
+    public GameObject rubberMarkerStart;
+
+    public float rubberMarkerDelta = -0.25f;
+
     void Awake()
     {
 
@@ -114,12 +120,15 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         float input = Scroll.scrollValueAccelerated();
 
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
-        ConvertInputToProgress(input);
-
-        SunActions();
-        BGActions();
-        CamAction();
-
+        
+        if(wrongInput.wrongInput == false)
+        {
+            ConvertInputToProgress(input);
+            SunActions();
+            BGActions();
+            CamAction();
+            rubberAction();
+        }
         CheckTimelineProgress();
     }
 
@@ -219,6 +228,12 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     private void CamAction()
     {
         Cam.transform.position = Vector3.Lerp(camPosStart, camPosEnd, Timeline);
+    }
+
+    private void rubberAction()
+    {
+        rubberMarkerEnd.transform.position = Vector3.Lerp(sunPosStart + new Vector3(rubberMarkerDelta,0,0),sunPosEnd + new Vector3(rubberMarkerDelta,0,0),Timeline);
+        rubberMarkerStart.transform.position = Vector3.Lerp(sunPosStart,sunPosEnd,Timeline);
     }
 }
 

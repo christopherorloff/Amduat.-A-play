@@ -34,6 +34,11 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     public ParticleSystem StartParticles;
     private bool sceneHasEnded = false;
 
+    public float WrongInputDuration;
+    public float WrongInputDraw;
+    public float WrongInputPull;
+    private bool firstWrong = true;
+
     void Awake()
     {
         goddesses = new Transform[goddessesParent.childCount];
@@ -99,6 +104,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
                 {
                     StartCoroutine(Draw());
                     nextIsDraw = false;
+                    firstWrong = false;
                 }
                 else
                 {
@@ -109,10 +115,65 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         }
         else
         {
-            //HERE FEEDBACK FOR WRONG SCROLL CAN BE PROCESSED
+            if(nextIsDraw)
+            {
+                if(firstWrong)
+                {
+                    StartCoroutine(WrongInput(WrongInputDraw));
+                }
+                else
+                {
+                    StartCoroutine(WrongInput(WrongInputDraw+rotationAfterPull));
+                }
+            }
+            else
+            {
+                StartCoroutine(WrongInput(rotationAfterDraw+WrongInputPull));
+            }
+            
+                
+                
         }
 
 
+    }
+
+    private IEnumerator WrongInput(float WrongInputRotation2)
+    {
+        float startTime = Time.time;
+
+        
+        Quaternion startRotation = goddesses[0].rotation;
+        Quaternion endRotation = Quaternion.Euler(0, 0, WrongInputRotation2);
+        float t = 0;
+        while (t < 1)
+        {
+            t = (Time.time - startTime) / WrongInputDuration;
+            t = (t * t * t);
+            t = Mathf.Clamp(t, 0, 1);
+            for (int i = 0; i < goddesses.Length; i++)
+            {
+                goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
+            }
+            yield return null;
+        }
+        if(t>=1f)
+        {
+            float t2 = 0;
+            while (t2 < 1)
+            {
+                t2 = (Time.time - startTime) / (WrongInputDuration*2);
+                t2 = (t2 * t2 * t2);
+                t2 = Mathf.Clamp(t2, 0, 1);
+                for (int i = 0; i < goddesses.Length; i++)
+                {
+                    goddesses[i].rotation = Quaternion.Lerp(endRotation, startRotation, t2);
+                }
+                yield return null;
+        }
+        }
+        
+        
     }
 
     private IEnumerator Draw()
