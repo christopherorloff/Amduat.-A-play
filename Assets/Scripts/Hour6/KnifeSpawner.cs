@@ -8,6 +8,7 @@ public class KnifeSpawner : MonoBehaviour
     public GameObject knife;
     public Transform spawnPos;
     public SparkSpawn SS;
+    public GameObject KnifeSpawnEffect;
 
     float delay = 2;
 
@@ -38,6 +39,7 @@ public class KnifeSpawner : MonoBehaviour
     {
         //sparkeffect bool
         SS.NewKnife = true;
+        Instantiate(KnifeSpawnEffect, spawnPos.transform.position, KnifeSpawnEffect.transform.rotation);
 
         yield return new WaitForSeconds(delay);
         GameObject go = Instantiate(knife);
@@ -45,6 +47,8 @@ public class KnifeSpawner : MonoBehaviour
         go.transform.position = spawnPos.transform.position;
         go.transform.rotation = spawnPos.transform.rotation;
         go.transform.localScale = spawnPos.transform.localScale;
+        Destroy(GameObject.Find("Hour6_KnifeSpawnParticle(Clone)"), 6f);
+
     }
 
 }
