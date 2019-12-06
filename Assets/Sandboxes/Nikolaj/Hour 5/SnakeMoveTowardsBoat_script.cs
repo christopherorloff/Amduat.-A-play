@@ -10,6 +10,8 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
     float speed;
     float awaySpeed = 2f;
     float distance = 1f;
+    Vector2 velocity;
+    private float smoothTime = 2;
 
     void Start()
     {
@@ -18,11 +20,16 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
         transform.right = boat.transform.position - transform.position;
         if (SceneManager.pushSnakesAway)
         {
-            transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, -1 * awaySpeed * Time.deltaTime);
+            Vector3 opposite = -(boat.transform.position - transform.position);
+            transform.position = Vector2.SmoothDamp(transform.position, opposite, ref velocity, smoothTime);
+
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
         }
         if (Vector3.Distance(boat.transform.position, transform.position) <= 1)
         {
