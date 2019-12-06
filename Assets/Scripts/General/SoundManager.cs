@@ -100,13 +100,10 @@ public class SoundManager : MonoBehaviour
     public FMOD.Studio.EventInstance knifeSpawnInstance;
 
     private string knifeThrowPath = "event:/HOUR 6/KnifeThrow";
-    public FMOD.Studio.EventInstance knifeThrowInstance;
 
     private string knifeHitPath = "event:/HOUR 6/KnifeHit";
-    public FMOD.Studio.EventInstance knifeHitInstance;
 
     private string knifeClangPath = "event:/HOUR 6/KnifeClang";
-    public FMOD.Studio.EventInstance knifeClangInstance;
 
     private string apopisAppearPath = "event:/HOUR 6/ApopisAppear";
     public FMOD.Studio.EventInstance apopisAppearInstance;
@@ -179,7 +176,6 @@ public class SoundManager : MonoBehaviour
         //INPUTS FOR TESTING
         if (Input.GetKeyDown(KeyCode.A))
         {
-            knifeHitInstance.start();
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -260,6 +256,24 @@ public class SoundManager : MonoBehaviour
         return new Vector3(x / positions.Length, y / positions.Length, z / positions.Length);
     }
 
+    public void PlayKnifeHit() {
+        FMOD.Studio.EventInstance knifeHitInstance;
+        knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
+        knifeHitInstance.start();
+    }
+
+    public void PlayKnifeBounce() {
+        FMOD.Studio.EventInstance knifeClangInstance;
+        knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
+        knifeClangInstance.start();
+    }
+
+    public void PlayKnifeThrow() {
+        FMOD.Studio.EventInstance knifeThrowInstance;
+        knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
+        knifeThrowInstance.start();
+    }
+
     private void SceneChanged()
     {
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
@@ -316,9 +330,6 @@ public class SoundManager : MonoBehaviour
 
         //HOUR 6 SFX INSTANCES
         knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);
-        knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
-        knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
-        knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
 
         apopisAppearInstance = FMODUnity.RuntimeManager.CreateInstance(apopisAppearPath);
 

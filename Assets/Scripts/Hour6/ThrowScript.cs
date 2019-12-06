@@ -71,7 +71,7 @@ public class ThrowScript : MonoBehaviour
     {
         if (!isThrown)
         {
-            SoundManager.Instance.knifeThrowInstance.start();
+            SoundManager.Instance.PlayKnifeThrow();
             SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
             print("throw!");
@@ -98,9 +98,10 @@ public class ThrowScript : MonoBehaviour
 
     public void KnifeHit()
     {
+        SoundManager.Instance.PlayKnifeHit();
+
         Instantiate(BloodEffect, this.transform.position, Quaternion.identity);
         Instantiate(LightEmergeEffect, this.transform.position, LightEmergeEffect.transform.rotation);
-        SoundManager.Instance.knifeHitInstance.start();
         EventManager.knifeHitEvent();
         Destroy(GameObject.Find("Hour6_Light_emmit_Snake_Knife_hit_particle(Clone)"), 4f);
         Destroy(GameObject.Find("Knife_HitBlood_Particle(Clone)"), 2);
@@ -109,6 +110,8 @@ public class ThrowScript : MonoBehaviour
 
     private IEnumerator BounceKnife(float time)
     {
+        SoundManager.Instance.PlayKnifeBounce();
+
         pulseLightScript.StartPulse = true;
         //Renderer renderer = GetComponent<Renderer>();
         float timer = time;
