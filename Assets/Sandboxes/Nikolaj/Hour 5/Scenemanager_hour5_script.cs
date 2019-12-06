@@ -148,7 +148,7 @@ public class Scenemanager_hour5_script : MonoBehaviour
     public IEnumerator TurnBoolOff()
     {
         pushSnakesAway = true;
-        yield return new WaitForSeconds(1f);
+        yield return null;
         pushSnakesAway = false;
     }
 

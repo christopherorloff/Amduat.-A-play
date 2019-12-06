@@ -8,7 +8,7 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 
     public GameObject boat;
     float speed;
-    float awaySpeed = 5f;
+    float awaySpeed = 1.5f;
     float distance = 1f;
     Vector2 velocity;
     private float smoothTime = 2;
@@ -30,7 +30,8 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
             if (!coroutineRunning)
             {
                 Vector3 opposite = -(boat.transform.position - transform.position).normalized;
-                StartCoroutine(PushSnakes(transform.position, opposite, 2));
+                Debug.DrawRay(transform.position, opposite, Color.yellow, 1000);
+                StartCoroutine(PushSnakes(transform.position, opposite, 1.5f));
             }
         }
         else
@@ -51,13 +52,13 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
         coroutineRunning = true;
         float startTime = Time.time;
         float t = 0;
-        while (t < 1)
+        while (t < 0.99f)
         {
             t = (Time.time - startTime) / duration;
-            t = (1 - t) * (1 - t) * (1 - t);
+            t = 1 - (1 - t) * (1 - t);
             t = Mathf.Clamp(t, 0, 1);
             print(t);
-            transform.position += direction * awaySpeed * Time.deltaTime;
+            transform.position = Vector3.Lerp(start, direction + start, t);
             yield return null;
         }
 
