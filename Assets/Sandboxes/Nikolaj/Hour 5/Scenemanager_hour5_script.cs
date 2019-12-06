@@ -90,21 +90,23 @@ public class Scenemanager_hour5_script : MonoBehaviour
                 case WingState.down:
                     if (input > 0)
                     {
-                        StartCoroutine(WingMovement(wingState, WingState.up, 0.5f));
+                        StartCoroutine(WingMovement(wingState, WingState.up, 0.7f));
+                        SoundManager.Instance.PlayWingCharge();
                     }
                     break;
 
                 case WingState.mid:
                     if (input > 0)
                     {
-                        StartCoroutine(WingMovement(wingState, WingState.up, 0.5f));
+                        StartCoroutine(WingMovement(wingState, WingState.up, 0.7f));
                     }
                     break;
 
                 case WingState.up:
                     if (input < 0)
                     {
-                        StartCoroutine(WingMovement(wingState, WingState.down, 0.5f));
+                        StartCoroutine(WingMovement(wingState, WingState.down, 0.55f));
+                        SoundManager.Instance.PlayWingThrust();
                     }
                     break;
             }

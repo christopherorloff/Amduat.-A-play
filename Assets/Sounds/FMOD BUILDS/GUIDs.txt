@@ -1,0 +1,54 @@
+{76200633-e3d7-4f20-bdf7-8e484756cb76} bank:/Master
+{ee3d26e7-92ac-0362-3bbe-04b6b6a5cdee} bank:/Master.strings
+{98ad7c61-6bad-4495-8d1f-308beb6e5c38} bus:/
+{94c7335a-e77e-4d91-9491-6edb27d5acca} bus:/Reverb
+{1077ba37-e9ab-436a-8c7a-38a2485d9982} event:/AMBIENCE/Cave
+{c11d3968-d8e3-41c0-b047-c7e9f2eb5681} event:/AMBIENCE/Hour2_Jungle
+{adafcc35-c5c9-48a8-a04a-ba46c2b08c84} event:/AMBIENCE/Hour4_SeaCave
+{1588f05a-dbc5-42ae-9349-157c372c419a} event:/AMBIENCE/Water
+{7e29f493-0d85-466d-8ca9-9d1c34491c5b} event:/GENERAL SOUNDS/BlessedDeadAppear
+{9100774e-3d26-4e4b-be30-2e3b46a65ffa} event:/GENERAL SOUNDS/BoatPaddle
+{e1826625-ee47-4806-bd34-7d274d0c3f0a} event:/GENERAL SOUNDS/Title
+{d47d36fd-ad57-47e2-8cf1-76b982a05ec0} event:/HOUR 1/SolarBaboonsAppear
+{17b48b33-6d19-45ce-b3a1-e30a5ff83d00} event:/HOUR 2/GrainGodSpew
+{74626f06-9ef3-4525-9f12-adaefb76a411} event:/HOUR 2/GrowAttack
+{c7de59f7-8503-4c14-91c3-c012d7d9c07a} event:/HOUR 2/GrowLoop
+{4c68bdba-906e-4681-a180-a25826e3c890} event:/HOUR 3/OsirisLimbCollected
+{426eb09f-6541-4d68-9268-21b17ff6d30a} event:/HOUR 3/OsirisLimbCollectedFinal
+{251bf299-225f-46be-b05e-27135aaaf5aa} event:/HOUR 3/OsirisLimbSweep
+{d8a8b832-ddda-4d43-a61f-5c654df1cd9d} event:/HOUR 4/BoatAground
+{0a5a4096-09de-40b6-bff8-cd8d9864a825} event:/HOUR 4/CollectEnergy
+{2e9ffc59-6d04-4560-b126-149d54d9728c} event:/HOUR 4/GoddessesAppearing
+{7ad4cb44-02ac-44fc-8cdf-2f0700103e4c} event:/HOUR 4/TowBoat
+{33ea3bd9-caf2-4618-967d-529bd2c04377} event:/HOUR 5/SnakesHiss
+{730aff67-8891-47cd-b86e-b2b67ce58daf} event:/HOUR 5/WingedCharge
+{fa231783-f266-4dc3-909e-6dbf1bd886aa} event:/HOUR 5/WingedThrust
+{54470179-51d7-4481-a2c0-8dfc6737f337} event:/HOUR 6/ApopisAppear
+{f48b9071-561d-43a3-be0b-ff02b34b5b71} event:/HOUR 6/KnifeClang
+{3c893548-3e4b-4838-b2bd-ec60ea4bf1e8} event:/HOUR 6/KnifeHit
+{01f6c2f9-f5a9-4b9c-85bd-1014a3a5fbb5} event:/HOUR 6/KnifeSpawn
+{315b9b13-b4a5-4242-bca8-29ae53140c2c} event:/HOUR 6/KnifeThrow
+{adc59df6-4c59-4e97-a190-80d65a5ff556} event:/HOUR 7/ApopisTiredIdle
+{0479161f-ae49-4e90-a679-66c150c20c79} event:/HOUR 7/SpearCharge
+{35ae4d08-956a-4293-b870-395db64ee227} event:/HOUR 7/SpearHit
+{fd8b0d3f-64ef-4cda-9779-ae58246c929f} event:/HOUR 7/SpearMiss
+{5971a55a-13f6-4c79-b174-ec67e3e1952a} event:/HOUR 7/SpearReady
+{d51b6054-859e-48fb-97f3-7ec378f5fede} event:/HOUR 8/BlessedDeadClothed
+{4fb3c43c-f9b1-4bdc-a38d-dd9ea938d67c} event:/HOUR 8/BlessedDeadRunning
+{7785d04b-c758-4146-897c-aaf8f52f1b1f} event:/HOUR 8/BoatPushLoop
+{9e9a8fe3-e651-4364-88dd-5788167a8cb2} event:/HOUR 8/SunShine
+{06de8bb5-262b-4e82-b087-f9b627a90be6} event:/MUSIC/ApopisDead
+{5f85c6c3-f251-4dfc-868e-edbce7029963} event:/MUSIC/Showdown
+{d3bbdfa7-97d6-40e3-8f23-abe3f010f583} event:/MUSIC/Theme
+{0456f180-ec99-4a32-bba0-1b836422e8a9} parameter:/Apopis/Stop
+{83e5bc7e-57c0-4518-a830-1a3f8ce09cfb} parameter:/BlessedDeadParameters/Amount
+{718c26a0-723e-42ab-a456-ae7b04b1364b} parameter:/BoatPushLoopParameters/Speed
+{88a3cd8b-c66e-4267-a651-014cc2436eaa} parameter:/End
+{10aef2fc-a699-49bc-a32c-65d8feaf6ef0} parameter:/Music/Showdown/Intensity
+{1f017b8e-b5b0-474d-bb21-5ac79a15b16b} parameter:/Music/Theme/End
+{cecc30b6-88fd-47f3-b956-1d9c88d7c7a3} parameter:/Pitch
+{16ba479b-6056-4c49-9bcd-ac3a7eec32af} parameter:/Progress
+{a2ce7d70-08d1-4c61-b878-ae6516ab6b2a} parameter:/Scroll
+{9ecfb6eb-3d95-4054-8f63-81def2bd5a86} parameter:/SnakesHissParameters/Intensity
+{2dbac6fa-731f-44f8-874a-0f54708e9e53} parameter:/Stop
+{bb5b6b0c-dce1-4a38-8593-07b36c0ff36b} parameter:/WingedSerpentParameters/Progress
