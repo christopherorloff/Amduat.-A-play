@@ -8,10 +8,12 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 
     public GameObject boat;
     float speed;
-    float awaySpeed = 3f;
+    float awaySpeed = 5f;
     float distance = 1f;
     Vector2 velocity;
     private float smoothTime = 2;
+
+    private bool coroutineRunning = false;
 
     void Start()
     {
@@ -21,20 +23,44 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
     void Update()
     {
         transform.right = boat.transform.position - transform.position;
+
         if (SceneManager.pushSnakesAway)
         {
-            Vector3 opposite = -(boat.transform.position - transform.position);
-            transform.position = Vector2.SmoothDamp(transform.position, opposite, ref velocity, smoothTime);
 
+            if (!coroutineRunning)
+            {
+                Vector3 opposite = -(boat.transform.position - transform.position).normalized;
+                StartCoroutine(PushSnakes(transform.position, opposite, 2));
+            }
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
+            if (Vector3.Distance(boat.transform.position, transform.position) <= 1)
+            {
+                transform.position = (transform.position - boat.transform.position).normalized * distance + boat.transform.position;
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, boat.transform.position, speed * Time.deltaTime);
+            }
         }
-        if (Vector3.Distance(boat.transform.position, transform.position) <= 1)
-        {
-            transform.position = (transform.position - boat.transform.position).normalized * distance + boat.transform.position;
+    }
 
+    IEnumerator PushSnakes(Vector3 start, Vector3 direction, float duration)
+    {
+        coroutineRunning = true;
+        float startTime = Time.time;
+        float t = 0;
+        while (t < 1)
+        {
+            t = (Time.time - startTime) / duration;
+            t = (1 - t) * (1 - t) * (1 - t);
+            t = Mathf.Clamp(t, 0, 1);
+            print(t);
+            transform.position += direction * awaySpeed * Time.deltaTime;
+            yield return null;
         }
+
+        coroutineRunning = false;
     }
 }

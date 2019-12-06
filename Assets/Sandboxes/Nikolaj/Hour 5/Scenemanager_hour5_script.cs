@@ -9,6 +9,7 @@ public class Scenemanager_hour5_script : MonoBehaviour
 
     public GameObject boat;
     public CheckCollisonBoat_Script triggerScript;
+    public SnakeMoveTowardsBoat_script[] snakeMoveTowardsBoat_Script;
     public GameObject wings;
     [Range(0.0f, 1.0f)]
     public float normalizedTime;
