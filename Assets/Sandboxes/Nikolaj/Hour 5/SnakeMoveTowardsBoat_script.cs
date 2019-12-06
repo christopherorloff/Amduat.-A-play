@@ -8,12 +8,12 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 
     public GameObject boat;
     float speed;
-    float awaySpeed = 2f;
+    float awaySpeed = 3f;
     float distance = 1f;
 
     void Start()
     {
-        speed = Random.Range(0.3f, 0.8f);
+        speed = Random.Range(0.3f, 0.8f) + 1;
     }
 
     void Update()
