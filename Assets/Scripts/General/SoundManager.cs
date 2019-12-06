@@ -233,14 +233,16 @@ public class SoundManager : MonoBehaviour
 
         if(GetHour() == 5) {
             //Updating snakes distance variable so it goes from 0-1, and updates according to snakes distance to boat
-            Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
-            for (int i = 0; i < hour5Snakes.Length; i++)
-            {
-                snakePositions[i] = hour5Snakes[i].position;
+            if(hour5Boat != null) {
+                Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
+                for (int i = 0; i < hour5Snakes.Length; i++)
+                {
+                    snakePositions[i] = hour5Snakes[i].position;
+                }
+                hour5SnakesDistanceToBoat = Mathf.Clamp(Vector3.Distance(hour5Boat.position, GetMeanVector3(snakePositions)), 1, 6);
+                hour5SnakesDistanceToBoat = hour5SnakesDistanceToBoat / 6;
+                snakesHissInstance.setParameterByName("Intensity", hour5SnakesDistanceToBoat);
             }
-            hour5SnakesDistanceToBoat = Mathf.Clamp(Vector3.Distance(hour5Boat.position, GetMeanVector3(snakePositions)), 1, 6);
-            hour5SnakesDistanceToBoat = hour5SnakesDistanceToBoat / 6;
-            snakesHissInstance.setParameterByName("Intensity", hour5SnakesDistanceToBoat);
         }
     }
 
@@ -437,6 +439,8 @@ public class SoundManager : MonoBehaviour
         if (_hour == 6)
         {
             snakesHissInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            apopisAppearInstance.start();
 
             caveWaterAmbInstance.getPlaybackState(out caveWaterAmbPlaybackState);
             caveWaterAmbIsNotPlaying = caveWaterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
