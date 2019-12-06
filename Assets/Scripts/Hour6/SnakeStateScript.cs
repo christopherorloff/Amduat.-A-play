@@ -10,7 +10,9 @@ public class SnakeStateScript : MonoBehaviour
     float yMax;
     float yMin;
 
+
     public bool snakeAlive = true;
+    public bool snakeRising = false;
 
     float startTime;
     public float duration = 3.0f;
@@ -28,6 +30,7 @@ public class SnakeStateScript : MonoBehaviour
         yMin = secondaryPosition.y;
         bgMovement = GetComponent<BackGround_Object_Movement_Script>();
         bgMovement.enabled = false;
+        snakeRising = true;
         StartCoroutine(SnakeIntro());
     }
 
@@ -45,6 +48,7 @@ public class SnakeStateScript : MonoBehaviour
             transform.position = new Vector3(initialPosition.x, Mathf.SmoothStep(yMin, yMax, t), 0);
             yield return null;
         }
+        snakeRising=false;
         print("Fade in snake done.");
         bgMovement.enabled = true;
         EventManager.turnOnInputEvent();

@@ -19,7 +19,7 @@ public class ThrowScript : MonoBehaviour
 
     public KnifeSpawner knifeSpawner;
 
-
+    public bool throwDone = false;
     private float zRotation;
     private float rotationSpeed = 2350;
 
@@ -49,6 +49,7 @@ public class ThrowScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(this, 2);
+            throwDone = true;
 
         }
         else if (other.CompareTag("Snake") && hit==false)
@@ -60,6 +61,7 @@ public class ThrowScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(this,2);
+            throwDone = true;
             //SoundManager.Instance.knifeClangInstance.start();
         }
 
@@ -73,6 +75,7 @@ public class ThrowScript : MonoBehaviour
             SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
             print("throw!");
+            transform.parent = null;
             target -= this.transform.position;
             // target override. Change later
             target = Vector3.down;
