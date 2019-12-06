@@ -14,8 +14,14 @@ public class SoundManager : MonoBehaviour
     private int hour = 0;
     private string activeScene;
 
+    [Header("Timelines")]
     public TimelineManager_Script_Hour1 timelineHour1;
     public TimelineManager_Script_Hour2 timelineHour2;
+
+    [Header("Hour 5 Specific Variables")]
+    public Transform[] hour5Snakes;
+    public Transform hour5Boat;
+    public float hour5SnakesDistanceToBoat;
 
 
     //AMBIENCE
@@ -29,6 +35,16 @@ public class SoundManager : MonoBehaviour
 
     private string seaCaveAmbPath = "event:/AMBIENCE/Hour4_SeaCave";
     public FMOD.Studio.EventInstance seaCaveAmbInstance;
+
+    private string caveAmbPath = "event:/AMBIENCE/Cave";
+    public FMOD.Studio.EventInstance caveAmbInstance;
+    FMOD.Studio.PLAYBACK_STATE caveAmbPlaybackState;
+    bool caveAmbIsNotPlaying;
+
+    private string caveWaterAmbPath = "event:/AMBIENCE/CaveWater";
+    public FMOD.Studio.EventInstance caveWaterAmbInstance;
+    FMOD.Studio.PLAYBACK_STATE caveWaterAmbPlaybackState;
+    bool caveWaterAmbIsNotPlaying;
 
     //General Sounds
     private string blessedDeadAppearPath = "event:/GENERAL SOUNDS/BlessedDeadAppear";
@@ -72,7 +88,12 @@ public class SoundManager : MonoBehaviour
 
 
     //Hour 5 Sounds
+    private string snakesHissPath = "event:/HOUR 5/SnakesHiss";
+    public FMOD.Studio.EventInstance snakesHissInstance;
 
+    private string wingedChargePath = "event:/HOUR 5/WingedCharge";
+
+    private string wingedThrustPath = "event:/HOUR 5/WingedThrust";
 
     //Hour 6 Sounds
     private string knifeSpawnPath = "event:/HOUR 6/KnifeSpawn";
@@ -107,6 +128,18 @@ public class SoundManager : MonoBehaviour
 
     private string spearChargePath = "event:/HOUR 7/SpearCharge";
     public FMOD.Studio.EventInstance spearChargeInstance;
+
+    //Hour 8 Sounds
+    private string sunShinePath = "event:/HOUR 8/SunShine";
+    public FMOD.Studio.EventInstance sunShineInstance;
+
+    private string blessedDeadRunningPath = "event:/HOUR 8/BlessedDeadRunning";
+    public FMOD.Studio.EventInstance blessedDeadRunningInstance;
+
+    private string boatPushLoopPath = "event:/HOUR 8/BoatPushLoop";
+    public FMOD.Studio.EventInstance boatPushLoopInstance;
+
+    private string blessedDeadClothedPath = "event:/HOUR 8/BlessedDeadClothed";
 
     //MUSIC
     private string showdownMuPath = "event:/MUSIC/Showdown";
@@ -197,6 +230,34 @@ public class SoundManager : MonoBehaviour
                 growLoopInstance.setParameterByName("Scroll", 0);
             }
         }
+
+        if(GetHour() == 5) {
+            //Updating snakes distance variable so it goes from 0-1, and updates according to snakes distance to boat
+            if(hour5Boat != null) {
+                Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
+                for (int i = 0; i < hour5Snakes.Length; i++)
+                {
+                    snakePositions[i] = hour5Snakes[i].position;
+                }
+                hour5SnakesDistanceToBoat = Mathf.Clamp(Vector3.Distance(hour5Boat.position, GetMeanVector3(snakePositions)), 1, 6);
+                hour5SnakesDistanceToBoat = hour5SnakesDistanceToBoat / 6;
+                snakesHissInstance.setParameterByName("Intensity", hour5SnakesDistanceToBoat);
+            }
+        }
+    }
+
+    private Vector3 GetMeanVector3(Vector3[] positions) {
+        float x = 0;
+        float y = 0;
+        float z = 0;
+
+        foreach(Vector3 pos in positions) {
+            x += pos.x;
+            y += pos.y;
+            z += pos.z;
+        }
+
+        return new Vector3(x / positions.Length, y / positions.Length, z / positions.Length);
     }
 
     private void SceneChanged()
@@ -229,6 +290,8 @@ public class SoundManager : MonoBehaviour
         waterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(waterAmbPath);
         jungleAmbInstance = FMODUnity.RuntimeManager.CreateInstance(jungleAmbPath);
         seaCaveAmbInstance = FMODUnity.RuntimeManager.CreateInstance(seaCaveAmbPath);
+        caveAmbInstance = FMODUnity.RuntimeManager.CreateInstance(caveAmbPath);
+        caveWaterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(caveWaterAmbPath);
 
         //MUSIC INSTANCES
         showdownMuInstance = FMODUnity.RuntimeManager.CreateInstance(showdownMuPath);
@@ -248,6 +311,9 @@ public class SoundManager : MonoBehaviour
         goddessesAppearingInstance = FMODUnity.RuntimeManager.CreateInstance(goddessesAppearingPath);
         boatAgroundInstance = FMODUnity.RuntimeManager.CreateInstance(boatAgroundPath);
 
+        //Hour 5 SFX INSTANCES
+        snakesHissInstance = FMODUnity.RuntimeManager.CreateInstance(snakesHissPath);
+
         //HOUR 6 SFX INSTANCES
         knifeSpawnInstance = FMODUnity.RuntimeManager.CreateInstance(knifeSpawnPath);
         knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
@@ -255,6 +321,11 @@ public class SoundManager : MonoBehaviour
         knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
 
         apopisAppearInstance = FMODUnity.RuntimeManager.CreateInstance(apopisAppearPath);
+
+        //HOUR 8 SFX INSTANCES
+        sunShineInstance = FMODUnity.RuntimeManager.CreateInstance(sunShinePath);
+        blessedDeadRunningInstance = FMODUnity.RuntimeManager.CreateInstance(blessedDeadRunningPath);
+        boatPushLoopInstance = FMODUnity.RuntimeManager.CreateInstance(boatPushLoopPath);
 
         //HOUR 7 SFX INSTANCES
         apopisIdleInstance = FMODUnity.RuntimeManager.CreateInstance(apopisIdlePath);
@@ -294,12 +365,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayWingCharge() {
+        float value = Random.Range(0f, 1f);
+        FMOD.Studio.EventInstance wingChargeInstance = FMODUnity.RuntimeManager.CreateInstance(wingedChargePath);
+        wingChargeInstance.start();
+        wingChargeInstance.setParameterByName("Progress", value);
+    }
+
+    public void PlayWingThrust() {
+        FMOD.Studio.EventInstance wingThrustInstance = FMODUnity.RuntimeManager.CreateInstance(wingedThrustPath);
+        wingThrustInstance.start();
+    }
+
     public void HourInitialSounds(int _hour)
     {
         if (_hour == 1)
         {
-
-
             //STARTING SOUNDS
             timelineHour1 = FindObjectOfType<TimelineManager_Script_Hour1>();
             waterAmbInstance.start();
@@ -347,10 +428,30 @@ public class SoundManager : MonoBehaviour
             boatAgroundInstance.start();
             themeMuInstance.setParameterByName("End", 1);
         }
-        if (_hour == 5) { }
+        if (_hour == 5) {
+            waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            seaCaveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            caveAmbInstance.start();
+            caveWaterAmbInstance.start();
+            snakesHissInstance.start();
+        }
 
         if (_hour == 6)
         {
+            snakesHissInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            apopisAppearInstance.start();
+
+            caveWaterAmbInstance.getPlaybackState(out caveWaterAmbPlaybackState);
+            caveWaterAmbIsNotPlaying = caveWaterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (caveWaterAmbIsNotPlaying) {
+                caveWaterAmbInstance.start();
+            }
+            caveAmbInstance.getPlaybackState(out caveAmbPlaybackState);
+            caveAmbIsNotPlaying = caveAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (caveAmbIsNotPlaying) {
+                caveAmbInstance.start();
+            }
         }
 
         if (_hour == 7)

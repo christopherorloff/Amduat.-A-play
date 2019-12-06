@@ -52,20 +52,27 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
     private Vector3 initialPosition;
     private float _time = 0;
+    private float time = 0;
+    public bool snake = false;
+    public bool runOnce = false;
+
+    public bool waitToStart = false;
+
+    public SnakeStateScript snakeState;
 
     private void OnEnable()
     {
+        
         initialPosition = transform.position;
         targetAmplitudeX = amplitudeX;
         targetAmplitudeY = amplitudeY;
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         _time += Scroll.scrollValueAccelerated() * scrollFactor;
         float x = transform.position.x;
         float y = transform.position.y;

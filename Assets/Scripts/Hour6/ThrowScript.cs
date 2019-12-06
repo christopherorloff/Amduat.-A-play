@@ -14,8 +14,12 @@ public class ThrowScript : MonoBehaviour
     [SerializeField]
     private float speedScalar;
     public GameObject BloodEffect;
+    public GameObject LightEmergeEffect;
+    public PulseLight_Script pulseLightScript;
+
     public KnifeSpawner knifeSpawner;
 
+    public bool throwDone = false;
     private float zRotation;
     private float rotationSpeed = 2350;
 
@@ -27,6 +31,8 @@ public class ThrowScript : MonoBehaviour
     {
         bounceKnife = BounceKnife(1);
         BloodEffect = GameObject.FindGameObjectWithTag("Bloodeffect");
+        LightEmergeEffect = GameObject.FindGameObjectWithTag("LightEffect");
+        pulseLightScript = FindObjectOfType<PulseLight_Script>();
         knifeSpawner = FindObjectOfType<KnifeSpawner>().GetComponent<KnifeSpawner>();
     }
 
@@ -43,6 +49,7 @@ public class ThrowScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(this, 2);
+            throwDone = true;
 
         }
         else if (other.CompareTag("Snake") && hit==false)
@@ -54,6 +61,7 @@ public class ThrowScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(this,2);
+            throwDone = true;
             //SoundManager.Instance.knifeClangInstance.start();
         }
 
@@ -67,6 +75,7 @@ public class ThrowScript : MonoBehaviour
             SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
             print("throw!");
+            transform.parent = null;
             target -= this.transform.position;
             // target override. Change later
             target = Vector3.down;
@@ -90,14 +99,17 @@ public class ThrowScript : MonoBehaviour
     public void KnifeHit()
     {
         Instantiate(BloodEffect, this.transform.position, Quaternion.identity);
+        Instantiate(LightEmergeEffect, this.transform.position, LightEmergeEffect.transform.rotation);
         SoundManager.Instance.knifeHitInstance.start();
         EventManager.knifeHitEvent();
-        Destroy(GameObject.Find("KnifehitBlood(clone)"), 2);
+        Destroy(GameObject.Find("Hour6_Light_emmit_Snake_Knife_hit_particle(Clone)"), 4f);
+        Destroy(GameObject.Find("Knife_HitBlood_Particle(Clone)"), 2);
 
     }
 
     private IEnumerator BounceKnife(float time)
     {
+        pulseLightScript.StartPulse = true;
         //Renderer renderer = GetComponent<Renderer>();
         float timer = time;
         Vector3 leftOrRight = new Vector3(Mathf.Sign(UnityEngine.Random.Range(-1, 1)), 0, 0);

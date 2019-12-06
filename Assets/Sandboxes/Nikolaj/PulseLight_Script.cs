@@ -49,10 +49,11 @@ public class PulseLight_Script : MonoBehaviour
             float t = (Time.time - midtime) / time;
             Color newColor = new Color(Sprite.color.r, Sprite.color.g, Sprite.color.b, Mathf.Lerp(value, startValue, t));
             Sprite.color = newColor;
-            StartPulse = false;
             yield return null;
 
         }
+        StartPulse = false;
+
         yield return new WaitForSeconds(1.5f);
         running = false;
 

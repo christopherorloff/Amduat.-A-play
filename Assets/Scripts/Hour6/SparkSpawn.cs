@@ -8,6 +8,7 @@ public class SparkSpawn : MonoBehaviour
     public bool NewKnife = false;
     bool makeSmall = false;
     float rotateSpeed = 300;
+    bool running = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,27 +21,41 @@ public class SparkSpawn : MonoBehaviour
     void Update()
     {
 
-        if (NewKnife)
+        if (NewKnife  && !running)
         {
-            transform.localScale += new Vector3(0.6f * Time.deltaTime, 0.6f * Time.deltaTime, 0);
-            transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
-            if (transform.localScale.x >= 1)
-            {
-                NewKnife = false;
-                makeSmall = true;
-            }
+            StartCoroutine(ScaleUpAndDown());
         }
 
-        if (makeSmall)
-        {
-            transform.localScale -= new Vector3(0.6f * Time.deltaTime, 0.6f * Time.deltaTime, 0);
-            transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
-
-            if (transform.localScale.x <= 0)
-            {
-                makeSmall = false;
-            }
-        }
 
     }
+
+
+    IEnumerator ScaleUpAndDown()
+        {
+
+            running = true;
+
+            while (transform.localScale.x <= 1)
+            {
+                transform.localScale += new Vector3(0.6f * Time.deltaTime, 0.6f * Time.deltaTime, 0);
+                transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            while (transform.localScale.x >= 0)
+            {
+                transform.localScale -= new Vector3(0.6f * Time.deltaTime, 0.6f * Time.deltaTime, 0);
+                transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
+                yield return null;
+
+            }
+            NewKnife = false;
+            running = false;
+
+        }
+        
+
+    
+
+
 }

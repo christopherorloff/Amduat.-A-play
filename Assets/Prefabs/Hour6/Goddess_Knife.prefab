@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7290661624900068482}
   - component: {fileID: 7290661624900068481}
   m_Layer: 0
-  m_Name: GoddessKnife
+  m_Name: Goddess_Knife
   m_TagString: Knife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!114 &7290661624900068483
 MonoBehaviour:
@@ -96,6 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedScalar: 17
+  BloodEffect: {fileID: 0}
+  LightEmergeEffect: {fileID: 0}
+  pulseLightScript: {fileID: 0}
+  knifeSpawner: {fileID: 0}
 --- !u!50 &7290661624900068482
 Rigidbody2D:
   serializedVersion: 4

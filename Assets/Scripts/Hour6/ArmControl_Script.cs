@@ -70,7 +70,7 @@ public class ArmControl_Script : MonoBehaviour
     private void TakeInput()
     {
         //input = Scroll.scrollValueAccelerated() * scalar * drag;
-        input = Scroll.scrollValue() * scalar * drag;
+        input = (Scroll.scrollValue() * scalar * drag);
     }
 
     private void ProcessInput()
@@ -82,6 +82,7 @@ public class ArmControl_Script : MonoBehaviour
         if (z > maxAngle)
         {
             if (throwScript == null)
+            
             {
                 throwScript = GetComponentInChildren<ThrowScript>();
             }
