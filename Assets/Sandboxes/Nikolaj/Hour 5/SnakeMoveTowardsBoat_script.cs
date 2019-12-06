@@ -8,7 +8,7 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 
     public GameObject boat;
     float speed;
-    float awaySpeed = 1.5f;
+    float awaySpeed = 3f;
     float distance = 1f;
     Vector2 velocity;
     private float smoothTime = 2;
@@ -55,10 +55,11 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
         while (t < 0.99f)
         {
             t = (Time.time - startTime) / duration;
+
+            //easing function: inverse power --> ease out
             t = 1 - (1 - t) * (1 - t);
             t = Mathf.Clamp(t, 0, 1);
-            print(t);
-            transform.position = Vector3.Lerp(start, direction + start, t);
+            transform.position = Vector3.Lerp(start, (direction * awaySpeed) + start, t);
             yield return null;
         }
 
