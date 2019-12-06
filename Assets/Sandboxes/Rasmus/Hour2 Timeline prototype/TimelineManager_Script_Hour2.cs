@@ -15,6 +15,9 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     public Transform boatStart;
     public Transform boatEnd;
 
+    public AnimationCurve boatFloatStep;
+    private float _animationTimePosition;
+
     Vector3 boatPosStart;
     Vector3 boatPosEnd;
     private float boatTravelDistance;
@@ -115,14 +118,19 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         print("MoveBoat");
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance;
-        float startTime = Time.time;
+        //float startTime = Time.time;
 
         while (Boat.transform.position.x < xEnd)
         {
-            float t = (Time.time - startTime) / durationOfBoatSegments;
-            float step = Mathf.SmoothStep(xStart, xEnd, t);
+            _animationTimePosition += Time.deltaTime;
+            //float t = (Time.time - startTime) / durationOfBoatSegments;
+            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition/durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
             yield return null;
+        }
+        if(Boat.transform.position.x >= xEnd)
+        {
+            _animationTimePosition = 0;
         }
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
     }
