@@ -12,7 +12,6 @@ public class FadeUIScript : MonoBehaviour
 
     public bool sceneEnd = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         print("Start called");
@@ -21,7 +20,6 @@ public class FadeUIScript : MonoBehaviour
         StartCoroutine(FadeSpriteCoroutineDown(0, 4f));
     }
 
-    // Update is called once per frame
     public void StartFadeOut()
     {
         print("Start fade out func");

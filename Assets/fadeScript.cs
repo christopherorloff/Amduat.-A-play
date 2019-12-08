@@ -18,21 +18,15 @@ public class fadeScript : MonoBehaviour
     /*private float min3 = 100f;
     private float max3 = 255f;*/
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        image1.color = new Color(1,1,1,Mathf.Lerp(min1,max1,t)); 
-        image2.color = new Color(1,1,1,Mathf.Lerp(min2,max2,t)); 
+        image1.color = new Color(1, 1, 1, Mathf.Lerp(min1, max1, t));
+        image2.color = new Color(1, 1, 1, Mathf.Lerp(min2, max2, t));
 
         if (t < 1f)
-        { 
-            t += Time.deltaTime/colorChangeDuration;
+        {
+            t += Time.deltaTime / colorChangeDuration;
             //Debug.Log(t);
         }
 
