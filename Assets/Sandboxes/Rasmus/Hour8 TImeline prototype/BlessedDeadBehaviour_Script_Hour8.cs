@@ -29,10 +29,13 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     public Vector2 offset;
 
+
     [Range(0, 1)]
     public float normalizedAnimationTime;
 
     Animator animator;
+    public AnimationClip pushingAnimation;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -62,6 +65,10 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
     private void Follow()
     {
         transform.position = Vector3.SmoothDamp(transform.position, target.position - queueOffset, ref currentVelocity, smoothTime);
+        if (transform.position.x < target.position.x + .5f && animator.GetBool("startPushing") == false)
+        {
+            animator.SetBool("startPushing", true);
+        }
     }
 
     public void StartFollowing(Transform _target, Vector2 _offsetValues, float _smoothTime)
@@ -70,7 +77,6 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
         float offSetX = UnityEngine.Random.Range(0.0f, _offsetValues.x);
         float offSetY = UnityEngine.Random.Range(-_offsetValues.y - (offSetX), _offsetValues.y + (offSetX));
         queueOffset = new Vector3(offSetX, offSetY, 0);
-        gameObject.GetComponent<SpriteRenderer>().flipX = true;
         smoothTime = _smoothTime;
         followState = true;
     }
