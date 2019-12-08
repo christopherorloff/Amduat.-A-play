@@ -15,6 +15,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
 
     bool inputIsActive = false;
     public bool throwing = false;
+    public bool throwStopper = false;
     float maxAngle = 10;
     float minAngle = -6;
     public bool waiting = false;
@@ -40,6 +41,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
     public bool thrown = false;
     public bool thrownDone = false;
 
+    public bool resettingThrow = false;
 
     void OnEnable()
     {
@@ -95,8 +97,11 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             waiting = true;
             throwing = true;
             timeLeft = throwTimer;
-            
+            throwStopper = true;
         }
+  
+
+        //Timer 2 sec
     }
 
     private void ProcessInput()
@@ -106,54 +111,75 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             {
                 throwScript = GetComponentInChildren<ThrowScript>();
             }
-        if(throwing && !done && !thrown)
+        if(throwing && !done && !thrownDone)
         {
-            t1 += 0.5f * Time.deltaTime;
+            throwStopper = false;
+            t1 += 10f * Time.deltaTime;
             currentAngle = new Vector3(
                 Mathf.LerpAngle(currentAngle.x, throwRotationEnd.x, t1),
                 Mathf.LerpAngle(currentAngle.y, throwRotationEnd.y, t1),
                 Mathf.LerpAngle(currentAngle.z, throwRotationEnd.z, t1));
             Debug.Log(t1);
+            root.transform.eulerAngles = currentAngle;
         }
-        if (t1 > 0.2f)
+        if (t1 > 1f)
         {
             done = true;
             thrown = true;
         }
 
-        if(thrown && done && thrown && !thrownDone)
+        if(throwing && done && thrown && !thrownDone && !throwStopper)
         {
             throwScript.ThrowKnife(snake.transform.position);
-            //thrownDone = true;
+            throwStopper = true;
         }
 
         if(throwing && done && throwScript.throwDone == true)
         {
-            t2 += Time.deltaTime;
+            StartCoroutine(WaitAndLift(1.5f));
+            
+        }
+
+
+
+        
+
+        if(resettingThrow)
+        {
+            t2 = 0f;
+            t1 = 0f;
+            done = false;
+            throwing = false;
+            waiting = false;
+            thrownDone = false;
+            thrown = false;
+            resettingThrow = false;
+        }
+
+     }
+    IEnumerator WaitAndLift(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        
+
+            Debug.Log("Doing");
+            t2 += 0.25f*Time.deltaTime;
             currentAngle = new Vector3(
                 Mathf.LerpAngle(currentAngle.x, throwRotationStart.x, t2),
                 Mathf.LerpAngle(currentAngle.y, throwRotationStart.y, t2),
                 Mathf.LerpAngle(currentAngle.z, throwRotationStart.z, t2));
-        }
-        if(t2 > 0.5f)
+            root.transform.eulerAngles = currentAngle;
+            Debug.Log(t2);
+        
+        if(t2 > 0.13f)
         {
-            throwing = false;
-            done = false;
-
+            Debug.Log("Doing last");
+            resettingThrow = true;
         }
 
-        root.transform.eulerAngles = currentAngle;
-
-        if(!done && !throwing)
-        {
-            t2 = 0f;
-            t1 = 0f;
-            waiting = false;
-            thrownDone = false;
-            thrown = false;
-        }
-     }
-    
+                
+        
+    }
 
     public Transform FindComponentInChildWithTag(GameObject parent, string tag)
     {

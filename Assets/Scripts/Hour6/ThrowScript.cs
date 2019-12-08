@@ -41,6 +41,7 @@ public class ThrowScript : MonoBehaviour
     {
         if (other.CompareTag("HitZone"))
         {
+            //throwDone = true;
             hit = true;
             StopCoroutine(throwKnifeMovement);
             KnifeHit();
@@ -49,11 +50,12 @@ public class ThrowScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(this, 2);
-            throwDone = true;
+            
 
         }
         else if (other.CompareTag("Snake") && hit==false)
         {
+            //throwDone = true;
             StopCoroutine(throwKnifeMovement);
             print("Bounce knife");
             knifeSpawner.SpawnKnife();
@@ -61,7 +63,7 @@ public class ThrowScript : MonoBehaviour
             Destroy(GetComponent<Rigidbody2D>());
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(this,2);
-            throwDone = true;
+            
             //SoundManager.Instance.knifeClangInstance.start();
         }
 
@@ -71,6 +73,7 @@ public class ThrowScript : MonoBehaviour
     {
         if (!isThrown)
         {
+            
             SoundManager.Instance.PlayKnifeThrow();
             SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
@@ -84,6 +87,7 @@ public class ThrowScript : MonoBehaviour
             throwKnifeMovement = ThrowKnifeMovement(target.normalized);
             StartCoroutine(throwKnifeMovement);
             isThrown = true;
+            throwDone = true;
         }
     }
 

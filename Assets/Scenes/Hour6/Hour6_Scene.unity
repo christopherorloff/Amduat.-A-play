@@ -1099,7 +1099,7 @@ PrefabInstance:
     - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: rotateSpeed
-      value: -0.77
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
@@ -1761,6 +1761,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6668578857594850378, guid: c27b6412ad8aaad4994db254541f5699,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c27b6412ad8aaad4994db254541f5699, type: 3}
 --- !u!1001 &619480985
@@ -1778,7 +1783,7 @@ PrefabInstance:
     - target: {fileID: 1308673981004680830, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
@@ -3141,6 +3146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwing: 0
+  throwStopper: 0
   waiting: 0
   throwTimer: 5
   done: 0
@@ -3153,6 +3159,7 @@ MonoBehaviour:
   throwRotationStart: {x: 0, y: 0, z: 220}
   thrown: 0
   thrownDone: 0
+  resettingThrow: 0
 --- !u!1001 &1772836268
 PrefabInstance:
   m_ObjectHideFlags: 0
