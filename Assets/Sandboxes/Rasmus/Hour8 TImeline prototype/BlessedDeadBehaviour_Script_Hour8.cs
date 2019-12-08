@@ -67,6 +67,7 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, target.position - queueOffset, ref currentVelocity, smoothTime);
         if (transform.position.x < target.position.x + .5f && animator.GetBool("startPushing") == false)
         {
+            //This is when the blessed dead are behind the boat and pushing
             animator.SetBool("startPushing", true);
         }
     }

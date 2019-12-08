@@ -255,6 +255,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &140928289
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +391,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1001 &196439609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -644,6 +646,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &218377614
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +813,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &430267219
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +979,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &448117769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1115,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &557168511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1251,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &641917064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1387,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &672316476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1523,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &703189275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1659,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &716666726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,6 +1795,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &803464196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +1961,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &857676988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,6 +2127,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &968213297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2263,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1013751912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,6 +2546,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1144871556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,6 +2682,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1174001425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,6 +2818,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1196480043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,6 +2954,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1219947149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,6 +3090,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1231975914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,6 +3226,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1235534193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3453,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1001 &1360734202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3702,6 +3723,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1602973042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,6 +3992,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1646670588
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,8 +4091,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1671764568}
+  - component: {fileID: 1671764569}
   m_Layer: 0
-  m_Name: TimelineManager
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4089,6 +4113,18 @@ Transform:
   m_Father: {fileID: 218377615}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1671764569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671764567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266ebb5942e3d4b678ae8101c9252896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1689087686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,6 +4260,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1766216133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4359,6 +4396,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1768307975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,6 +4532,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1784461005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,6 +4668,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1907065436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4764,6 +4804,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &1911428342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,6 +4921,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!95 &1911428347
 Animator:
   serializedVersion: 3
@@ -5034,6 +5076,7 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
 --- !u!1 &2009897033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5169,3 +5212,4 @@ MonoBehaviour:
   followState: 0
   offset: {x: 0, y: 0}
   normalizedAnimationTime: 0
+  pushingAnimation: {fileID: 0}
