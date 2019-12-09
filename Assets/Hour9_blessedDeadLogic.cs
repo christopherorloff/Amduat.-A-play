@@ -8,12 +8,17 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
     public Transform[] blessedDead;
     public ParticleSystem[] showSpawnsParticle;
+    public GameObject[] masks;
+    public Transform Target;
+
 
     public int currentBlessed = 0;
     public float animationDuration = 1.5f;
     public float yMax = 1;
     private int maxBoatsSpawned = 8;
     public bool running = false;
+
+    public GameObject Boat;
 
     public ParticleSystem particle;
 
@@ -56,6 +61,10 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         currentBlessed++;
         if (currentBlessed >= maxBoatsSpawned)
         {
+            for (int i = 0; i < masks.Length; i++)
+            {
+                Destroy(masks[i]);
+            }
             StartMovingBoats();
         }
         running = false;
@@ -66,8 +75,30 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
     void StartMovingBoats()
     {
-      
-        
+        StartCoroutine(moveCharacters(Boat.transform, Target.transform, 10));
+
+
+        for (int i = 0; i < blessedDead.Length; i++)
+        {
+            StartCoroutine(moveCharacters(blessedDead[i].transform, Target.transform, 10));
+        }
+
+    }
+
+
+    IEnumerator moveCharacters(Transform fromPos, Transform toPos, float duration)
+    {
+        float counter = 0;
+        Vector3 startPos = fromPos.position;
+        Vector3 endPos = toPos.position;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            fromPos.position = Vector3.Lerp(startPos, endPos, counter / duration);
+            yield return null;
+        }
+
 
     }
 

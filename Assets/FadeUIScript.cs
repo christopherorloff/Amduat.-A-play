@@ -9,7 +9,7 @@ public class FadeUIScript : MonoBehaviour
     public Text textObject;
     public CanvasGroup FadeSprite;
     public GameObject canvas;
-
+    public bool sceneReady = false;
     public bool sceneEnd = false;
 
     void Start()
@@ -95,6 +95,8 @@ public class FadeUIScript : MonoBehaviour
             textObject.color = newColor;
             yield return null;
         }
+
+        sceneReady = true;
     }
 
 
