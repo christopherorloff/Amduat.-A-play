@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 134845934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 2
@@ -250,12 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &140928289
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 140928289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 27
@@ -386,12 +385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1001 &196439609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,7 +538,7 @@ Transform:
   m_GameObject: {fileID: 211154923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 16
@@ -641,12 +639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &218377614
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +674,36 @@ Transform:
   - {fileID: 1671764568}
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &247528603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247528604}
+  m_Layer: 0
+  m_Name: BottomClamp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &247528604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247528603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.71, y: -2.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1013751913}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290281576
 GameObject:
@@ -867,7 +894,7 @@ Transform:
   m_GameObject: {fileID: 325969894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 8
@@ -968,12 +995,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &430267219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1059,7 @@ Transform:
   m_GameObject: {fileID: 432780586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 22
@@ -1134,12 +1160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &448117769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1194,7 @@ Transform:
   m_GameObject: {fileID: 448117769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 3
@@ -1270,12 +1295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &557168511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 557168511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 14
@@ -1406,12 +1430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &641917064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1464,7 @@ Transform:
   m_GameObject: {fileID: 641917064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 29
@@ -1542,12 +1565,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &672316476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,7 +1599,7 @@ Transform:
   m_GameObject: {fileID: 672316476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 24
@@ -1678,12 +1700,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &703189275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1734,7 @@ Transform:
   m_GameObject: {fileID: 703189275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 11
@@ -1814,12 +1835,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &716666726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,7 +1869,7 @@ Transform:
   m_GameObject: {fileID: 716666726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 13
@@ -1950,12 +1970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &803464196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,6 +2011,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &840140041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840140042}
+  m_Layer: 0
+  m_Name: TopClamp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840140042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840140041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.27, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1013751913}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &851437964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,7 +2070,7 @@ Transform:
   m_GameObject: {fileID: 851437964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 23
@@ -2122,12 +2171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &857676988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2235,7 @@ Transform:
   m_GameObject: {fileID: 867283206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 10
@@ -2288,12 +2336,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &968213297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2370,7 @@ Transform:
   m_GameObject: {fileID: 968213297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 18
@@ -2424,12 +2471,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1013751912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2508,8 @@ Transform:
   m_Children:
   - {fileID: 857676989}
   - {fileID: 1602973044}
+  - {fileID: 247528604}
+  - {fileID: 840140042}
   m_Father: {fileID: 1020892679}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2542,9 +2590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ef22a8d10344e7da50a57b0a6a8102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRadius: 2.5
+  overlapRadius: 1
   speed: 1.5
-  forwardOffsetOverlapCircle: 1
+  forwardOffsetOverlapCircle: 0.5
 --- !u!1 &1020892678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,7 +2660,7 @@ Transform:
   m_GameObject: {fileID: 1058382749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 21
@@ -2713,12 +2761,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1144871556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,7 +2795,7 @@ Transform:
   m_GameObject: {fileID: 1144871556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 6
@@ -2849,12 +2896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1174001425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,7 +2930,7 @@ Transform:
   m_GameObject: {fileID: 1174001425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 12
@@ -2985,12 +3031,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1196480043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,7 +3065,7 @@ Transform:
   m_GameObject: {fileID: 1196480043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 7
@@ -3121,12 +3166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1219947149
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,7 +3200,7 @@ Transform:
   m_GameObject: {fileID: 1219947149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 9
@@ -3257,12 +3301,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1231975914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,7 +3335,7 @@ Transform:
   m_GameObject: {fileID: 1231975914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 19
@@ -3393,12 +3436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1235534193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,7 +3466,7 @@ Transform:
   m_GameObject: {fileID: 1235534193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1911428343}
   - {fileID: 1766216134}
@@ -3633,7 +3675,7 @@ Transform:
   m_GameObject: {fileID: 1351393911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 5
@@ -3734,12 +3776,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1001 &1360734202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3903,7 +3944,7 @@ Transform:
   m_GameObject: {fileID: 1480266624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 4
@@ -4004,12 +4045,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1602973042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,7 +4150,7 @@ MonoBehaviour:
   coneBottom: {fileID: 1458116009}
   sunOrb: {fileID: 1374223204}
   followStart: {fileID: 857676989}
-  queueOffsetDimensions: {x: 3, y: 0}
+  queueOffsetDimensions: {x: 2, y: 0}
   smoothTime: 1
 --- !u!1 &1618722296
 GameObject:
@@ -4172,7 +4212,7 @@ Transform:
   m_GameObject: {fileID: 1639780627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 30
@@ -4273,12 +4313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1646670588
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,9 +4450,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266ebb5942e3d4b678ae8101c9252896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boat: {fileID: 0}
-  blessedDeadParent: {fileID: 0}
-  boatMaxSpeed: 0
+  boat: {fileID: 1013751913}
+  blessedDeadParent: {fileID: 1235534194}
+  boatMaxSpeed: 0.7
+  slowDownScalar: 1
 --- !u!1 &1689087686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4443,7 +4483,7 @@ Transform:
   m_GameObject: {fileID: 1689087686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 26
@@ -4544,12 +4584,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1698093489
 GameObject:
   m_ObjectHideFlags: 0
@@ -4659,7 +4698,7 @@ Transform:
   m_GameObject: {fileID: 1766216133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 1
@@ -4760,12 +4799,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1768307975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4795,7 +4833,7 @@ Transform:
   m_GameObject: {fileID: 1768307975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 15
@@ -4896,12 +4934,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1784461005
 GameObject:
   m_ObjectHideFlags: 0
@@ -4931,7 +4968,7 @@ Transform:
   m_GameObject: {fileID: 1784461005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 25
@@ -5032,12 +5069,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1811015268
 GameObject:
   m_ObjectHideFlags: 0
@@ -5227,7 +5263,7 @@ Transform:
   m_GameObject: {fileID: 1907065436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 17
@@ -5328,12 +5364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &1911428342
 GameObject:
   m_ObjectHideFlags: 0
@@ -5363,7 +5398,7 @@ Transform:
   m_GameObject: {fileID: 1911428342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 0
@@ -5445,12 +5480,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!95 &1911428347
 Animator:
   serializedVersion: 3
@@ -5499,7 +5533,7 @@ Transform:
   m_GameObject: {fileID: 1987375852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 28
@@ -5600,12 +5634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}
 --- !u!1 &2009897033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,7 +5668,7 @@ Transform:
   m_GameObject: {fileID: 2009897033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1235534194}
   m_RootOrder: 20
@@ -5736,9 +5769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09368a1f6166440b7a15659270098a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampedYPosition: 0.4
   speed: 3
   followState: 0
-  offset: {x: 0, y: 0}
-  normalizedAnimationTime: 0
-  pushingAnimation: {fileID: 0}
+  topClamp: {fileID: 840140042}
+  bottomClamp: {fileID: 247528604}
+  sceneManager: {fileID: 1671764569}

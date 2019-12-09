@@ -18,7 +18,7 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
     private Vector2 screenWorldSize;
 
     //Interface --> move to parent object
-    public float clampedYPosition = 1 / 3;
+    // public float clampedYPosition = 1 / 3;
     public float speed = 1;
     private float smoothTime;
     [SerializeField]
@@ -27,14 +27,9 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
     private Vector3 currentVelocity;
     private Vector3 queueOffset;
 
-    public Vector2 offset;
-
-
-    [Range(0, 1)]
-    public float normalizedAnimationTime;
-
+    public Transform topClamp, bottomClamp;
+    public SceneManagerScript_Hour8 sceneManager;
     Animator animator;
-    public AnimationClip pushingAnimation;
 
     void Start()
     {
@@ -69,6 +64,7 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
         {
             //This is when the blessed dead are behind the boat and pushing
             animator.SetBool("startPushing", true);
+            sceneManager.AddBlessedDeadPushing();
         }
     }
 
@@ -76,7 +72,7 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
     {
         target = _target;
         float offSetX = UnityEngine.Random.Range(0.0f, _offsetValues.x);
-        float offSetY = UnityEngine.Random.Range(-_offsetValues.y - (offSetX), _offsetValues.y + (offSetX));
+        float offSetY = UnityEngine.Random.Range(-_offsetValues.y - (offSetX * 0.8f), _offsetValues.y + (offSetX * 0.8f));
         queueOffset = new Vector3(offSetX, offSetY, 0);
         smoothTime = _smoothTime;
         followState = true;
@@ -110,8 +106,8 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     private float GetRandomYPosition()
     {
-        float clamp = screenWorldSize.y / 2 * clampedYPosition;
-        float y = UnityEngine.Random.Range(-clamp, clamp);
+        // float clamp = screenWorldSize.y / 2 * clampedYPosition;
+        float y = UnityEngine.Random.Range(bottomClamp.position.y, topClamp.position.y);
         return y;
     }
 }
