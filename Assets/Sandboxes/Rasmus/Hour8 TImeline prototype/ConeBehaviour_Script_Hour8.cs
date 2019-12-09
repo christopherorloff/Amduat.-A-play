@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScrollManager;
 
 public class ConeBehaviour_Script_Hour8 : MonoBehaviour
 {
@@ -25,6 +27,26 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
         {
             rayVectors[i] = new Vector3();
         }
+    }
+
+    void Update()
+    {
+        HandleInput();
+    }
+
+    private void HandleInput()
+    {
+        float input = Scroll.scrollValue();
+        if (input > 0)
+        {
+
+        }
+
+    }
+
+    private void ModifyConeScale()
+    {
+
     }
 
     void FixedUpdate()
