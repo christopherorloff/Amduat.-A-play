@@ -13,6 +13,7 @@ TagManager:
   - Bloodeffect
   - ReadyEffect
   - LightEffect
+  - Shore
   layers:
   - Default
   - TransparentFX
