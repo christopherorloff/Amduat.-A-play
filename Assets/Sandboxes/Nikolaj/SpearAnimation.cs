@@ -15,6 +15,7 @@ public class SpearAnimation : MonoBehaviour
     // Input for spear up animation
     float spearUpInput = 0;
 
+    public PulseLight_Script Pulse;
 
     public AnimationClip lift;
     public AnimationClip stap;
@@ -34,6 +35,10 @@ public class SpearAnimation : MonoBehaviour
     public bool startEffect2 = false;
     public bool stopEffect2 = false;
 
+    public ParticleSystem buildUpEffect;
+    ParticleSystem.EmissionModule emmision;
+    float energy = 0;
+
     public Camera cam;
     public GameObject cameraObject;
 
@@ -47,6 +52,8 @@ public class SpearAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
 
         CS = FindObjectOfType<CameraShake>();
+
+        emmision = buildUpEffect.emission;
     }
 
     void Update() { 
@@ -54,6 +61,11 @@ public class SpearAnimation : MonoBehaviour
         input = (Mathf.Abs(input) < threshold ? 0 : input);
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
+
+        ParticleSystem.MinMaxCurve tempCurve = emmision.rateOverTime;
+        tempCurve.constant = energy;
+        emmision.rateOverTime = tempCurve;
+
 
         //If statement to start the lift animation, if scrollwheel up input is true
         if (!readyToStap && input < 0)
@@ -64,6 +76,7 @@ public class SpearAnimation : MonoBehaviour
             anim.clip = lift;
             anim["SpearAnimationUp"].speed = animspeed;
             anim.Play();
+            energy += 0.15f;
 
 
             //camera zooms in and moves
@@ -107,10 +120,10 @@ public class SpearAnimation : MonoBehaviour
             {
                 cam.orthographicSize += 0.05f * drag;
                 cameraObject.transform.Translate(new Vector3(2f * Time.deltaTime, 0, 0));
-                if (anim["SpearAnimationUp"].normalizedTime <= 0.1f)
+               /* if (anim["SpearAnimationUp"].normalizedTime <= 0.1f)
                 {
                     CS.EarlyShake(0.005f, 0.4f);
-                }
+                }*/
 
                     if (cam.orthographicSize >= 5)
                 {
@@ -121,7 +134,8 @@ public class SpearAnimation : MonoBehaviour
                 {
                     cameraObject.transform.position = new Vector3(0, 0, -10);
                 }
-
+                Pulse.StartPulse = true;
+                energy = 0;
                 SoundManager.Instance.PlaySpearMiss(anim["SpearAnimationUp"].normalizedTime);
                 SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
 
@@ -136,7 +150,7 @@ public class SpearAnimation : MonoBehaviour
             SoundManager.Instance.spearReadyInstance.start();
             SoundManager.Instance.spearChargeInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             SoundManager.Instance.apopisIdleInstance.setParameterByName("Stop", 1);
-
+            buildUpEffect.Stop();
             print("readytostap");
             anim.clip = lift;
             anim.enabled = false;
