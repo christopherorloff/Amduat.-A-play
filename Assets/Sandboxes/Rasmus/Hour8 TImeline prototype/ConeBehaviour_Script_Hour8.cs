@@ -11,6 +11,9 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
     public Vector2 queueOffsetDimensions;
     public float smoothTime;
 
+
+    public float inputStep = 0.2f;
+    public float inputDownStep = 0.1f;
     // private
     private Vector3 orb, mid, top, bottom, topQuarter, bottomQuarter;
     private Vector3[] rayVectors;
@@ -18,7 +21,12 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
     private float min = 0.02f;
     private float max = 0.5f;
 
+    private Vector3 minConeScale;
+    private Vector3 maxConeScale;
 
+    private float input;
+    private float velocity;
+    private float coneLimit = 0.5f;
 
     void Start()
     {
@@ -27,6 +35,10 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
         {
             rayVectors[i] = new Vector3();
         }
+        minConeScale = new Vector3(transform.localScale.x, min, transform.localScale.z);
+        maxConeScale = new Vector3(transform.localScale.x, max, transform.localScale.z);
+
+        transform.localScale = minConeScale;
     }
 
     void Update()
@@ -36,17 +48,19 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
 
     private void HandleInput()
     {
-        float input = Scroll.scrollValue();
+        input = Scroll.scrollValue();
+
         if (input > 0)
         {
-
+            velocity += inputStep * Time.deltaTime;
+        }
+        else
+        {
+            velocity -= inputDownStep * Time.deltaTime;
         }
 
-    }
-
-    private void ModifyConeScale()
-    {
-
+        velocity = Mathf.Clamp(velocity, 0, 1);
+        transform.localScale = Vector3.Lerp(minConeScale, maxConeScale, velocity);
     }
 
     void FixedUpdate()
@@ -65,7 +79,7 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
         {
             float distance = Vector3.Distance(orb, rayVectors[i]);
             RaycastHit2D hit = Physics2D.Raycast(orb, (rayVectors[i] - orb).normalized, distance);
-            if (hit.collider != null)
+            if (hit.collider != null && velocity > coneLimit && hit.collider.tag == "BlessedDead")
             {
                 SetFollow(hit.transform.gameObject);
                 hit.collider.enabled = false;

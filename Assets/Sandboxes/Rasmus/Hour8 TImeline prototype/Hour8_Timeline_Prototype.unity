@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 134845936}
   m_Layer: 0
   m_Name: BlessedDead (32)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 140928291}
   m_Layer: 0
   m_Name: BlessedDead (57)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 211154925}
   m_Layer: 0
   m_Name: BlessedDead (46)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,6 +672,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1671764568}
+  - {fileID: 251078836}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -705,6 +706,24 @@ Transform:
   m_Father: {fileID: 1013751913}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &251078836 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1079279882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &251078837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4152335645684174043, guid: df5f8975a53fa354fb8d9d10cc64734d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1079279882}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596c54db7ed464643b6b9ee7e17efb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &290281576
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +899,7 @@ GameObject:
   - component: {fileID: 325969896}
   m_Layer: 0
   m_Name: BlessedDead (38)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1045,7 +1064,7 @@ GameObject:
   - component: {fileID: 432780588}
   m_Layer: 0
   m_Name: BlessedDead (52)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1180,7 +1199,7 @@ GameObject:
   - component: {fileID: 448117771}
   m_Layer: 0
   m_Name: BlessedDead (33)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1315,7 +1334,7 @@ GameObject:
   - component: {fileID: 557168513}
   m_Layer: 0
   m_Name: BlessedDead (44)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1450,7 +1469,7 @@ GameObject:
   - component: {fileID: 641917066}
   m_Layer: 0
   m_Name: BlessedDead (59)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1585,7 +1604,7 @@ GameObject:
   - component: {fileID: 672316478}
   m_Layer: 0
   m_Name: BlessedDead (54)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1720,7 +1739,7 @@ GameObject:
   - component: {fileID: 703189277}
   m_Layer: 0
   m_Name: BlessedDead (41)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1855,7 +1874,7 @@ GameObject:
   - component: {fileID: 716666728}
   m_Layer: 0
   m_Name: BlessedDead (43)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2056,7 +2075,7 @@ GameObject:
   - component: {fileID: 851437966}
   m_Layer: 0
   m_Name: BlessedDead (53)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2221,7 +2240,7 @@ GameObject:
   - component: {fileID: 867283208}
   m_Layer: 0
   m_Name: BlessedDead (40)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2356,7 +2375,7 @@ GameObject:
   - component: {fileID: 968213299}
   m_Layer: 0
   m_Name: BlessedDead (48)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2490,7 +2509,7 @@ GameObject:
   - component: {fileID: 1013751914}
   m_Layer: 0
   m_Name: boatRA
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2513,22 +2532,32 @@ Transform:
   m_Father: {fileID: 1020892679}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1013751914
-CircleCollider2D:
+--- !u!61 &1013751914
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013751912}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.26, y: -0.63}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.62, y: 3.32}
+    newSize: {x: 4.62, y: 3.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 2.31
+  m_Size: {x: 3.01, y: 1.17}
+  m_EdgeRadius: 0
 --- !u!212 &1013751915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2622,6 +2651,7 @@ Transform:
   m_Children:
   - {fileID: 1235534194}
   - {fileID: 1013751913}
+  - {fileID: 1387551490}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2646,7 +2676,7 @@ GameObject:
   - component: {fileID: 1058382751}
   m_Layer: 0
   m_Name: BlessedDead (51)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2766,6 +2796,132 @@ MonoBehaviour:
   topClamp: {fileID: 840140042}
   bottomClamp: {fileID: 247528604}
   sceneManager: {fileID: 1671764569}
+--- !u!1001 &1079279882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 218377615}
+    m_Modifications:
+    - target: {fileID: 1308673981004680830, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Name
+      value: FadeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Text
+      value: 'HOUR 8: LEARNING TO JOG
+
+'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df5f8975a53fa354fb8d9d10cc64734d, type: 3}
 --- !u!1 &1144871556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,7 +2937,7 @@ GameObject:
   - component: {fileID: 1144871558}
   m_Layer: 0
   m_Name: BlessedDead (36)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2916,7 +3072,7 @@ GameObject:
   - component: {fileID: 1174001427}
   m_Layer: 0
   m_Name: BlessedDead (42)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3051,7 +3207,7 @@ GameObject:
   - component: {fileID: 1196480045}
   m_Layer: 0
   m_Name: BlessedDead (37)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3186,7 +3342,7 @@ GameObject:
   - component: {fileID: 1219947151}
   m_Layer: 0
   m_Name: BlessedDead (39)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3321,7 +3477,7 @@ GameObject:
   - component: {fileID: 1231975916}
   m_Layer: 0
   m_Name: BlessedDead (49)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3661,7 +3817,7 @@ GameObject:
   - component: {fileID: 1351393913}
   m_Layer: 0
   m_Name: BlessedDead (35)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3885,6 +4041,99 @@ Transform:
   m_Father: {fileID: 1602973044}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1387551489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1387551490}
+  - component: {fileID: 1387551492}
+  - component: {fileID: 1387551491}
+  - component: {fileID: 1387551493}
+  m_Layer: 0
+  m_Name: EndCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1387551490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387551489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.86, y: -0.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1020892679}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1387551491
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387551489}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1387551492
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387551489}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.114068985}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.5855637}
+  m_EdgeRadius: 0
+--- !u!114 &1387551493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387551489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a3e9d67f3b94989bba1f688aed9171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeUIScript: {fileID: 251078837}
 --- !u!1 &1458116008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,7 +4179,7 @@ GameObject:
   - component: {fileID: 1480266626}
   m_Layer: 0
   m_Name: BlessedDead (34)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4125,8 +4374,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602973042}
   m_LocalRotation: {x: -0, y: -0, z: -0.24405275, w: 0.96976197}
-  m_LocalPosition: {x: 3.31, y: -0.61, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 4.54, y: -1.33, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 430267220}
   - {fileID: 1458116009}
@@ -4152,6 +4401,8 @@ MonoBehaviour:
   followStart: {fileID: 857676989}
   queueOffsetDimensions: {x: 2, y: 0}
   smoothTime: 1
+  inputStep: 0.5
+  inputDownStep: 4
 --- !u!1 &1618722296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,7 +4449,7 @@ GameObject:
   - component: {fileID: 1639780629}
   m_Layer: 0
   m_Name: BlessedDead (60)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4469,7 +4720,7 @@ GameObject:
   - component: {fileID: 1689087688}
   m_Layer: 0
   m_Name: BlessedDead (56)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4684,7 +4935,7 @@ GameObject:
   - component: {fileID: 1766216135}
   m_Layer: 0
   m_Name: BlessedDead (31)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4819,7 +5070,7 @@ GameObject:
   - component: {fileID: 1768307977}
   m_Layer: 0
   m_Name: BlessedDead (45)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4954,7 +5205,7 @@ GameObject:
   - component: {fileID: 1784461007}
   m_Layer: 0
   m_Name: BlessedDead (55)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5249,7 +5500,7 @@ GameObject:
   - component: {fileID: 1907065438}
   m_Layer: 0
   m_Name: BlessedDead (47)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5384,7 +5635,7 @@ GameObject:
   - component: {fileID: 1911428347}
   m_Layer: 0
   m_Name: BlessedDead (30)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5519,7 +5770,7 @@ GameObject:
   - component: {fileID: 1987375854}
   m_Layer: 0
   m_Name: BlessedDead (58)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5654,7 +5905,7 @@ GameObject:
   - component: {fileID: 2009897035}
   m_Layer: 0
   m_Name: BlessedDead (50)
-  m_TagString: Untagged
+  m_TagString: BlessedDead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
