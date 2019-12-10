@@ -23,13 +23,18 @@ public class ThrowScript : MonoBehaviour
     private float zRotation;
     private float rotationSpeed = 2350;
 
+
+    public Hour6_MoveCharacters moveCharacters;
+
     //flags
     bool isThrown = false;
 
 
     private void Start()
     {
-        bounceKnife = BounceKnife(1);
+        moveCharacters = FindObjectOfType<Hour6_MoveCharacters>();
+
+        bounceKnife = BounceKnife(2f);
         BloodEffect = GameObject.FindGameObjectWithTag("Bloodeffect");
         LightEmergeEffect = GameObject.FindGameObjectWithTag("LightEffect");
         pulseLightScript = FindObjectOfType<PulseLight_Script>();
@@ -73,7 +78,7 @@ public class ThrowScript : MonoBehaviour
     {
         if (!isThrown)
         {
-            
+            throwDone = true;
             SoundManager.Instance.PlayKnifeThrow();
             SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
@@ -87,7 +92,6 @@ public class ThrowScript : MonoBehaviour
             throwKnifeMovement = ThrowKnifeMovement(target.normalized);
             StartCoroutine(throwKnifeMovement);
             isThrown = true;
-            throwDone = true;
         }
     }
 
@@ -103,6 +107,9 @@ public class ThrowScript : MonoBehaviour
     public void KnifeHit()
     {
         SoundManager.Instance.PlayKnifeHit();
+
+        moveCharacters.numberOfHits++;
+        moveCharacters.DecideAction();
 
         Instantiate(BloodEffect, this.transform.position, Quaternion.identity);
         Instantiate(LightEmergeEffect, this.transform.position, LightEmergeEffect.transform.rotation);

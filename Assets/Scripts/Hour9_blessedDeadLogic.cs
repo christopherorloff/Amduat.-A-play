@@ -14,7 +14,9 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     public float yMax = 1;
     private int maxBoatsSpawned = 8;
     public bool running = false;
-
+    public Transform Target;
+    public GameObject[] masks;
+    public GameObject Boat;
     public ParticleSystem particle;
 
     // Start is called before the first frame update
@@ -26,12 +28,12 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!running && Scroll.scrollValue() > 0 && currentBlessed < blessedDead.Length)
+        if (!running && Scroll.scrollValue() < 0 && currentBlessed < blessedDead.Length)
         {
-           
+
             StartCoroutine(RaiseBlessedDead(blessedDead[currentBlessed]));
 
-            
+
         }
     }
 
@@ -44,7 +46,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         float offset = BlessedGO.GetComponent<SpriteRenderer>().bounds.max.y;
 
         Instantiate(particle, new Vector3(BlessedGO.position.x, offset), particle.transform.rotation);
-        showSpawnsParticle[currentBlessed].Stop();        
+        showSpawnsParticle[currentBlessed].Stop();
         float startTime = Time.time;
         while (BlessedGO.localPosition.y < yMax)
         {
@@ -56,20 +58,42 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         currentBlessed++;
         if (currentBlessed >= maxBoatsSpawned)
         {
-            StartMovingBoats();
+
+            for (int i = 0; i < masks.Length; i++)
+            {
+                Destroy(masks[i]);
+            }
+
+            for (int i = 0; i < blessedDead.Length; i++)
+            {
+                StartCoroutine(MoveCharacters(blessedDead[i].transform, Target.transform, 10f));
+
+            }
+
+            StartCoroutine(MoveCharacters(Boat.transform, Target.transform, 10f));
+
+
         }
         running = false;
-        
-        
+
+
 
     }
 
-    void StartMovingBoats()
+    IEnumerator MoveCharacters(Transform fromPos, Transform toPos, float duration)
     {
-      
-        
+
+        float counter = 0;
+        Vector3 startPos = fromPos.position;
+        Vector3 endPos = toPos.position;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            fromPos.position = Vector3.Lerp(startPos, endPos, counter / duration);
+            yield return null;
+        }
+
 
     }
-
-
 }

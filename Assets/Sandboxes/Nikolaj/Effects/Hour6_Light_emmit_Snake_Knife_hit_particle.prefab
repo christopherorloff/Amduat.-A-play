@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2819185898905136510}
   - component: {fileID: 2819185898905136511}
   - component: {fileID: 2819185898905136508}
+  - component: {fileID: 1703898701}
   m_Layer: 0
-  m_Name: Light_emmit_Snake_Knife_hit_particle
-  m_TagString: Untagged
+  m_Name: Hour6_Light_emmit_Snake_Knife_hit_particle
+  m_TagString: LightEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2819185898905136509}
-  m_LocalRotation: {x: -0.61319107, y: -0.35213068, z: -0.13431957, w: 0.6942327}
+  m_LocalRotation: {x: -0.61318845, y: -0.35213643, z: -0.13432276, w: 0.6942315}
   m_LocalPosition: {x: 0, y: -1.2, z: 0}
-  m_LocalScale: {x: 0.37981, y: 0.37981, z: 0.37981}
+  m_LocalScale: {x: 0.3798101, y: 0.3798101, z: 0.37981015}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -105,7 +106,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -284,8 +285,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
-      minScalar: 0.1
+      scalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4729,7 +4730,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_RenderMode: 1
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4753,3 +4754,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1703898701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819185898905136509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bb53ad7974f254d943c57aded992aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snake: {fileID: 0}

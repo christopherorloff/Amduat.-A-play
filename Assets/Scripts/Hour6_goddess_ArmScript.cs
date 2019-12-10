@@ -137,7 +137,6 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
         if(throwing && done && throwScript.throwDone == true)
         {
             StartCoroutine(WaitAndLift(1.5f));
-            
         }
 
 
