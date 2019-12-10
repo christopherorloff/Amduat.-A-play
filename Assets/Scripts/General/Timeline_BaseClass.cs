@@ -44,7 +44,6 @@ public class Timeline_BaseClass : MonoBehaviour
             {
                 timelineEventsEmpty = true;
             }
-
         }
     }
 
