@@ -38,6 +38,9 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     private Vector3 camPosEnd = new Vector3(0, 0, -10);
 
 
+    //animation of osiriskilled
+    public SethKillingAnim_script SethAnimScript;
+
     //Initialization of variables and start states
     void Awake()
     {
@@ -62,7 +65,8 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         AddTimelineEvent(0.7f, BoatActions);
         AddTimelineEvent(0.9f, BoatActions);
 
-        AddTimelineEvent(0.6f, wheatSpray.StartSpraying);
+        AddTimelineEvent(0.4f, wheatSpray.StartSpraying);
+        AddTimelineEvent(0.6f, SethAnimScript.startAnim); 
         //Trees
         for (int i = 0; i < treeActivators.Length; i++)
         {

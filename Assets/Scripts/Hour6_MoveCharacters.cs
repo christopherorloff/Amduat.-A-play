@@ -44,7 +44,7 @@ public class Hour6_MoveCharacters : MonoBehaviour
     IEnumerator MoveCharacters(Transform fromPos, Transform toPos, float duration)
     {
 
-        float counter = 0;
+        //float counter = 0;
         Vector3 startPos = fromPos.position;
         Vector3 endPos = toPos.position;
         float t = 0;
