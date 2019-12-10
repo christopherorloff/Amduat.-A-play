@@ -7,25 +7,14 @@ public class Hour6_MoveCharacters : MonoBehaviour
     // Start is called before the first frame update
 
     public int numberOfHits = 0;
-    public float travelDistance = 5f;
+    private float travelDistance = 5f;
+    private int currentMoveTo = 0;
+
     public SpriteRenderer Nepth;
     public ParticleSystem ParticleEffect;
     public GameObject Seth;
-
     public Transform[] moveToTransforms;
-    int currentMoveTo = 0;
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
     public void DecideAction()
