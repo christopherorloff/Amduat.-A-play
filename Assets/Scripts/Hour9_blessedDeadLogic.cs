@@ -14,6 +14,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     public float yMax = 1;
     private int maxBoatsSpawned = 8;
     public bool running = false;
+    public Transform Target;
 
     public ParticleSystem particle;
 
