@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1710109435227141591}
   - component: {fileID: 1710109435227141590}
   - component: {fileID: 1710109435227141589}
+  - component: {fileID: 1672273718594458782}
   m_Layer: 0
   m_Name: Hour9_BoatSpawn_Particle
   m_TagString: Untagged
@@ -4753,3 +4754,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1672273718594458782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710109435227141588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ef5ff008a9efe4480ca8d7ed77fb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
