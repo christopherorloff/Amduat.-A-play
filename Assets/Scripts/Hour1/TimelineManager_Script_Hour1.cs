@@ -14,8 +14,12 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     private Vector3 sunPosStart = new Vector3(-7.75f, 1.75f, 0);
     private Vector3 sunPosEnd = new Vector3(7.75f, -2.0f, 0);
     private Color sunColorStart = Color.white;
+    public Color sunGlowStart;
+    public Color SunGlowEnd;
+
     public Color sunColorEnd;
     private SpriteRenderer SunColor;
+    public SpriteRenderer sunGlow;
 
     //Boat
     public GameObject Boat;
@@ -194,6 +198,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     {
         Sun.transform.position = Vector3.Lerp(sunPosStart, sunPosEnd, Timeline);
         SunColor.color = Color.Lerp(sunColorStart, sunColorEnd, Timeline);
+        sunGlow.color = Color.Lerp(sunGlowStart, SunGlowEnd, Timeline);
     }
 
     private void BGActions()
