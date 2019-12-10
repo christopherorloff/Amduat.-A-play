@@ -47,11 +47,14 @@ public class Hour6_MoveCharacters : MonoBehaviour
         float counter = 0;
         Vector3 startPos = fromPos.position;
         Vector3 endPos = toPos.position;
-
-        while (counter < duration)
+        float t = 0;
+        float startTime = Time.time;
+        while (t<1)
         {
-            counter += Time.deltaTime;
-            fromPos.position = Vector3.Lerp(startPos, endPos, counter/duration);
+            t = (Time.time - startTime) / duration;
+            t = Mathf.SmoothStep(0,1,t);
+            t = Mathf.Clamp(t,0,1);
+            fromPos.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
 
@@ -66,31 +69,7 @@ public class Hour6_MoveCharacters : MonoBehaviour
             Destroy(ParticleEffect, 5f);
 
             }
-            /*
-            float startTime = Time.time;
-            float xStart = transform.position.x;
-            float xEnd = xStart + travelDistance;
-
-            while (transform.position.x < xEnd)
-            {
-                float t = (Time.time - startTime) / 3;
-                float step = Mathf.SmoothStep(xStart, xEnd, t);
-                transform.position = new Vector3(step, transform.position.y, 0);
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(3f);
-
-            if (numberOfHits == 5)
-            {
-                StartCoroutine(FadeOutSprite(0, 3));
-                ParticleEffect.Play();
-                yield return new WaitForSeconds(1);
-                Seth.transform.eulerAngles = new Vector3(0, 0, 0);
-              //  Destroy(ParticleEffect, 5f);
-
-            }
-            */
+          
 
         }
 
