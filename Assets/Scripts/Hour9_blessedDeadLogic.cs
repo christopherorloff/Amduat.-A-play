@@ -8,14 +8,15 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
     public Transform[] blessedDead;
     public ParticleSystem[] showSpawnsParticle;
-
+    public GameObject[] masks;
+    public FadeUIScript fadeScript;
     public int currentBlessed = 0;
     public float animationDuration = 1.5f;
     public float yMax = 1;
-    private int maxBoatsSpawned = 8;
+    private int maxBoatsSpawned = 10;
     public bool running = false;
+    public bool stopEffect = false;
     public Transform Target;
-    public GameObject[] masks;
     public GameObject Boat;
     public ParticleSystem particle;
 
@@ -28,7 +29,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!running && Scroll.scrollValue() < 0 && currentBlessed < blessedDead.Length)
+        if (!running && Scroll.scrollValue() < 0 && currentBlessed < blessedDead.Length && fadeScript.sceneReady == true)
         {
 
             StartCoroutine(RaiseBlessedDead(blessedDead[currentBlessed]));
@@ -44,7 +45,6 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
 
         float offset = BlessedGO.GetComponent<SpriteRenderer>().bounds.max.y;
-
         Instantiate(particle, new Vector3(BlessedGO.position.x, offset), particle.transform.rotation);
         showSpawnsParticle[currentBlessed].Stop();
         float startTime = Time.time;
@@ -59,6 +59,10 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         if (currentBlessed >= maxBoatsSpawned)
         {
 
+            stopEffect = true;
+
+        
+
             for (int i = 0; i < masks.Length; i++)
             {
                 Destroy(masks[i]);
@@ -69,6 +73,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
                 StartCoroutine(MoveCharacters(blessedDead[i].transform, Target.transform, 10f));
 
             }
+      
 
             StartCoroutine(MoveCharacters(Boat.transform, Target.transform, 10f));
 
@@ -83,16 +88,27 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     IEnumerator MoveCharacters(Transform fromPos, Transform toPos, float duration)
     {
 
-        float counter = 0;
+
+        //float counter = 0;
         Vector3 startPos = fromPos.position;
         Vector3 endPos = toPos.position;
+        float t = 0;
+        float startTime = Time.time;
 
-        while (counter < duration)
+
+
+        while (t<1)
         {
-            counter += Time.deltaTime;
-            fromPos.position = Vector3.Lerp(startPos, endPos, counter / duration);
+            t = (Time.time - startTime) / duration;
+            t = Mathf.SmoothStep(0, 1, t);
+            t = Mathf.Clamp(t,0, 1);
+            fromPos.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
+
+        StartCoroutine(fadeScript.FadeSpriteCoroutineUp(1, 2));
+
+
 
 
     }

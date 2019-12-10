@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScrollManager;
+using System;
 
 public class TimelineManager_Script_Hour11 : Timeline_BaseClass
 {
     public float timelineScalar = 0.8f;
-    
-
     public GameObject Boat;
     public AnimationCurve boatFloatStep;
     private float _animationTimePosition;
 
     float startYPosition;
-    Vector3 boatPosStart = new Vector3(-9.5f, -2.5f, 0);
-    Vector3 boatPosEnd = new Vector3(17.5f, -2.5f, 0);
+    Vector3 boatPosStart = new Vector3(-5.9f, -2.5f, 0);
+    Vector3 boatPosEnd = new Vector3(20.5f, -2.5f, 0);
     private float boatTravelDistance;
-    public int numberOfBoatSegments = 9;
+    public int numberOfBoatSegments = 8;
     public float durationOfBoatSegments = 4;
 
     public GameObject[] blessedDeath;
-    public int numberOfBlessedSegemnts = 8;
+    public int numberOfBlessedSegemnts = 16;
     private int currentNumberOfBlessedSegements = 0;
     private float[] blessedTravelDistance;
     public float moveBlessedDeathThreshold = 0.0001f;
@@ -35,6 +34,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     public bool cooldownOn = false;
     private float timeStamp = 0f;
     private bool waiting = false;
+    public bool running = false;
 
 
     void Awake()
@@ -58,9 +58,6 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         AddTimelineEvent(0.59f, BoatActions);
         AddTimelineEvent(0.69f, BoatActions);
         AddTimelineEvent(0.79f, BoatActions);
-        AddTimelineEvent(0.89f, BoatActions);
-
-
 
         startYPosition = Boat.gameObject.transform.position.y;
         boatPosStart = new Vector3(boatPosStart.x, startYPosition, boatPosStart.z);
@@ -74,7 +71,6 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         yield return new WaitForSeconds(delay); 
         Timeline = 0.1f;
         waiting = false;
-
     }
 
 
@@ -82,10 +78,10 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     void Update()
     {
         float input = Scroll.scrollValue();
-
+        //Debug.Log(Timeline);
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         swipeBlessedDeath(input);
-
+        //ConvertInputToProgress(input);
         //Kepri move by him self not as part of boat.?
     }
 
@@ -98,12 +94,13 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         if (input > moveBlessedDeathThreshold && Timeline >= 0.1f && !cooldownOn && !waiting)
         {
             Debug.Log("move Blessed");
+            //Debug.Log(cooldownOn);
             BlessedDeathToShore();
             timeStamp = Time.time + cooldown;
             cooldownOn = true;
             //change sprite and move a bit
         }
-        else if (input < moveBlessedDeathThreshold)
+        else if (input < 0)
         {
             Debug.Log("rubber band blessed death");
             //rubber band move blessed death
@@ -112,29 +109,32 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
 
     private void BoatActions()
     {
-        StartCoroutine(MoveBoat());
+        if(!running)
+        {
+            StartCoroutine(MoveBoat());
+        }
+        
         StartCoroutine(MoveCam());
     }
 
     private IEnumerator MoveBoat()
     {
+        running = true;
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance;
-        //float startTime = Time.time;
 
-        while (Boat.transform.position.x < xEnd)
+        while (System.Math.Round(Boat.transform.position.x,2) < System.Math.Round(xEnd,2))
         {
+            //Debug.Log("Boat X " + System.Math.Round(Boat.transform.position.x,3) + " " + "xEnd " + System.Math.Round(xEnd,3));
             _animationTimePosition += Time.deltaTime;
-            //float t = (Time.time - startTime) / durationOfBoatSegments;
             float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition/durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
+            //Debug.Log(_animationTimePosition/durationOfBoatSegments);
             yield return null;
         }
-        if(Boat.transform.position.x >= xEnd)
-        {
-            _animationTimePosition = 0;
-        }
+         _animationTimePosition = 0;
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
+        running = false;
     }
 
     private void BlessedDeathToShore()
@@ -146,7 +146,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         }
         if (blessedDeath[currentNumberOfBlessedSegements].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().going == true)
         {
-            Timeline += 0.1f;
+            Timeline += 0.05f;
             currentNumberOfBlessedSegements++;
         }   
     }

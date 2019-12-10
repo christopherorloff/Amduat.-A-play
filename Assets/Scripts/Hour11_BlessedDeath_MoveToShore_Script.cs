@@ -21,7 +21,7 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        BDXOffset = Vector3.Distance(boatTarget.position, transform.position) - UnityEngine.Random.Range(0.2f, 0.4f);
+        BDXOffset = Vector3.Distance(boatTarget.position, transform.position) - UnityEngine.Random.Range(0.3f, 1.2f);
         BDSmoothTimes = UnityEngine.Random.Range(1.0f, 1.5f);
         BDVelocities = Vector3.zero;
     }
@@ -53,10 +53,8 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("HIT");
         if (col.gameObject.tag == "Shore")
         {
-                Debug.Log("HIT");
             //If the GameObject has the same tag as specified, output this message in the console
                 spriteRenderer.color = new Color(1f,1f,1f,0.5f);
                 shoreHit = true;
