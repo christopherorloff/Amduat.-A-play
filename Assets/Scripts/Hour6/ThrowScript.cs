@@ -34,7 +34,7 @@ public class ThrowScript : MonoBehaviour
     {
         moveCharacters = FindObjectOfType<Hour6_MoveCharacters>();
 
-        bounceKnife = BounceKnife(1);
+        bounceKnife = BounceKnife(2f);
         BloodEffect = GameObject.FindGameObjectWithTag("Bloodeffect");
         LightEmergeEffect = GameObject.FindGameObjectWithTag("LightEffect");
         pulseLightScript = FindObjectOfType<PulseLight_Script>();
@@ -78,7 +78,7 @@ public class ThrowScript : MonoBehaviour
     {
         if (!isThrown)
         {
-            
+            throwDone = true;
             SoundManager.Instance.PlayKnifeThrow();
             SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
@@ -92,7 +92,6 @@ public class ThrowScript : MonoBehaviour
             throwKnifeMovement = ThrowKnifeMovement(target.normalized);
             StartCoroutine(throwKnifeMovement);
             isThrown = true;
-            throwDone = true;
         }
     }
 

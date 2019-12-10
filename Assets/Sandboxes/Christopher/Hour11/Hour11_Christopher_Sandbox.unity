@@ -401,6 +401,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!50 &142978872
 Rigidbody2D:
   serializedVersion: 4
@@ -506,19 +507,28 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.16821699
+      value: 0.4275818
+      inSlope: 1.5240991
+      outSlope: 1.5240991
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.157482
+      outSlope: 0.157482
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.047892034
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   numberOfBoatSegments: 9
-  durationOfBoatSegments: 4
+  durationOfBoatSegments: 4.5
   blessedDeath:
   - {fileID: 1114751128}
   - {fileID: 1160423147}
@@ -825,6 +835,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!61 &434954896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1533,6 +1544,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!61 &719499227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2225,6 +2237,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!50 &1114751133
 Rigidbody2D:
   serializedVersion: 4
@@ -2526,6 +2539,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!50 &1160423150
 Rigidbody2D:
   serializedVersion: 4
@@ -2603,6 +2617,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!61 &1169310374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3113,6 +3128,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!1001 &1655860449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3217,6 +3233,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!50 &1684497484
 Rigidbody2D:
   serializedVersion: 4
@@ -3716,6 +3733,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!61 &1922057909
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4045,6 +4063,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!1001 &2054193500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4233,6 +4252,7 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
 --- !u!1001 &2119424884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4391,3 +4411,4 @@ MonoBehaviour:
   boatTarget: {fileID: 490847696}
   speed: -0.2
   timeline: {fileID: 255549006}
+  myTimeLine: 0
