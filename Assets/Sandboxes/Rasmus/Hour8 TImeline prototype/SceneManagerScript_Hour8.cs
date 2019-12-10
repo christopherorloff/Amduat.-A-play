@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,7 +44,6 @@ public class SceneManagerScript_Hour8 : MonoBehaviour
 
         if (blessedDeadPushingCount > minimumAmountForPushing)
         {
-            print("Speed: " + speed);
             //here if you want to add some game feel:
             boat.transform.position += new Vector3(speed, 0, 0);
         }
