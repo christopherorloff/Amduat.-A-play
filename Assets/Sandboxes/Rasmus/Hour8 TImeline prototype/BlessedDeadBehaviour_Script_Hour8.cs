@@ -70,6 +70,11 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
 
     public void StartFollowing(Transform _target, Vector2 _offsetValues, float _smoothTime)
     {
+        FMOD.Studio.EventInstance blessedDeadClothedInstance;
+        string blessedDeadClothedPath = "event:/HOUR 8/BlessedDeadClothed";
+        blessedDeadClothedInstance = FMODUnity.RuntimeManager.CreateInstance(blessedDeadClothedPath);
+        blessedDeadClothedInstance.start();
+
         target = _target;
         float offSetX = UnityEngine.Random.Range(0.0f, _offsetValues.x);
         float offSetY = UnityEngine.Random.Range(-_offsetValues.y - (offSetX * 0.8f), _offsetValues.y + (offSetX * 0.8f));

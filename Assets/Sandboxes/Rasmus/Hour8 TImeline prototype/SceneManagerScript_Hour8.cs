@@ -48,4 +48,8 @@ public class SceneManagerScript_Hour8 : MonoBehaviour
             boat.transform.position += new Vector3(speed, 0, 0);
         }
     }
+
+    public float GetBlessedDeadSpeed() { 
+        return (float)blessedDeadPushingCount / (float)numberOfBlessedDead;
+    }
 }

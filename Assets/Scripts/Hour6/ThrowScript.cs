@@ -80,7 +80,6 @@ public class ThrowScript : MonoBehaviour
         {
             throwDone = true;
             SoundManager.Instance.PlayKnifeThrow();
-            SoundManager.Instance.showdownMuInstance.setParameterByName("Intensity", 1);
 
             print("throw!");
             transform.parent = null;
