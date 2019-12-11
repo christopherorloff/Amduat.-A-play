@@ -22,6 +22,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
     private float timeLeft = 0;
     public float throwTimer = 5f;
     public bool done = false;
+    public bool armNotUp = true;
     //public
     public float scalar = 1;
     public float deltaThreshold = 0.3f;
@@ -91,17 +92,22 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
         input = (Scroll.scrollValue() * scalar * drag);
         if(input > 0.05 && !waiting)
         {
+            timeLeft = throwTimer;
             throwScript.throwDone = false;
             hitCount++;
             Debug.Log("throw" + hitCount);
             waiting = true;
             throwing = true;
-            timeLeft = throwTimer;
             throwStopper = true;
         }
   
 
         //Timer 2 sec
+        timeLeft -= Time.deltaTime;
+        if ( timeLeft < 0 )
+        {
+            waiting = false;
+        }
     }
 
     private void ProcessInput()
@@ -111,16 +117,12 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             {
                 throwScript = GetComponentInChildren<ThrowScript>();
             }
-        if(throwing && !done && !thrownDone)
+        if(throwing && !done && !thrownDone && armNotUp)
         {
             throwStopper = false;
-            t1 += 10f * Time.deltaTime;
-            currentAngle = new Vector3(
-                Mathf.LerpAngle(currentAngle.x, throwRotationEnd.x, t1),
-                Mathf.LerpAngle(currentAngle.y, throwRotationEnd.y, t1),
-                Mathf.LerpAngle(currentAngle.z, throwRotationEnd.z, t1));
-            Debug.Log(t1);
-            root.transform.eulerAngles = currentAngle;
+            armNotUp = false;
+            StartCoroutine(ArmDown());
+            
         }
         if (t1 > 1f)
         {
@@ -139,29 +141,22 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             StartCoroutine(WaitAndLift(1.5f));
         }
 
-
-
-        
-
         if(resettingThrow)
         {
             t2 = 0f;
             t1 = 0f;
             done = false;
             throwing = false;
-            waiting = false;
             thrownDone = false;
             thrown = false;
             resettingThrow = false;
+            armNotUp = true;
         }
 
      }
     IEnumerator WaitAndLift(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        
-
-            Debug.Log("Doing");
             t2 += 0.25f*Time.deltaTime;
             currentAngle = new Vector3(
                 Mathf.LerpAngle(currentAngle.x, throwRotationStart.x, t2),
@@ -172,11 +167,30 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
         
         if(t2 > 0.13f)
         {
-            Debug.Log("Doing last");
             resettingThrow = true;
         }
 
                 
+        
+    }
+    IEnumerator ArmDown()
+    {
+        while(t1 < 1f)
+        {
+        t1 += 10f * Time.deltaTime;
+            currentAngle = new Vector3(
+                Mathf.LerpAngle(currentAngle.x, throwRotationEnd.x, t1),
+                Mathf.LerpAngle(currentAngle.y, throwRotationEnd.y, t1),
+                Mathf.LerpAngle(currentAngle.z, throwRotationEnd.z, t1));
+            Debug.Log(t1);
+            root.transform.eulerAngles = currentAngle;
+            yield return null;
+        }
+        if (t1 > 1f)
+        {
+            done = true;
+            thrown = true;
+        }
         
     }
 
