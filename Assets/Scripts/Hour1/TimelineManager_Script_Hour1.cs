@@ -106,6 +106,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
         AddTimelineEvent(0.6f, SolarBaboons.StartRaisingStatues);
 
+        AddTimelineEvent(0.2f, SoundManager.Instance.PlayTheme);
+        
         // Blessed dead sprites
         for (int i = 0; i < blessedDeadSprites.Length; i++)
         {

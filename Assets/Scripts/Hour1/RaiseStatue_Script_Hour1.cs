@@ -35,7 +35,6 @@ public class RaiseStatue_Script_Hour1 : MonoBehaviour
     private IEnumerator RaisingStatue(Transform statueGO, float delay, Vector3 offset)
     {
         SoundManager.Instance.solarBaboonsAppearInstance.start();
-        SoundManager.Instance.themeMuInstance.start();
         Instantiate(particle, new Vector3(statueGO.position.x, offset.y), particle.transform.rotation);
         if (delay > 0)
         {

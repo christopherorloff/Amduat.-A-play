@@ -294,6 +294,30 @@ public class SoundManager : MonoBehaviour
         osirisAppear.start();
     }
 
+    public void PlayTheme() {
+        themeMuInstance.start();
+    }
+
+    public void PlayRitualTheme() {
+        ritualThemeMuInstance.start();
+    }
+
+    public void PlayApopisTheme() {
+        apopisThemeMuInstance.start();
+    }
+
+    public void EndTheme() {
+        themeMuInstance.setParameterByName("End", 1);
+    }
+
+    public void EndRitualTheme() {
+        ritualThemeMuInstance.setParameterByName("RitualThemeEnd", 1);
+    }
+
+    public void EndApopisTheme() {
+        apopisThemeMuInstance.setParameterByName("ApopisThemeEnd", 1);
+    }
+
     private void SceneChanged()
     {
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob

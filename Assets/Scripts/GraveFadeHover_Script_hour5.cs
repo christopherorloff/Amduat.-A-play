@@ -22,6 +22,7 @@ public class GraveFadeHover_Script_hour5 : MonoBehaviour
     public void StartFadeIn(float duration)
     {
         SoundManager.Instance.PlayGodAppear();
+        SoundManager.Instance.PlayApopisTheme();
 
         StartCoroutine(FadeInSprite(duration));
         active = true;
