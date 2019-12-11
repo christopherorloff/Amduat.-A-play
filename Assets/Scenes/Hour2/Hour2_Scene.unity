@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 265722674}
   - component: {fileID: 265722673}
   - component: {fileID: 265722676}
+  - component: {fileID: 265722677}
   m_Layer: 0
   m_Name: Hour2_SethKillingOsiris_00000
   m_TagString: Untagged
@@ -800,6 +801,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3280e11dc179e4eb3614e7a3a245ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &265722677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265722672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b8764c894d15e4aa5a0682d97612a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EaseIn: 0
+  rotateSpeed: 0
+  amplitudeX: 0
+  frequenzyX: 0
+  amplitudeY: 0.19
+  frequenzyY: 0.5
+  wheelControlled: 0
+  rotating: 0
+  floating: 1
+  scrollFactor: 0
+  snake: 0
+  runOnce: 0
+  waitToStart: 0
+  snakeState: {fileID: 0}
 --- !u!1 &290162084
 GameObject:
   m_ObjectHideFlags: 0
@@ -4975,7 +5002,7 @@ PrefabInstance:
     - target: {fileID: 7256132351427323168, guid: 095cf7810abfdb946a8ec54492bcba6d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 11.43
       objectReference: {fileID: 0}
     - target: {fileID: 7256132351427323168, guid: 095cf7810abfdb946a8ec54492bcba6d,
         type: 3}
@@ -5026,6 +5053,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256132351427323183, guid: 095cf7810abfdb946a8ec54492bcba6d,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 31.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256132351427323183, guid: 095cf7810abfdb946a8ec54492bcba6d,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 095cf7810abfdb946a8ec54492bcba6d, type: 3}
