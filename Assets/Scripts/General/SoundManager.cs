@@ -288,6 +288,12 @@ public class SoundManager : MonoBehaviour
         knifeThrowInstance.start();
     }
 
+    public void PlayGodAppear() {
+        FMOD.Studio.EventInstance osirisAppear;
+        osirisAppear = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 5/OsirisAppear");
+        osirisAppear.start();
+    }
+
     private void SceneChanged()
     {
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
@@ -320,9 +326,6 @@ public class SoundManager : MonoBehaviour
         seaCaveAmbInstance = FMODUnity.RuntimeManager.CreateInstance(seaCaveAmbPath);
         caveAmbInstance = FMODUnity.RuntimeManager.CreateInstance(caveAmbPath);
         caveWaterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(caveWaterAmbPath);
-
-        //MUSIC INSTANCES
-
 
         //HOUR 1 SFX INSTANCES
         solarBaboonsAppearInstance = FMODUnity.RuntimeManager.CreateInstance(solarBaboonsAppearPath);

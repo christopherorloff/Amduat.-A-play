@@ -21,9 +21,7 @@ public class GraveFadeHover_Script_hour5 : MonoBehaviour
 
     public void StartFadeIn(float duration)
     {
-        FMOD.Studio.EventInstance osirisAppear;
-        osirisAppear = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 5/OsirisAppear");
-        osirisAppear.start();
+        SoundManager.Instance.PlayGodAppear();
 
         StartCoroutine(FadeInSprite(duration));
         active = true;
