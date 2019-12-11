@@ -66,7 +66,8 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         AddTimelineEvent(0.9f, BoatActions);
 
         AddTimelineEvent(0.4f, wheatSpray.StartSpraying);
-        AddTimelineEvent(0.6f, SethAnimScript.startAnim); 
+        AddTimelineEvent(0.8f, SethAnimScript.startAnim); 
+        //AddTimelineEvent(0.8f, SoundManager.Instance.)
         //Trees
         for (int i = 0; i < treeActivators.Length; i++)
         {
