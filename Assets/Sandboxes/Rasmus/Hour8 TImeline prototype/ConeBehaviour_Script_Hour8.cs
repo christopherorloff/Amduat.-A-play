@@ -119,4 +119,8 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
         rayVectors[3] = bottomQuarter;
         rayVectors[4] = bottom;
     }
+
+    public float GetConeSize() {
+        return velocity;
+    }
 }

@@ -65,7 +65,6 @@ public class SnakeStateScript : MonoBehaviour
         {
             snakeAlive = false;
             print("den ær døj");
-            SoundManager.Instance.showdownMuInstance.setParameterByName("End", 1);
             EventManager.turnOffInputEvent();
             EventManager.snakeDeadEvent();
             
