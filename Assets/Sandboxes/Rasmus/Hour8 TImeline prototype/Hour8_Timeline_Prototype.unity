@@ -4411,7 +4411,7 @@ MonoBehaviour:
   followStart: {fileID: 857676989}
   queueOffsetDimensions: {x: 2, y: 0}
   smoothTime: 1
-  inputStep: 0.5
+  inputStep: 1.5
   inputDownStep: 4
 --- !u!1 &1618722296
 GameObject:
