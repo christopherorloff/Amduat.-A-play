@@ -23,10 +23,14 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     public Transform goddessesParent;
     private Transform[] goddesses;
     private SpriteRenderer[] goddessesSprite;
+    private Animator[] goddessAnimators;
+    const float numberOfAnimationFrames = 36;
+    const float animationFrameLength = 1 / numberOfAnimationFrames;
     public float drawDuration = 2;
     public float pullDuration = 3;
     public float rotationAfterDraw = 25;
     public float rotationAfterPull = -25;
+    public float fadeInTime = 1;
 
     //From old scenemanager --> make more sustainable solution
     public SpriteRenderer GoddessIcon;
@@ -43,10 +47,18 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     {
         goddesses = new Transform[goddessesParent.childCount];
         goddessesSprite = new SpriteRenderer[goddessesParent.childCount];
+        goddessAnimators = new Animator[goddessesParent.childCount];
+
         for (int i = 0; i < goddessesParent.childCount; i++)
         {
             goddesses[i] = goddessesParent.GetChild(i);
-            goddessesSprite[i] = goddesses[i].GetComponentInChildren<SpriteRenderer>();
+            goddessesSprite[i] = goddesses[i].GetComponent<SpriteRenderer>();
+            goddessAnimators[i] = goddesses[i].GetComponent<Animator>();
+
+            //Initial values
+            goddessAnimators[i].Play(0, 0, 18 * animationFrameLength);
+            goddessAnimators[i].speed = 0;
+            goddessesSprite[i].color *= new Vector4(1, 1, 1, 0);
         }
 
         //Boat can only move on x-axis. If y-axis is needed, create similar float to travelDistanceX and input in boatMoveVector
@@ -102,47 +114,41 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
                 print("Timeline: " + Timeline);
                 if (nextIsDraw)
                 {
-                    StartCoroutine(Draw());
+                    StartCoroutine(DrawAnimation(18 * animationFrameLength, 1));
                     nextIsDraw = false;
                     firstWrong = false;
                 }
                 else
                 {
-                    StartCoroutine(Pull());
+                    StartCoroutine(PullAnimation(0, 18 * animationFrameLength));
                     nextIsDraw = true;
                 }
             }
         }
         else
         {
-            if(nextIsDraw)
+            if (nextIsDraw)
             {
-                if(firstWrong)
+                if (firstWrong)
                 {
                     StartCoroutine(WrongInput(WrongInputDraw));
                 }
                 else
                 {
-                    StartCoroutine(WrongInput(WrongInputDraw+rotationAfterPull));
+                    StartCoroutine(WrongInput(WrongInputDraw + rotationAfterPull));
                 }
             }
             else
             {
-                StartCoroutine(WrongInput(rotationAfterDraw+WrongInputPull));
+                StartCoroutine(WrongInput(rotationAfterDraw + WrongInputPull));
             }
-            
-                
-                
         }
-
-
     }
 
     private IEnumerator WrongInput(float WrongInputRotation2)
     {
         float startTime = Time.time;
 
-        
         Quaternion startRotation = goddesses[0].rotation;
         Quaternion endRotation = Quaternion.Euler(0, 0, WrongInputRotation2);
         float t = 0;
@@ -157,12 +163,12 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             }
             yield return null;
         }
-        if(t>=1f)
+        if (t >= 1f)
         {
             float t2 = 0;
             while (t2 < 1)
             {
-                t2 = (Time.time - startTime) / (WrongInputDuration*2);
+                t2 = (Time.time - startTime) / (WrongInputDuration * 2);
                 t2 = (t2 * t2 * t2);
                 t2 = Mathf.Clamp(t2, 0, 1);
                 for (int i = 0; i < goddesses.Length; i++)
@@ -170,60 +176,60 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
                     goddesses[i].rotation = Quaternion.Lerp(endRotation, startRotation, t2);
                 }
                 yield return null;
+            }
         }
-        }
-        
-        
+
+
     }
 
-    private IEnumerator Draw()
+
+
+    private IEnumerator DrawAnimation(float start, float end)
     {
+        coroutineRunning = true;
+
         FMOD.Studio.EventInstance collectEnergyInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/CollectEnergy");
         collectEnergyInstance.start();
-        float startTime = Time.time;
 
-        coroutineRunning = true;
-        print("Draw coroutine");
-        Quaternion startRotation = goddesses[0].rotation;
-        Quaternion endRotation = Quaternion.Euler(0, 0, rotationAfterDraw);
+        float startTime = Time.time;
         float t = 0;
+
         while (t < 1)
         {
             t = (Time.time - startTime) / drawDuration;
-            t = (t * t * t);
             t = Mathf.Clamp(t, 0, 1);
-            for (int i = 0; i < goddesses.Length; i++)
+            for (int i = 0; i < goddessAnimators.Length; i++)
             {
-                goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
+                goddessAnimators[i].Play(0, 0, Mathf.Lerp(start, end, t));
             }
             yield return null;
         }
         coroutineRunning = false;
     }
 
-    private IEnumerator Pull()
+
+    IEnumerator PullAnimation(float start, float end)
     {
-        FMOD.Studio.EventInstance towBoatInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/TowBoat");
-        towBoatInstance.start();
 
         coroutineRunning = true;
+        FMOD.Studio.EventInstance towBoatInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/TowBoat");
+        towBoatInstance.start();
         print("Pull coroutine");
+
         float startTime = Time.time;
-        Quaternion startRotation = goddesses[0].rotation;
-        Quaternion endRotation = Quaternion.Euler(0, 0, rotationAfterPull);
+
         Vector3 startPositionGoddesses = goddessesParent.transform.position;
         Vector3 endPositionGoddesses = startPositionGoddesses + boatMoveVector;
-        float t = 0;
+        float t = start;
         while (t < 1)
         {
             t = (Time.time - startTime) / drawDuration;
-            t = (t * t * t * t * t);
             t = Mathf.Clamp(t, 0, 1);
             for (int i = 0; i < goddesses.Length; i++)
             {
-                goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
                 goddessesParent.position = Vector3.Lerp(startPositionGoddesses, endPositionGoddesses, t);
                 boat.transform.position = Vector3.Lerp(startPositionGoddesses - boatDistanceToGoddesses, endPositionGoddesses - boatDistanceToGoddesses, t);
+                goddessAnimators[i].Play(0, 0, Mathf.Lerp(start, end, t));
             }
             yield return null;
         }
@@ -245,7 +251,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
     IEnumerator WaitAndStart()
     {
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(fadeInTime);
         StartParticles.Play();
         SoundManager.Instance.goddessesAppearingInstance.start();
         while (GoddessIcon.color.a > 0)
@@ -277,4 +283,77 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
 
 
     }
+
+
+    ///--------///
+    /// Legacy ///
+    ///--------///
+
+
+
+    private IEnumerator Draw()
+    {
+        coroutineRunning = true;
+
+        FMOD.Studio.EventInstance collectEnergyInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/CollectEnergy");
+        collectEnergyInstance.start();
+        float startTime = Time.time;
+
+        print("Draw coroutine");
+        Quaternion startRotation = goddesses[0].rotation;
+        Quaternion endRotation = Quaternion.Euler(0, 0, rotationAfterDraw);
+        float t = 0;
+        while (t < 1)
+        {
+            t = (Time.time - startTime) / drawDuration;
+            t = (t * t * t);
+            t = Mathf.Clamp(t, 0, 1);
+            for (int i = 0; i < goddesses.Length; i++)
+            {
+                goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
+            }
+            yield return null;
+        }
+        coroutineRunning = false;
+    }
+
+
+
+    private IEnumerator Pull()
+    {
+        FMOD.Studio.EventInstance towBoatInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/TowBoat");
+        towBoatInstance.start();
+
+        coroutineRunning = true;
+        print("Pull coroutine");
+        float startTime = Time.time;
+        Quaternion startRotation = goddesses[0].rotation;
+        Quaternion endRotation = Quaternion.Euler(0, 0, rotationAfterPull);
+        Vector3 startPositionGoddesses = goddessesParent.transform.position;
+        Vector3 endPositionGoddesses = startPositionGoddesses + boatMoveVector;
+        float t = 0;
+        while (t < 1)
+        {
+            t = (Time.time - startTime) / drawDuration;
+            t = (t * t * t * t * t);
+            t = Mathf.Clamp(t, 0, 1);
+            for (int i = 0; i < goddesses.Length; i++)
+            {
+                goddesses[i].rotation = Quaternion.Lerp(startRotation, endRotation, t);
+                goddessesParent.position = Vector3.Lerp(startPositionGoddesses, endPositionGoddesses, t);
+                boat.transform.position = Vector3.Lerp(startPositionGoddesses - boatDistanceToGoddesses, endPositionGoddesses - boatDistanceToGoddesses, t);
+            }
+            yield return null;
+        }
+        coroutineRunning = false;
+    }
+
 }
+
+
+
+
+
+
+
+
