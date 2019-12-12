@@ -9,6 +9,7 @@ public class CameraShake : MonoBehaviour
     public Camera mainCam;
 
     private float shakeAmount = 0;
+    private Vector3 initalPos;
 
     void Awake()
     {
@@ -20,12 +21,14 @@ public class CameraShake : MonoBehaviour
 
     public void Start()
     {
+        initalPos = mainCam.transform.position;
         SA = FindObjectOfType<SpearAnimation>();
     }
 
     public void Shake(float amt, float lenght)
     {
         shakeAmount = amt;
+        initalPos = mainCam.transform.position;
         InvokeRepeating("BeginShake", 0, 0.001f);
         Invoke("StopShake", lenght);
     }
@@ -44,13 +47,13 @@ public class CameraShake : MonoBehaviour
         if (shakeAmount > 0)
         {
 
-            Vector3 camPos = mainCam.transform.position;
+            Vector3 camPos = initalPos;
             float offsetX = Random.value * shakeAmount * 2f - shakeAmount;
             float offsetY = Random.value * shakeAmount * 2f - shakeAmount;
             camPos.x += offsetX;
             camPos.y += offsetY;
 
-            mainCam.transform.position = camPos;
+            mainCam.transform.position = new Vector3(Mathf.Clamp(camPos.x,-0.7f,0.7f),Mathf.Clamp(camPos.y,-0.7f,0.7f),camPos.z);
         }
 
 

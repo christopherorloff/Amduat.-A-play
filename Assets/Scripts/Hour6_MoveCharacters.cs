@@ -30,10 +30,8 @@ public class Hour6_MoveCharacters : MonoBehaviour
         if (numberOfHits == 6)
         {
             Seth.GetComponent<BackGround_Object_Movement_Script>().enabled = false;
-            StartCoroutine(MoveCharacters(this.transform, moveToTransforms[currentMoveTo], 2f));
-            StartCoroutine(MoveCharacters(Seth.transform, moveToTransforms[currentMoveTo], 2f));
-
-
+            //StartCoroutine(MoveCharacters(this.transform, moveToTransforms[currentMoveTo], 2f));
+            //StartCoroutine(MoveCharacters(Seth.transform, moveToTransforms[currentMoveTo], 2f));
         }
 
 

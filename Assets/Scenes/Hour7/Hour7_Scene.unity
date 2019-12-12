@@ -645,12 +645,12 @@ PrefabInstance:
     - target: {fileID: 4690533365920931533, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.48
+      value: 2.57
       objectReference: {fileID: 0}
     - target: {fileID: 4690533365920931533, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.11
+      value: -0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4690533365920931533, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
@@ -696,6 +696,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533365920931533, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533365920931533, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4690533365920931530, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
@@ -856,7 +866,7 @@ PrefabInstance:
     - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
@@ -1236,7 +1246,7 @@ PrefabInstance:
     - target: {fileID: 5186627311433055869, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5186627311433055870, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
@@ -1393,10 +1403,6 @@ MonoBehaviour:
   rotating: 0
   floating: 0
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!212 &831166415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2623,10 +2629,6 @@ MonoBehaviour:
   rotating: 1
   floating: 0
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!212 &1837229701
 SpriteRenderer:
   m_ObjectHideFlags: 0

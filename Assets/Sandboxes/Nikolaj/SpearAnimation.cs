@@ -156,7 +156,7 @@ public class SpearAnimation : MonoBehaviour
             print("readytostap");
             anim.clip = lift;
             anim.enabled = false;
-            CS.Shake(0.02f, 10f);
+            CS.Shake(0.02f, 60f);
             readyToStap = true;
             startEffect2 = true;
 

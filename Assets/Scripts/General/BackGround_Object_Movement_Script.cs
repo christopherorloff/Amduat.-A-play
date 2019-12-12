@@ -52,13 +52,7 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
     private Vector3 initialPosition;
     private float _time = 0;
-    private float time = 0;
-    public bool snake = false;
-    public bool runOnce = false;
 
-    public bool waitToStart = false;
-
-    public SnakeStateScript snakeState;
 
     private void OnEnable()
     {
@@ -117,14 +111,14 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
         if (floating && wheelControlled)
         {
-            x = Mathf.Cos((_time * frequenzyX) ) * amplitudeX;
+            x = Mathf.Cos((_time * frequenzyX)) * amplitudeX;
             y = Mathf.Sin((_time * frequenzyX)) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x,y,0);
         }
         else if (floating && !wheelControlled)
         {
             x = Mathf.Cos(frequenzyX * Time.time) * amplitudeX;
-            y = Mathf.Sin(Time.time * frequenzyY) * amplitudeY;
+            y = Mathf.Sin(Time.deltaTime * frequenzyY) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition;
         }
         else if (!floating && wheelControlled)
