@@ -64,6 +64,7 @@ public class SnakeStateScript : MonoBehaviour
         if (knifeHits >= knifeHitLimit && snakeAlive == true)
         {
             SoundManager.Instance.EndApopisTheme();
+            SoundManager.Instance.apopisIdleInstance.start();
 
             snakeAlive = false;
             print("den ær døj");

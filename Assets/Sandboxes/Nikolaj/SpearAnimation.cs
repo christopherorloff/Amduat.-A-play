@@ -150,6 +150,8 @@ public class SpearAnimation : MonoBehaviour
             SoundManager.Instance.spearReadyInstance.start();
             SoundManager.Instance.spearChargeInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             SoundManager.Instance.apopisIdleInstance.setParameterByName("Stop", 1);
+            SoundManager.Instance.caveWaterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SoundManager.Instance.caveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             buildUpEffect.Stop();
             print("readytostap");
             anim.clip = lift;
