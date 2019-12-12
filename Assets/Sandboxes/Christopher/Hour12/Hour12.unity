@@ -2039,10 +2039,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!95 &945265160
 Animator:
   serializedVersion: 3
@@ -2353,10 +2349,6 @@ MonoBehaviour:
   rotating: 1
   floating: 0
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1001 &1284890112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2641,7 +2633,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 7fcf111c792e5724a98f7afda96d0ff7, type: 3}
   m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   m_FlipX: 0
