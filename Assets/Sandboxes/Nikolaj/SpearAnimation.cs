@@ -43,6 +43,7 @@ public class SpearAnimation : MonoBehaviour
     public GameObject cameraObject;
 
     public CameraShake CS;
+    public Shake Shake;
 
 
     public float threshold = 0.03f;
@@ -156,7 +157,8 @@ public class SpearAnimation : MonoBehaviour
             print("readytostap");
             anim.clip = lift;
             anim.enabled = false;
-            CS.Shake(0.02f, 60f);
+            //CS.Shake(0.02f, 60f);
+            Shake.magnitude = 0.06f;
             readyToStap = true;
             startEffect2 = true;
 
@@ -165,6 +167,7 @@ public class SpearAnimation : MonoBehaviour
         //If we are ready for the final stap, and scroll down, we start speardown animation
         if (readyToStap && input > 0f && !animationDone && !stapDone)
         {
+            Shake.magnitude = 0;
             stopEffect2 = true;
             SoundManager.Instance.spearHitInstance.start();
             SoundManager.Instance.spearReadyInstance.setParameterByName("Stop", 1);

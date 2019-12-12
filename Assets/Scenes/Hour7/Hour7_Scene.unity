@@ -1034,6 +1034,7 @@ GameObject:
   - component: {fileID: 653823168}
   - component: {fileID: 653823167}
   - component: {fileID: 653823170}
+  - component: {fileID: 653823171}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1120,6 +1121,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SA: {fileID: 0}
   mainCam: {fileID: 0}
+--- !u!114 &653823171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653823166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92c89f02308a477081bc071fd78e110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0
 --- !u!1 &658714361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,6 +2162,11 @@ PrefabInstance:
       propertyPath: buildUpEffect
       value: 
       objectReference: {fileID: 491987489}
+    - target: {fileID: 1995819423337325226, guid: 0acc0143e1544594bbdad18c1ed2bc88,
+        type: 3}
+      propertyPath: Shake
+      value: 
+      objectReference: {fileID: 653823171}
     - target: {fileID: 6901650774020975278, guid: 0acc0143e1544594bbdad18c1ed2bc88,
         type: 3}
       propertyPath: m_SortingOrder
