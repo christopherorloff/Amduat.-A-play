@@ -3191,9 +3191,22 @@ PrefabInstance:
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
       propertyPath: m_Text
-      value: 'HOUR 8: LEARNING TO JOG
-
-'
+      value: "HOUR VIII: THE RETURN OF THE BLESSED DEAD\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152335646919031375, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152335646919031375, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152335646919031375, guid: df5f8975a53fa354fb8d9d10cc64734d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df5f8975a53fa354fb8d9d10cc64734d, type: 3}

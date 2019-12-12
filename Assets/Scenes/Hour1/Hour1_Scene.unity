@@ -2118,22 +2118,6 @@ PrefabInstance:
       propertyPath: animationTime
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 8740643235784470976, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 18664608cb29bc44780023edeafa02ca,
-        type: 3}
-    - target: {fileID: 8740643235784470976, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8740643235784470976, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f20d72645922f4e9491675a827dd4388, type: 3}
 --- !u!4 &1937342142 stripped
