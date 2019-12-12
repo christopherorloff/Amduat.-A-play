@@ -47,6 +47,7 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
         AddTimelineEvent(0.35f, IsisAction);
         AddTimelineEvent(0.99f, StartIsis);
+        AddTimelineEvent(0.99f, SoundManager.Instance.PlayDustballTheme);
 
         //sidste ting i start()
         HandleKeys();
@@ -56,6 +57,9 @@ public class Hour12_SceneManager : Timeline_BaseClass
     void Update()
     {
         float input = Scroll.scrollValueAccelerated();
+
+        SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", 0);
+        SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", 0);
 
 
         if (input < 0 && !stopInput)

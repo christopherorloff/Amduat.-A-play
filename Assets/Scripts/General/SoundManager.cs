@@ -349,6 +349,12 @@ public class SoundManager : MonoBehaviour
         apopisThemeMuInstance.start();
     }
 
+    public void PlayDustballTheme() {
+        FMOD.Studio.EventInstance sound;
+        sound = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 12/DustballTheme");
+        sound.start();
+    }
+
     public void EndTheme() {
         themeMuInstance.setParameterByName("End", 1);
     }
