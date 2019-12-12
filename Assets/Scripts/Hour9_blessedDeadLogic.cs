@@ -21,6 +21,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     public ParticleSystem particle;
 
     private bool boatPaddlePlaying;
+    private bool musicPlaying;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,11 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         running = true;
 
         SoundManager.Instance.PlayBlessedDeadAppearBoat();
+
+        if (!musicPlaying) {
+            SoundManager.Instance.PlayRitualTheme();
+            musicPlaying = true;
+        }
 
         float offset = BlessedGO.GetComponent<SpriteRenderer>().bounds.max.y;
         Instantiate(particle, new Vector3(BlessedGO.position.x, offset), particle.transform.rotation);

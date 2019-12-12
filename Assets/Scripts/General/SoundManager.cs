@@ -498,6 +498,9 @@ public class SoundManager : MonoBehaviour
         }
         if (_hour == 4)
         {
+            //STOPPING SOUNDS
+
+            //STARTING SOUNDS
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)
@@ -510,8 +513,11 @@ public class SoundManager : MonoBehaviour
             EndRitualTheme();
         }
         if (_hour == 5) {
+            //STOPPING SOUNDS
             waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             seaCaveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            //STARTING SOUNDS
             caveAmbInstance.start();
             caveWaterAmbInstance.start();
             snakesHissInstance.start();
@@ -554,12 +560,34 @@ public class SoundManager : MonoBehaviour
             sunShineInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             waterAmbInstance.start();
+            //boat in water, splash
 
         }
-        if (_hour == 10) { }
-        if (_hour == 11) { }
+        if (_hour == 10) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+        }
+        if (_hour == 11) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+        }
         if (_hour == 12) {
             EndRitualTheme();
+
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
         }
     }
 }
