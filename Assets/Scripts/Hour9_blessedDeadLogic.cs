@@ -20,6 +20,8 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     public GameObject Boat;
     public ParticleSystem particle;
 
+    private bool boatPaddlePlaying;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     {
         running = true;
 
+        SoundManager.Instance.PlayBlessedDeadAppearBoat();
 
         float offset = BlessedGO.GetComponent<SpriteRenderer>().bounds.max.y;
         Instantiate(particle, new Vector3(BlessedGO.position.x, offset), particle.transform.rotation);
@@ -61,8 +64,6 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
             stopEffect = true;
 
-        
-
             for (int i = 0; i < masks.Length; i++)
             {
                 Destroy(masks[i]);
@@ -71,18 +72,18 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
             for (int i = 0; i < blessedDead.Length; i++)
             {
                 StartCoroutine(MoveCharacters(blessedDead[i].transform, Target.transform, 10f));
-
+                if (!boatPaddlePlaying) {
+                    SoundManager.Instance.PlayBoatPaddle();
+                    SoundManager.Instance.PlayBlessedDeadBoatMove();
+                    boatPaddlePlaying = true;
+                }
             }
-      
+
 
             StartCoroutine(MoveCharacters(Boat.transform, Target.transform, 10f));
-
-
         }
+
         running = false;
-
-
-
     }
 
     IEnumerator MoveCharacters(Transform fromPos, Transform toPos, float duration)
@@ -94,8 +95,6 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         Vector3 endPos = toPos.position;
         float t = 0;
         float startTime = Time.time;
-
-
 
         while (t<1)
         {
