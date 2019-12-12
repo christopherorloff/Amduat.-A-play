@@ -483,6 +483,7 @@ MonoBehaviour:
   pregnantBurst: {fileID: 1458515984}
   particlesEnd: {fileID: 1548746020}
   blackBackground: {fileID: 400726342}
+  coloredBackground: {fileID: 1372766889}
   stopInput: 0
 --- !u!4 &308981115
 Transform:
@@ -2515,7 +2516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1372766889
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2555,7 +2556,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 10096c8124bb1284ebc42f6c9ac9cdd5, type: 3}
-  m_Color: {r: 0.33962262, g: 0.33581516, b: 0.08810965, a: 1}
+  m_Color: {r: 0.33962262, g: 0.33581516, b: 0.08810965, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -28,7 +28,8 @@ public class Hour12_SceneManager : Timeline_BaseClass
     public SpriteRenderer dustBall;
     public ParticleSystem pregnantBurst;
     public ParticleSystem particlesEnd;
-    public SpriteRenderer blackBackground; 
+    public SpriteRenderer blackBackground;
+    public SpriteRenderer coloredBackground;
 
     public bool stopInput = false;
 
@@ -171,6 +172,15 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
         yield return new WaitForSeconds(5f);
         Isis.GetComponent<BackGround_Object_Movement_Script>().enabled = false;
+
+        float endTime = Time.time;
+        while (coloredBackground.color.a < 1)
+        {
+            float t = (Time.time - endTime) / 4;
+            Color newColor = new Color(coloredBackground.color.r, coloredBackground.color.g, coloredBackground.color.b, Mathf.Lerp(0, 1, t));
+            coloredBackground.color = newColor;
+            yield return null;
+        }
 
     }
 
