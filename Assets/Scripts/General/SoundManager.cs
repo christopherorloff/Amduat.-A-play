@@ -146,6 +146,10 @@ public class SoundManager : MonoBehaviour
     private string boatPushLoopPath = "event:/HOUR 8/BoatPushLoop";
     public FMOD.Studio.EventInstance boatPushLoopInstance;
 
+    //Hour 9 Sounds
+    private string blessedDeadDropPath = "event:/HOUR 9/BlessedDeadDrop";
+    public FMOD.Studio.EventInstance blessedDeadDropInstance;
+
     //MUSIC
     private string themeMuPath = "event:/MUSIC/Theme";
     public FMOD.Studio.EventInstance themeMuInstance;
@@ -429,6 +433,8 @@ public class SoundManager : MonoBehaviour
 
         //HOUR 8 SFX INSTANCE
 
+        //HOUR 9 SFX INSTANCE
+        blessedDeadDropInstance = FMODUnity.RuntimeManager.CreateInstance(blessedDeadDropPath);
 
         //MUSIC INSTANCES
         apopisThemeMuInstance = FMODUnity.RuntimeManager.CreateInstance(apopisThemeMuPath);
@@ -597,7 +603,7 @@ public class SoundManager : MonoBehaviour
             sunShineInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             waterAmbInstance.start();
-            //boat in water, splash
+            blessedDeadDropInstance.start();
 
         }
 
