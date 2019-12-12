@@ -506,7 +506,8 @@ public class SoundManager : MonoBehaviour
             }
             seaCaveAmbInstance.start();
             boatAgroundInstance.start();
-            themeMuInstance.setParameterByName("End", 1);
+            EndTheme();
+            EndRitualTheme();
         }
         if (_hour == 5) {
             waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -537,6 +538,7 @@ public class SoundManager : MonoBehaviour
         if (_hour == 7)
         {
             spearChargeInstance.start();
+            caveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
         if (_hour == 8) {
@@ -556,6 +558,8 @@ public class SoundManager : MonoBehaviour
         }
         if (_hour == 10) { }
         if (_hour == 11) { }
-        if (_hour == 12) { }
+        if (_hour == 12) {
+            EndRitualTheme();
+        }
     }
 }
