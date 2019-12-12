@@ -41,6 +41,7 @@ public class FadeUIScript : MonoBehaviour
 
 
         }
+
         StartCoroutine(FadeTextCoroutine(1, 1));
     }
 
