@@ -7,6 +7,7 @@ using System;
 public class Scenemanager_hour5_script : MonoBehaviour
 {
 
+
     public GameObject boat;
     public CheckCollisonBoat_Script triggerScript;
     public SnakeMoveTowardsBoat_script[] snakeMoveTowardsBoat_Script;
