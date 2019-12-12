@@ -47,13 +47,13 @@ public class CameraShake : MonoBehaviour
         if (shakeAmount > 0)
         {
 
-            Vector3 camPos = initalPos;
+            Vector3 camPos = mainCam.transform.position;
             float offsetX = Random.value * shakeAmount * 2f - shakeAmount;
             float offsetY = Random.value * shakeAmount * 2f - shakeAmount;
             camPos.x += offsetX;
             camPos.y += offsetY;
 
-            mainCam.transform.position = new Vector3(Mathf.Clamp(camPos.x,-0.7f,0.7f),Mathf.Clamp(camPos.y,-0.7f,0.7f),camPos.z);
+            mainCam.transform.position = camPos;
         }
 
 
