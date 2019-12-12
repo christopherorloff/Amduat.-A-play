@@ -121,7 +121,8 @@ public class LimbMovement : MonoBehaviour
     void Move()
     {
         scrolledCounter++;
-        if(scrolledCounter - 1 < limbs.Length) {
+        if (scrolledCounter - 1 < limbs.Length)
+        {
             //Setting the correct limb to move
             limbs[scrolledCounter - 1].GetComponent<Limb>().isMoving = true;
 
@@ -129,7 +130,8 @@ public class LimbMovement : MonoBehaviour
             sweepSoundInstance.start();
 
             //If there is another limb, it is set to become active here
-            if (scrolledCounter < limbs.Length) {
+            if (scrolledCounter < limbs.Length)
+            {
                 print("SETTING LIMB ACTIVE");
                 limbs[scrolledCounter].GetComponent<Limb>().isActive = true;
             }

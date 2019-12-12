@@ -73,8 +73,9 @@ public class BlessedDeadBehaviour_Script_Hour8 : MonoBehaviour
     public void StartFollowing(Transform _target, Vector2 _offsetValues, float _smoothTime)
     {
 
-        Instantiate(Particles, transform.position, Quaternion.identity).transform.parent = this.transform;
-        Destroy(Particles, 2f);
+        GameObject particleClone = Instantiate(Particles, transform.position, Quaternion.identity);
+        particleClone.transform.parent = this.transform;
+        Destroy(particleClone, 5f);
 
         FMOD.Studio.EventInstance blessedDeadClothedInstance;
         string blessedDeadClothedPath = "event:/HOUR 8/BlessedDeadClothed";

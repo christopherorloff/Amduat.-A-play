@@ -16,6 +16,9 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     private Color sunColorStart = Color.white;
     public Color sunGlowStart;
     public Color SunGlowEnd;
+    public SpriteRenderer secondSun;
+    public Color secondSunStartColor;
+    public Color secondSunEndColor;
 
     public Color sunColorEnd;
     private SpriteRenderer SunColor;
@@ -198,6 +201,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
     private void SunActions()
     {
+        secondSun.color = Color.Lerp(secondSunStartColor, secondSunEndColor, Timeline);
         Sun.transform.position = Vector3.Lerp(sunPosStart, sunPosEnd, Timeline);
         SunColor.color = Color.Lerp(sunColorStart, sunColorEnd, Timeline);
         sunGlow.color = Color.Lerp(sunGlowStart, SunGlowEnd, Timeline);
