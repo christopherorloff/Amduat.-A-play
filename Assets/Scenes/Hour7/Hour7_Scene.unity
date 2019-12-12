@@ -970,6 +970,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2997618785183162009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &489725353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4690533365920931532, guid: 6856a2c17c9b84d2786d923b842221e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 190717128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &491987486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3994915826617512423, guid: 91d33a7180dd0984891b8b591d45bb84,
@@ -3022,6 +3028,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
+        type: 3}
+      propertyPath: boat
+      value: 
+      objectReference: {fileID: 489725353}
     - target: {fileID: 8740643237064801426, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: m_LocalScale.x
