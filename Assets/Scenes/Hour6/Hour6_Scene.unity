@@ -465,10 +465,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.37981015
       objectReference: {fileID: 0}
-    - target: {fileID: 1703898701, guid: c0e7354de6ef7d04fb43f46a90207ef9, type: 3}
-      propertyPath: snake
-      value: 
-      objectReference: {fileID: 1006743653}
     - target: {fileID: 2819185898905136511, guid: c0e7354de6ef7d04fb43f46a90207ef9,
         type: 3}
       propertyPath: InitialModule.size3D
@@ -509,6 +505,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1703898701, guid: c0e7354de6ef7d04fb43f46a90207ef9, type: 3}
+      propertyPath: snake
+      value: 
+      objectReference: {fileID: 1006743653}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e7354de6ef7d04fb43f46a90207ef9, type: 3}
 --- !u!1001 &394470690
@@ -2442,6 +2442,11 @@ PrefabInstance:
       propertyPath: moveToTransforms.Array.data[5]
       value: 
       objectReference: {fileID: 42838310}
+    - target: {fileID: 6045277235625900446, guid: 84d68e9f60f03e9408ab0c68f292dc5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d68e9f60f03e9408ab0c68f292dc5c, type: 3}
 --- !u!1 &933726218
@@ -3297,11 +3302,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hour6_collisionwithcharactersParticle
       objectReference: {fileID: 0}
-    - target: {fileID: 2737179154800860734, guid: aec21b6648c3e554aa003350e29b491a,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6800198956498745538, guid: aec21b6648c3e554aa003350e29b491a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3355,6 +3355,11 @@ PrefabInstance:
     - target: {fileID: 6800198956498745538, guid: aec21b6648c3e554aa003350e29b491a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737179154800860734, guid: aec21b6648c3e554aa003350e29b491a,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 857128059553684388, guid: aec21b6648c3e554aa003350e29b491a,
