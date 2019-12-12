@@ -13,7 +13,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     public int currentBlessed = 0;
     public float animationDuration = 1.5f;
     public float yMax = 1;
-    private int maxBoatsSpawned = 10;
+    private int maxBoatsSpawned = 17;
     public bool running = false;
     public bool stopEffect = false;
     public Transform Target;
