@@ -58,6 +58,9 @@ public class SoundManager : MonoBehaviour
     private string boatPaddleContinuousPath = "event:/GENERAL SOUNDS/BoatPaddleContinuous";
     public FMOD.Studio.EventInstance boatPaddleContinuousInstance;
 
+    private string dustballRollingPath = "event:/GENERAL SOUNDS/DustballRolling";
+    public FMOD.Studio.EventInstance dustballRollingInstance;
+
     private string titleSoundPath = "event:/GENERAL SOUNDS/Title";
     public FMOD.Studio.EventInstance titleSoundInstance;
 
@@ -303,6 +306,14 @@ public class SoundManager : MonoBehaviour
         sound.start();
     }
 
+    public void PlayBlessedDeadAppear()
+    {
+        FMOD.Studio.EventInstance sound;
+        sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadAppear");
+        sound.setParameterByName("Water", 0);
+        sound.start();
+    }
+
     public void PlayBlessedDeadAppearBoat() {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadAppear");
@@ -313,6 +324,12 @@ public class SoundManager : MonoBehaviour
     public void PlayBlessedDeadBoatMove() {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadBoatMove");
+        sound.start();
+    }
+
+    public void PlayBlessedDeadAground() {
+        FMOD.Studio.EventInstance sound;
+        sound = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR11/BlessedDeadAground");
         sound.start();
     }
 
@@ -366,6 +383,7 @@ public class SoundManager : MonoBehaviour
         //GENERAL SOUND INSTANCES
         titleSoundInstance = FMODUnity.RuntimeManager.CreateInstance(titleSoundPath);
         boatPaddleContinuousInstance = FMODUnity.RuntimeManager.CreateInstance(boatPaddleContinuousPath);
+        dustballRollingInstance = FMODUnity.RuntimeManager.CreateInstance(dustballRollingPath);
 
         //AMBIENCE INSTANCES
         waterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(waterAmbPath);
@@ -466,6 +484,7 @@ public class SoundManager : MonoBehaviour
             waterAmbInstance.start();
             sunMoveInstance.start();
         }
+
         if (_hour == 2)
         {
             timelineHour2 = FindObjectOfType<TimelineManager_Script_Hour2>();
@@ -482,6 +501,7 @@ public class SoundManager : MonoBehaviour
             jungleAmbInstance.start();
             growLoopInstance.start();
         }
+
         if (_hour == 3)
         {
             //STOPPING SOUNDS
@@ -496,6 +516,7 @@ public class SoundManager : MonoBehaviour
                 waterAmbInstance.start();
             }
         }
+
         if (_hour == 4)
         {
             //STOPPING SOUNDS
@@ -512,6 +533,7 @@ public class SoundManager : MonoBehaviour
             EndTheme();
             EndRitualTheme();
         }
+
         if (_hour == 5) {
             //STOPPING SOUNDS
             waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -521,11 +543,13 @@ public class SoundManager : MonoBehaviour
             caveAmbInstance.start();
             caveWaterAmbInstance.start();
             snakesHissInstance.start();
+            boatPaddleContinuousInstance.start();
         }
 
         if (_hour == 6)
         {
             snakesHissInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            boatPaddleContinuousInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             apopisAppearInstance.start();
 
@@ -565,6 +589,7 @@ public class SoundManager : MonoBehaviour
             boatPushLoopInstance.start();
             sunShineInstance.start();
         }
+
         if (_hour == 9) {
             caveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             blessedDeadRunningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -575,6 +600,7 @@ public class SoundManager : MonoBehaviour
             //boat in water, splash
 
         }
+
         if (_hour == 10) {
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
@@ -583,6 +609,7 @@ public class SoundManager : MonoBehaviour
                 waterAmbInstance.start();
             }
         }
+
         if (_hour == 11) {
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
@@ -590,14 +617,17 @@ public class SoundManager : MonoBehaviour
             {
                 waterAmbInstance.start();
             }
+
+            boatPaddleContinuousInstance.start();
+            dustballRollingInstance.start();
+
         }
+
         if (_hour == 12) {
             //STOPPING SOUNDS
             EndRitualTheme();
 
             //STARTING SOUNDS
-            PlayBoatPaddle();
-
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)

@@ -86,6 +86,12 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         MovingBoat();
         //ConvertInputToProgress(input);
         //Kepri move by him self not as part of boat.?
+
+        float velocity = ((Time.deltaTime * speed) * Vector3.Distance(new Vector3(boatEndX, Boat.transform.position.y, Boat.transform.position.z), Boat.transform.position)) * 50;
+        velocity = Mathf.Clamp(velocity, 0f, 1f);
+
+        SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", velocity);
+        SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", velocity);
     }
 
     private void MovingBoat()
