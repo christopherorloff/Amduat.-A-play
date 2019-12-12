@@ -130,11 +130,12 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         {
             _animationTimePosition += Time.deltaTime;
             //float t = (Time.time - startTime) / durationOfBoatSegments;
-            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition/durationOfBoatSegments));
+            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition / durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
             yield return null;
         }
-        if(Boat.transform.position.x >= xEnd)
+
+        if (Boat.transform.position.x >= xEnd)
         {
             _animationTimePosition = 0;
         }
