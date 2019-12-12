@@ -129,18 +129,18 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         {
             if (nextIsDraw)
             {
-                if (firstWrong)
+                if(firstWrong)
                 {
                     StartCoroutine(WrongInput(WrongInputDraw));
                 }
                 else
                 {
-                    StartCoroutine(WrongInput(WrongInputDraw + rotationAfterPull));
+                    StartCoroutine(WrongInput(WrongInputDraw));
                 }
             }
             else
             {
-                StartCoroutine(WrongInput(rotationAfterDraw + WrongInputPull));
+                StartCoroutine(WrongInput(WrongInputPull));
             }
         }
     }
@@ -204,6 +204,10 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             }
             yield return null;
         }
+        if(Timeline == 1f)
+        {
+            StartCoroutine(MoveLast(0,1f));
+        }
         coroutineRunning = false;
     }
 
@@ -232,6 +236,10 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
                 goddessAnimators[i].Play(0, 0, Mathf.Lerp(start, end, t));
             }
             yield return null;
+        }
+        if(Timeline == 1f)
+        {
+            StartCoroutine(MoveLast(0,1f));
         }
         coroutineRunning = false;
     }
@@ -279,11 +287,28 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             yield return null;
 
         }
-
-
-
     }
+    private IEnumerator MoveLast(float start, float end)
+    {
+        float startTime = Time.time;
 
+        Vector3 startPositionGoddesses = goddessesParent.transform.position;
+        Vector3 endPositionGoddesses = startPositionGoddesses + new Vector3(3f,0,0);
+        float t = start;
+
+        while (t < 1)
+        {
+            t = (Time.time - startTime) / drawDuration;
+            t = Mathf.Clamp(t, 0, 1);
+            for (int i = 0; i < goddesses.Length; i++)
+            {
+                goddessesParent.position = Vector3.Lerp(startPositionGoddesses, endPositionGoddesses, t);
+                boat.transform.position = Vector3.Lerp(startPositionGoddesses - boatDistanceToGoddesses, endPositionGoddesses - boatDistanceToGoddesses, t);
+                goddessAnimators[i].Play(0, 0, Mathf.Lerp(start, end, t));
+            }
+            yield return null;
+        }
+    }
 
     ///--------///
     /// Legacy ///

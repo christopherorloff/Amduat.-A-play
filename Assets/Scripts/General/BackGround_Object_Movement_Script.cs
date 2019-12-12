@@ -56,12 +56,9 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
     private void OnEnable()
     {
-        
         initialPosition = transform.position;
         targetAmplitudeX = amplitudeX;
         targetAmplitudeY = amplitudeY;
-        
-
     }
 
     // Update is called once per frame
@@ -117,9 +114,9 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
         }
         else if (floating && !wheelControlled)
         {
-            x = Mathf.Cos(frequenzyX * Time.time) * amplitudeX;
+            x = Mathf.Cos(Time.deltaTime * frequenzyX) * amplitudeX;
             y = Mathf.Sin(Time.deltaTime * frequenzyY) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition;
+            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x, y, 0);
         }
         else if (!floating && wheelControlled)
         {  
