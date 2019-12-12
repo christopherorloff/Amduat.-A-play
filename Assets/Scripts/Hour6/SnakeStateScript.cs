@@ -65,6 +65,7 @@ public class SnakeStateScript : MonoBehaviour
         {
             SoundManager.Instance.EndApopisTheme();
             SoundManager.Instance.apopisIdleInstance.start();
+            SoundManager.Instance.apopisAppearInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             snakeAlive = false;
             print("den ær døj");
