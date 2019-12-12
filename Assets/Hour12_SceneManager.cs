@@ -20,12 +20,14 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     public BackGround_Object_Movement_Script dustballMovement;
     public IsisAnimationScript IsisAnim;
+    public GameObject Isis;
 
     public Animator anim;
+    public Animator anim2;
 
     public SpriteRenderer dustBall;
     public ParticleSystem pregnantBurst;
-
+    public ParticleSystem particlesEnd;
     public SpriteRenderer blackBackground; 
 
     public bool stopInput = false;
@@ -40,6 +42,7 @@ public class Hour12_SceneManager : Timeline_BaseClass
     {
 
         anim.speed = 0f;
+        anim2.speed = 0f;
 
         AddTimelineEvent(0.35f, IsisAction);
         AddTimelineEvent(0.99f, StartIsis);
@@ -152,16 +155,22 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
         yield return new WaitForSeconds(2);
 
+        particlesEnd.Play();
+
         float midTime = Time.time;
         float startvalue = 0;
+        anim2.speed = 0.3f;
 
         while (blackBackground.color.a < 1)
         {
-            float t = (Time.time - midTime) / 5;
+            float t = (Time.time - midTime) / 8;
             Color newColor = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, Mathf.Lerp(startvalue, 1, t));
             blackBackground.color = newColor;
             yield return null;
         }
+
+        yield return new WaitForSeconds(5f);
+        Isis.GetComponent<BackGround_Object_Movement_Script>().enabled = false;
 
     }
 
