@@ -64,6 +64,7 @@ public class Hour6_MoveCharacters : MonoBehaviour
         {
             StartCoroutine(FadeOutSprite(0, 3));
             ParticleEffect.Play();
+            SoundManager.Instance.PlayGodAppear();
             yield return new WaitForSeconds(1);
             Seth.transform.eulerAngles = new Vector3(0, 0, 0);
             Destroy(ParticleEffect, 5f);

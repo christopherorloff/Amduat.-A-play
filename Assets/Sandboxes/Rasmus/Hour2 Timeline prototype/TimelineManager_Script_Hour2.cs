@@ -67,6 +67,7 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 
         AddTimelineEvent(0.4f, wheatSpray.StartSpraying);
         AddTimelineEvent(0.8f, SethAnimScript.startAnim);
+        AddTimelineEvent(0.8f, SoundManager.Instance.PlayGodAppear);
 
         AddTimelineEvent(0.3f, SoundManager.Instance.PlayRitualTheme);
 

@@ -592,7 +592,11 @@ public class SoundManager : MonoBehaviour
             }
         }
         if (_hour == 12) {
+            //STOPPING SOUNDS
             EndRitualTheme();
+
+            //STARTING SOUNDS
+            PlayBoatPaddle();
 
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
