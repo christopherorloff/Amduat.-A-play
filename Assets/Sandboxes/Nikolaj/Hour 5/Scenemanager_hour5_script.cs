@@ -52,6 +52,7 @@ public class Scenemanager_hour5_script : MonoBehaviour
     {
         // Consider doing a multiplication approach
         boat.transform.position += new Vector3(boatMoveSpeedX * Time.deltaTime, 0, 0);
+        SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", boatMoveSpeedX);
 
         if (triggerScript.numberOfSnakes >= 2)
         {

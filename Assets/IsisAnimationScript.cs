@@ -19,7 +19,7 @@ public class IsisAnimationScript : MonoBehaviour
     public void startAnim()
     {
 
-        anim.speed = 1f;
+        anim.speed = 0.2f;
 
     }
 }

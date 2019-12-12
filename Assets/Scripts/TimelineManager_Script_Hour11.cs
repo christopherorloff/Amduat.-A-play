@@ -12,7 +12,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     private float _animationTimePosition;
 
     float startYPosition;
-    Vector3 boatPosStart = new Vector3(-6.9f, -2.5f, 0);
+    Vector3 boatPosStart = new Vector3(-12.9f, -2.5f, 0);
     Vector3 boatPosEnd = new Vector3(20.5f, -2.5f, 0);
     private float boatTravelDistance;
     public int numberOfBoatSegments = 3;
@@ -39,6 +39,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     private float shakeDuration = 0.5f;
     private bool waiting = false;
     public bool running = false;
+    public bool running1 = false;
     public bool cooldownOnShake;
     private float currentX;
 
@@ -60,12 +61,11 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     void Start()
     {
         currentX = Boat.transform.position.x;
-        AddTimelineEvent(0.25f, BoatActions);
-        AddTimelineEvent(0.5f, BoatActions);
-        AddTimelineEvent(0.75f, BoatActions);
-        AddTimelineEvent(1f, BoatActions);
-
-
+        AddTimelineEvent(0.20f, BoatActions);
+        AddTimelineEvent(0.40f, BoatActions);
+        AddTimelineEvent(0.60f, BoatActions);
+        AddTimelineEvent(0.8f, BoatActions);
+        AddTimelineEvent(1f, BoatActions);        
 
         startYPosition = Boat.gameObject.transform.position.y;
         boatPosStart = new Vector3(boatPosStart.x, startYPosition, boatPosStart.z);
@@ -86,6 +86,12 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         MovingBoat();
         //ConvertInputToProgress(input);
         //Kepri move by him self not as part of boat.?
+
+        float velocity = ((Time.deltaTime * speed) * Vector3.Distance(new Vector3(boatEndX, Boat.transform.position.y, Boat.transform.position.z), Boat.transform.position)) * 50;
+        velocity = Mathf.Clamp(velocity, 0f, 1f);
+
+        SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", velocity);
+        SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", velocity);
     }
 
     private void MovingBoat()
@@ -94,11 +100,28 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         //Debug.Log(currentX + " " + boatEndX);
         if(currentX < boatEndX-1f)
         {
+            if(currentNumberOfBlessedSegements < 24 && Boat.transform.localPosition.x < 16)
+            {
             kepriMovement.enabled = true;
             Boat.transform.position += transform.right * ((Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position));
             kepriMovement.animationTime =  2f;//(Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position);
             dustballMovement.rotateSpeed = ((Time.deltaTime*-speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position))*55f;
             Debug.Log(kepriMovement.animationTime);
+            }
+            else if(currentNumberOfBlessedSegements >= 24)
+            {
+                kepriMovement.enabled = true;
+                Boat.transform.position += transform.right * ((Time.deltaTime*speed)*20f);
+                dustballMovement.rotateSpeed = ((Time.deltaTime*-speed)*550f);
+                kepriMovement.animationTime =  2f;
+                Timeline = 1f;
+            }
+            else
+            {
+                dustballMovement.rotateSpeed =0f;
+                kepriMovement.enabled = false;
+
+            }
         }
         else
         {            
@@ -147,8 +170,14 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         {
             boatEndX += boatTravelDistance;
         }
-        
-        StartCoroutine(MoveCam());
+        if(!running1)
+        {
+            StartCoroutine(MoveCam()); 
+        }
+        else
+        {
+            camTravelDistance+=camTravelDistance;
+        }
     }
 
     private IEnumerator MoveBoat()
@@ -180,7 +209,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         }
         if (blessedDeath[currentNumberOfBlessedSegements].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().going == true)
         {
-            Timeline += 0.05f;
+            Timeline += 0.03f;
             currentNumberOfBlessedSegements++;
         }   
     }
@@ -190,18 +219,18 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         
         for (int i = 0; i < blessedDeath.Length; i++)
         {
-            //Debug.Log("rubber band blessed death");
             blessedDeath[i].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().Shake(blessedDeath[i].transform.position.x,blessedDeath[i].transform.position.y); 
         }
     }
 
     private IEnumerator MoveCam()
     {
+        running1 = true;
         float xStart = Cam.transform.position.x;
         float xEnd = xStart + camTravelDistance;
         float startTime = Time.time;
 
-        while (Cam.transform.position.x < xEnd)
+        while(Cam.transform.position.x < xEnd)
         {
             float t = (Time.time - startTime) / durationOfBoatSegments;
             float step = Mathf.SmoothStep(xStart, xEnd, t);
@@ -209,5 +238,6 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
             yield return null;
         }
         Cam.transform.position = new Vector3(xEnd, camPosStart.y, -10);
+        running1 = false;
     }
 }

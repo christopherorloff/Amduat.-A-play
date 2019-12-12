@@ -15,6 +15,8 @@ public class LightManager : MonoBehaviour
     public SpriteRenderer Snake;
     public SpriteRenderer Panel;
 
+    public bool running = false;
+
 
     public SpearAnimation SA;
 
@@ -41,8 +43,8 @@ public class LightManager : MonoBehaviour
         if (SA.animationDone == true && SA.growX == true)
         {
             print("light!!!");
-            light1.transform.localScale += new Vector3(0.35f * Time.fixedDeltaTime, 0, 0);
-            light2.transform.localScale += new Vector3(0.35f * Time.fixedDeltaTime, 0, 0);
+            light1.transform.localScale += new Vector3(0.35f * Time.deltaTime, 0, 0);
+            light2.transform.localScale += new Vector3(0.35f * Time.deltaTime, 0, 0);
 
             //stopping growing of light1
             if (light1.transform.localScale.x >= 1.5f)
@@ -55,8 +57,8 @@ public class LightManager : MonoBehaviour
         if (SA.animationDone == true && SA.growY == true)
         {
             print("light!!!");
-            light1.transform.localScale += new Vector3(0, 0.70f * Time.fixedDeltaTime, 0);
-            light2.transform.localScale += new Vector3(0, 0.70f * Time.fixedDeltaTime, 0);
+            light1.transform.localScale += new Vector3(0, 0.70f * Time.deltaTime, 0);
+            light2.transform.localScale += new Vector3(0, 0.70f * Time.deltaTime, 0);
 
             //stopping growing of light2
             if (light1.transform.localScale.y >= 1.0f)
@@ -69,8 +71,13 @@ public class LightManager : MonoBehaviour
         //changes the color of the snake when light has stopped growing
         if (!SA.growY && !SA.growX && SA.animationDone == true)
         {
-            Snake.color = new Color(Snake.color.r + 0.005f, Snake.color.g, Snake.color.b - 0.005f);
-            Panel.color = new Color(Panel.color.r, Panel.color.g, Panel.color.b, Panel.color.a + 0.002f);
+            Snake.color = new Color(Snake.color.r + 0.005f, Snake.color.g, Snake.color.b - 0.005f * Time.deltaTime);
+
+            if (!running)
+            {
+                print("startfade");
+                StartCoroutine(startFadeUp());
+            }
         }
 
         if (SA.startEffect2)
@@ -78,8 +85,26 @@ public class LightManager : MonoBehaviour
             Instantiate(ReadyEffect1, EffectSpot.transform.position, Quaternion.Euler(-146, 110, -120));
 
             SA.startEffect2 = false;
-            
+            GameManager.Instance.StartChangeToNextScene();
         }
+
+    }
+
+    public IEnumerator startFadeUp()
+    {
+        running = true;
+        float startTime = Time.time;
+        while (Panel.color.a < 1)
+        {
+            print("vifader");
+            float t = (Time.time - startTime) / 6;
+            Color newColor = new Color(Panel.color.r, Panel.color.g, Panel.color.b, Mathf.Lerp(0, 1, t));
+            Panel.color = newColor;
+            yield return null;
+        }
+
+        GameManager.Instance.StartChangeToNextScene();
+
 
     }
 }

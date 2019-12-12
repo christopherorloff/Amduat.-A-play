@@ -35,6 +35,8 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
     private bool ani2;
     private bool active = true;
 
+    private bool moveIsPlaying;
+
     void Start()
     {
 
@@ -54,8 +56,12 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
 
     public void moveToShore()
     {
-        
+        if (!moveIsPlaying) {
+            SoundManager.Instance.PlayBlessedDeadAppear();
+            moveIsPlaying = true;
+        }
         going = true;
+
     }
 
     private void moveTowardShore()
@@ -76,6 +82,8 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
     {
         if (col.gameObject.tag == "Shore")
         {
+            SoundManager.Instance.PlayBlessedDeadAground();
+
             StartCoroutine(changeSprite());
             shoreHit = true;
             going = false;

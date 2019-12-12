@@ -465,10 +465,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.37981015
       objectReference: {fileID: 0}
-    - target: {fileID: 1703898701, guid: c0e7354de6ef7d04fb43f46a90207ef9, type: 3}
-      propertyPath: snake
-      value: 
-      objectReference: {fileID: 1006743653}
     - target: {fileID: 2819185898905136511, guid: c0e7354de6ef7d04fb43f46a90207ef9,
         type: 3}
       propertyPath: InitialModule.size3D
@@ -509,6 +505,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1703898701, guid: c0e7354de6ef7d04fb43f46a90207ef9, type: 3}
+      propertyPath: snake
+      value: 
+      objectReference: {fileID: 1006743653}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e7354de6ef7d04fb43f46a90207ef9, type: 3}
 --- !u!1001 &394470690
@@ -1425,7 +1425,7 @@ PrefabInstance:
     - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: snake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3765194445873259466, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
@@ -2218,7 +2218,7 @@ PrefabInstance:
     - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
@@ -2442,6 +2442,11 @@ PrefabInstance:
       propertyPath: moveToTransforms.Array.data[5]
       value: 
       objectReference: {fileID: 42838310}
+    - target: {fileID: 6045277235625900446, guid: 84d68e9f60f03e9408ab0c68f292dc5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d68e9f60f03e9408ab0c68f292dc5c, type: 3}
 --- !u!1 &933726218
@@ -3607,7 +3612,7 @@ MonoBehaviour:
   throwing: 0
   throwStopper: 0
   waiting: 0
-  throwTimer: 5
+  throwTimer: 3.5
   done: 0
   armNotUp: 1
   scalar: 3
@@ -3945,7 +3950,7 @@ PrefabInstance:
     - target: {fileID: 5186627311433055869, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5186627311433055870, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
@@ -4495,10 +4500,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!114 &5767841864679061207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4521,10 +4522,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!114 &5767841864746920603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4547,10 +4544,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!114 &5767841864835929912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4573,10 +4566,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &5870208083743264598
 GameObject:
   m_ObjectHideFlags: 0
