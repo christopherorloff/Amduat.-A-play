@@ -1077,6 +1077,7 @@ MonoBehaviour:
   cooldown: 0.2
   cooldownOn: 0
   running: 0
+  running1: 0
   cooldownOnShake: 0
   boatEndX: 0
   speed: 0.05
@@ -3811,7 +3812,6 @@ GameObject:
   m_Component:
   - component: {fileID: 869712351}
   - component: {fileID: 869712353}
-  - component: {fileID: 869712352}
   m_Layer: 0
   m_Name: hav2_bag
   m_TagString: Untagged
@@ -3833,20 +3833,6 @@ Transform:
   m_Father: {fileID: 1283621758}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &869712352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869712350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9260419d2d0f94099b7622e7fa176e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: 0
 --- !u!212 &869712353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4835,7 +4821,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1071302939}
   - component: {fileID: 1071302941}
-  - component: {fileID: 1071302940}
   m_Layer: 0
   m_Name: hav1_bag
   m_TagString: Untagged
@@ -4857,20 +4842,6 @@ Transform:
   m_Father: {fileID: 1283621758}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1071302940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071302938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9260419d2d0f94099b7622e7fa176e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: 0
 --- !u!212 &1071302941
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7232,7 +7203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1440897858}
   - component: {fileID: 1440897860}
-  - component: {fileID: 1440897859}
   m_Layer: 0
   m_Name: hav3_bag
   m_TagString: Untagged
@@ -7254,20 +7224,6 @@ Transform:
   m_Father: {fileID: 1283621758}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1440897859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440897857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9260419d2d0f94099b7622e7fa176e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  parallaxEffect: 0
 --- !u!212 &1440897860
 SpriteRenderer:
   m_ObjectHideFlags: 0
