@@ -19,7 +19,7 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
     [SerializeField]
     [Range(-10, 10)]
-    private float rotateSpeed;
+    public float rotateSpeed;
 
     [SerializeField]
     [Range(0, 10)]
@@ -136,6 +136,10 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
         }
     }
 
+    public void setRotateSpeed(float rotate)
+    {
+        rotateSpeed = rotate;
+    }
     public void StopAllMovement()
     {
     }
