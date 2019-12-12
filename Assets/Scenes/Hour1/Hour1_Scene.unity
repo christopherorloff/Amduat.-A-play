@@ -1625,7 +1625,7 @@ MonoBehaviour:
   SunGlowEnd: {r: 0.94509804, g: 0.6, b: 0.078431375, a: 0.6862745}
   secondSun: {fileID: 2071394809}
   secondSunStartColor: {r: 1, g: 0, b: 0, a: 0}
-  secondSunEndColor: {r: 1, g: 0, b: 0, a: 0.72156864}
+  secondSunEndColor: {r: 1, g: 0, b: 0, a: 0.53333336}
   sunColorEnd: {r: 0.94509804, g: 0.5994339, b: 0.07843137, a: 0.33333334}
   sunGlow: {fileID: 2040240038}
   Boat: {fileID: 193751306}

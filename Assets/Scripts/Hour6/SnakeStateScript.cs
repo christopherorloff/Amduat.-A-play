@@ -63,11 +63,12 @@ public class SnakeStateScript : MonoBehaviour
     {
         if (knifeHits >= knifeHitLimit && snakeAlive == true)
         {
+            SoundManager.Instance.EndApopisTheme();
+
             snakeAlive = false;
             print("den ær døj");
             EventManager.turnOffInputEvent();
             EventManager.snakeDeadEvent();
-            
         }
     }
     

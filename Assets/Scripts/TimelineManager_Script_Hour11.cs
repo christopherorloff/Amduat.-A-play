@@ -12,10 +12,10 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     private float _animationTimePosition;
 
     float startYPosition;
-    Vector3 boatPosStart = new Vector3(-5.9f, -2.5f, 0);
+    Vector3 boatPosStart = new Vector3(-6.9f, -2.5f, 0);
     Vector3 boatPosEnd = new Vector3(20.5f, -2.5f, 0);
     private float boatTravelDistance;
-    public int numberOfBoatSegments = 8;
+    public int numberOfBoatSegments = 3;
     public float durationOfBoatSegments = 4;
 
     public GameObject[] blessedDeath;
@@ -23,6 +23,8 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     private int currentNumberOfBlessedSegements = 0;
     private float[] blessedTravelDistance;
     public float moveBlessedDeathThreshold = 0.0001f;
+    public BackGround_Object_Movement_Script dustballMovement;
+    public KepriAnimationScript kepriMovement;
 
     private GameObject Cam;
     private Vector3 camPosStart = new Vector3(0, 0, -10);
@@ -33,15 +35,23 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     public float cooldown = 0.5f;
     public bool cooldownOn = false;
     private float timeStamp = 0f;
+    private float timeStampShake = 0f;
+    private float shakeDuration = 0.5f;
     private bool waiting = false;
     public bool running = false;
+    public bool cooldownOnShake;
+    private float currentX;
+
+    public float boatEndX;
+    public float speed;
 
 
     void Awake()
     {
         
         boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
-
+        boatEndX = Boat.transform.position.x;
+        boatEndX += boatTravelDistance;
         camPosEnd = new Vector3(sceneLength, 0, -10);
         camTravelDistance = (camPosEnd.x - camPosStart.x) / numberOfBoatSegments;
         Cam = Camera.main.gameObject;
@@ -49,40 +59,58 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(startScene(firstMoveDelay));
-        AddTimelineEvent(0.1f, BoatActions);
-        AddTimelineEvent(0.19f, BoatActions);
-        AddTimelineEvent(0.29f, BoatActions);
-        AddTimelineEvent(0.39f, BoatActions);
-        AddTimelineEvent(0.49f, BoatActions);
-        AddTimelineEvent(0.59f, BoatActions);
-        AddTimelineEvent(0.69f, BoatActions);
-        AddTimelineEvent(0.79f, BoatActions);
+        currentX = Boat.transform.position.x;
+        AddTimelineEvent(0.25f, BoatActions);
+        AddTimelineEvent(0.5f, BoatActions);
+        AddTimelineEvent(0.75f, BoatActions);
+        AddTimelineEvent(1f, BoatActions);
+
+
 
         startYPosition = Boat.gameObject.transform.position.y;
         boatPosStart = new Vector3(boatPosStart.x, startYPosition, boatPosStart.z);
         boatPosEnd = new Vector3(boatPosEnd.x, startYPosition, boatPosEnd.z);
+        
 
         HandleKeys();
-    }
-    private IEnumerator startScene(float delay)
-    {
-        waiting = true;
-        yield return new WaitForSeconds(delay); 
-        Timeline = 0.1f;
-        waiting = false;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        float input = Scroll.scrollValue();
-        //Debug.Log(Timeline);
+        float input = Scroll.scrollValueAccelerated();
+        //Debug.Log(input);
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         swipeBlessedDeath(input);
+        MovingBoat();
         //ConvertInputToProgress(input);
         //Kepri move by him self not as part of boat.?
+    }
+
+    private void MovingBoat()
+    {
+        currentX = Boat.transform.position.x;
+        //Debug.Log(currentX + " " + boatEndX);
+        if(currentX < boatEndX-1f)
+        {
+            kepriMovement.enabled = true;
+            Boat.transform.position += transform.right * ((Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position));
+            kepriMovement.animationTime =  2f;//(Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position);
+            dustballMovement.rotateSpeed = ((Time.deltaTime*-speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position))*55f;
+            Debug.Log(kepriMovement.animationTime);
+        }
+        else
+        {            
+            kepriMovement.enabled = false;//(Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position);
+            Boat.transform.position = Boat.transform.position;
+            dustballMovement.rotateSpeed = 0;
+
+        }
+
+        
+        //while boatEndX is > currentX
+        // Move forward else stop
     }
 
     private void swipeBlessedDeath(float input)
@@ -91,7 +119,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         {
             cooldownOn = false;
         }
-        if (input > moveBlessedDeathThreshold && Timeline >= 0.1f && !cooldownOn && !waiting)
+        if (input > moveBlessedDeathThreshold && !cooldownOn && !waiting)
         {
             Debug.Log("move Blessed");
             //Debug.Log(cooldownOn);
@@ -100,18 +128,24 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
             cooldownOn = true;
             //change sprite and move a bit
         }
-        else if (input < 0)
+        else if (input < -0.02 && !cooldownOnShake)
         {
-            Debug.Log("rubber band blessed death");
-            //rubber band move blessed death
+            cooldownOnShake = true;            
+            BlessedDeathRubberBand();
+            StartCoroutine(coolDowner(0.75f));
         }
+    }
+    private IEnumerator coolDowner(float time)
+    {
+        yield return new WaitForSeconds(time);
+        cooldownOnShake = false;
     }
 
     private void BoatActions()
     {
         if(!running)
         {
-            StartCoroutine(MoveBoat());
+            boatEndX += boatTravelDistance;
         }
         
         StartCoroutine(MoveCam());
@@ -132,7 +166,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
             //Debug.Log(_animationTimePosition/durationOfBoatSegments);
             yield return null;
         }
-         _animationTimePosition = 0;
+        _animationTimePosition = 0;
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
         running = false;
     }
@@ -149,6 +183,16 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
             Timeline += 0.05f;
             currentNumberOfBlessedSegements++;
         }   
+    }
+
+       private void BlessedDeathRubberBand()
+    {
+        
+        for (int i = 0; i < blessedDeath.Length; i++)
+        {
+            //Debug.Log("rubber band blessed death");
+            blessedDeath[i].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().Shake(blessedDeath[i].transform.position.x,blessedDeath[i].transform.position.y); 
+        }
     }
 
     private IEnumerator MoveCam()

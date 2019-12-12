@@ -55,6 +55,9 @@ public class SoundManager : MonoBehaviour
 
     private string boatPaddlePath = "event:/GENERAL SOUNDS/BoatPaddle";
 
+    private string boatPaddleContinuousPath = "event:/GENERAL SOUNDS/BoatPaddleContinuous";
+    public FMOD.Studio.EventInstance boatPaddleContinuousInstance;
+
     private string titleSoundPath = "event:/GENERAL SOUNDS/Title";
     public FMOD.Studio.EventInstance titleSoundInstance;
 
@@ -294,6 +297,25 @@ public class SoundManager : MonoBehaviour
         osirisAppear.start();
     }
 
+    public void PlayBoatPaddle() {
+        FMOD.Studio.EventInstance sound;
+        sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
+        sound.start();
+    }
+
+    public void PlayBlessedDeadAppearBoat() {
+        FMOD.Studio.EventInstance sound;
+        sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadAppear");
+        sound.setParameterByName("Water", 1);
+        sound.start();
+    }
+
+    public void PlayBlessedDeadBoatMove() {
+        FMOD.Studio.EventInstance sound;
+        sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadBoatMove");
+        sound.start();
+    }
+
     public void PlayTheme() {
         themeMuInstance.start();
     }
@@ -343,6 +365,7 @@ public class SoundManager : MonoBehaviour
     {
         //GENERAL SOUND INSTANCES
         titleSoundInstance = FMODUnity.RuntimeManager.CreateInstance(titleSoundPath);
+        boatPaddleContinuousInstance = FMODUnity.RuntimeManager.CreateInstance(boatPaddleContinuousPath);
 
         //AMBIENCE INSTANCES
         waterAmbInstance = FMODUnity.RuntimeManager.CreateInstance(waterAmbPath);
@@ -475,6 +498,9 @@ public class SoundManager : MonoBehaviour
         }
         if (_hour == 4)
         {
+            //STOPPING SOUNDS
+
+            //STARTING SOUNDS
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)
@@ -483,11 +509,15 @@ public class SoundManager : MonoBehaviour
             }
             seaCaveAmbInstance.start();
             boatAgroundInstance.start();
-            themeMuInstance.setParameterByName("End", 1);
+            EndTheme();
+            EndRitualTheme();
         }
         if (_hour == 5) {
+            //STOPPING SOUNDS
             waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             seaCaveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            //STARTING SOUNDS
             caveAmbInstance.start();
             caveWaterAmbInstance.start();
             snakesHissInstance.start();
@@ -514,6 +544,7 @@ public class SoundManager : MonoBehaviour
         if (_hour == 7)
         {
             spearChargeInstance.start();
+            caveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 
         if (_hour == 8) {
@@ -522,9 +553,41 @@ public class SoundManager : MonoBehaviour
             boatPushLoopInstance.start();
             sunShineInstance.start();
         }
-        if (_hour == 9) { }
-        if (_hour == 10) { }
-        if (_hour == 11) { }
-        if (_hour == 12) { }
+        if (_hour == 9) {
+            caveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            blessedDeadRunningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            boatPushLoopInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            sunShineInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+            waterAmbInstance.start();
+            //boat in water, splash
+
+        }
+        if (_hour == 10) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+        }
+        if (_hour == 11) {
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+        }
+        if (_hour == 12) {
+            EndRitualTheme();
+
+            waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
+            waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (waterAmbIsNotPlaying)
+            {
+                waterAmbInstance.start();
+            }
+        }
     }
 }
