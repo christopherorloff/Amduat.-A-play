@@ -331,10 +331,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &104468472
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,10 +819,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &290162084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,10 +1093,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &413752207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,10 +1215,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &488998370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,10 +1323,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &539170816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,11 +2261,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: boat
-      value: 
-      objectReference: {fileID: 1576279399}
     - target: {fileID: 8740643237064801426, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2301,6 +2276,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
+        type: 3}
+      propertyPath: boat
+      value: 
+      objectReference: {fileID: 1576279399}
     - target: {fileID: 8740643237064801437, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: sprites.Array.size
@@ -2874,10 +2854,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &784743016
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,10 +3745,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &1056938167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,7 +4191,7 @@ PrefabInstance:
     - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
@@ -4493,10 +4465,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &1233911976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4669,16 +4637,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_BackSortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_BackSortingOrder
@@ -4688,6 +4646,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FrontSortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_BackSortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_FrontSortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6856a2c17c9b84d2786d923b842221e7, type: 3}
@@ -5394,10 +5362,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1001 &1390064394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5609,10 +5573,6 @@ MonoBehaviour:
   rotating: 0
   floating: 1
   scrollFactor: 0
-  snake: 0
-  runOnce: 0
-  waitToStart: 0
-  snakeState: {fileID: 0}
 --- !u!1 &1415517594
 GameObject:
   m_ObjectHideFlags: 0
@@ -8280,7 +8240,7 @@ PrefabInstance:
     - target: {fileID: 5186627311433055869, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186627311433055870, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
