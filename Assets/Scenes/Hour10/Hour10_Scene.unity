@@ -2015,6 +2015,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hour4_SpawnGoddesses_particle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7001094348789687014, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2084,16 +2094,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5423891
-      objectReference: {fileID: 0}
-    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b, type: 3}
@@ -3032,6 +3032,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hour4_SpawnGoddesses_particle
       objectReference: {fileID: 0}
+    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7001094348789687014, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3101,16 +3111,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6101878
-      objectReference: {fileID: 0}
-    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
-        type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7001094348789687015, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 260aa3d9ffc3b5b44836ea4ecc2b9b6b, type: 3}
@@ -4075,7 +4075,7 @@ PrefabInstance:
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
       propertyPath: m_Text
-      value: 'HOUR II: THE FERTILE REGIONS OF WERNES'
+      value: 'HOUR XI: THE FERTILE REGIONS OF WERNES'
       objectReference: {fileID: 0}
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
