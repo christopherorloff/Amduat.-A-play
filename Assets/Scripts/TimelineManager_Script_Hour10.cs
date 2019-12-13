@@ -241,10 +241,10 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
     IEnumerator startFadeIn()
     {
+        particle1.Play();
+        yield return new WaitForSeconds(0.5f);
 
         float startTime = Time.time;
-        particle1.Play();
-
         while (dustBall.color.a < 1)
             {
                 float t = (Time.time - startTime) / 3;
@@ -253,8 +253,12 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
                 yield return null;
             }
 
-        float midTime = Time.time;
         particle2.Play();
+        yield return new WaitForSeconds(0.5f);
+
+        float midTime = Time.time;
+
+
 
         while (kephri.color.a < 1)
         {
