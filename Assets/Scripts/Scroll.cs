@@ -29,7 +29,7 @@ namespace ScrollManager
         static bool maxVelocityCapReached = false;
 
         //Flags
-        static bool deltaTimeInput = true;
+        static bool deltaTimeInput = false;
 
         //Events
         public delegate void OnNewScrollEvent();
@@ -117,11 +117,11 @@ namespace ScrollManager
         public static float scrollValue()
         {
             float newValue = Input.mouseScrollDelta.y;
-            float output = 0;
+            float output = newValue;
 
             output = arbitraryZeroFiltering(newValue);
             output = platformDependentConversion(output);
-            output = webGLInputScalar(output);
+            //output = webGLInputScalar(output);
 
             lastInput = newValue;
             return output;
