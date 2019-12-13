@@ -3437,16 +3437,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_BackSortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_BackSortingOrder
@@ -3456,6 +3446,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FrontSortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_BackSortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_FrontSortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6856a2c17c9b84d2786d923b842221e7, type: 3}
@@ -4851,6 +4851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186627311433055869, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186627311433055870, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
@@ -6973,6 +6978,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sound_Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
@@ -9434,11 +9444,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: boat
-      value: 
-      objectReference: {fileID: 1071964741}
     - target: {fileID: 8740643237064801426, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -9449,6 +9454,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
+        type: 3}
+      propertyPath: boat
+      value: 
+      objectReference: {fileID: 1071964741}
     - target: {fileID: 8740643237064801437, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: sprites.Array.size
