@@ -54,7 +54,7 @@ public class FadeUIScript : MonoBehaviour
         while (FadeSprite.alpha < value)
         {
             float t = (Time.time - startTime) / time;
-            print("Coroutine while, t: " + t);
+            print("Coroutine while, t: " + t);  
             t = Mathf.Clamp(t, 0, 1);
             FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
             yield return null;
