@@ -29,7 +29,16 @@ public class TitlesFade : MonoBehaviour
             float t = (Time.time - startTime) / 3;
             t = Mathf.Clamp(t, 0, 1);
             background.alpha = Mathf.Lerp(0, 1, t);
-            BlackBars.alpha = Mathf.Lerp(1, 0, t);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.7f);
+
+        float blackBarsTime = Time.time;
+        while (BlackBars.alpha > 0)
+        {
+            float t = (Time.time - blackBarsTime) / 3;
+            t = Mathf.Clamp(t, 0, 1);
+            BlackBars.alpha = Mathf.Lerp(0, 1, t);
             yield return null;
         }
 
