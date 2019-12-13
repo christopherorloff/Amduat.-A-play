@@ -154,6 +154,16 @@ public class SoundManager : MonoBehaviour
     private string blessedDeadDropPath = "event:/HOUR 9/BlessedDeadDrop";
     public FMOD.Studio.EventInstance blessedDeadDropInstance;
 
+    //HOUR 10 Sounds
+    private string dustballAppearsPath = "event:/HOUR 10/DustballAppears";
+    public FMOD.Studio.EventInstance dustballAppearsInstance;
+
+    private string statueDonePath = "event:/HOUR 10/StatueDone";
+    public FMOD.Studio.EventInstance statueDoneInstance;
+
+    private string statueMovePath = "event:/HOUR 10/StatueMove";
+    public FMOD.Studio.EventInstance statueMoveInstance;
+
     //MUSIC
     private string themeMuPath = "event:/MUSIC/Theme";
     public FMOD.Studio.EventInstance themeMuInstance;
@@ -446,6 +456,11 @@ public class SoundManager : MonoBehaviour
         //HOUR 9 SFX INSTANCE
         blessedDeadDropInstance = FMODUnity.RuntimeManager.CreateInstance(blessedDeadDropPath);
 
+        //HOUR 10 SFX INSTANCE
+        dustballAppearsInstance = FMODUnity.RuntimeManager.CreateInstance(dustballAppearsPath);
+        statueDoneInstance = FMODUnity.RuntimeManager.CreateInstance(statueDonePath);
+        statueMoveInstance = FMODUnity.RuntimeManager.CreateInstance(statueMovePath);
+
         //MUSIC INSTANCES
         apopisThemeMuInstance = FMODUnity.RuntimeManager.CreateInstance(apopisThemeMuPath);
         ritualThemeMuInstance = FMODUnity.RuntimeManager.CreateInstance(ritualThemeMuPath);
@@ -624,9 +639,13 @@ public class SoundManager : MonoBehaviour
             {
                 waterAmbInstance.start();
             }
+
+            statueMoveInstance.start();
         }
 
         if (_hour == 11) {
+            statueMoveInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)
