@@ -23,21 +23,12 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
     private bool boatPaddlePlaying;
     private bool musicPlaying;
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (!running && Scroll.scrollValue() < 0 && currentBlessed < blessedDead.Length && fadeScript.sceneReady == true)
         {
-
             StartCoroutine(RaiseBlessedDead(blessedDead[currentBlessed]));
-
-
         }
     }
 
@@ -48,7 +39,8 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
         SoundManager.Instance.PlayBlessedDeadAppearBoat();
 
-        if (!musicPlaying) {
+        if (!musicPlaying)
+        {
             SoundManager.Instance.PlayRitualTheme();
             musicPlaying = true;
         }
@@ -77,8 +69,9 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
 
             for (int i = 0; i < blessedDead.Length; i++)
             {
-                StartCoroutine(MoveCharacters(blessedDead[i].transform, Target.transform, 10f));
-                if (!boatPaddlePlaying) {
+                StartCoroutine(MoveCharacters(blessedDead[i].transform, Target.transform, 10f, false));
+                if (!boatPaddlePlaying)
+                {
                     SoundManager.Instance.PlayBoatPaddle();
                     SoundManager.Instance.PlayBlessedDeadBoatMove();
                     boatPaddlePlaying = true;
@@ -86,35 +79,36 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
             }
 
 
-            StartCoroutine(MoveCharacters(Boat.transform, Target.transform, 10f));
+            StartCoroutine(MoveCharacters(Boat.transform, Target.transform, 10f, true));
+
         }
 
         running = false;
     }
 
-    IEnumerator MoveCharacters(Transform fromPos, Transform toPos, float duration)
+    IEnumerator MoveCharacters(Transform fromPos, Transform toPos, float duration, bool last)
     {
 
-
+        print("coroutine");
         //float counter = 0;
         Vector3 startPos = fromPos.position;
         Vector3 endPos = toPos.position;
         float t = 0;
         float startTime = Time.time;
 
-        while (t<1)
+        while (t < 1)
         {
             t = (Time.time - startTime) / duration;
             t = Mathf.SmoothStep(0, 1, t);
-            t = Mathf.Clamp(t,0, 1);
+            t = Mathf.Clamp(t, 0, 1);
             fromPos.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
 
-        StartCoroutine(fadeScript.FadeSpriteCoroutineUp(1, 2));
-
-
-
+        if (last)
+        {
+            StartCoroutine(fadeScript.FadeSpriteCoroutineUp(1, 2));
+        }
 
     }
 }
