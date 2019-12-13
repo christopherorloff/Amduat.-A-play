@@ -35,6 +35,8 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     float maxRotateSpeed = -0.4f;
 
+    private float speed;
+
     
 
 
@@ -58,14 +60,16 @@ public class Hour12_SceneManager : Timeline_BaseClass
     {
         float input = Scroll.scrollValueAccelerated();
 
-        SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", 0);
-        SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", 0);
+        SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", speed * 1000);
+        SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", speed * 750);
+
+        print(speed * 1000);
 
 
         if (input < 0 && !stopInput)
         {
             anim.speed = 0.7f;
-            float speed = Mathf.Abs(Scroll.scrollValueAccelerated(0.99999f)) * 1.5f * Time.deltaTime;
+            speed = Mathf.Abs(Scroll.scrollValueAccelerated(0.99999f)) * 1.5f * Time.deltaTime;
             speed = Mathf.Clamp(speed, 0, 0.001f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
@@ -117,6 +121,7 @@ public class Hour12_SceneManager : Timeline_BaseClass
     {
 
         StartCoroutine(FadeIsis(1, 3));
+        SoundManager.Instance.PlayGodAppear();
 
     }
 
@@ -139,6 +144,9 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     IEnumerator IsisAnimLogic()
     {
+        SoundManager.Instance.dustballRollingInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        SoundManager.Instance.boatPaddleContinuousInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
         stopInput = true;
         //instantiate particle
         pregnantBurst.Play();

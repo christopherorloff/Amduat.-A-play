@@ -57,9 +57,13 @@ public class SoundManager : MonoBehaviour
 
     private string boatPaddleContinuousPath = "event:/GENERAL SOUNDS/BoatPaddleContinuous";
     public FMOD.Studio.EventInstance boatPaddleContinuousInstance;
+    FMOD.Studio.PLAYBACK_STATE boatPaddleContinuousPlaybackState;
+    bool boatPaddleContinuousIsNotPlaying;
 
     private string dustballRollingPath = "event:/GENERAL SOUNDS/DustballRolling";
     public FMOD.Studio.EventInstance dustballRollingInstance;
+    FMOD.Studio.PLAYBACK_STATE dustballRollingPlaybackState;
+    bool dustballRollingIsNotPlaying;
 
     private string titleSoundPath = "event:/GENERAL SOUNDS/Title";
     public FMOD.Studio.EventInstance titleSoundInstance;
@@ -646,6 +650,14 @@ public class SoundManager : MonoBehaviour
             {
                 waterAmbInstance.start();
             }
+
+            boatPaddleContinuousInstance.getPlaybackState(out boatPaddleContinuousPlaybackState);
+            boatPaddleContinuousIsNotPlaying = boatPaddleContinuousPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if(boatPaddleContinuousIsNotPlaying) boatPaddleContinuousInstance.start();
+
+            dustballRollingInstance.getPlaybackState(out dustballRollingPlaybackState);
+            dustballRollingIsNotPlaying = dustballRollingPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if(dustballRollingIsNotPlaying) dustballRollingInstance.start();
         }
     }
 }
