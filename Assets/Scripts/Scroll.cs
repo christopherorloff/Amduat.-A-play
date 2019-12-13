@@ -29,7 +29,7 @@ namespace ScrollManager
         static bool maxVelocityCapReached = false;
 
         //Flags
-        static bool deltaTimeInput = false;
+        static bool deltaTimeInput = true;
 
         //Events
         public delegate void OnNewScrollEvent();
@@ -42,7 +42,7 @@ namespace ScrollManager
             //Only process if any subscribers to either events
             if (OnScrollEnter != null || OnScrollExit != null)
             {
-                float input = Mathf.Abs(Scroll.scrollValueMean(10));
+                float input = Mathf.Abs(Scroll.scrollValue());
                 float scrollVelocity = Mathf.Clamp(input, 0, maxVelocityCap);
 
                 if (scrollVelocity >= maxVelocityCap && !maxVelocityCapReached)
@@ -231,7 +231,7 @@ namespace ScrollManager
                 else if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
                 {
                     output = Mathf.Clamp(output, -winMaxOutput * d, winMaxOutput * d);
-                    output = map(output, -macMaxOutput * d, macMaxOutput * d, -1, 1);
+                    output = map(output, -winMaxOutput * d, winMaxOutput * d, -1, 1);
                 }
             }
             else
