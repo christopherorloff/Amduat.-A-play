@@ -21,6 +21,12 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
     public FadeUIScript fadeUIScript;
 
 
+    public ParticleSystem particle1;
+    public ParticleSystem particle2;
+    public SpriteRenderer kephri;
+    public SpriteRenderer dustBall;
+
+
     private bool coroutineRunning = false;
     private Vector3 camOffset;
     private int boatProgress = 0;
@@ -213,8 +219,42 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
     //DEN HER NIKOLAJ!!
     private void FadeInDustNScarab()
     {
+        particle1.Play();
+        particle2.Play();
+
         //Den her til aller sidst!
         fadeUIScript.StartFadeOut();
 
     }
+
+
+    IEnumerator startFadeIn()
+    {
+
+        float startTime = Time.time;
+        while(dustBall.color.a < 1)
+            {
+                float t = (Time.time - startTime) / 3;
+                Color newColor = new Color(dustBall.color.r, dustBall.color.g, dustBall.color.b, Mathf.Lerp(0, 1, t));
+                dustBall.color = newColor;
+                yield return null;
+            }
+
+        float midTime = Time.time;
+
+        while (kephri.color.a < 1)
+        {
+            float t = (Time.time - midTime) / 3;
+            Color newColor = new Color(kephri.color.r, kephri.color.g, kephri.color.b, Mathf.Lerp(0, 1, t));
+            kephri.color = newColor;
+            yield return null;
+              
+        }
+
+        yield return new WaitForSeconds(1.5f);
+
+        fadeUIScript.StartFadeOut();
+
+    }
+
 }
