@@ -47,6 +47,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     public float speed;
 
     public FadeUIScript fadeUI;
+    public bool sceneChange = false;
 
 
     void Awake()
@@ -98,9 +99,10 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", velocity);
         SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", velocity);
 
-        if(Timeline == 1 && Boat.transform.position.x > 12.5f)
+        if(Timeline == 1 && Boat.transform.position.x > 12.5f && !sceneChange)
         {
             fadeUI.StartFadeOut();
+            sceneChange = true;
         }
     }
 
