@@ -3449,16 +3449,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_BackSortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
-        type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4690533365564313314, guid: 6856a2c17c9b84d2786d923b842221e7,
         type: 3}
       propertyPath: m_BackSortingOrder
@@ -3468,6 +3458,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FrontSortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_BackSortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690533366914154265, guid: 6856a2c17c9b84d2786d923b842221e7,
+        type: 3}
+      propertyPath: m_FrontSortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6856a2c17c9b84d2786d923b842221e7, type: 3}
@@ -3977,6 +3977,7 @@ MonoBehaviour:
   boatEndX: 0
   speed: 0.05
   fadeUI: {fileID: 622964664}
+  sceneChange: 0
 --- !u!4 &805907287
 Transform:
   m_ObjectHideFlags: 0
