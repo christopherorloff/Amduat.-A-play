@@ -37,6 +37,8 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     private float speed;
 
+    public TitlesFade titleFadeLogic;
+
     
 
 
@@ -194,6 +196,9 @@ public class Hour12_SceneManager : Timeline_BaseClass
             yield return null;
         }
 
+        yield return new WaitForSeconds(5f);
+
+        titleFadeLogic.startLogic();
     }
 
 
