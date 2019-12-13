@@ -269,9 +269,15 @@ public class SoundManager : MonoBehaviour
                 hour5Boat = GameObject.Find("Boat_Parent").transform;
             }
 
-            if(hour5Snakes[0] == null) {
-                GameObject snakeParent = GameObject.Find("SnakeParent");
-                hour5Snakes = snakeParent.GetComponentsInChildren<Transform>();
+            if(hour5Snakes.Length == 0) {
+                hour5Snakes = new Transform[12];
+                SnakeMoveTowardsBoat_script[] snakes = new SnakeMoveTowardsBoat_script[12];
+                snakes = FindObjectsOfType<SnakeMoveTowardsBoat_script>();
+
+                for(int i = 0; i < snakes.Length; i++) {
+                    hour5Snakes[i] = snakes[i].GetComponent<Transform>();
+                }
+
             }
 
             //Updating snakes distance variable so it goes from 0-1, and updates according to snakes distance to boat
@@ -289,11 +295,12 @@ public class SoundManager : MonoBehaviour
 
         if(GetHour() == 8) {
             if(sceneManager8 == null) {
-                FindObjectOfType<SceneManagerScript_Hour8>();
+                sceneManager8 = FindObjectOfType<SceneManagerScript_Hour8>();
+                print("HALLO");
             }
 
             if(coneBehaviour == null) {
-                FindObjectOfType<ConeBehaviour_Script_Hour8>();
+                coneBehaviour = FindObjectOfType<ConeBehaviour_Script_Hour8>();
             }
 
             boatPushLoopInstance.setParameterByName("Speed", sceneManager8.GetBlessedDeadSpeed());
