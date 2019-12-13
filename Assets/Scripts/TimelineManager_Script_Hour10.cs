@@ -223,7 +223,6 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
         particle2.Play();
 
         //Den her til aller sidst!
-        fadeUIScript.StartFadeOut();
 
     }
 
