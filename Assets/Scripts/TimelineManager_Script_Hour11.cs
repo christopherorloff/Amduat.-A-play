@@ -106,7 +106,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
             Boat.transform.position += transform.right * ((Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position));
             kepriMovement.animationTime =  2f;//(Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position);
             dustballMovement.rotateSpeed = ((Time.deltaTime*-speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position))*55f;
-            Debug.Log(kepriMovement.animationTime);
+            //Debug.Log(kepriMovement.animationTime);
             }
             else if(currentNumberOfBlessedSegements >= 24)
             {

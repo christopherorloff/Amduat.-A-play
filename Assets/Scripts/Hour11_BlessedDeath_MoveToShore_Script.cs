@@ -84,7 +84,7 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
         {
             SoundManager.Instance.PlayBlessedDeadAground();
 
-            StartCoroutine(changeSprite());
+            //StartCoroutine(changeSprite());
             shoreHit = true;
             going = false;
         }
