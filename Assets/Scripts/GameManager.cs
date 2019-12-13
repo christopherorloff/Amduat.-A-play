@@ -29,13 +29,13 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.snakeDeadEvent += StartChangeToNextScene;
+        //EventManager.snakeDeadEvent += StartChangeToNextScene;
         SceneManager.activeSceneChanged += ChangedActiveScene;
     }
 
     private void OnDisable()
     {
-        EventManager.snakeDeadEvent -= StartChangeToNextScene;
+        //EventManager.snakeDeadEvent -= StartChangeToNextScene;
         SceneManager.activeSceneChanged -= ChangedActiveScene;
     }
 

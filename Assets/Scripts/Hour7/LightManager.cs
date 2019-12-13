@@ -85,7 +85,6 @@ public class LightManager : MonoBehaviour
             Instantiate(ReadyEffect1, EffectSpot.transform.position, Quaternion.Euler(-146, 110, -120));
 
             SA.startEffect2 = false;
-            GameManager.Instance.StartChangeToNextScene();
         }
 
     }

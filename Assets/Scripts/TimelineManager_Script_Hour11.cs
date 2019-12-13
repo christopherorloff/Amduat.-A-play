@@ -46,6 +46,8 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     public float boatEndX;
     public float speed;
 
+    public FadeUIScript fadeUI;
+
 
     void Awake()
     {
@@ -56,6 +58,7 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         camPosEnd = new Vector3(sceneLength, 0, -10);
         camTravelDistance = (camPosEnd.x - camPosStart.x) / numberOfBoatSegments;
         Cam = Camera.main.gameObject;
+
     }
     // Start is called before the first frame update
     void Start()
@@ -76,11 +79,13 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     }
 
 
+
+
     // Update is called once per frame
     void Update()
     {
         float input = Scroll.scrollValueAccelerated();
-        //Debug.Log(input);
+        Debug.Log(Boat.transform.position.x);
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         swipeBlessedDeath(input);
         MovingBoat();
@@ -92,6 +97,11 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
 
         SoundManager.Instance.boatPaddleContinuousInstance.setParameterByName("Velocity", velocity);
         SoundManager.Instance.dustballRollingInstance.setParameterByName("Velocity", velocity);
+
+        if(Timeline == 1 && Boat.transform.position.x > 12.5f)
+        {
+            fadeUI.StartFadeOut();
+        }
     }
 
     private void MovingBoat()
@@ -203,15 +213,16 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
     private void BlessedDeathToShore()
     {
         
-        if(currentNumberOfBlessedSegements-1 <= blessedDeath.Length)
+        if(currentNumberOfBlessedSegements <= blessedDeath.Length-1)
         {
             blessedDeath[currentNumberOfBlessedSegements].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().moveToShore();
+            if (blessedDeath[currentNumberOfBlessedSegements].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().going == true)
+            {
+                Timeline += 0.03f;
+                currentNumberOfBlessedSegements++;
+            }
         }
-        if (blessedDeath[currentNumberOfBlessedSegements].GetComponent<Hour11_BlessedDeath_MoveToShore_Script>().going == true)
-        {
-            Timeline += 0.03f;
-            currentNumberOfBlessedSegements++;
-        }   
+           
     }
 
        private void BlessedDeathRubberBand()

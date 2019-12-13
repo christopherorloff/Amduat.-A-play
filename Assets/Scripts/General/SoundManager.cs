@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     public TimelineManager_Script_Hour2 timelineHour2;
 
     [Header("Hour 5 Specific Variables")]
-    public Transform[] hour5Snakes;
+    public Transform[] hour5Snakes = new Transform[12];
     public Transform hour5Boat;
     public float hour5SnakesDistanceToBoat;
 
@@ -213,6 +213,10 @@ public class SoundManager : MonoBehaviour
 
         if (GetHour() == 1)
         {
+            if(timelineHour1 == null) {
+                FindObjectOfType<TimelineManager_Script_Hour1>();
+            }
+
             if (timelineHour1.GetTimeline() < 1)
             {
                 float input = Scroll.scrollValueAccelerated();
@@ -228,6 +232,9 @@ public class SoundManager : MonoBehaviour
 
         if (GetHour() == 2)
         {
+            if(timelineHour2 == null) {
+                FindObjectOfType<TimelineManager_Script_Hour2>();
+            }
 
             float input = -Scroll.scrollValueAccelerated();
             print(input);
@@ -257,6 +264,22 @@ public class SoundManager : MonoBehaviour
         }
 
         if(GetHour() == 5) {
+
+            if(hour5Boat == null) {
+                hour5Boat = GameObject.Find("Boat_Parent").transform;
+            }
+
+            if(hour5Snakes.Length == 0) {
+                hour5Snakes = new Transform[12];
+                SnakeMoveTowardsBoat_script[] snakes = new SnakeMoveTowardsBoat_script[12];
+                snakes = FindObjectsOfType<SnakeMoveTowardsBoat_script>();
+
+                for(int i = 0; i < snakes.Length; i++) {
+                    hour5Snakes[i] = snakes[i].GetComponent<Transform>();
+                }
+
+            }
+
             //Updating snakes distance variable so it goes from 0-1, and updates according to snakes distance to boat
             if(hour5Boat != null) {
                 Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
@@ -271,6 +294,15 @@ public class SoundManager : MonoBehaviour
         }
 
         if(GetHour() == 8) {
+            if(sceneManager8 == null) {
+                sceneManager8 = FindObjectOfType<SceneManagerScript_Hour8>();
+                print("HALLO");
+            }
+
+            if(coneBehaviour == null) {
+                coneBehaviour = FindObjectOfType<ConeBehaviour_Script_Hour8>();
+            }
+
             boatPushLoopInstance.setParameterByName("Speed", sceneManager8.GetBlessedDeadSpeed());
             sunShineInstance.setParameterByName("Scroll", coneBehaviour.GetConeSize());
             blessedDeadRunningInstance.setParameterByName("Amount", 1 - sceneManager8.GetBlessedDeadSpeed());

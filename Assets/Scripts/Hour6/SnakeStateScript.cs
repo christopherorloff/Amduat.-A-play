@@ -22,6 +22,8 @@ public class SnakeStateScript : MonoBehaviour
 
     BackGround_Object_Movement_Script bgMovement;
 
+    public FadeUIScript fadeScript;
+
     void Awake()
     {
         initialPosition = this.transform.position;
@@ -63,16 +65,17 @@ public class SnakeStateScript : MonoBehaviour
     {
         if (knifeHits >= knifeHitLimit && snakeAlive == true)
         {
+
             SoundManager.Instance.EndApopisTheme();
             SoundManager.Instance.apopisIdleInstance.start();
             SoundManager.Instance.apopisAppearInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             SoundManager.Instance.caveWaterAmbInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             SoundManager.Instance.caveAmbInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-
+            fadeScript.StartFadeOut();
             snakeAlive = false;
             print("den ær døj");
             EventManager.turnOffInputEvent();
-            EventManager.snakeDeadEvent();
+           // EventManager.snakeDeadEvent();
         }
     }
     
