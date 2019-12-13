@@ -60,6 +60,9 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
             HandleInput();
             camOffset = Camera.main.transform.position - boat.position;
         }
+
+        SoundManager.Instance.statueMoveInstance.setParameterByName("Scroll", velocity);
+
     }
 
     private void HandleInput()
@@ -78,7 +81,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
         // constrain velocity
         velocity = Mathf.Clamp(velocity, minConeScaleY, maxConeScaleY);
-
+        
         //Only change scale when velocity is being changed
         if (velocity > 0)
         {
@@ -111,6 +114,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
             // - Increment boatprogress and coneprogress
             coneProgress++;
+            SoundManager.Instance.statueDoneInstance.start();
             // - Start Boat Coroutine
             // - Start Beam Coroutine
 
@@ -129,6 +133,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
             else if (coneProgress == 3)
             {
                 StartCoroutine(LerpBoatToNextPosition(boatLerpDuration, boat.transform.position, positions[boatProgress].position));
+                SoundManager.Instance.statueMoveInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             }
         }
@@ -136,6 +141,8 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
     IEnumerator LerpBoatToNextPosition(float duration, Vector3 startPos, Vector3 endPos)
     {
+        SoundManager.Instance.PlayBoatPaddle();
+
         float startTime = Time.time;
         float t = 0;
 
@@ -156,6 +163,8 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
         if (boatProgress == 0)
         {
+            SoundManager.Instance.statueDoneInstance.start();
+
             camOffset = Camera.main.transform.position - boat.position;
             StartCoroutine(BeamLerp(0, LaserDuration));
             ready = true;
@@ -198,6 +207,9 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
     IEnumerator StatuesBow(float duration)
     {
+        SoundManager.Instance.dustballAppearsInstance.start();
+        SoundManager.Instance.statueMoveInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
         float startTime = Time.time;
         float t = 0;
         Quaternion startRotation = endStatueTransforms[0].rotation;
@@ -219,19 +231,21 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
     //DEN HER NIKOLAJ!!
     private void FadeInDustNScarab()
     {
-        particle1.Play();
-        particle2.Play();
+
 
         //Den her til aller sidst!
+        StartCoroutine(startFadeIn());
 
     }
 
 
     IEnumerator startFadeIn()
     {
+        particle1.Play();
+        yield return new WaitForSeconds(0.5f);
 
         float startTime = Time.time;
-        while(dustBall.color.a < 1)
+        while (dustBall.color.a < 1)
             {
                 float t = (Time.time - startTime) / 3;
                 Color newColor = new Color(dustBall.color.r, dustBall.color.g, dustBall.color.b, Mathf.Lerp(0, 1, t));
@@ -239,7 +253,12 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
                 yield return null;
             }
 
+        particle2.Play();
+        yield return new WaitForSeconds(0.5f);
+
         float midTime = Time.time;
+
+
 
         while (kephri.color.a < 1)
         {
