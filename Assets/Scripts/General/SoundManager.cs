@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     public TimelineManager_Script_Hour2 timelineHour2;
 
     [Header("Hour 5 Specific Variables")]
-    public Transform[] hour5Snakes = new Transform[12];
+    public Transform[] hour5Snakes;
     public Transform hour5Boat;
     public float hour5SnakesDistanceToBoat;
 
@@ -273,6 +273,7 @@ public class SoundManager : MonoBehaviour
                 hour5Snakes = new Transform[12];
                 SnakeMoveTowardsBoat_script[] snakes = new SnakeMoveTowardsBoat_script[12];
                 snakes = FindObjectsOfType<SnakeMoveTowardsBoat_script>();
+                print(snakes);
 
                 for(int i = 0; i < snakes.Length; i++) {
                     hour5Snakes[i] = snakes[i].GetComponent<Transform>();
@@ -281,16 +282,13 @@ public class SoundManager : MonoBehaviour
             }
 
             //Updating snakes distance variable so it goes from 0-1, and updates according to snakes distance to boat
-            if(hour5Boat != null) {
-                Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
-                for (int i = 0; i < hour5Snakes.Length; i++)
-                {
+            Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
+            for (int i = 0; i < hour5Snakes.Length; i++) {
                     snakePositions[i] = hour5Snakes[i].position;
                 }
-                hour5SnakesDistanceToBoat = Mathf.Clamp(Vector3.Distance(hour5Boat.position, GetMeanVector3(snakePositions)), 1, 6);
-                hour5SnakesDistanceToBoat = hour5SnakesDistanceToBoat / 6;
-                snakesHissInstance.setParameterByName("Intensity", hour5SnakesDistanceToBoat);
-            }
+            hour5SnakesDistanceToBoat = Mathf.Clamp(Vector3.Distance(hour5Boat.position, GetMeanVector3(snakePositions)), 1, 6);
+            hour5SnakesDistanceToBoat = hour5SnakesDistanceToBoat / 6;
+            snakesHissInstance.setParameterByName("Intensity", hour5SnakesDistanceToBoat);
         }
 
         if(GetHour() == 8) {
