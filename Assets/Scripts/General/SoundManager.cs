@@ -630,6 +630,8 @@ public class SoundManager : MonoBehaviour
         {
             spearChargeInstance.start();
 
+            waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
             caveWaterAmbInstance.getPlaybackState(out caveWaterAmbPlaybackState);
             caveWaterAmbIsNotPlaying = caveWaterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (caveWaterAmbIsNotPlaying)
