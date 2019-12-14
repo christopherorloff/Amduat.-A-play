@@ -578,6 +578,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
+        type: 3}
+      propertyPath: boat
+      value: 
+      objectReference: {fileID: 819323144}
     - target: {fileID: 8740643237064801426, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -593,11 +598,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: boat
-      value: 
-      objectReference: {fileID: 819323144}
     - target: {fileID: 8740643237064801437, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: sprites.Array.size
@@ -4940,7 +4940,7 @@ PrefabInstance:
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
       propertyPath: m_Text
-      value: 'HOUR XI: THE FERTILE REGIONS OF WERNES'
+      value: "HOUR X: KHEPRI AND THE DUSTBALL\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}

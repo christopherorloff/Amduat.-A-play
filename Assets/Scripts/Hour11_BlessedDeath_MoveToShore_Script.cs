@@ -9,6 +9,8 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
     public bool shoreHit;
     public SpriteRenderer onShoreSprite;
 
+    public ParticleSystem InteractParticle;
+
     public Transform boatTarget;
     private Vector3 BDVelocities;
     private float BDXOffset;
@@ -39,7 +41,7 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
 
     void Start()
     {
-
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         BDXOffset = Vector3.Distance(boatTarget.position, transform.position) - UnityEngine.Random.Range(0.3f, 1.2f);
         BDSmoothTimes = UnityEngine.Random.Range(1.0f, 1.5f);
@@ -58,6 +60,7 @@ public class Hour11_BlessedDeath_MoveToShore_Script : MonoBehaviour
     {
         if (!moveIsPlaying) {
             SoundManager.Instance.PlayBlessedDeadAppear();
+            InteractParticle.Play();
             moveIsPlaying = true;
         }
         going = true;

@@ -593,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
       propertyPath: m_Text
-      value: "HOUR IV: THE CAVE OF SOKAR\r"
+      value: "HOUR IV: THE CAVE OF MIDNIGHT\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}

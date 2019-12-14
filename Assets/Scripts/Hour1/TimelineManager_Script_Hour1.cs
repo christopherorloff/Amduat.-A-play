@@ -89,7 +89,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         SunColor = Sun.GetComponent<SpriteRenderer>();
 
         boatTravelDistance = (boatPosEnd.x - boatPosStart.x) / numberOfBoatSegments;
-        blessedDeadSprites = blessedDeadController.GetBlessedDeadSprites();
+
 
         camPosEnd = new Vector3(sceneLength, 0, -10);
         Cam = Camera.main.gameObject;
@@ -100,6 +100,10 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     //HandleKeys call must be the last thing AFTER all events are added
     void Start()
     {
+        blessedDeadSprites = new SpriteRenderer[blessedDeadController.numberOfBlessedDead];
+        blessedDeadSprites = blessedDeadController.GetBlessedDeadSprites();
+
+
         //Add all timeline events
         AddTimelineEvent(0.2f, BoatActions);
         AddTimelineEvent(0.4f, BoatActions);
@@ -110,7 +114,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         AddTimelineEvent(0.6f, SolarBaboons.StartRaisingStatues);
 
         AddTimelineEvent(0.2f, SoundManager.Instance.PlayTheme);
-        
+
         // Blessed dead sprites
         for (int i = 0; i < blessedDeadSprites.Length; i++)
         {
@@ -132,8 +136,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         float input = Scroll.scrollValueAccelerated();
 
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
-        
-        if(wrongInput.wrongInput == false)
+
+        if (wrongInput.wrongInput == false)
         {
             ConvertInputToProgress(input);
             SunActions();
@@ -233,11 +237,11 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         {
             _animationTimePosition += Time.deltaTime;
             //float t = (Time.time - startTime) / durationOfBoatSegments;
-            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition/durationOfBoatSegments));
+            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition / durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
             yield return null;
         }
-        if(Boat.transform.position.x >= xEnd)
+        if (Boat.transform.position.x >= xEnd)
         {
             _animationTimePosition = 0;
         }
@@ -251,8 +255,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
     private void rubberAction()
     {
-        rubberMarkerEnd.transform.position = Vector3.Lerp(sunPosStart + new Vector3(rubberMarkerDelta,0,0),sunPosEnd + new Vector3(rubberMarkerDelta,0,0),Timeline);
-        rubberMarkerStart.transform.position = Vector3.Lerp(sunPosStart,sunPosEnd,Timeline);
+        rubberMarkerEnd.transform.position = Vector3.Lerp(sunPosStart + new Vector3(rubberMarkerDelta, 0, 0), sunPosEnd + new Vector3(rubberMarkerDelta, 0, 0), Timeline);
+        rubberMarkerStart.transform.position = Vector3.Lerp(sunPosStart, sunPosEnd, Timeline);
     }
 }
 
