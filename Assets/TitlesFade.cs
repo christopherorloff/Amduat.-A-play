@@ -22,7 +22,7 @@ public class TitlesFade : MonoBehaviour
     public IEnumerator startFadeTitles()
     {
 
-        float startTime = Time.time;
+       /* float startTime = Time.time;
 
         while (background.alpha < 1)
         {
@@ -40,7 +40,7 @@ public class TitlesFade : MonoBehaviour
             t = Mathf.Clamp(t, 0, 1);
             BlackBars.alpha = Mathf.Lerp(0, 1, t);
             yield return null;
-        }
+        }*/
 
         yield return new WaitForSeconds(1.5f);
 
@@ -107,6 +107,18 @@ public class TitlesFade : MonoBehaviour
             float t = (Time.time - lastTime) / 3;
             t = Mathf.Clamp(t, 0, 1);
             tilte3.alpha = Mathf.Lerp(1, 0, t);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        float secondLastTime = Time.time;
+
+        while (background.alpha < 1)
+        {
+            float t = (Time.time - secondLastTime) / 5;
+            t = Mathf.Clamp(t, 0, 1);
+            background.alpha = Mathf.Lerp(0, 1, t);
             yield return null;
         }
     }
