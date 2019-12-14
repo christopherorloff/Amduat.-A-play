@@ -12,7 +12,8 @@ public class TitlesFade : MonoBehaviour
     public CanvasGroup tilte3;
     public CanvasGroup BlackBars;
 
-    public void startLogic() {
+    public void startLogic()
+    {
 
         StartCoroutine(startFadeTitles());
     }
@@ -22,25 +23,25 @@ public class TitlesFade : MonoBehaviour
     public IEnumerator startFadeTitles()
     {
 
-       /* float startTime = Time.time;
+        /* float startTime = Time.time;
 
-        while (background.alpha < 1)
-        {
-            float t = (Time.time - startTime) / 3;
-            t = Mathf.Clamp(t, 0, 1);
-            background.alpha = Mathf.Lerp(0, 1, t);
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.7f);
+         while (background.alpha < 1)
+         {
+             float t = (Time.time - startTime) / 3;
+             t = Mathf.Clamp(t, 0, 1);
+             background.alpha = Mathf.Lerp(0, 1, t);
+             yield return null;
+         }
+         yield return new WaitForSeconds(0.7f);
 
-        float blackBarsTime = Time.time;
-        while (BlackBars.alpha > 0)
-        {
-            float t = (Time.time - blackBarsTime) / 3;
-            t = Mathf.Clamp(t, 0, 1);
-            BlackBars.alpha = Mathf.Lerp(0, 1, t);
-            yield return null;
-        }*/
+         float blackBarsTime = Time.time;
+         while (BlackBars.alpha > 0)
+         {
+             float t = (Time.time - blackBarsTime) / 3;
+             t = Mathf.Clamp(t, 0, 1);
+             BlackBars.alpha = Mathf.Lerp(0, 1, t);
+             yield return null;
+         }*/
 
         yield return new WaitForSeconds(1.5f);
 
@@ -121,6 +122,10 @@ public class TitlesFade : MonoBehaviour
             background.alpha = Mathf.Lerp(0, 1, t);
             yield return null;
         }
+
+        yield return new WaitForSeconds(3);
+
+        Application.Quit();
     }
 
 }
