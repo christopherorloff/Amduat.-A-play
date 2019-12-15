@@ -839,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &372389666
 Transform:
   m_ObjectHideFlags: 0
@@ -1184,6 +1184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 423442242}
   - component: {fileID: 423442243}
+  - component: {fileID: 423442244}
   m_Layer: 0
   m_Name: baggrund 2
   m_TagString: Untagged
@@ -1244,7 +1245,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -7
   m_Sprite: {fileID: 21300000, guid: a305f502947eccc4c9617db16b019637, type: 3}
-  m_Color: {r: 0.7688679, g: 1, b: 0.9751193, a: 1}
+  m_Color: {r: 0.6806248, g: 0.8962264, b: 0.7745028, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1254,6 +1255,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &423442244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423442241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b8764c894d15e4aa5a0682d97612a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EaseIn: 0
+  rotateSpeed: 0
+  amplitudeX: 0
+  frequenzyX: 0
+  amplitudeY: 0.07
+  frequenzyY: 0.39
+  wheelControlled: 0
+  rotating: 0
+  floating: 1
+  scrollFactor: 0
 --- !u!1 &432455788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,6 +3613,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3417180641216330721, guid: 53e18dec30302477cab5c5783552368a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3417180641123130738, guid: 53e18dec30302477cab5c5783552368a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3694,11 +3722,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417180641216330721, guid: 53e18dec30302477cab5c5783552368a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53e18dec30302477cab5c5783552368a, type: 3}
