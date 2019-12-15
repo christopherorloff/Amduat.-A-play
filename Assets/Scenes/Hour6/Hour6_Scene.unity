@@ -1390,12 +1390,12 @@ PrefabInstance:
     - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: amplitudeY
-      value: 0.2
+      value: 29.6
       objectReference: {fileID: 0}
     - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
       propertyPath: frequenzyY
-      value: 0.31
+      value: 61.3
       objectReference: {fileID: 0}
     - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
@@ -1426,6 +1426,16 @@ PrefabInstance:
         type: 3}
       propertyPath: snake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
+        type: 3}
+      propertyPath: frequenzyX
+      value: 80.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 323506999543048657, guid: 80707184917fe27478a3ac97e17624df,
+        type: 3}
+      propertyPath: amplitudeX
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 3765194445873259466, guid: 80707184917fe27478a3ac97e17624df,
         type: 3}
@@ -3967,7 +3977,7 @@ PrefabInstance:
     - target: {fileID: 5186627311433055869, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5186627311433055870, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
@@ -4511,8 +4521,8 @@ MonoBehaviour:
   rotateSpeed: 0
   amplitudeX: 0
   frequenzyX: 0
-  amplitudeY: 0.18
-  frequenzyY: 0.28
+  amplitudeY: 100
+  frequenzyY: 0.2
   wheelControlled: 0
   rotating: 0
   floating: 1
@@ -4533,8 +4543,8 @@ MonoBehaviour:
   rotateSpeed: 0
   amplitudeX: 0
   frequenzyX: 0
-  amplitudeY: 0.12
-  frequenzyY: 0.5
+  amplitudeY: 68.4
+  frequenzyY: 87.4
   wheelControlled: 0
   rotating: 0
   floating: 1
@@ -4555,8 +4565,8 @@ MonoBehaviour:
   rotateSpeed: 0
   amplitudeX: 0
   frequenzyX: 0
-  amplitudeY: 0.12
-  frequenzyY: 0.5
+  amplitudeY: 68.4
+  frequenzyY: 87.4
   wheelControlled: 0
   rotating: 0
   floating: 1
@@ -4577,8 +4587,8 @@ MonoBehaviour:
   rotateSpeed: 0
   amplitudeX: 0
   frequenzyX: 0
-  amplitudeY: 0.18
-  frequenzyY: 0.28
+  amplitudeY: 68.4
+  frequenzyY: 87.4
   wheelControlled: 0
   rotating: 0
   floating: 1
