@@ -386,6 +386,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayRitualTheme() {
+        ritualThemeMuInstance.setParameterByName("RitualThemeEnd", 0);
         ritualThemeMuInstance.start();
     }
 
@@ -649,6 +650,10 @@ public class SoundManager : MonoBehaviour
             {
                 caveAmbInstance.start();
             }
+
+            waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            caveWaterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
             blessedDeadRunningInstance.start();
             boatPushLoopInstance.start();
             sunShineInstance.start();

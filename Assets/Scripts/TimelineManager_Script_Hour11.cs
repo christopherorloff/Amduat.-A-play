@@ -102,6 +102,8 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
         if(Timeline == 1 && Boat.transform.position.x > 12.5f && !sceneChange)
         {
             fadeUI.StartFadeOut();
+            SoundManager.Instance.dustballRollingInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SoundManager.Instance.boatPaddleContinuousInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             sceneChange = true;
         }
     }
