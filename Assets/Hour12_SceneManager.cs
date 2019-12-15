@@ -33,9 +33,10 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     public bool stopInput = false;
 
-    float maxRotateSpeed = -0.4f;
+    float maxRotateSpeed = -20f;
 
     private float speed;
+    private float speedBall;
 
     public TitlesFade titleFadeLogic;
 
@@ -73,9 +74,15 @@ public class Hour12_SceneManager : Timeline_BaseClass
             anim.speed = 0.7f;
             speed = Mathf.Abs(Scroll.scrollValueAccelerated(0.99999f)) * 1.5f * Time.deltaTime;
             speed = Mathf.Clamp(speed, 0, 0.001f);
+            speedBall = Mathf.Abs(Scroll.scrollValueAccelerated(0.99999f)) * 150f * Time.deltaTime;
+            speedBall = Mathf.Clamp(speedBall, 0, 0.1f);
+
+
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
-            dustballMovement.rotateSpeed -= ((Time.deltaTime * speed)*200);
+
+
+            dustballMovement.rotateSpeed -= ((Time.deltaTime * speedBall)*200);
             if (dustballMovement.rotateSpeed <= maxRotateSpeed)
             {
                 dustballMovement.rotateSpeed = maxRotateSpeed;
