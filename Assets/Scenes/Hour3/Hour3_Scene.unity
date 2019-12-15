@@ -635,7 +635,7 @@ PrefabInstance:
     - target: {fileID: 5728487087680992700, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5728487087680992702, guid: f9b96e45ee10f4ba48836a0ecf1e1b12,
         type: 3}
@@ -920,7 +920,7 @@ PrefabInstance:
     - target: {fileID: 5186627311433055869, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5186627311433055870, guid: c4fde3c5ab049df42b5ea1340fe0f4d4,
         type: 3}
@@ -2953,6 +2953,7 @@ MonoBehaviour:
   rotationSpeed: 1
   scrollThreshold: 0.02
   torso: {fileID: 3452870666135876058}
+  running: 0
   osirisCollectedGameObject: {fileID: 1269194373}
   osirisCollectedParticleSystem: {fileID: 1550818823247192776, guid: 91869191f2b0842d0936d8caa20fe812,
     type: 3}

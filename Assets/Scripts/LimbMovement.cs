@@ -27,6 +27,7 @@ public class LimbMovement : MonoBehaviour
     public GameObject torso;
     private Vector3 torsoVelocity;
     private float torsoEndSpeed = 3f;
+    public bool running = false;
 
     public GameObject osirisCollectedGameObject;
     private Vector3 collectedOsirisGameObjectVelocity;
@@ -83,7 +84,12 @@ public class LimbMovement : MonoBehaviour
 
             //Moving entire prefab
             torso.transform.position = Vector3.SmoothDamp(torso.transform.position, new Vector3(0, 10, 0), ref torsoVelocity, torsoEndSpeed);
-            osirisCollectedGameObject.transform.position = Vector3.SmoothDamp(osirisCollectedGameObject.transform.position, new Vector3(0, -2, 0), ref collectedOsirisGameObjectVelocity, collectedOsirisGameObjectSpeed * Time.deltaTime);
+            //  osirisCollectedGameObject.transform.position = Vector3.SmoothDamp(osirisCollectedGameObject.transform.position, new Vector3(0, -2, 0), ref collectedOsirisGameObjectVelocity, collectedOsirisGameObjectSpeed * Time.deltaTime);
+            if (!running)
+            {
+                StartCoroutine(OsirisAnim());
+            }
+            
             countdownToDestroy += Time.deltaTime;
             //Instantiating particle system
             if (!osirisCollectedParticleSystemRunning) {
@@ -99,6 +105,8 @@ public class LimbMovement : MonoBehaviour
             }
         }
     }
+
+
     private void startFade()
     {
         startFadeBool = true;
@@ -116,6 +124,30 @@ public class LimbMovement : MonoBehaviour
         yield return new WaitForSeconds(13.5f);
         fadeScript.StartFadeOut();
 
+    }
+
+
+
+
+
+    IEnumerator OsirisAnim() {
+
+        running = true;
+        Vector3 startPos = osirisCollectedGameObject.transform.position;
+        Vector3 endPos = new Vector3(0, -1, 0);
+        float t = 0;
+        float startTime = Time.time;
+        while (t < 1)
+        {
+            t = (Time.time - startTime) / 10;
+            t = Mathf.SmoothStep(0, 1, t);
+            t = Mathf.Clamp(t, 0, 1);
+            osirisCollectedGameObject.transform.position = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+
+
+        }
+    
     }
 
     void Move()
