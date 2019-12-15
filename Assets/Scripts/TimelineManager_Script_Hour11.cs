@@ -119,14 +119,14 @@ public class TimelineManager_Script_Hour11 : Timeline_BaseClass
             kepriMovement.enabled = true;
             Boat.transform.position += transform.right * ((Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position));
             kepriMovement.animationTime =  2f;//(Time.deltaTime*speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position);
-            dustballMovement.rotateSpeed = ((Time.deltaTime*-speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position))*55f;
+            dustballMovement.rotateSpeed = ((-speed)*Vector3.Distance(new Vector3(boatEndX,Boat.transform.position.y,Boat.transform.position.z),Boat.transform.position))*55f;
             //Debug.Log(kepriMovement.animationTime);
             }
             else if(currentNumberOfBlessedSegements >= 24)
             {
                 kepriMovement.enabled = true;
                 Boat.transform.position += transform.right * ((Time.deltaTime*speed)*20f);
-                dustballMovement.rotateSpeed = ((Time.deltaTime*-speed)*550f);
+                dustballMovement.rotateSpeed = ((-speed)*550f);
                 kepriMovement.animationTime =  2f;
                 Timeline = 1f;
             }
