@@ -18,23 +18,23 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
     public bool EaseIn = false;
 
     [SerializeField]
-    [Range(-10, 10)]
+    [Range(-50, 50)]
     public float rotateSpeed;
 
     [SerializeField]
-    [Range(0, 10)]
+    [Range(0, 100)]
     private float amplitudeX;
 
     [SerializeField]
-    [Range(0, 10)]
+    [Range(0, 100)]
     private float frequenzyX;
 
     [SerializeField]
-    [Range(0, 10)]
+    [Range(0, 100)]
     private float amplitudeY;
 
     [SerializeField]
-    [Range(0, 10)]
+    [Range(0, 100)]
     private float frequenzyY;
 
     [SerializeField]
@@ -95,21 +95,21 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
         if (rotating && wheelControlled)
         {
-            transform.Rotate(new Vector3(0, 0, ((Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed) + rotateSpeed));
+            transform.Rotate(new Vector3(0, 0, Time.deltaTime *((Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed) + rotateSpeed));
         }
         else if (rotating && !wheelControlled)
         {
-            transform.Rotate(new Vector3(0, 0, rotateSpeed));
+            transform.Rotate(new Vector3(0, 0, Time.deltaTime *rotateSpeed));
         }
         else if (!rotating && wheelControlled)
         {
-            transform.Rotate(new Vector3(0, 0, (Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed));
+            transform.Rotate(new Vector3(0, 0, Time.deltaTime *(Scroll.scrollValueAccelerated() * scrollFactor) * rotateSpeed));
         }
 
         if (floating && wheelControlled)
         {
-            x = Mathf.Cos((_time * frequenzyX)) * amplitudeX;
-            y = Mathf.Sin((_time * frequenzyX)) * amplitudeY;
+            x = Mathf.Cos((Time.deltaTime *_time * frequenzyX)) * amplitudeX;
+            y = Mathf.Sin((Time.deltaTime *_time * frequenzyX)) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x,y,0);
         }
         else if (floating && !wheelControlled)
@@ -121,8 +121,8 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
         else if (!floating && wheelControlled)
         {  
 
-            x = Mathf.Cos(_time * frequenzyX) * amplitudeX;
-            y = Mathf.Sin(_time * frequenzyY) * amplitudeY;
+            x = Mathf.Cos(Time.deltaTime *_time * frequenzyX) * amplitudeX;
+            y = Mathf.Sin(Time.deltaTime *_time * frequenzyY) * amplitudeY;
             transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x, y, 0);
         }
     }
