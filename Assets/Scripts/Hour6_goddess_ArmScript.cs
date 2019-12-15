@@ -157,7 +157,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
     IEnumerator WaitAndLift(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-            t2 += 0.25f*Time.deltaTime;
+            t2 += 0.3f*Time.deltaTime;
             currentAngle = new Vector3(
                 Mathf.LerpAngle(currentAngle.x, throwRotationStart.x, t2),
                 Mathf.LerpAngle(currentAngle.y, throwRotationStart.y, t2),
