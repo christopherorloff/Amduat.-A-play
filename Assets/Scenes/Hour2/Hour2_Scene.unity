@@ -1143,7 +1143,7 @@ PrefabInstance:
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
@@ -1234,7 +1234,7 @@ PrefabInstance:
     - target: {fileID: 3113092357810032439, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: timelinePosition
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e, type: 3}
@@ -1581,7 +1581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &543703854
 Transform:
   m_ObjectHideFlags: 0
@@ -3833,7 +3833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad8dc757f9664162a400d45b4e6af1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineScalar: 0.8
+  timelineScalar: 0.1
   fadeUIScript: {fileID: 1472461300}
   Boat: {fileID: 1259429631}
   boatStart: {fileID: 1206005710}
@@ -3878,10 +3878,10 @@ MonoBehaviour:
   - {fileID: 1101581861}
   - {fileID: 345885543}
   - {fileID: 1884757086}
-  - {fileID: 1214456353}
   - {fileID: 1272923773}
-  - {fileID: 399543358}
   - {fileID: 1447475283}
+  - {fileID: 1214456353}
+  - {fileID: 399543358}
   wheatSpray: {fileID: 1461987011}
   sceneLength: 15
   SethAnimScript: {fileID: 265722676}
@@ -4376,7 +4376,7 @@ PrefabInstance:
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
@@ -4764,7 +4764,7 @@ PrefabInstance:
     - target: {fileID: 3113092357810032439, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: timelinePosition
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e, type: 3}
@@ -6175,7 +6175,7 @@ PrefabInstance:
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
@@ -6205,7 +6205,7 @@ PrefabInstance:
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8629667638077075033, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
@@ -6285,7 +6285,7 @@ PrefabInstance:
     - target: {fileID: 3113092357810032439, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: timelinePosition
-      value: 0.7
+      value: 0.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e, type: 3}
@@ -7602,7 +7602,7 @@ PrefabInstance:
     - target: {fileID: 1308673981004680830, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6444139486333123283, guid: df5f8975a53fa354fb8d9d10cc64734d,
         type: 3}
@@ -8032,9 +8032,9 @@ Transform:
   - {fileID: 345885539}
   - {fileID: 1884757084}
   - {fileID: 1272923770}
+  - {fileID: 1447475280}
   - {fileID: 1105522631}
   - {fileID: 399543357}
-  - {fileID: 1447475280}
   m_Father: {fileID: 1071854730}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9539,7 +9539,7 @@ PrefabInstance:
     - target: {fileID: 3113092357810032439, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e,
         type: 3}
       propertyPath: timelinePosition
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9c0ac16f30c43508e9cd3071c9dd8e, type: 3}

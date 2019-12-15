@@ -16,7 +16,7 @@ public class PlantGrowthController_Script : MonoBehaviour
     public bool AddRandomization = false;
     public bool spawnLeafs = false;
     public Color branchColor;
-    public int spriteLayer = -1;
+    // public int spriteLayer = -1;
     private SpriteRenderer branchSprite;
 
     void OnEnable()
@@ -25,8 +25,8 @@ public class PlantGrowthController_Script : MonoBehaviour
         branchSprite = branch.GetComponentInChildren<SpriteRenderer>();
         branchSprite.color = branchColor;
 
-        if (spriteLayer != -1)
-            branchSprite.sortingOrder = spriteLayer;
+        // if (spriteLayer != -1)
+        //     branchSprite.sortingOrder = spriteLayer;
 
         StartCoroutine(StartGrowth());
     }

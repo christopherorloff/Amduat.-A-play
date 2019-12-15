@@ -104,7 +104,7 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         if (input < 0)
         {
             float speed = Mathf.Abs(input) * timelineScalar * Time.deltaTime;
-            speed = Mathf.Clamp(speed, 0, 0.001f);
+            speed = Mathf.Clamp(speed, 0, 0.0008f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
         }

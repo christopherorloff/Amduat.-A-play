@@ -213,7 +213,8 @@ public class SoundManager : MonoBehaviour
 
         if (GetHour() == 1)
         {
-            if(timelineHour1 == null) {
+            if (timelineHour1 == null)
+            {
                 FindObjectOfType<TimelineManager_Script_Hour1>();
             }
 
@@ -232,12 +233,12 @@ public class SoundManager : MonoBehaviour
 
         if (GetHour() == 2)
         {
-            if(timelineHour2 == null) {
+            if (timelineHour2 == null)
+            {
                 FindObjectOfType<TimelineManager_Script_Hour2>();
             }
 
             float input = -Scroll.scrollValueAccelerated();
-            print(input);
 
             if (timelineHour2.GetTimeline() < 0.9f)
             {
@@ -263,19 +264,23 @@ public class SoundManager : MonoBehaviour
             }
         }
 
-        if(GetHour() == 5) {
+        if (GetHour() == 5)
+        {
 
-            if(hour5Boat == null) {
+            if (hour5Boat == null)
+            {
                 hour5Boat = GameObject.Find("Boat_Parent").transform;
             }
 
-            if(hour5Snakes.Length == 0) {
+            if (hour5Snakes.Length == 0)
+            {
                 hour5Snakes = new Transform[12];
                 SnakeMoveTowardsBoat_script[] snakes = new SnakeMoveTowardsBoat_script[12];
                 snakes = FindObjectsOfType<SnakeMoveTowardsBoat_script>();
                 print(snakes);
 
-                for(int i = 0; i < snakes.Length; i++) {
+                for (int i = 0; i < snakes.Length; i++)
+                {
                     hour5Snakes[i] = snakes[i].GetComponent<Transform>();
                 }
 
@@ -283,39 +288,46 @@ public class SoundManager : MonoBehaviour
 
             //Updating snakes distance variable so it goes from 0-1, and updates according to snakes distance to boat
             Vector3[] snakePositions = new Vector3[hour5Snakes.Length];
-            for (int i = 0; i < hour5Snakes.Length; i++) {
-                    snakePositions[i] = hour5Snakes[i].position;
-                }
+            for (int i = 0; i < hour5Snakes.Length; i++)
+            {
+                snakePositions[i] = hour5Snakes[i].position;
+            }
             hour5SnakesDistanceToBoat = Mathf.Clamp(Vector3.Distance(hour5Boat.position, GetMeanVector3(snakePositions)), 1, 6);
             hour5SnakesDistanceToBoat = hour5SnakesDistanceToBoat / 6;
             snakesHissInstance.setParameterByName("Intensity", hour5SnakesDistanceToBoat);
         }
 
-        if(GetHour() == 8) {
-            if(sceneManager8 == null) {
+        if (GetHour() == 8)
+        {
+            if (sceneManager8 == null)
+            {
                 sceneManager8 = FindObjectOfType<SceneManagerScript_Hour8>();
                 print("HALLO");
             }
 
-            if(coneBehaviour == null) {
+            if (coneBehaviour == null)
+            {
                 coneBehaviour = FindObjectOfType<ConeBehaviour_Script_Hour8>();
             }
 
             boatPushLoopInstance.setParameterByName("Speed", sceneManager8.GetBlessedDeadSpeed());
             sunShineInstance.setParameterByName("Scroll", coneBehaviour.GetConeSize());
             blessedDeadRunningInstance.setParameterByName("Amount", 1 - sceneManager8.GetBlessedDeadSpeed());
-            if(1 - sceneManager8.GetBlessedDeadSpeed() <= 0) {
+            if (1 - sceneManager8.GetBlessedDeadSpeed() <= 0)
+            {
                 blessedDeadRunningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
         }
     }
 
-    private Vector3 GetMeanVector3(Vector3[] positions) {
+    private Vector3 GetMeanVector3(Vector3[] positions)
+    {
         float x = 0;
         float y = 0;
         float z = 0;
 
-        foreach(Vector3 pos in positions) {
+        foreach (Vector3 pos in positions)
+        {
             x += pos.x;
             y += pos.y;
             z += pos.z;
@@ -324,31 +336,36 @@ public class SoundManager : MonoBehaviour
         return new Vector3(x / positions.Length, y / positions.Length, z / positions.Length);
     }
 
-    public void PlayKnifeHit() {
+    public void PlayKnifeHit()
+    {
         FMOD.Studio.EventInstance knifeHitInstance;
         knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
         knifeHitInstance.start();
     }
 
-    public void PlayKnifeBounce() {
+    public void PlayKnifeBounce()
+    {
         FMOD.Studio.EventInstance knifeClangInstance;
         knifeClangInstance = FMODUnity.RuntimeManager.CreateInstance(knifeClangPath);
         knifeClangInstance.start();
     }
 
-    public void PlayKnifeThrow() {
+    public void PlayKnifeThrow()
+    {
         FMOD.Studio.EventInstance knifeThrowInstance;
         knifeThrowInstance = FMODUnity.RuntimeManager.CreateInstance(knifeThrowPath);
         knifeThrowInstance.start();
     }
 
-    public void PlayGodAppear() {
+    public void PlayGodAppear()
+    {
         FMOD.Studio.EventInstance osirisAppear;
         osirisAppear = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 5/OsirisAppear");
         osirisAppear.start();
     }
 
-    public void PlayBoatPaddle() {
+    public void PlayBoatPaddle()
+    {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
         sound.start();
@@ -362,53 +379,63 @@ public class SoundManager : MonoBehaviour
         sound.start();
     }
 
-    public void PlayBlessedDeadAppearBoat() {
+    public void PlayBlessedDeadAppearBoat()
+    {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadAppear");
         sound.setParameterByName("Water", 1);
         sound.start();
     }
 
-    public void PlayBlessedDeadBoatMove() {
+    public void PlayBlessedDeadBoatMove()
+    {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadBoatMove");
         sound.start();
     }
 
-    public void PlayBlessedDeadAground() {
+    public void PlayBlessedDeadAground()
+    {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR11/BlessedDeadAground");
         sound.start();
     }
 
-    public void PlayTheme() {
+    public void PlayTheme()
+    {
         themeMuInstance.start();
     }
 
-    public void PlayRitualTheme() {
+    public void PlayRitualTheme()
+    {
         ritualThemeMuInstance.setParameterByName("RitualThemeEnd", 0);
         ritualThemeMuInstance.start();
     }
 
-    public void PlayApopisTheme() {
+    public void PlayApopisTheme()
+    {
         apopisThemeMuInstance.start();
     }
 
-    public void PlayDustballTheme() {
+    public void PlayDustballTheme()
+    {
         FMOD.Studio.EventInstance sound;
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 12/DustballTheme");
         sound.start();
     }
 
-    public void EndTheme() {
+    public void EndTheme()
+    {
         themeMuInstance.setParameterByName("End", 1);
     }
 
-    public void EndRitualTheme() {
+    public void EndRitualTheme()
+    {
         ritualThemeMuInstance.setParameterByName("RitualThemeEnd", 1);
     }
 
-    public void EndApopisTheme() {
+    public void EndApopisTheme()
+    {
         apopisThemeMuInstance.setParameterByName("ApopisThemeEnd", 1);
     }
 
@@ -525,14 +552,16 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayWingCharge() {
+    public void PlayWingCharge()
+    {
         float value = Random.Range(0f, 1f);
         FMOD.Studio.EventInstance wingChargeInstance = FMODUnity.RuntimeManager.CreateInstance(wingedChargePath);
         wingChargeInstance.start();
         wingChargeInstance.setParameterByName("Progress", value);
     }
 
-    public void PlayWingThrust() {
+    public void PlayWingThrust()
+    {
         FMOD.Studio.EventInstance wingThrustInstance = FMODUnity.RuntimeManager.CreateInstance(wingedThrustPath);
         wingThrustInstance.start();
     }
@@ -596,7 +625,8 @@ public class SoundManager : MonoBehaviour
             EndRitualTheme();
         }
 
-        if (_hour == 5) {
+        if (_hour == 5)
+        {
             //STOPPING SOUNDS
             waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             seaCaveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -617,12 +647,14 @@ public class SoundManager : MonoBehaviour
 
             caveWaterAmbInstance.getPlaybackState(out caveWaterAmbPlaybackState);
             caveWaterAmbIsNotPlaying = caveWaterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            if (caveWaterAmbIsNotPlaying) {
+            if (caveWaterAmbIsNotPlaying)
+            {
                 caveWaterAmbInstance.start();
             }
             caveAmbInstance.getPlaybackState(out caveAmbPlaybackState);
             caveAmbIsNotPlaying = caveAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            if (caveAmbIsNotPlaying) {
+            if (caveAmbIsNotPlaying)
+            {
                 caveAmbInstance.start();
             }
         }
@@ -640,10 +672,11 @@ public class SoundManager : MonoBehaviour
             if (caveAmbIsNotPlaying)
             {
                 caveAmbInstance.start();
-            } 
+            }
         }
 
-        if (_hour == 8) {
+        if (_hour == 8)
+        {
             caveAmbInstance.getPlaybackState(out caveAmbPlaybackState);
             caveAmbIsNotPlaying = caveAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (caveAmbIsNotPlaying)
@@ -659,7 +692,8 @@ public class SoundManager : MonoBehaviour
             sunShineInstance.start();
         }
 
-        if (_hour == 9) {
+        if (_hour == 9)
+        {
             caveAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             blessedDeadRunningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             boatPushLoopInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -670,7 +704,8 @@ public class SoundManager : MonoBehaviour
 
         }
 
-        if (_hour == 10) {
+        if (_hour == 10)
+        {
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
             waterAmbIsNotPlaying = waterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (waterAmbIsNotPlaying)
@@ -681,7 +716,8 @@ public class SoundManager : MonoBehaviour
             statueMoveInstance.start();
         }
 
-        if (_hour == 11) {
+        if (_hour == 11)
+        {
             statueMoveInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             waterAmbInstance.getPlaybackState(out waterAmbPlaybackState);
@@ -696,7 +732,8 @@ public class SoundManager : MonoBehaviour
 
         }
 
-        if (_hour == 12) {
+        if (_hour == 12)
+        {
             //STOPPING SOUNDS
             EndRitualTheme();
 
@@ -710,11 +747,11 @@ public class SoundManager : MonoBehaviour
 
             boatPaddleContinuousInstance.getPlaybackState(out boatPaddleContinuousPlaybackState);
             boatPaddleContinuousIsNotPlaying = boatPaddleContinuousPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            if(boatPaddleContinuousIsNotPlaying) boatPaddleContinuousInstance.start();
+            if (boatPaddleContinuousIsNotPlaying) boatPaddleContinuousInstance.start();
 
             dustballRollingInstance.getPlaybackState(out dustballRollingPlaybackState);
             dustballRollingIsNotPlaying = dustballRollingPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            if(dustballRollingIsNotPlaying) dustballRollingInstance.start();
+            if (dustballRollingIsNotPlaying) dustballRollingInstance.start();
         }
     }
 }
