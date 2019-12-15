@@ -28,7 +28,7 @@ public class FadeUIScript : MonoBehaviour
 
     public IEnumerator FadeSpriteCoroutineDown(float value, float time)
     {
-
+        ScrollManager.Scroll.LockInput();
         yield return new WaitForSeconds(1.5f);
         float startValue = 1;
         float startTime = Time.time;
@@ -38,9 +38,9 @@ public class FadeUIScript : MonoBehaviour
             float t = (Time.time - startTime) / time;
             FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
             yield return null;
-
-
         }
+
+        ScrollManager.Scroll.UnlockInput();
 
         StartCoroutine(FadeTextCoroutine(1, 1));
     }

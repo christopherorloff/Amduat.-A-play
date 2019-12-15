@@ -30,6 +30,7 @@ namespace ScrollManager
 
         //Flags
         static bool deltaTimeInput = true;
+        static bool inputLocked = false;
 
         //Events
         public delegate void OnNewScrollEvent();
@@ -62,6 +63,17 @@ namespace ScrollManager
         // ------------------------ public functions ------------------------- \\
         // ------------------------------------------------------------------- \\
 
+        public static void LockInput()
+        {
+            inputLocked = true;
+            print("Input locked");
+        }
+
+        public static void UnlockInput()
+        {
+            inputLocked = false;
+            print("Input unlocked");
+        }
 
         // Bool - Input or not
         public static bool isScrolling()
@@ -124,7 +136,15 @@ namespace ScrollManager
             //output = webGLInputScalar(output);
 
             lastInput = newValue;
-            return output;
+
+            if (inputLocked)
+            {
+                return 0;
+            }
+            else
+            {
+                return output;
+            }
         }
 
 
