@@ -23,6 +23,7 @@ public class GraveFadeHover_Script_hour5 : MonoBehaviour
     {
         SoundManager.Instance.PlayGodAppear();
         SoundManager.Instance.PlayApopisTheme();
+        SoundManager.Instance.snakesHissInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
         StartCoroutine(FadeInSprite(duration));
         active = true;

@@ -631,23 +631,24 @@ public class SoundManager : MonoBehaviour
             spearChargeInstance.start();
 
             waterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            caveWaterAmbInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            apopisAppearInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
-            caveWaterAmbInstance.getPlaybackState(out caveWaterAmbPlaybackState);
-            caveWaterAmbIsNotPlaying = caveWaterAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
-            if (caveWaterAmbIsNotPlaying)
+            caveAmbInstance.getPlaybackState(out caveAmbPlaybackState);
+            caveAmbIsNotPlaying = caveAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
+            if (caveAmbIsNotPlaying)
             {
-                caveWaterAmbInstance.start();
-            }
+                caveAmbInstance.start();
+            } 
+        }
+
+        if (_hour == 8) {
             caveAmbInstance.getPlaybackState(out caveAmbPlaybackState);
             caveAmbIsNotPlaying = caveAmbPlaybackState != FMOD.Studio.PLAYBACK_STATE.PLAYING;
             if (caveAmbIsNotPlaying)
             {
                 caveAmbInstance.start();
             }
-        }
-
-        if (_hour == 8) {
-            caveAmbInstance.start();
             blessedDeadRunningInstance.start();
             boatPushLoopInstance.start();
             sunShineInstance.start();
