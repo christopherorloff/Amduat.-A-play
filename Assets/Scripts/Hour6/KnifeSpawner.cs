@@ -10,7 +10,7 @@ public class KnifeSpawner : MonoBehaviour
     public SparkSpawn SS;
     public GameObject KnifeSpawnEffect;
 
-    float delay = 2;
+    float delay = 3f;
 
 
     private void Start()
