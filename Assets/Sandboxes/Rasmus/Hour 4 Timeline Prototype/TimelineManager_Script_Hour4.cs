@@ -94,7 +94,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         //For debug purposes
         if (Mathf.Approximately(input, 0.0f))
         {
-            print("Input is zero!");
+           // print("Input is zero!");
         }
 
         if (Mathf.Approximately(Timeline, 1) && !sceneHasEnded)
@@ -111,7 +111,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             {
                 //Add percentage to timeline
                 Timeline += (1.0f / (float)numberOfPulls / 2.0f);
-                print("Timeline: " + Timeline);
+                //print("Timeline: " + Timeline);
                 if (nextIsDraw)
                 {
                     StartCoroutine(DrawAnimation(18 * animationFrameLength, 1));
@@ -218,7 +218,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         coroutineRunning = true;
         FMOD.Studio.EventInstance towBoatInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/TowBoat");
         towBoatInstance.start();
-        print("Pull coroutine");
+      //  print("Pull coroutine");
 
         float startTime = Time.time;
 
