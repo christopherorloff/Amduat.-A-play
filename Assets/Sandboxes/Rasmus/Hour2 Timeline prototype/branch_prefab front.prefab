@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3550811962421961971}
   m_Layer: 0
-  m_Name: branch_prefab
+  m_Name: branch_prefab front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,9 +100,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: ffd5da9c0217c4e1bb5e383dd6df4e6b, type: 3}
-  m_Color: {r: 0.59607846, g: 0.7254902, b: 0.5647059, a: 0.79607844}
+  m_Color: {r: 0.34927908, g: 0.4433962, b: 0.32836416, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

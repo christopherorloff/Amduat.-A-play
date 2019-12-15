@@ -16,11 +16,18 @@ public class PlantGrowthController_Script : MonoBehaviour
     public bool AddRandomization = false;
     public bool spawnLeafs = false;
     public Color branchColor;
-
+    public int spriteLayer = -1;
+    private SpriteRenderer branchSprite;
 
     void OnEnable()
     {
-        branch.GetComponentInChildren<SpriteRenderer>().color = branchColor;
+
+        branchSprite = branch.GetComponentInChildren<SpriteRenderer>();
+        branchSprite.color = branchColor;
+
+        if (spriteLayer != -1)
+            branchSprite.sortingOrder = spriteLayer;
+
         StartCoroutine(StartGrowth());
     }
 
@@ -30,6 +37,7 @@ public class PlantGrowthController_Script : MonoBehaviour
         GameObject clone = Instantiate(branch, transform.position, transform.rotation);
         clone.transform.parent = this.transform;
         clone.transform.localScale = Vector3.one;
+
 
         //Save original size for later
         Vector3 originalScale = clone.transform.localScale;
