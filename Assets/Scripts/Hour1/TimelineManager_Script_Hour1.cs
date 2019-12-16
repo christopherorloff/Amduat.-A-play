@@ -172,7 +172,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         if (input > 0)
         {
             float speed = Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
-            speed = Mathf.Clamp(speed, 0, 0.001f);
+            speed = Mathf.Clamp(speed, 0, 0.0006f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
         }

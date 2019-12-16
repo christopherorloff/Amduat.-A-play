@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a18dd39442e49b7a02bbfa61b9b8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineScalar: 0.8
+  timelineScalar: 0.5
   fadeUIScript: {fileID: 534334287}
   Sun: {fileID: 1006294112}
   sunGlowStart: {r: 0.99215686, g: 0.89411765, b: 0.19215687, a: 1}
