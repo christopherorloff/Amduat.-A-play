@@ -179,7 +179,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         CheckInstance();
-        CreateSoundInstances();
+        //CreateSoundInstances();
         activeScene = SceneManager.GetActiveScene().name;
     }
 
@@ -460,7 +460,7 @@ public class SoundManager : MonoBehaviour
         hour = currentHour;
     }
 
-    void CreateSoundInstances()
+    public void CreateSoundInstances()
     {
         //GENERAL SOUND INSTANCES
         titleSoundInstance = FMODUnity.RuntimeManager.CreateInstance(titleSoundPath);
