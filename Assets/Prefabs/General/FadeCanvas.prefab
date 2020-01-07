@@ -31,8 +31,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1375101423691356030}
   - {fileID: 4152335646919031373}
+  - {fileID: 1375101423691356030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,6 +116,7 @@ MonoBehaviour:
   textObject: {fileID: 1375101423691356029}
   FadeSprite: {fileID: 0}
   canvas: {fileID: 4152335646919031369}
+  sceneReady: 0
   sceneEnd: 0
 --- !u!114 &4152335646548710469
 MonoBehaviour:
@@ -163,7 +164,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6444139486333123283}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -268,7 +269,7 @@ PrefabInstance:
     - target: {fileID: 6318994933026153713, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6318994933026153713, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
         type: 3}
@@ -354,6 +355,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
+        type: 3}
+      propertyPath: m_Text
+      value: "HOUR V: THE PROTECTIVE WINGS\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cbdeb0c9232264f856ad5f18b1a9e4, type: 3}

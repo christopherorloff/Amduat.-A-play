@@ -1021,8 +1021,8 @@ MonoBehaviour:
   rotateSpeed: 0
   amplitudeX: 0
   frequenzyX: 0
-  amplitudeY: 0.15
-  frequenzyY: 0.2
+  amplitudeY: 0.03
+  frequenzyY: 0.94
   wheelControlled: 0
   rotating: 0
   floating: 1
@@ -1272,7 +1272,7 @@ PrefabInstance:
     - target: {fileID: 3417180641216330722, guid: 53e18dec30302477cab5c5783552368a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53e18dec30302477cab5c5783552368a, type: 3}

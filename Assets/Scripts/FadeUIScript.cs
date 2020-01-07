@@ -28,8 +28,10 @@ public class FadeUIScript : MonoBehaviour
 
     public IEnumerator FadeSpriteCoroutineDown(float value, float time)
     {
+        StartCoroutine(FadeTextCoroutine(1, 1));
+
         ScrollManager.Scroll.LockInput();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         float startValue = 1;
         float startTime = Time.time;
 
@@ -42,7 +44,6 @@ public class FadeUIScript : MonoBehaviour
 
         ScrollManager.Scroll.UnlockInput();
 
-        StartCoroutine(FadeTextCoroutine(1, 1));
     }
 
 
@@ -69,7 +70,6 @@ public class FadeUIScript : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(0.5f);
         SoundManager.Instance.titleSoundInstance.start();
         float startValue = 0;
         float startTime = Time.time;
