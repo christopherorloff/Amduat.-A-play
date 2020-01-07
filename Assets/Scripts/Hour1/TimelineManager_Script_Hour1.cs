@@ -105,10 +105,10 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 
 
         //Add all timeline events
-        AddTimelineEvent(0.2f, BoatActions);
-        AddTimelineEvent(0.4f, BoatActions);
-        AddTimelineEvent(0.6f, BoatActions);
-        AddTimelineEvent(0.8f, BoatActions);
+        AddTimelineEvent(0.001f, BoatActions);
+        AddTimelineEvent(0.3f, BoatActions);
+        AddTimelineEvent(0.5f, BoatActions);
+        AddTimelineEvent(0.7f, BoatActions);
         AddTimelineEvent(0.99f, BoatActions);
 
         AddTimelineEvent(0.6f, SolarBaboons.StartRaisingStatues);
