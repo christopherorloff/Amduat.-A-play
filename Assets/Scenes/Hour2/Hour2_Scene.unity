@@ -2041,6 +2041,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3417180641216330722, guid: 53e18dec30302477cab5c5783552368a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53e18dec30302477cab5c5783552368a, type: 3}
 --- !u!224 &581192720 stripped
@@ -2677,11 +2682,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
-        type: 3}
-      propertyPath: boat
-      value: 
-      objectReference: {fileID: 1576279399}
     - target: {fileID: 8740643237064801426, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2697,6 +2697,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5356026442123660312, guid: f20d72645922f4e9491675a827dd4388,
+        type: 3}
+      propertyPath: boat
+      value: 
+      objectReference: {fileID: 1576279399}
     - target: {fileID: 8740643237064801437, guid: f20d72645922f4e9491675a827dd4388,
         type: 3}
       propertyPath: sprites.Array.size
