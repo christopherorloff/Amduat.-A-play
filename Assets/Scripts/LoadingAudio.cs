@@ -24,14 +24,18 @@ public class LoadingAudio : MonoBehaviour
     //DENNE FUNKTION KALDES NÅR MAN TRYKKER PÅ KNAPPEN TIL AT STARTE SPILLET.
     //KAN KUN STARTES NÅR LYDBANKE ER LOADET
     //SKAL OGSÅ GÆLDE FOR RESTEN AF SPILLETS ASSETS
-    public void ProceedToGame() {
-        if (FMODUnity.RuntimeManager.HasBankLoaded("Master")) {
+    public void ProceedToGame()
+    {
+        if (FMODUnity.RuntimeManager.HasBankLoaded("Master"))
+        {
             Debug.Log("AUDIO: Master has loaded");
-            if (FMODUnity.RuntimeManager.HasBankLoaded("Master.strings")) {
+            if (FMODUnity.RuntimeManager.HasBankLoaded("Master.strings"))
+            {
                 Debug.Log("AUDIO: Master.strings has loaded");
+                SoundManager.Instance.CreateSoundInstances();
                 //SÆTTER DEN NÆSTE SCENE I INSPECTOREN SÅ DET ER LET AT TESTE I WEB BUILD
                 //FINAL VERSION SKAL VÆRE INTRO SCENEN TIL SPILLET
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }

@@ -166,7 +166,7 @@ PlayerSettings:
   applicationIdentifier:
     Standalone: com.DefaultCompany.Amduat-A-Play-Machine
   buildNumber:
-    Standalone: 1.1
+    Standalone: 1.3
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0

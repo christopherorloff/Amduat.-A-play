@@ -18,7 +18,7 @@ MonoBehaviour:
   sourceProjectPath: 
   SourceBankPathUnformatted: Assets/Sounds/FMOD BUILDS/Desktop
   AutomaticEventLoading: 0
-  BankLoadType: 0
+  BankLoadType: 2
   AutomaticSampleLoading: 1
   EncryptionKey: 
   ImportType: 0
