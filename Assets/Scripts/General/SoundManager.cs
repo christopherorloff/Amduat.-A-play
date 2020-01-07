@@ -444,7 +444,7 @@ public class SoundManager : MonoBehaviour
         // Her kan ting ske når scenen er skiftet... Din nye start() Jacob
         //print("Scene changed [Sound Manager]");
         //HourInitialSounds(7);
-        hour = GameManager.Instance.GetActiveSceneIndex() + 1;
+        hour = GameManager.Instance.GetActiveSceneIndex();
         HourInitialSounds(hour);
         print("SCENE CHANGED");
     }
@@ -528,12 +528,15 @@ public class SoundManager : MonoBehaviour
     void CheckInstance()
     {
         //Checking that only one instance exists
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
+            Destroy(gameObject);
+            print("Destroy'ed extra SM");
+            return;
+        }
+        else
+        {
+            Instance = this;
         }
 
         DontDestroyOnLoad(this.gameObject);

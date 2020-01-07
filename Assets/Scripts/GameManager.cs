@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //Disable mouse
-        Cursor.visible = false;
+
         print("Buildindex: " + SceneManager.sceneCountInBuildSettings);
 
         // if the singleton hasn't been initialized yet
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         //EventManager.snakeDeadEvent += StartChangeToNextScene;
         SceneManager.activeSceneChanged += ChangedActiveScene;
+
     }
 
     private void OnDisable()
@@ -43,8 +44,12 @@ public class GameManager : MonoBehaviour
     {
         print("ChangedActiveScene");
 
-        EventManager.sceneChange();
-
+        EventManager.InvokeSceneChange();
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            Cursor.visible = false;
+            print("cursor");
+        }
     }
 
     public void StartChangeToNextScene()

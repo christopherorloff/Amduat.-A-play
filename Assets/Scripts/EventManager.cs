@@ -9,7 +9,7 @@ public class EventManager : MonoBehaviour
 
     // Game Manager events
     public delegate void GM();
-    public static GM sceneChange;
+    public static event GM sceneChange;
 
     // HOUR 6 events
     public delegate void Hour6();
@@ -30,4 +30,8 @@ public class EventManager : MonoBehaviour
     //     Instance = this;
     //     DontDestroyOnLoad(this.gameObject);
     // }
+    public static void InvokeSceneChange()
+    {
+        sceneChange?.Invoke();
+    }
 }
