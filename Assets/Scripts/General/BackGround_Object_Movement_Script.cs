@@ -22,19 +22,19 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
     public float rotateSpeed;
 
     [SerializeField]
-    [Range(0, 100)]
+    [Range(0, 1)]
     private float amplitudeX;
 
     [SerializeField]
-    [Range(0, 100)]
+    [Range(0, 5)]
     private float frequenzyX;
 
     [SerializeField]
-    [Range(0, 100)]
+    [Range(0, 1)]
     private float amplitudeY;
 
     [SerializeField]
-    [Range(0, 100)]
+    [Range(0, 5)]
     private float frequenzyY;
 
     [SerializeField]
@@ -108,22 +108,22 @@ public class BackGround_Object_Movement_Script : MonoBehaviour
 
         if (floating && wheelControlled)
         {
-            x = Mathf.Cos((Time.deltaTime *_time * frequenzyX)) * amplitudeX;
-            y = Mathf.Sin((Time.deltaTime *_time * frequenzyX)) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x,y,0);
+            x = (Mathf.Cos(Time.time * _time * frequenzyX) * amplitudeX) * Time.deltaTime;
+            y = (Mathf.Sin(Time.time * _time * frequenzyX) * amplitudeY) * Time.deltaTime;
+            transform.position += new Vector3(x, y, z);
         }
         else if (floating && !wheelControlled)
         {
-            x = Mathf.Cos(Time.deltaTime * frequenzyX) * amplitudeX;
-            y = Mathf.Sin(Time.deltaTime * frequenzyY) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x, y, 0);
+            x = (Mathf.Cos(Time.time * frequenzyX) * amplitudeX) * Time.deltaTime;
+            y = (Mathf.Sin(Time.time * frequenzyY) * amplitudeY) * Time.deltaTime;
+            transform.position += new Vector3(x, y, z);
         }
         else if (!floating && wheelControlled)
         {  
 
-            x = Mathf.Cos(Time.deltaTime *_time * frequenzyX) * amplitudeX;
-            y = Mathf.Sin(Time.deltaTime *_time * frequenzyY) * amplitudeY;
-            transform.position = new Vector3(x, y, z) + initialPosition - new Vector3(x, y, 0);
+            x = (Mathf.Cos(_time * frequenzyX) * amplitudeX) * Time.deltaTime;
+            y = (Mathf.Sin(_time * frequenzyY) * amplitudeY) * Time.deltaTime;
+            transform.position += new Vector3(x, y, z);
         }
     }
 

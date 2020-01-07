@@ -1021,8 +1021,8 @@ MonoBehaviour:
   rotateSpeed: 0
   amplitudeX: 0
   frequenzyX: 0
-  amplitudeY: 0.15
-  frequenzyY: 0.2
+  amplitudeY: 0.03
+  frequenzyY: 0.94
   wheelControlled: 0
   rotating: 0
   floating: 1

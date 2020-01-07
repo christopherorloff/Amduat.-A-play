@@ -20,7 +20,7 @@ public class SnakeStateScript : MonoBehaviour
     int knifeHits = 0;
     public int knifeHitLimit = 6;
 
-    BackGround_Object_Movement_Script bgMovement;
+    RotateSnake_Hour6_Script bgMovement;
 
     public FadeUIScript fadeScript;
 
@@ -30,7 +30,7 @@ public class SnakeStateScript : MonoBehaviour
         secondaryPosition = new Vector3(initialPosition.x, -10, 0);
         yMax = initialPosition.y;
         yMin = secondaryPosition.y;
-        bgMovement = GetComponent<BackGround_Object_Movement_Script>();
+        bgMovement = GetComponent<RotateSnake_Hour6_Script>();
         bgMovement.enabled = false;
         snakeRising = true;
         StartCoroutine(SnakeIntro());
