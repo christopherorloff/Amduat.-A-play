@@ -22,6 +22,7 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
 
     void Update()
     {
+        
         transform.right = boat.transform.position - transform.position;
 
         if (SceneManager.pushSnakesAway)

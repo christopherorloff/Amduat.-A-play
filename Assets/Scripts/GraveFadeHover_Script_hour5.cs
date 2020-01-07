@@ -7,6 +7,7 @@ public class GraveFadeHover_Script_hour5 : MonoBehaviour
     SpriteRenderer[] sprites;
     bool active = false;
     float y;
+    public ParticleSystem graveEffect;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class GraveFadeHover_Script_hour5 : MonoBehaviour
     {
         float startTime = Time.time;
         float t = 0;
-
+        graveEffect.Play();
         while (t < 1)
         {
             t = (Time.time - startTime) / duration;
