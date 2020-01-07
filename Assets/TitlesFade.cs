@@ -122,10 +122,7 @@ public class TitlesFade : MonoBehaviour
             background.alpha = Mathf.Lerp(0, 1, t);
             yield return null;
         }
-
         yield return new WaitForSeconds(3);
-
-        Application.Quit();
+        //Application.Quit();
     }
-
 }

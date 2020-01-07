@@ -23,7 +23,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: 
-  LoggingLevel: 2
+  LoggingLevel: 4
   SpeakerModeSettings:
   - Platform: 2
     Value: 3

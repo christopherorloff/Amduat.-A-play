@@ -8,8 +8,8 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     //character actions
     public GameObject moveCharacters;
-    private Vector3 charactersStartPos = new Vector3(-3.5f, 0,0);
-    private Vector3 charactersEndPos = new Vector3 (5, 0, 0);
+    private Vector3 charactersStartPos = new Vector3(-3.5f, 0, 0);
+    private Vector3 charactersEndPos = new Vector3(5, 0, 0);
 
     //cam Actions
     public GameObject Cam;
@@ -40,7 +40,7 @@ public class Hour12_SceneManager : Timeline_BaseClass
 
     public TitlesFade titleFadeLogic;
 
-    
+
 
 
     // Start is called before the first frame update
@@ -82,7 +82,7 @@ public class Hour12_SceneManager : Timeline_BaseClass
             Timeline = Mathf.Clamp(Timeline, 0, 1);
 
 
-            dustballMovement.rotateSpeed -= ((Time.deltaTime * speedBall)*200);
+            dustballMovement.rotateSpeed -= ((Time.deltaTime * speedBall) * 200);
             if (dustballMovement.rotateSpeed <= maxRotateSpeed)
             {
                 dustballMovement.rotateSpeed = maxRotateSpeed;

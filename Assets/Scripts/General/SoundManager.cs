@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 using FMODUnity;
 using ScrollManager;
 
+
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    FMOD.Studio.System system;
 
     [SerializeField]
     private int hour = 0;
@@ -185,8 +185,6 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        //Initialize system. Create sound instances.
-        system = FMODUnity.RuntimeManager.StudioSystem;
         //HourInitialSounds(hour);
     }
 
