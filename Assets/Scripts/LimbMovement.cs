@@ -31,7 +31,7 @@ public class LimbMovement : MonoBehaviour
 
     public GameObject osirisCollectedGameObject;
     private Vector3 collectedOsirisGameObjectVelocity;
-    private float collectedOsirisGameObjectSpeed = 300f;
+    private float collectedOsirisGameObjectSpeed = 150;
     private float countdownToDestroy;
 
     public GameObject osirisCollectedParticleSystem;
@@ -139,7 +139,7 @@ public class LimbMovement : MonoBehaviour
         float startTime = Time.time;
         while (t < 1)
         {
-            t = (Time.time - startTime) / 10;
+            t = (Time.time - startTime) / 13;
             t = Mathf.SmoothStep(0, 1, t);
             t = Mathf.Clamp(t, 0, 1);
             osirisCollectedGameObject.transform.position = Vector3.Lerp(startPos, endPos, t);
