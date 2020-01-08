@@ -17,9 +17,12 @@ namespace ScrollManager
 
         static Queue<float> lastInputs = new Queue<float>();
 
+        //Velocity output related
+        public static int numberOfFramesBetweenVelocityReduction = 16;
         static float drag = 0.9f;
         static float scrollVelocity = 0;
 
+        //Platform related variables
         const float macMaxOutput = 25;
         const float winMaxOutput = 1;
         const float webGLScalar = 0.75f;
@@ -170,10 +173,17 @@ namespace ScrollManager
             if (Mathf.Abs(input) > Mathf.Abs(scrollVelocity))
             {
                 scrollVelocity = input;
+                print("New max: " + input);
             }
             else
             {
-                scrollVelocity *= drag;
+                if (Time.frameCount % numberOfFramesBetweenVelocityReduction == 0)
+                {
+                    scrollVelocity *= drag;
+                }
+
+                //scrollVelocity -= Mathf.Sign(scrollVelocity) / (fullScrollDuration / Time.deltaTime);
+
             }
 
             if (Mathf.Abs(scrollVelocity) < 0.0001f)
@@ -181,6 +191,7 @@ namespace ScrollManager
                 scrollVelocity = 0;
             }
 
+            print("Input: " + input + ", Velocity: " + scrollVelocity);
 
             output = scrollVelocity;
             return output;
