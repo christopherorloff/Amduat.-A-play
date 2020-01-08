@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4152335646919031373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -353,6 +353,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
         type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
+        type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 95
       objectReference: {fileID: 0}
@@ -363,8 +373,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
         type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
+        type: 3}
       propertyPath: m_Text
-      value: "HOUR V: THE PROTECTIVE WINGS\r"
+      value: "HOUR II: THE FERTILE REGIONS OF WERNES\r"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cbdeb0c9232264f856ad5f18b1a9e4, type: 3}
