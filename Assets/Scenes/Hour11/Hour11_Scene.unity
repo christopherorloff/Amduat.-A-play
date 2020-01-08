@@ -5001,16 +5001,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
-    - target: {fileID: 1375101423691356029, guid: df5f8975a53fa354fb8d9d10cc64734d,
-        type: 3}
-      propertyPath: m_Text
-      value: 'HOUR XI: THE SEPERATION OF THE BLESSED DEATH
-
-'
-      objectReference: {fileID: 0}
->>>>>>> 8429007961206c958130d3a3fb717ecfdf9de20c
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df5f8975a53fa354fb8d9d10cc64734d, type: 3}
 --- !u!1001 &764554130
