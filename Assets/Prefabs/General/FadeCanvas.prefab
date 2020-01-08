@@ -363,8 +363,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
         type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318994933026153714, guid: 50cbdeb0c9232264f856ad5f18b1a9e4,
+        type: 3}
       propertyPath: m_Text
-      value: "HOUR V: THE PROTECTIVE WINGS\r"
+      value: 'HOUR XI: THE SEPERATION OF THE BLESSED DEAD
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50cbdeb0c9232264f856ad5f18b1a9e4, type: 3}
