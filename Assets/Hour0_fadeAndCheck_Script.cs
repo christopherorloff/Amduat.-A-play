@@ -8,9 +8,11 @@ public class Hour0_fadeAndCheck_Script : Timeline_BaseClass
 {
     public GameObject ImageToFade1;
     public GameObject ImageToFade2;
-    public Image TextToFade;
+    public GameObject TextToFade;
     public Image FadeToBlack;
     public float InputScalar = 1;
+
+    public float scrollScalar = 1;
     public float CheckTime = 0.5f;
     public bool Inverted;
 
@@ -27,9 +29,7 @@ public class Hour0_fadeAndCheck_Script : Timeline_BaseClass
     {
         Checker = false;
         Checked = false;
-        AddTimelineEvent(0.2f, FadeScroll);
-        AddTimelineEvent(0.7f, FadeScroll);
-        AddTimelineEvent(0.8f, FadeScroll);
+        AddTimelineEvent(0.8f, fade);
         HandleKeys();
     }
 
@@ -38,7 +38,7 @@ public class Hour0_fadeAndCheck_Script : Timeline_BaseClass
     {
         input = Scroll.scrollValueAccelerated();
         ConvertInput(input);
-        FadeScroll();
+        
     }
 
     private void ConvertInput(float inputCheck)
@@ -81,6 +81,7 @@ public class Hour0_fadeAndCheck_Script : Timeline_BaseClass
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
             Debug.Log("Timeline: " +Timeline);
+            FadeScroll(speed);
         }
         else if (!Inverted && input > 0)
         {
@@ -89,11 +90,19 @@ public class Hour0_fadeAndCheck_Script : Timeline_BaseClass
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
             Debug.Log("Timeline: " +Timeline);
+            FadeScroll(speed);
         }
     }
 
-    private void FadeScroll()
+    private void FadeScroll(float scrollValue)
     {
-        ImageToFade2.transform.position.y += 1f;
+        ImageToFade2.transform.position += new Vector3(0,scrollValue * scrollScalar,0);
+        ImageToFade1.transform.position += new Vector3(0,scrollValue * scrollScalar,0);
+        TextToFade.transform.position += new Vector3(0,scrollValue * scrollScalar,0);
+    }
+
+    private void fade()
+    {
+        Debug.Log("Fade");
     }
 }
