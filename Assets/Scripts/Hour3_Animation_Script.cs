@@ -12,12 +12,15 @@ public class Hour3_Animation_Script : MonoBehaviour
 
     private IEnumerator coroutine;
 
+    public bool hour0;
+
     private float t = 0f;
     private int numberOfAnim;
     private float min1 = 0f;
     private float max1 = 1f;
-    // Start is called before the first frame update
-    void Start()
+    
+    
+    private void OnEnable() 
     {
         spriteRenderer1.sprite= sprites[0];
         coroutine = WaitAndPrint(animationTime);
