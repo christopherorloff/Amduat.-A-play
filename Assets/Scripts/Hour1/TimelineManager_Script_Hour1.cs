@@ -37,6 +37,9 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     public float durationOfBoatSegments = 2;
     public float maxBlessedAlpha = 0.65f;
 
+    private IEnumerator boatMovement;
+    private bool running = false;
+    private float leftoverDistance = 0;
 
     //Blessed dead
     public BlessedDeadFollow_Script_Hour1 blessedDeadController;
@@ -171,7 +174,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     {
         if (input > 0)
         {
-            float speed = Scroll.scrollValueAccelerated(0.99999f) * timelineScalar * Time.deltaTime;
+            float speed = Scroll.scrollValueAccelerated() * timelineScalar * Time.deltaTime;
             speed = Mathf.Clamp(speed, 0, 0.0006f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
@@ -220,32 +223,44 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
     // Timeline Event functions below
     private void BoatActions()
     {
+        if (running)
+        {
+            StopCoroutine(boatMovement);
+            running = false;
+        }
+        boatMovement = MoveBoat();
         StartCoroutine(MoveBoat());
     }
 
     private IEnumerator MoveBoat()
     {
+        running = true;
         FMOD.Studio.EventInstance boatPaddleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
         boatPaddleInstance.start();
 
-        print("MoveBoat");
+        print("MoveBoat, leftover: " + leftoverDistance);
         float xStart = Boat.transform.position.x;
-        float xEnd = xStart + boatTravelDistance;
-        //float startTime = Time.time;
+        float xEnd = xStart + boatTravelDistance + leftoverDistance;
+        leftoverDistance = 0;
+        float startTime = Time.time;
 
         while (Boat.transform.position.x < xEnd)
         {
             _animationTimePosition += Time.deltaTime;
-            //float t = (Time.time - startTime) / durationOfBoatSegments;
-            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition / durationOfBoatSegments));
+            float t = (Time.time - startTime) / durationOfBoatSegments;
+            t = 1 - (1 - t) * (1 - t);
+            float step = Mathf.SmoothStep(xStart, xEnd, t);//boatFloatStep.Evaluate(_animationTimePosition / durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
+            leftoverDistance = xEnd - step;
             yield return null;
         }
         if (Boat.transform.position.x >= xEnd)
         {
             _animationTimePosition = 0;
         }
+        leftoverDistance = 0;
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
+
     }
 
     private void CamAction()
