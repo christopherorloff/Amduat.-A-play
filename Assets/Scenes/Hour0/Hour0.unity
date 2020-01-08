@@ -1364,6 +1364,7 @@ MonoBehaviour:
   spriteRenderer1: {fileID: 1808074019}
   spriteRenderer2: {fileID: 1265694632}
   animationTime: 0.07
+  hour0: 1
 --- !u!4 &1456121240
 Transform:
   m_ObjectHideFlags: 0
@@ -1398,7 +1399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1648050043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1526,7 +1527,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "the experience requires you\nto scroll teh other way\n\nPlease scroll up
+  m_Text: "the experience requires you\nto scroll the other way\n\nPlease scroll up
     on your \ntouchpad or mouse to continue"
 --- !u!222 &1676535503
 CanvasRenderer:
@@ -1686,6 +1687,7 @@ MonoBehaviour:
   spriteRenderer1: {fileID: 1940355002}
   spriteRenderer2: {fileID: 1172728583}
   animationTime: 0.07
+  hour0: 0
 --- !u!1 &1712369944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,7 +1946,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e1324efcac27e024c93a5e2da6881071, type: 3}
-    m_FontSize: 32
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1959,7 +1961,7 @@ MonoBehaviour:
     There, a crew awaits him: Gods and goddesses and crowds of common folk called
     the Blessed Dead. For the sun to be born anew, Re\u2019s crew must help him past
     the trials of the night.\n\nYou control their safe passage through the twelve
-    hours of the Netherworld."
+    hours of the Netherworld.\n\nScroll up to continue..."
 --- !u!222 &1748235470
 CanvasRenderer:
   m_ObjectHideFlags: 0
