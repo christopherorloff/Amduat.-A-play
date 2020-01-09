@@ -49,13 +49,12 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
 
     private void HandleInput()
     {
-        input = Scroll.scrollValue();
+        input = Scroll.scrollValueAcceleratedOld();
 
         if (input < 0)
         {
             pulseLight.StartPulse = true;
         }
-
 
         if (input > 0)
         {
@@ -65,9 +64,6 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
         {
             velocity -= inputDownStep * Time.deltaTime;
         }
-
-
-
         velocity = Mathf.Clamp(velocity, 0, 1);
         transform.localScale = Vector3.Lerp(minConeScale, maxConeScale, velocity);
     }
@@ -129,7 +125,8 @@ public class ConeBehaviour_Script_Hour8 : MonoBehaviour
         rayVectors[4] = bottom;
     }
 
-    public float GetConeSize() {
+    public float GetConeSize()
+    {
         return velocity;
     }
 }
