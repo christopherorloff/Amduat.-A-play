@@ -7,6 +7,7 @@ using ScrollManager;
 public class TimelineManager_Script_Hour1 : Timeline_BaseClass
 {
     public float timelineScalar = 0.8f;
+    public bool timeLineScalarModifier = false;
     public FadeUIScript fadeUIScript;
 
     //Sun
@@ -149,6 +150,28 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
             rubberAction();
         }
         CheckTimelineProgress();
+
+        if (timeLineScalarModifier)
+        {
+            ScalarModifier();
+        }
+    }
+
+    private void ScalarModifier()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            timelineScalar += 0.05f;
+            timelineScalar = Mathf.Clamp(timelineScalar, 0, 1);
+            print("TLS: " + timelineScalar);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            timelineScalar -= 0.05f;
+            timelineScalar = Mathf.Clamp(timelineScalar, 0, 1);
+            print("TLS: " + timelineScalar);
+        }
     }
 
     private void CheckTimelineProgress()
