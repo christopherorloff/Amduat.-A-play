@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ScrollManager;
 
 public class FadeUIScript : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class FadeUIScript : MonoBehaviour
     {
         StartCoroutine(FadeTextCoroutine(1, 1));
 
-        ScrollManager.Scroll.LockInput();
+        Scroll.LockInput();
         yield return new WaitForSeconds(2.5f);
         float startValue = 1;
         float startTime = Time.time;
@@ -39,10 +40,13 @@ public class FadeUIScript : MonoBehaviour
         {
             float t = (Time.time - startTime) / time;
             FadeSprite.alpha = Mathf.Lerp(startValue, value, t);
+            if (Scroll.InputLockState() && t > 0.2f)
+            {
+                Scroll.UnlockInput();
+            }
             yield return null;
         }
 
-        ScrollManager.Scroll.UnlockInput();
 
     }
 
