@@ -57,8 +57,9 @@ public class SpearAnimation : MonoBehaviour
         emmision = buildUpEffect.emission;
     }
 
-    void Update() { 
-        float input = Scroll.scrollValueAccelerated();
+    void Update()
+    {
+        float input = Scroll.scrollValueAcceleratedOld();
         input = (Mathf.Abs(input) < threshold ? 0 : input);
         //Pitching up charge sound according to animation
         SoundManager.Instance.spearChargeInstance.setParameterByName("Charge", anim["SpearAnimationUp"].normalizedTime);
@@ -81,10 +82,12 @@ public class SpearAnimation : MonoBehaviour
 
 
             //camera zooms in and moves
-            cam.orthographicSize -= 0.003f;                          
+            cam.orthographicSize -= 0.003f;
             cameraObject.transform.Translate(new Vector3(-cameraDrag * Time.deltaTime, 0, 0));
 
-        } else {
+        }
+        else
+        {
             cam.orthographicSize += 0.003f * drag;
             cameraObject.transform.Translate(new Vector3(cameraDrag * drag * Time.deltaTime, 0, 0));
 
@@ -98,10 +101,10 @@ public class SpearAnimation : MonoBehaviour
                 cameraObject.transform.position = new Vector3(0, 0, -10);
             }
         }
-        
+
 
         //if play is not scrolling the animation will slowly play backwards to lower the spear again
-       if (!readyToStap && input == 0)
+        if (!readyToStap && input == 0)
         {
             SoundManager.Instance.spearChargeInstance.setParameterByName("Scroll", 0);
             anim.clip = lift;
@@ -121,12 +124,12 @@ public class SpearAnimation : MonoBehaviour
             {
                 cam.orthographicSize += 0.05f * drag;
                 cameraObject.transform.Translate(new Vector3(2f * Time.deltaTime, 0, 0));
-               /* if (anim["SpearAnimationUp"].normalizedTime <= 0.1f)
-                {
-                    CS.EarlyShake(0.005f, 0.4f);
-                }*/
+                /* if (anim["SpearAnimationUp"].normalizedTime <= 0.1f)
+                 {
+                     CS.EarlyShake(0.005f, 0.4f);
+                 }*/
 
-                    if (cam.orthographicSize >= 5)
+                if (cam.orthographicSize >= 5)
                 {
                     cam.orthographicSize = 5;
                 }
@@ -200,5 +203,5 @@ public class SpearAnimation : MonoBehaviour
         }
 
     }
-    
+
 }

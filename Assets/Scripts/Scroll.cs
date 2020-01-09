@@ -195,6 +195,29 @@ namespace ScrollManager
             return output;
         }
 
+        public static float scrollValueAcceleratedOld()
+        {
+            float output = 0;
+            float input = scrollValue();
+
+            if (Mathf.Abs(input) > Mathf.Abs(scrollVelocity))
+            {
+                scrollVelocity = input;
+            }
+            else
+            {
+                scrollVelocity *= drag;
+            }
+
+            if (Mathf.Abs(scrollVelocity) < 0.0001f)
+            {
+                scrollVelocity = 0;
+            }
+
+            output = scrollVelocity;
+            return output;
+        }
+
         public static float scrollValueAccelerated(float customDrag)
         {
             float output = 0;
