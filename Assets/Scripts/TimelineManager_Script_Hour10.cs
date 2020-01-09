@@ -108,7 +108,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
         {
             //Prepare for next setup 
             //----------------------
-            print("boat " + boatProgress + " cone " + coneProgress);
+            // print("boat " + boatProgress + " cone " + coneProgress);
             // - Reset velocity for next cone(s)
             velocity = 0;
 
