@@ -67,7 +67,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
     private void HandleInput()
     {
-        input = Scroll.scrollValue();
+        input = Scroll.scrollValueAcceleratedOld();
 
         //Scale up/down light cones
         if (input > 0)
@@ -81,7 +81,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
         // constrain velocity
         velocity = Mathf.Clamp(velocity, minConeScaleY, maxConeScaleY);
-        
+
         //Only change scale when velocity is being changed
         if (velocity > 0)
         {
@@ -246,12 +246,12 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
 
         float startTime = Time.time;
         while (dustBall.color.a < 1)
-            {
-                float t = (Time.time - startTime) / 3;
-                Color newColor = new Color(dustBall.color.r, dustBall.color.g, dustBall.color.b, Mathf.Lerp(0, 1, t));
-                dustBall.color = newColor;
-                yield return null;
-            }
+        {
+            float t = (Time.time - startTime) / 3;
+            Color newColor = new Color(dustBall.color.r, dustBall.color.g, dustBall.color.b, Mathf.Lerp(0, 1, t));
+            dustBall.color = newColor;
+            yield return null;
+        }
 
         particle2.Play();
         yield return new WaitForSeconds(0.5f);
@@ -266,7 +266,7 @@ public class TimelineManager_Script_Hour10 : MonoBehaviour
             Color newColor = new Color(kephri.color.r, kephri.color.g, kephri.color.b, Mathf.Lerp(0, 1, t));
             kephri.color = newColor;
             yield return null;
-              
+
         }
 
         yield return new WaitForSeconds(1.5f);
