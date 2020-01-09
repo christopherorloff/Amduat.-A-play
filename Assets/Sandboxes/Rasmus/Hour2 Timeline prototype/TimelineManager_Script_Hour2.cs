@@ -24,6 +24,10 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     public int numberOfBoatSegments = 5;
     public float durationOfBoatSegments = 2;
 
+    private IEnumerator boatMovement;
+    private bool running = false;
+    private float leftoverDistance = 0;
+
     //Trees
     public ActivateTreeGrowth_Script_Hour2[] treeActivators;
     private int treeCounter = 0;
@@ -81,7 +85,8 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
 
     void Update()
     {
-        float input = Scroll.scrollValue();
+        float input = Scroll.scrollValueAcceleratedBoost(0.99f);
+        print("Input: " + input);
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         ConvertInputToProgress(input);
         CamAction();
@@ -114,25 +119,35 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     // GAME OBJECT FUNCTIONS
     private void BoatActions()
     {
+        if (running)
+        {
+            StopCoroutine(boatMovement);
+            running = false;
+        }
+        boatMovement = MoveBoat();
         StartCoroutine(MoveBoat());
     }
 
     private IEnumerator MoveBoat()
     {
+        running = true;
         FMOD.Studio.EventInstance boatPaddleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
         boatPaddleInstance.start();
 
         print("MoveBoat");
         float xStart = Boat.transform.position.x;
-        float xEnd = xStart + boatTravelDistance;
-        //float startTime = Time.time;
+        float xEnd = xStart + boatTravelDistance + leftoverDistance;
+        leftoverDistance = 0;
+        float startTime = Time.time;
 
         while (Boat.transform.position.x < xEnd)
         {
             _animationTimePosition += Time.deltaTime;
-            //float t = (Time.time - startTime) / durationOfBoatSegments;
-            float step = Mathf.SmoothStep(xStart, xEnd, boatFloatStep.Evaluate(_animationTimePosition / durationOfBoatSegments));
+            float t = (Time.time - startTime) / durationOfBoatSegments;
+            t = 1 - (1 - t) * (1 - t);
+            float step = Mathf.SmoothStep(xStart, xEnd, t);//boatFloatStep.Evaluate(_animationTimePosition / durationOfBoatSegments));
             Boat.transform.position = new Vector3(step, boatPosStart.y, 0);
+            leftoverDistance = xEnd - step;
             yield return null;
         }
 
@@ -141,6 +156,8 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
             _animationTimePosition = 0;
         }
         Boat.transform.position = new Vector3(xEnd, boatPosStart.y, 0);
+
+        running = false;
     }
 
     private void TreeActivationAction()

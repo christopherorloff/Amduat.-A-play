@@ -19,6 +19,7 @@ public class PlantGrowthController_Script : MonoBehaviour
     // public int spriteLayer = -1;
     private SpriteRenderer branchSprite;
 
+
     void OnEnable()
     {
 
@@ -45,13 +46,16 @@ public class PlantGrowthController_Script : MonoBehaviour
         //Make clone invisible to prepare for "growing"
         clone.transform.localScale = new Vector3(originalScale.x, 0, 0);
         float t = 0;
+        // float percentageEnd = timelinePosition + (addedPercentageToDone/);
 
         while (clone.transform.localScale.y < originalScale.y)
         {
-            if (Scroll.scrollValue() < 0)
+            //Grow when there is input
+            if (!Mathf.Approximately(Scroll.scrollValueAccelerated(), 0))
             {
                 t += (Time.deltaTime * speedMultiplier);
             }
+
             clone.transform.localScale = new Vector3(clone.transform.localScale.x, Mathf.SmoothStep(0, originalScale.y, t), 0);
             yield return null;
         }
@@ -85,7 +89,8 @@ public class PlantGrowthController_Script : MonoBehaviour
 
         while (clone.transform.localScale.y < originalScale.y)
         {
-            if (Scroll.isScrolling())
+            //Grow only when there is input
+            if (!Mathf.Approximately(Scroll.scrollValueAccelerated(), 0))
             {
                 t += (Time.deltaTime * speedMultiplier);
             }
