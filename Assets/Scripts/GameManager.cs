@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             Cursor.visible = false;
-            print("cursor");
         }
     }
 

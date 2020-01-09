@@ -15,7 +15,7 @@ public class FadeUIScript : MonoBehaviour
 
     void Start()
     {
-        print("Start called");
+        // print("Start called");
         canvas.SetActive(true);
         FadeSprite = canvas.GetComponent<CanvasGroup>();
         StartCoroutine(FadeSpriteCoroutineDown(0, 4f));
@@ -23,7 +23,7 @@ public class FadeUIScript : MonoBehaviour
 
     public void StartFadeOut()
     {
-        print("Start fade out func");
+        // print("Start fade out func");
         StartCoroutine(FadeSpriteCoroutineUp(1, 2));
     }
 
@@ -46,8 +46,6 @@ public class FadeUIScript : MonoBehaviour
             }
             yield return null;
         }
-
-
     }
 
 

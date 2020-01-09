@@ -18,7 +18,6 @@ namespace ScrollManager
         static Queue<float> lastInputs = new Queue<float>();
 
         //Velocity output related
-        public static int numberOfFramesBetweenVelocityReduction = 16;
         static float drag = 0.9f;
         static float scrollVelocity = 0;
 
@@ -76,6 +75,11 @@ namespace ScrollManager
         {
             inputLocked = false;
             print("Input unlocked");
+        }
+
+        public static bool InputLockState()
+        {
+            return inputLocked;
         }
 
         // Bool - Input or not
@@ -173,11 +177,10 @@ namespace ScrollManager
             if (Mathf.Abs(input) > Mathf.Abs(scrollVelocity))
             {
                 scrollVelocity = input;
-                print("New max: " + input);
             }
             else
             {
-                if (Time.frameCount % numberOfFramesBetweenVelocityReduction == 0)
+                if (Time.frameCount % Mathf.RoundToInt(2000 * Time.deltaTime) == 0)
                 {
                     scrollVelocity *= drag;
                 }
@@ -190,8 +193,6 @@ namespace ScrollManager
             {
                 scrollVelocity = 0;
             }
-
-            print("Input: " + input + ", Velocity: " + scrollVelocity);
 
             output = scrollVelocity;
             return output;
@@ -208,7 +209,10 @@ namespace ScrollManager
             }
             else
             {
-                scrollVelocity *= customDrag;
+                if (Time.frameCount % Mathf.RoundToInt(2000 * Time.deltaTime) == 0)
+                {
+                    scrollVelocity *= customDrag;
+                }
             }
 
             if (Mathf.Abs(scrollVelocity) < 0.0001f)

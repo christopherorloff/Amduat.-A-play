@@ -175,7 +175,7 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         if (input > 0)
         {
             float speed = Scroll.scrollValueAccelerated() * timelineScalar * Time.deltaTime;
-            speed = Mathf.Clamp(speed, 0, 0.0006f);
+            speed = Mathf.Clamp(speed, 0, 0.0004f);
             Timeline += speed;
             Timeline = Mathf.Clamp(Timeline, 0, 1);
         }
@@ -238,7 +238,6 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         FMOD.Studio.EventInstance boatPaddleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BoatPaddle");
         boatPaddleInstance.start();
 
-        print("MoveBoat, leftover: " + leftoverDistance);
         float xStart = Boat.transform.position.x;
         float xEnd = xStart + boatTravelDistance + leftoverDistance;
         leftoverDistance = 0;
