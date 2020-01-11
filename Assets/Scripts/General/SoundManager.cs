@@ -339,6 +339,7 @@ public class SoundManager : MonoBehaviour
         FMOD.Studio.EventInstance knifeHitInstance;
         knifeHitInstance = FMODUnity.RuntimeManager.CreateInstance(knifeHitPath);
         knifeHitInstance.start();
+        print("SOUND MANAGER : KNIFE HIT");
     }
 
     public void PlayKnifeBounce()
@@ -375,6 +376,7 @@ public class SoundManager : MonoBehaviour
         sound = FMODUnity.RuntimeManager.CreateInstance("event:/GENERAL SOUNDS/BlessedDeadAppear");
         sound.setParameterByName("Water", 0);
         sound.start();
+        print("SOUND MANAGER : BLESSED DEAD APPEARS");
     }
 
     public void PlayBlessedDeadAppearBoat()
