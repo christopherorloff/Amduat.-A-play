@@ -65,6 +65,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         float travelDistanceX = (endPosBoat.position.x - startPosBoat.position.x) / numberOfPulls;
         boatMoveVector = new Vector3(travelDistanceX, 0, 0);
         boatDistanceToGoddesses = new Vector3(goddessesParent.position.x - boat.transform.position.x, goddessesParent.position.y - boat.transform.position.y, 0);
+        Scroll.setDeltaMultiplier(2000);
     }
 
     void OnEnable()
@@ -94,7 +95,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         //For debug purposes
         if (Mathf.Approximately(input, 0.0f))
         {
-           // print("Input is zero!");
+            // print("Input is zero!");
         }
 
         if (Mathf.Approximately(Timeline, 1) && !sceneHasEnded)
@@ -129,7 +130,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         {
             if (nextIsDraw)
             {
-                if(firstWrong)
+                if (firstWrong)
                 {
                     StartCoroutine(WrongInput(WrongInputDraw));
                 }
@@ -204,9 +205,9 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             }
             yield return null;
         }
-        if(Timeline == 1f)
+        if (Timeline == 1f)
         {
-            StartCoroutine(MoveLast(0,1f));
+            StartCoroutine(MoveLast(0, 1f));
         }
         coroutineRunning = false;
     }
@@ -218,7 +219,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         coroutineRunning = true;
         FMOD.Studio.EventInstance towBoatInstance = FMODUnity.RuntimeManager.CreateInstance("event:/HOUR 4/TowBoat");
         towBoatInstance.start();
-      //  print("Pull coroutine");
+        //  print("Pull coroutine");
 
         float startTime = Time.time;
 
@@ -237,9 +238,9 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
             }
             yield return null;
         }
-        if(Timeline == 1f)
+        if (Timeline == 1f)
         {
-            StartCoroutine(MoveLast(0,1f));
+            StartCoroutine(MoveLast(0, 1f));
         }
         coroutineRunning = false;
     }
@@ -293,7 +294,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         float startTime = Time.time;
 
         Vector3 startPositionGoddesses = goddessesParent.transform.position;
-        Vector3 endPositionGoddesses = startPositionGoddesses + new Vector3(3f,0,0);
+        Vector3 endPositionGoddesses = startPositionGoddesses + new Vector3(3f, 0, 0);
         float t = start;
 
         while (t < 1)

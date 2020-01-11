@@ -48,9 +48,12 @@ public class LimbMovement : MonoBehaviour
 
     private void Start()
     {
+        Scroll.setDeltaMultiplier(100);
+
         //Setting first limb from limbs array to be the active limb
         limbs[scrolledCounter].GetComponent<Limb>().isActive = true;
-        for(int i = 0; i < limbs.Length; i++) {
+        for (int i = 0; i < limbs.Length; i++)
+        {
             limbs[i].GetComponent<Limb>().smoothTime = limbSpeed;
         }
     }
@@ -63,23 +66,26 @@ public class LimbMovement : MonoBehaviour
         //Rotate entire object
         float step = rotationSpeed * Time.deltaTime;
 
-        if(scrolledCounter > 0 && scrolledCounter < rotationTargets.Length) {
+        if (scrolledCounter > 0 && scrolledCounter < rotationTargets.Length)
+        {
             Quaternion rotation = Quaternion.Euler(rotationTargets[scrolledCounter]);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, step);
         }
 
         //Initiate final animation of Osiris rising, when all limbs collected
         //Instantiating particle system
-        if (isDone) {
+        if (isDone)
+        {
             torso.GetComponent<SpriteRenderer>().sprite = greenTorso;
 
             Transform[] targetTransforms = new Transform[limbs.Length];
             float moveStep = endSpeed * Time.deltaTime;
 
             //Moving individual limbs
-            for(int i = 0; i < limbs.Length; i++) {
+            for (int i = 0; i < limbs.Length; i++)
+            {
                 targetTransforms[i] = limbs[i].GetComponent<Limb>().target.transform;
-                targetTransforms[i].position = Vector3.MoveTowards(targetTransforms[i].position, new Vector3(0,0,0), moveStep);
+                targetTransforms[i].position = Vector3.MoveTowards(targetTransforms[i].position, new Vector3(0, 0, 0), moveStep);
             }
 
             //Moving entire prefab
@@ -89,17 +95,20 @@ public class LimbMovement : MonoBehaviour
             {
                 StartCoroutine(OsirisAnim());
             }
-            
+
             countdownToDestroy += Time.deltaTime;
             //Instantiating particle system
-            if (!osirisCollectedParticleSystemRunning) {
+            if (!osirisCollectedParticleSystemRunning)
+            {
                 Instantiate(osirisCollectedParticleSystem, new Vector3(0, 0, 0), Quaternion.identity);
                 osirisCollectedParticleSystemRunning = true;
             }
 
             //Hiding limbs when out of screen
-            if (countdownToDestroy >= collectedOsirisGameObjectSpeed) {
-                for(int i = 0; i < limbs.Length; i++) {
+            if (countdownToDestroy >= collectedOsirisGameObjectSpeed)
+            {
+                for (int i = 0; i < limbs.Length; i++)
+                {
                     limbs[i].SetActive(false);
                 }
             }
@@ -130,7 +139,8 @@ public class LimbMovement : MonoBehaviour
 
 
 
-    IEnumerator OsirisAnim() {
+    IEnumerator OsirisAnim()
+    {
 
         running = true;
         Vector3 startPos = osirisCollectedGameObject.transform.position;
@@ -147,7 +157,7 @@ public class LimbMovement : MonoBehaviour
 
 
         }
-    
+
     }
 
     void Move()
@@ -175,7 +185,7 @@ public class LimbMovement : MonoBehaviour
     {
 
         float input = Scroll.scrollValue();
-        if (lastDirectionUp) 
+        if (lastDirectionUp)
         {
             if (input > scrollThreshold && !PulseRed.running)
             {
@@ -194,11 +204,14 @@ public class LimbMovement : MonoBehaviour
     }
 
     //Checking if last direction is opposite of the previous one - if it is, then a limb will move
-    void CheckIfMoving() {
+    void CheckIfMoving()
+    {
 
         float input = Scroll.scrollValue();
-        if (lastDirectionUp) {
-            if (input < -scrollThreshold) {
+        if (lastDirectionUp)
+        {
+            if (input < -scrollThreshold)
+            {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
                 Move();
@@ -212,8 +225,10 @@ public class LimbMovement : MonoBehaviour
                 }
             }
         }
-        else if (!lastDirectionUp) {
-            if (input > scrollThreshold) {
+        else if (!lastDirectionUp)
+        {
+            if (input > scrollThreshold)
+            {
                 //Setting current limb from limbs array to be not active limb
                 SetLimbNotActive();
 
@@ -230,13 +245,16 @@ public class LimbMovement : MonoBehaviour
         }
     }
 
-    void SetLimbNotActive() {
-        if(scrolledCounter < limbs.Length) limbs[scrolledCounter].GetComponent<Limb>().isActive = false;
+    void SetLimbNotActive()
+    {
+        if (scrolledCounter < limbs.Length) limbs[scrolledCounter].GetComponent<Limb>().isActive = false;
     }
 
-    public void LimbDone() {
+    public void LimbDone()
+    {
         limbsDone++;
-        if(limbsDone == limbs.Length) {
+        if (limbsDone == limbs.Length)
+        {
             print("READY FOR FINAL ANIMATION");
             startFade();
             isDone = true;

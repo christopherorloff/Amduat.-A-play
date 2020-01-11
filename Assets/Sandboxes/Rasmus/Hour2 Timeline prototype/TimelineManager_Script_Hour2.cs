@@ -56,6 +56,8 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
         //Camera
         Cam = Camera.main.gameObject;
         camPosEnd = new Vector3(sceneLength, 0, -10);
+
+        Scroll.setDeltaMultiplier(1200);
     }
 
     //Add timeline events and HandleKeys(). Remember HandleKeys() at the end, or nothing works
@@ -86,7 +88,6 @@ public class TimelineManager_Script_Hour2 : Timeline_BaseClass
     void Update()
     {
         float input = Scroll.scrollValueAcceleratedBoost(0.99f);
-        print("Input: " + input);
         //Needs to be custom for each Hour --> must be implemented in specific hour instance of timeline_baseclass
         ConvertInputToProgress(input);
         CamAction();

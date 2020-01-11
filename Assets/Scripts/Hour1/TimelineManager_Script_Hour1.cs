@@ -98,6 +98,8 @@ public class TimelineManager_Script_Hour1 : Timeline_BaseClass
         camPosEnd = new Vector3(sceneLength, 0, -10);
         Cam = Camera.main.gameObject;
 
+        Scroll.setDeltaMultiplier(400);
+
     }
 
     //This is where all timeline events should be added

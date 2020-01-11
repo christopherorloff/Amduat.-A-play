@@ -61,19 +61,19 @@ namespace ScrollManager
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                setDeltaMultiplier(100);
-                deltaMultiplier = Mathf.Clamp(deltaMultiplier, 100, 2000);
-                print("DeltaMultiplier: " + deltaMultiplier);
-            }
-            else if (Input.GetKeyDown(KeyCode.S))
-            {
-                setDeltaMultiplier(-100);
-                deltaMultiplier = Mathf.Clamp(deltaMultiplier, 100, 2000);
-                print("DeltaMultiplier: " + deltaMultiplier);
+            // if (Input.GetKeyDown(KeyCode.W))
+            // {
+            //     setDeltaMultiplier(100);
+            //     deltaMultiplier = Mathf.Clamp(deltaMultiplier, 100, 2000);
+            //     print("DeltaMultiplier: " + deltaMultiplier);
+            // }
+            // else if (Input.GetKeyDown(KeyCode.S))
+            // {
+            //     setDeltaMultiplier(-100);
+            //     deltaMultiplier = Mathf.Clamp(deltaMultiplier, 100, 2000);
+            //     print("DeltaMultiplier: " + deltaMultiplier);
 
-            }
+            // }
         }
 
         // ------------------------------------------------------------------- \\
@@ -82,7 +82,7 @@ namespace ScrollManager
 
         public static void setDeltaMultiplier(float value)
         {
-            deltaMultiplier += value;
+            deltaMultiplier = value;
         }
 
         public static void LockInput()
