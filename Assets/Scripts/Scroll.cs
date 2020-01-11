@@ -20,6 +20,7 @@ namespace ScrollManager
         //Velocity output related
         static float drag = 0.9f;
         static float scrollVelocity = 0;
+        static float deltaMultiplier = 2000;
 
         //Platform related variables
         const float macMaxOutput = 25;
@@ -59,11 +60,28 @@ namespace ScrollManager
                     maxVelocityCapReached = false;
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                setDeltaMultiplier(100);
+                print("DeltaMultiplier: " + deltaMultiplier);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                setDeltaMultiplier(-100);
+                print("DeltaMultiplier: " + deltaMultiplier);
+
+            }
         }
 
         // ------------------------------------------------------------------- \\
         // ------------------------ public functions ------------------------- \\
         // ------------------------------------------------------------------- \\
+
+        public static void setDeltaMultiplier(float value)
+        {
+            deltaMultiplier += value;
+        }
 
         public static void LockInput()
         {
@@ -180,7 +198,7 @@ namespace ScrollManager
             }
             else
             {
-                if (Time.frameCount % Mathf.RoundToInt(2000 * Time.deltaTime) == 0)
+                if (Time.frameCount % Mathf.RoundToInt(deltaMultiplier * Time.deltaTime) == 0)
                 {
                     scrollVelocity *= drag;
                 }
@@ -229,7 +247,7 @@ namespace ScrollManager
             }
             else
             {
-                if (Time.frameCount % Mathf.RoundToInt(2000 * Time.deltaTime) == 0)
+                if (Time.frameCount % Mathf.RoundToInt(deltaMultiplier * Time.deltaTime) == 0)
                 {
                     scrollVelocity *= customDrag;
                 }
@@ -256,7 +274,7 @@ namespace ScrollManager
             }
             else
             {
-                if (Time.frameCount % Mathf.RoundToInt(2000 * Time.deltaTime) == 0)
+                if (Time.frameCount % Mathf.RoundToInt(deltaMultiplier * Time.deltaTime) == 0)
                 {
                     scrollVelocity *= customDrag;
                 }

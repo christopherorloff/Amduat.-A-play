@@ -164,7 +164,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             Mathf.LerpAngle(currentAngle.y, throwRotationStart.y, t2),
             Mathf.LerpAngle(currentAngle.z, throwRotationStart.z, t2));
         root.transform.eulerAngles = currentAngle;
-        Debug.Log(t2);
+        // Debug.Log(t2);
 
         if (t2 > 0.13f)
         {
@@ -180,7 +180,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
                 Mathf.LerpAngle(currentAngle.x, throwRotationEnd.x, t1),
                 Mathf.LerpAngle(currentAngle.y, throwRotationEnd.y, t1),
                 Mathf.LerpAngle(currentAngle.z, throwRotationEnd.z, t1));
-            Debug.Log(t1);
+            // Debug.Log(t1);
             root.transform.eulerAngles = currentAngle;
             yield return null;
         }
