@@ -5,7 +5,7 @@ using ScrollManager;
 
 public class Hour6_goddess_ArmScript : MonoBehaviour
 {
-   
+
     //private
     float input;
     Transform root;
@@ -82,7 +82,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
         {
             TakeInput();
             ProcessInput();
-        }      
+        }
     }
 
 
@@ -90,7 +90,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
     {
         //input = Scroll.scrollValueAccelerated() * scalar * drag;
         input = (Scroll.scrollValue() * scalar * drag);
-        if(input > 0.05 && !waiting)
+        if (input > 0.05f && !waiting)
         {
             timeLeft = throwTimer;
             throwScript.throwDone = false;
@@ -100,11 +100,11 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             throwing = true;
             throwStopper = true;
         }
-  
+
 
         //Timer 2 sec
         timeLeft -= Time.deltaTime;
-        if ( timeLeft < 0 )
+        if (timeLeft < 0)
         {
             waiting = false;
         }
@@ -113,16 +113,16 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
     private void ProcessInput()
     {
         if (throwScript == null)
-            
-            {
-                throwScript = GetComponentInChildren<ThrowScript>();
-            }
-        if(throwing && !done && !thrownDone && armNotUp)
+
+        {
+            throwScript = GetComponentInChildren<ThrowScript>();
+        }
+        if (throwing && !done && !thrownDone && armNotUp)
         {
             throwStopper = false;
             armNotUp = false;
             StartCoroutine(ArmDown());
-            
+
         }
         if (t1 > 1f)
         {
@@ -130,18 +130,18 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             thrown = true;
         }
 
-        if(throwing && done && thrown && !thrownDone && !throwStopper)
+        if (throwing && done && thrown && !thrownDone && !throwStopper)
         {
             throwScript.ThrowKnife(snake.transform.position);
             throwStopper = true;
         }
 
-        if(throwing && done && throwScript.throwDone == true)
+        if (throwing && done && throwScript.throwDone == true)
         {
             StartCoroutine(WaitAndLift(1.5f));
         }
 
-        if(resettingThrow)
+        if (resettingThrow)
         {
             t2 = 0f;
             t1 = 0f;
@@ -153,31 +153,29 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             armNotUp = true;
         }
 
-     }
+    }
+
     IEnumerator WaitAndLift(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-            t2 += 0.3f*Time.deltaTime;
-            currentAngle = new Vector3(
-                Mathf.LerpAngle(currentAngle.x, throwRotationStart.x, t2),
-                Mathf.LerpAngle(currentAngle.y, throwRotationStart.y, t2),
-                Mathf.LerpAngle(currentAngle.z, throwRotationStart.z, t2));
-            root.transform.eulerAngles = currentAngle;
-            Debug.Log(t2);
-        
-        if(t2 > 0.13f)
+        t2 += 0.3f * Time.deltaTime;
+        currentAngle = new Vector3(
+            Mathf.LerpAngle(currentAngle.x, throwRotationStart.x, t2),
+            Mathf.LerpAngle(currentAngle.y, throwRotationStart.y, t2),
+            Mathf.LerpAngle(currentAngle.z, throwRotationStart.z, t2));
+        root.transform.eulerAngles = currentAngle;
+        Debug.Log(t2);
+
+        if (t2 > 0.13f)
         {
             resettingThrow = true;
         }
-
-                
-        
     }
     IEnumerator ArmDown()
     {
-        while(t1 < 1f)
+        while (t1 < 1f)
         {
-        t1 += 10f * Time.deltaTime;
+            t1 += 10f * Time.deltaTime;
             currentAngle = new Vector3(
                 Mathf.LerpAngle(currentAngle.x, throwRotationEnd.x, t1),
                 Mathf.LerpAngle(currentAngle.y, throwRotationEnd.y, t1),
@@ -191,7 +189,7 @@ public class Hour6_goddess_ArmScript : MonoBehaviour
             done = true;
             thrown = true;
         }
-        
+
     }
 
     public Transform FindComponentInChildWithTag(GameObject parent, string tag)
