@@ -53,7 +53,7 @@ public class SnakeMoveTowardsBoat_script : MonoBehaviour
         coroutineRunning = true;
         float startTime = Time.time;
         float t = 0;
-        while (t < 0.99f)
+        while (t < 0.69f)
         {
             t = (Time.time - startTime) / duration;
 
