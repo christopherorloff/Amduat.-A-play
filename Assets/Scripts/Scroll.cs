@@ -61,14 +61,16 @@ namespace ScrollManager
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 setDeltaMultiplier(100);
+                deltaMultiplier = Mathf.Clamp(deltaMultiplier, 100, 2000);
                 print("DeltaMultiplier: " + deltaMultiplier);
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.S))
             {
                 setDeltaMultiplier(-100);
+                deltaMultiplier = Mathf.Clamp(deltaMultiplier, 100, 2000);
                 print("DeltaMultiplier: " + deltaMultiplier);
 
             }
