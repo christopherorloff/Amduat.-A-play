@@ -26,7 +26,7 @@ public class ParticleMove_script : MonoBehaviour
     void Update()
     {
 
-        if (Scroll.scrollValueAccelerated() < 0)
+        if (Scroll.scrollValueAcceleratedOld() < 0)
         {
             particles = new ParticleSystem.Particle[p.particleCount];
             p.GetParticles(particles);
@@ -40,7 +40,7 @@ public class ParticleMove_script : MonoBehaviour
             p.SetParticles(particles, particles.Length);
 
         }
-        if (Scroll.scrollValueAccelerated() > 0)
+        if (Scroll.scrollValueAcceleratedOld() > 0)
         {
             particles = new ParticleSystem.Particle[p.particleCount];
             p.GetParticles(particles);
