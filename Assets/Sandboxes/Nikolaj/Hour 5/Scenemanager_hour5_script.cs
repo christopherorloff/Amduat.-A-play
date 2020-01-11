@@ -66,14 +66,11 @@ public class Scenemanager_hour5_script : MonoBehaviour
         {
             boatMoveSpeedX = 0.2f;
         }
-        if (triggerScript.numberOfSnakes > 10)
+        if (triggerScript.numberOfSnakes >= 8)
         {
             boatMoveSpeedX = 0.0f;
         }
-        if (triggerScript.numberOfSnakes > 15)
-        {
-            boatMoveSpeedX = 0.0f;
-        }
+       
         else if (triggerScript.numberOfSnakes < 2)
         {
             boatMoveSpeedX = 0.7f;
