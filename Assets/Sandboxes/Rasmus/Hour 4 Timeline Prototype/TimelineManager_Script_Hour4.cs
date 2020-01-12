@@ -294,7 +294,7 @@ public class TimelineManager_Script_Hour4 : Timeline_BaseClass
         float startTime = Time.time;
 
         Vector3 startPositionGoddesses = goddessesParent.transform.position;
-        Vector3 endPositionGoddesses = startPositionGoddesses + new Vector3(3f, 0, 0);
+        Vector3 endPositionGoddesses = startPositionGoddesses + new Vector3(3, 0, 0);
         float t = start;
 
         while (t < 1)
