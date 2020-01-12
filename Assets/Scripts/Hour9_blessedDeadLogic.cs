@@ -96,7 +96,7 @@ public class Hour9_blessedDeadLogic : MonoBehaviour
         float t = 0;
         float startTime = Time.time;
 
-        while (t < 2)
+        while (t < 1)
         {
             t = (Time.time - startTime) / duration;
             t = Mathf.SmoothStep(0, 1, t);
