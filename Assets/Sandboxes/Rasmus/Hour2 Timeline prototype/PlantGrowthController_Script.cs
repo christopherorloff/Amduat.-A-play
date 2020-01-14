@@ -51,7 +51,8 @@ public class PlantGrowthController_Script : MonoBehaviour
         while (clone.transform.localScale.y < originalScale.y)
         {
             //Grow when there is input
-            if (!Mathf.Approximately(Scroll.scrollValueAccelerated(), 0))
+            float input = Scroll.scrollValueAccelerated();
+            if (input < -0.01f)
             {
                 t += (Time.deltaTime * speedMultiplier);
             }
